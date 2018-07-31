@@ -1,0 +1,142 @@
+<template>
+    <div id="app">
+      <header>
+        <span>{{title}}</span>
+        <a href="#"><img src="../../assets/back.png" height="43" width="26"/></a>
+      </header>
+      <main>
+        <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="actionSheet">
+          <img src="../../assets/head.png" height="130" width="130"/>
+          <span>头像</span>
+          <img src="../../assets/return3.png" height="26" width="16" class="goto"/>
+        </div>
+        <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
+          <span>昵称</span>
+          <img src="../../assets/return3.png" height="26" width="16"/>
+          <p>{{name}}</p>
+        </div>
+        <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="sexPicker">
+          <span>性别</span>
+          <img src="../../assets/return3.png" height="26" width="16"/>
+        </div>
+        <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="openPicker">
+          <span>生日</span>
+          <img src="../../assets/return3.png" height="26" width="16"/>
+        </div>
+        <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
+          <span>地址管理</span>
+        </div>
+        <mt-actionsheet
+          :actions= "data"
+          v-model="sheetVisible">
+        </mt-actionsheet>
+        <mt-datetime-picker
+          v-model="pickerVisible"
+          type="date"
+          ref="picker"
+          year-format="{value} 年"
+          month-format="{value} 月"
+          date-format="{value} 日"
+          @confirm="handleConfirm"
+          :startDate="startDate"
+          :endDate="endDate">
+        </mt-datetime-picker>
+        <mt-popup
+          v-model="popupVisible"
+          position="bottom">
+          <mt-picker :slots="slots"></mt-picker>
+        </mt-popup>
+      </main>
+    </div>
+</template>
+
+<script>
+export default {
+  name: "informationPage",
+      data(){
+        return{
+          title:'个人信息',
+          name:'',
+          //头像部分
+          data: [{
+            name: '拍照',
+            method : this.getCamera
+          }, {
+            name: '从相册中选择',
+            method : this.getLibrary
+          }],
+          sheetVisible:false,
+          //生日部分
+          pickerVisible:null,
+          value:null,
+          startDate: new Date('1980'),
+          endDate: new Date(),
+          //性别部分
+          popupVisible:false,
+          slots:[{values: ['男','女']}]
+        }
+      },
+  methods: {
+    //头像部分
+    actionSheet: function(){
+      this.sheetVisible = true;
+    },
+    getCamera: function(){
+      console.log("打开照相机")
+    },
+    getLibrary: function(){
+      console.log("打开相册")
+    },
+    //点击效果
+    changeColor(event){
+      var t=event.currentTarget;
+      t.style.backgroundColor="#ebebeb";
+    },
+    recoverColor(event){
+      var t=event.currentTarget;
+      t.style.backgroundColor="#fff";
+    },
+    //生日部分
+    openPicker() {
+      this.$refs.picker.open();
+    },
+    handleConfirm(value) {
+      this.pickerVisible = value.toString();
+    },
+    //性别部分
+    sexPicker(){
+      this.popupVisible=true;
+    }
+  }
+}
+</script>
+
+<style scoped>
+#app{width:750px; height:1334px; margin: 0 auto; background-color:#ebebeb;}
+header{width:750px; height:130px; background-color: #cd2131; position:relative;}
+header span{font-size:30px; color:#fff; position:absolute; top:60px; left:305px; cursor:default;}
+header a{width:26px; height:43px; position:absolute; top:58px; left:27px; cursor:pointer; display:block;
+  line-height:0px;}
+
+main{font-size:24px; text-align:left; position:relative;}
+main div:nth-of-type(1){width:750px; height:158px; background-color:#fff; border-bottom:1px #dbdbdb solid;
+  line-height:158px;}
+main div:nth-of-type(1) img{position:absolute; right:70px; top:15px;}
+main div:nth-of-type(1) .goto{position:absolute; top:67px; right:30px;}
+main div:nth-of-type(2){width:750px; height:98px; background-color:#fff; border-bottom:1px #dbdbdb solid;
+  line-height:98px;}
+main div:nth-of-type(2) img{position:absolute; right:30px; top:195px;}
+main div:nth-of-type(2) p{font-size:20px; color:#8e8e8e; position:absolute; top:206px; left:569px;
+  margin:0; line-height:0px;}
+main div:nth-of-type(3){width:750px; height:98px; background-color:#fff; border-bottom:1px #dbdbdb solid;
+  line-height:98px;}
+main div:nth-of-type(3) img{position:absolute; right:30px; top:295px;}
+main div:nth-of-type(4){width:750px; height:98px; background-color:#fff; border-bottom:1px #dbdbdb solid;
+  line-height:98px;}
+main div:nth-of-type(4) img{position:absolute; right:30px; top:392px;}
+main div:nth-of-type(5){width:750px; height:98px; background-color:#fff; border-bottom:1px #dbdbdb solid;
+  line-height:98px;}
+main div:nth-of-type(5) img{position:absolute; right:30px; top:392px;}
+main div:nth-of-type(6),main div:nth-of-type(7),main div:nth-of-type(8){width:750px; cursor:default;}
+main div span{padding-left:33px; font-size:24px;}
+</style>
