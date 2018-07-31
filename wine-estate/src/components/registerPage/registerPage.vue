@@ -1,9 +1,11 @@
 <template>
     <div id="app">
+      //banner部分
       <header>
           <span>{{title}}</span>
           <a href="#"><img src="../../assets/back.png" height="43" width="25"/></a>
       </header>
+      //主体部分
       <main>
           <form method="post" action="" @submit="checkForm">
               <input type="text" placeholder="请输入用户昵称" name="registerName"/>
@@ -32,6 +34,7 @@ export default {
       }
     },
     methods:{
+      //非空验证
       checkForm(){
         if(this.registerName&&this.registerPassword&&this.registerMoblie&&this.registerEmail){
           return true;
@@ -53,18 +56,21 @@ export default {
           return false;
         }
       },
+      //密码验证
       checkPassword(){
         var password=/^[\da-zA-Z]{6,16}$/;
         if(!password.test(this.registerPassword)){
           alert("请输入6~16位密码");
         }
       },
+      //手机号验证
       checkMoblie(){
         var Moblie=/^1[34578]\d{9}$/;
         if(!Mobile.test(this.registerMoblie)){
           alert("请输入正确的手机号");
         }
       },
+      //邮箱验证
       checkEmail(){
         var Email=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
         if(!Email.test(this.registerEmail)){
