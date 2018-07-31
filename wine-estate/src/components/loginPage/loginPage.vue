@@ -34,6 +34,7 @@ export default {
     }
   },
   methods:{
+    //非空验证
     checkForm(){
       if(this.loginText&&this.loginPasswordl){
         return true;
@@ -47,6 +48,7 @@ export default {
         return false;
       }
     },
+    //手机和邮箱验证
     checkText(){
       var text1=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
       var text2=/^1[34578]\d{9}$/;
@@ -54,6 +56,7 @@ export default {
           alert("请输入正确的数手机号或邮箱地址");
       }
     },
+    //6~16位密码验证
     checkPassword(){
       var password=/^[\da-zA-Z]{6,16}$/;
       if(!password.test(this.loginPassword)){
