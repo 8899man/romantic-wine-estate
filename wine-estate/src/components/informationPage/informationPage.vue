@@ -115,8 +115,7 @@ export default {
 #app{width:750px; height:1334px; margin: 0 auto; background-color:#ebebeb;}
 header{width:750px; height:130px; background-color: #cd2131; position:relative;}
 header span{font-size:30px; color:#fff; position:absolute; top:60px; left:305px; cursor:default;}
-header a{width:26px; height:43px; position:absolute; top:58px; left:27px; cursor:pointer; display:block;
-  line-height:0px;}
+header a{width:26px; height:43px; position:absolute; top:58px; left:27px; cursor:pointer;}
 
 main{font-size:24px; text-align:left; position:relative;}
 main div:nth-of-type(1){width:750px; height:158px; background-color:#fff; border-bottom:1px #dbdbdb solid;
@@ -138,5 +137,5 @@ main div:nth-of-type(5){width:750px; height:98px; background-color:#fff; border-
   line-height:98px;}
 main div:nth-of-type(5) img{position:absolute; right:30px; top:392px;}
 main div:nth-of-type(6),main div:nth-of-type(7),main div:nth-of-type(8){width:750px; cursor:default;}
-main div span{padding-left:33px; font-size:24px;}
+main div span{padding-left:33px; font-size:24px; cursor:default;}
 </style>
