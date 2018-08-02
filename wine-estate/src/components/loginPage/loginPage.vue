@@ -14,7 +14,7 @@
             <input type="password"  name="loginPassword" v-model="loginPassword" placeholder="请输入密码"
             @change="checkPassword"/>
             <!--<span class="tips" v-show="show">{{tips}}</span>-->
-            <button type="submit" name="loginSubmit">立即登录</button>
+            <button type="submit" name="loginSubmit" @mousedown="changeColor" @mouseup="recoverColor">立即登录</button>
         </form>
         <a href="#">{{password}}</a>
         <a href="#">{{register}}</a>
@@ -62,7 +62,16 @@ export default {
       if(!password.test(this.loginPassword)){
         alert("请输入正确的密码");
       }
-    }
+    },
+    //点击效果
+    changeColor(event){
+      var t=event.currentTarget;
+      t.style.backgroundColor="#95282c";
+      },
+    recoverColor(event){
+      var t=event.currentTarget;
+      t.style.backgroundColor="#aa2834";
+      }
   }
 }
 </script>
