@@ -16,7 +16,7 @@
               <input type="email" placeholder="请输入邮箱地址" name="registerEmail"
                 v-model="registerEmail"@change="checkEmail"/>
               <!--<span class="tips">{{tips}}</span>-->
-              <button type="submit">快速注册</button>
+              <button type="submit" @mousedown="changeColor" @mouseup="recoverColor">快速注册</button>
           </form>
           <label><input type="checkbox" checked></label>
           <p>我已满十八周岁并接受也买服务条款</p>
@@ -76,6 +76,15 @@ export default {
         if(!Email.test(this.registerEmail)){
           alert("请输入正确的邮箱地址");
         }
+      },
+       //点击效果
+      changeColor(event){
+        var t=event.currentTarget;
+        t.style.backgroundColor="#95282c";
+      },
+      recoverColor(event){
+        var t=event.currentTarget;
+        t.style.backgroundColor="#aa2834";
       }
     }
 }
