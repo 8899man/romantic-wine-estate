@@ -4,6 +4,7 @@ import HelloWorld from '@/components/HelloWorld'
 import watchList from '@/components/watchList/watchList'
 import shoppingCart from '@/components/shoppingCart/shoppingCart'
 import logged from '@/components/logged/logged'
+import bottom from '@/components/bottom/bottom'
 
 Vue.use(Router)
 
@@ -13,6 +14,11 @@ export default new Router({
       path: '/',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    {
+      path: '/bottom',
+      name: 'bottom',
+      component: bottom
     },
     {
       path: '/watchList',
