@@ -15,36 +15,36 @@
           </div>
           <div class="menu">
             <span>
-              <img src="../../assets/button1-4.jpg" height="73" width="73"/>
+              <img src="../../assets/button1-4.jpg" height="73" width="73" alt="#"/>
               <p>待付款</p>
             </span>
             <span>
-              <img src="../../assets/button2-4.jpg" height="73" width="73"/>
+              <img src="../../assets/button2-4.jpg" height="73" width="73" alt="#"/>
               <p>待收货</p>
             </span>
             <span>
-              <img src="../../assets/button3-4.jpg" height="73" width="73"/>
+              <img src="../../assets/button3-4.jpg" height="73" width="73" alt="#"/>
               <p>待评价</p>
             </span>
           </div>
           <div class="list">
               <span @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
-                <img src="../../assets/icon1-4.png" height="72" width="72"/>
+                <img src="../../assets/icon1-4.png" height="72" width="72" alt="#"/>
                 <p>存酒库</p>
                 <p>{{warehouse}}瓶</p>
               </span>
               <span @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
-                <img src="../../assets/icon2-4.png" height="72" width="72"/>
+                <img src="../../assets/icon2-4.png" height="72" width="72" alt="#"/>
                 <p>我的酒评</p>
                 <p>{{evaluate}}条</p>
               </span>
               <span @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
-                <img src="../../assets/icon3-4.png" height="72" width="72"/>
+                <img src="../../assets/icon3-4.png" height="72" width="72" alt="#"/>
                 <p>我的关注</p>
                 <p>{{attention}}个</p>
               </span>
               <span @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
-                <img src="../../assets/icon4-4.png" height="72" width="72"/>
+                <img src="../../assets/icon4-4.png" height="72" width="72" alt="#"/>
                 <p>我的优惠券</p>
                 <p>{{discount}}张</p>
               </span>
@@ -67,6 +67,7 @@
           }
         },
       methods:{
+        //点击效果
         changeColor(event){
           var t=event.currentTarget;
           t.style.backgroundColor="#ebebeb";
@@ -75,7 +76,7 @@
           var t=event.currentTarget;
           t.style.backgroundColor="#fff";
         }
-      }
+      } 
     }
 </script>
 
