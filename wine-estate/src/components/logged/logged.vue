@@ -1,9 +1,9 @@
 <template>
   <!--已登录购物车-->
     <div class="logged">
-        <header class="head">
+        <header>
             <span><b>{{title}}</b></span>
-            <a href="#">{{finish}}</a>
+            <a href="#" @click="change1">{{finish}}</a>
         </header>
         <section class="body">
             <div class="ad">
@@ -12,6 +12,10 @@
             <ul class="goods">
                 <li>
                     <div class="line"></div>
+                    <div @click="change2($event)">
+                      <img src="../../assets/no.jpg" alt="#" class="no2">
+                      <img src="../../assets/yes.jpg" alt="#" class="yes2">
+                    </div>
                     <img src="../../assets/wine22.jpg" alt="#">
                     <span class="name">拉菲传说波尔多红葡萄酒</span>
                     <span class="price">¥ 62.0</span>
@@ -19,83 +23,155 @@
                     <input type="text" class="number" value="1" @keyup="number($event)">
                     <button class="add" @click="add($event)"></button>
                 </li>
+              <li>
+                <div class="line"></div>
+                <div @click="change2($event)">
+                  <img src="../../assets/no.jpg" alt="#" class="no2">
+                  <img src="../../assets/yes.jpg" alt="#" class="yes2">
+                </div>
+                <img src="../../assets/wine22.jpg" alt="#">
+                <span class="name">拉菲传说波尔多红葡萄酒</span>
+                <span class="price">¥ 62.0</span>
+                <button class="sub" @click="sub($event)"></button>
+                <input type="text" class="number" value="1" @keyup="number($event)">
+                <button class="add" @click="add($event)"></button>
+              </li>
             </ul>
+            <div class="bottom">
+              <div @click="change3($event)">
+                <img src="../../assets/no.jpg" alt="#" class="all-no">
+                <img src="../../assets/yes.jpg" alt="#" class="all-yes">
+                <span class="all">全选</span>
+              </div>
+              <button class="del" @click="cancel($event)">{{del}}</button>
+            </div>
+            <footer></footer>
         </section>
     </div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       title: '购物车',
-      finish: '完成'
+      finish: '完成',
+      del: '删除'
     }
   },
-  methods : {
-    number(event){
+  methods: {
+    number(event) {
       var ev = event.currentTarget;
-      ev.value = ev.value.replace(/[^0-9-]+/,'');
-      if(ev.value <= 1){
+      ev.value = ev.value.replace(/[^0-9-]+/, '');
+      if (ev.value <= 1) {
         ev.value = 1;
       }
-      if(ev.value >= 999){
+      if (ev.value >= 999) {
         ev.value = 999;
       }
     },
-    sub(event){
+    sub(event) {
       var oTex = event.currentTarget.parentNode.querySelector(".number");
-      oTex.value = Number(oTex.value)-1;
-      if(oTex.value <= 1){
+      oTex.value = Number(oTex.value) - 1;
+      if (oTex.value <= 1) {
         oTex.value = 1;
       }
     },
-    add(event){
+    add(event) {
       var oTex = event.currentTarget.parentNode.querySelector(".number");
-      oTex.value = Number(oTex.value)+1;
-      if(oTex.value >= 999){
+      oTex.value = Number(oTex.value) + 1;
+      if (oTex.value >= 999) {
         oTex.value = 999;
+      }
+    },
+    change1(){
+      if(this.finish == "完成"){
+        this.finish = "返回";
+        this.del = "去结算";
+      }else{
+        this.finish = "完成";
+        this.del = "删除";
+      }
+    },
+    change2(event) {
+      var oImg = event.currentTarget.querySelector(".yes2");
+      if (oImg.style.display == 'none') {
+        oImg.style.display = "block";
+      } else {
+        oImg.style.display = "none";
+      }
+    },
+    change3(event) {
+      var oImg = event.currentTarget.querySelector(".all-yes");
+      var oUl = document.querySelector(".goods");
+      var aLi = oUl.getElementsByTagName("li");
+      if (oImg.style.display == 'none') {
+        oImg.style.display = "block";
+        for (let i = 0; i < aLi.length; i++) {
+          var oY = aLi[i].querySelector(".yes2");
+          oY.style.display = "block";
+        }
+      } else {
+        oImg.style.display = "none";
+        for (let i = 0; i < aLi.length; i++) {
+          var oY = aLi[i].querySelector(".yes2");
+          oY.style.display = "none";
+        }
+      }
+    },
+    cancel(event){
+      var v = event.currentTarget.innerHTML;
+      var aY = document.querySelectorAll(".yes2");
+      if(v == "删除"){
+        for(let i=0;i<aY.length;i++){
+          var c = aY[i].style.display;
+          if(c == "block"){
+            var oLi = aY[i].parentNode.parentNode;
+            oLi.parentNode.removeChild(oLi);
+          }
+        }
       }
     }
   }
 }
 </script>
 
-<style scoped>
+<style>
  @import url(../../style/common1.css);
   .logged{
     width: 750px;
     height: 1334px;
     margin: 0 auto;
   }
-  .head{
+  header{
     width: 100%;
     height: 128px;
     background-color: #d22131;
     position: relative;
   }
-  .head span{
+  header span{
     color: #fff;
     font-size: 40px;
     font-family: '宋体';
     position: absolute;
-    top: 66px;
+    top: 80px;
     left: 50%;
     margin-left: -61px;
   }
-  .head a{
+  header a{
     color: #fff;
     font-family: '宋体';
     font-weight: bold;
     font-size: 36px;
     position: absolute;
-    top: 70px;
+    top: 84px;
     right: 31px;
   }
   .body{
     width: 100%;
     height: 1206px;
     background-color: #eaeaea;
+    position: relative;
   }
   .body .ad{
     width: 100%;
@@ -110,7 +186,7 @@ export default {
     letter-spacing: 1px;
     color: #848484;
     position: absolute;
-    top: 5px;
+    top: 8px;
     left: 170px;
   }
   .body .goods{
@@ -123,12 +199,24 @@ export default {
     background-color: #ffffff;
     position: relative;
   }
-  .body .goods li .top{
+  .body .goods li .no1{
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 5px;
+    left: 15px;
+  }
+  .body .goods li .yes1{
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    display: none;
+  }
+  .body .goods li .top{
     font-family: '华文中宋';
+    font-size: 26px;
     color: #848484;
+    position: absolute;
+    top: 15px;
+    left: 70px;
   }
   .body .goods li .line{
     width: 100%;
@@ -136,6 +224,17 @@ export default {
     background: #d6d6d6;
     position: absolute;
     top: 54px;
+  }
+  .body .goods li .no2{
+    position: absolute;
+    top: 170px;
+    left: 30px;
+  }
+  .body .goods li .yes2{
+    position: absolute;
+    top: 170px;
+    left: 30px;
+    display: none;
   }
   .body .goods li img{
     position: absolute;
@@ -191,5 +290,52 @@ export default {
     position: absolute;
     top: 240px;
     left: 300px;
+  }
+  .body .bottom{
+    width: 750px;
+    height: 70px;
+    margin: 0 auto;
+    border-top: 1px #d6d6d6 solid;
+    background-color: #fff;
+    position: fixed;
+    bottom: 96px;
+  }
+  .body .bottom .all-no{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
+  .body .bottom .all-yes{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    display: none;
+  }
+  .body .bottom .all{
+    font-family: '华文中宋';
+    font-size: 30px;
+    color: #848484;
+    position: absolute;
+    left: 60px;
+    top: 20px;
+  }
+  .body .bottom .del{
+    width: 161px;
+    height: 57px;
+    background: #e64348;
+    color: #fff;
+    font-size: 20px;
+    position: absolute;
+    top: 5px;
+    right: 18px;
+  }
+  .body footer{
+    width: 750px;
+    height: 96px;
+    margin: 0 auto;
+    border-top: 1px #d6d6d6 solid;
+    background-color: #fff;
+    position: fixed;
+    bottom: 0;
   }
 </style>
