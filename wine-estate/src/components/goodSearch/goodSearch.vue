@@ -1,31 +1,43 @@
 <template>
   <div class="gdsearch">
-    <p>中国移动</p>
+    <p></p>
     <div class="searchk">
       <div class="buttonl" >
-        <a href="#">取消</a>
+        <a href="#">返回</a>
       </div>
-      <div class="buttonr">
+      <div class="buttonr" v-on:click="tadd">
         <a href="#">搜索</a>
       </div>
       <div class="tub">
         <img src="../../assets/sstb.png" alt="搜索图标"/>
       </div>
       <div class="searchkk">
-        <input type="text" placeholder="搜索商品">
+        <input type="text" placeholder="搜索商品" id="intext">
       </div>
     </div>
-    <ul>
-      <li>搜索历史</li>
-      <li>搜索历史</li>
+    <ul id="zlih">
     </ul>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'goodSearch'
-    }
+export default {
+    data (){
+      return {}
+    },
+   methods:{
+     tadd(){
+       var oInput=document.getElementById("intext");
+       var oUl=document.getElementById("zlih");
+       var oLi = document.createElement('li');
+       oLi.innerHTML = oInput.value;
+       if(oUl.children[14]){
+          oUl.removeChild(oUl.children[14]);
+       }
+       oUl.children[0]?oUl.insertBefore(oLi,oUl.children[0]):oUl.appendChild(oLi);
+     }
+   }
+}
 </script>
 
 <style scoped>
@@ -33,7 +45,7 @@
   margin:0 auto;
   padding:0px;
   background-color:#EBEBEB;
-  height:1200px;}
+  height:1000px;}
 p{width:750px;
   height:40px;
   background-color:#d02131;
@@ -48,7 +60,7 @@ a{color:#fff;
 .buttonl{height:30px;
   width:72px;
   line-height:30px;
-  font-size: 28px;
+  font-size: 30px;
   color:#fff;
   margin:0 auto;
   position: absolute;
@@ -57,7 +69,7 @@ a{color:#fff;
 .buttonr{height:30px;
   width:72px;
   line-height:30px;
-  font-size: 28px;
+  font-size: 30px;
   color:#fff;
   margin:0 auto;
   position: absolute;
@@ -92,18 +104,10 @@ input{background-color:#DE8F8B;
   color:#F8E8E7;
   font-size: 24px;}
 ul{list-style: none;
+  padding-top:30px;
   margin:0px;
-  padding:0px;}
-li{
-  width:720px;
-  background-color:#EBEBEB;
-  margin:0px;
-  padding:30px 0px 30px 30px;
-  height:28px;
-  line-height:28px;
-  font-size: 24px;
-  color:#333333;
+  height:560px;
   text-align:left;
-  border-bottom:#999 1px solid;
-  text-decoration-color:#DADADA;}
+  color:#999;
+  font-size:30px;}
 </style>

@@ -1,10 +1,12 @@
 <template>
   <div class="gdetail">
-      <img  class="img1" src="../../assets/icon.png" alt="返回"/>
+      <router-link to="goodList">
+        <button ><img class="img1" src="../../assets/icon.png" alt="返回"/></button>
+      </router-link>
     <div class="gdetailxq">
       商品详情
     </div>
-      <img class="img2" src="../../assets/lianj.png" alt="链接"/>
+      <button><img class="img2" src="../../assets/lianj.png" alt="链接"/></button>
         <div class="gdetaillbt"><!--轮播图-->
           <mt-swipe :auto="2000">
             <mt-swipe-item >
@@ -25,11 +27,8 @@
           </mt-swipe>
         </div>
     <div class="wxin"><!--具体信息栏-->
-      <div class="but1"><!--跳转到评价页面的按钮-->
-        <img src="../../assets/but1.png" alt="按钮">
-      </div>
       <div class="wmoney"><!--价格前面的标志-->
-        <img src="../../assets/money.png" alt="标志"><!--弹出商品详情的按钮-->
+        <img src="../../assets/money.png" alt="标志">
       </div>
       <div class="whot"><!--热销-->
         <img src="../../assets/hot.png" alt="标志">
@@ -41,12 +40,19 @@
          <li class="wshop">6526532</li>
        </ul>
     </div>
+    <div class="xxxx">
+      <ul>
+        <li>原产地:美国</li>
+        <li>口感:圆润</li>
+        <li>类型:起泡酒</li>
+      </ul>
+    </div>
     <div class="wcir"><!--评论栏-->
       <div class="spcir">
         商品评论
-        <div class="und"><!--跳转到评论的按钮-->
+        <button class="und"><!--跳转到评论的按钮-->
           <img src="../../assets/und.png" alt="图标">
-        </div>
+        </button>
       </div>
       <div class="hpd"><!--好评度-->
         好评度
@@ -62,27 +68,42 @@
       </div>
     </div>
     <div class="db"><!--底部信息栏-->
-      <div class="gouwu"><!--加入购物车按钮-->
-        加入购物车
+      <button class="gouwu" v-on:click="add"><!--加入购物车按钮-->
+       加入购物车
+      </button>
+      <div class="xinxin"><!--原本空心图片-->
+        <img src="../../assets/xinxin.png"/>
       </div>
-      <div class="xinxin"><!--点击关注时候变红的心形-->
-        <img src="../../assets/xinxin.png" alt="心形">
+      <div class="honxin"><!--点击关注时候变红的心形-->
+        <img v-show="exist" id="changec" src="../../assets/honxin.png" alt="红心">
       </div>
-      <div class="guanzhu"><!--点击关注的按钮-->
+      <button class="guanzhu" v-on:click="change()"><!--点击关注的按钮-->
         关注
-      </div>
+      </button>
       <div class="gwctu">
-        <p>1</p><!--购物车内的物品数量-->
-        <img src="../../assets/gwctu.png" alt="购物车"><!--购物车图标-->
+        <p id="number">0</p>
+        <img src="../../assets/gwctu.png"><!--购物车图标-->
       </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
 export default {
-  name: 'goodDetail'
+  data () {
+    return {
+      exist:false
+    }
+  },
+  methods: {
+    add(){
+      var value1 = document.getElementById("number");
+      value1.innerHTML = Number(value1.innerHTML)+1;
+    },
+    change(){
+     this.exist = !this.exist;
+    }
+  }
 }
 </script>
 
@@ -94,6 +115,11 @@ export default {
   padding:0px;
   position:relative;
   }
+button{
+  border:none;
+  margin:0px;
+  padding:0px;
+}
 .img1{width:30px;
   height:52px;
   position:absolute;
@@ -139,13 +165,13 @@ a{color:#fff;
     border-bottom: #DADADA 1px solid;
     margin:0px;
     padding-top:22px;}
-  ui,li{list-style:none;
+  ul,li{list-style:none;
     text-align:left;}
   .wname{font-size:35px;
     width:640px;
     height:50px;
     margin-top:-10px;
-  word-break: normal;}
+    }
   .wyname{
     width:730px;
     height:50px;
@@ -175,11 +201,6 @@ a{color:#fff;
     margin:0px ;
     padding:0px ;
   }
-  .but1{position:absolute;
-    top:20px;
-    right:0px;
-    margin:0px ;
-    padding:0px;}
   .wmoney{
     position:absolute;
     left:40px;
@@ -188,17 +209,33 @@ a{color:#fff;
   .whot{
     position:absolute;
     left:34px;
-    top:265px;
+    top:263px;
     width:80px;
     height:80px;
   }
   .wcir{background-color:#EBEBEB;
     width:750px;
-    height:114px;
+    height:136px;
+    position:absolute;
+    left:0px;
+    top:1080px;
+    margin-top:12px;
+    }
+  .xxxx{
+    width:750px;
+    height:216px;
     position:absolute;
     left:0px;
     top:875px;
+    border-bottom:#DADADA solid 2px;
+    color:#8A8A8A;
     }
+  .xxxx li{
+    width:750px;
+    height:70px;
+    font-size:35px;
+    line-height:70px;
+  }
   .spcir{width:750px;
     height:60px;
     color:#8A8A8A;
@@ -210,7 +247,8 @@ a{color:#fff;
   .und{
     position:absolute;
     right:0px;
-    top:0px;
+    top:-1.5px;
+    background-color:#EBEBEB;
   }
   .hpd{width:750px;
     height:34px;
@@ -245,13 +283,13 @@ a{color:#fff;
   top:55px;
   font-size:30px;
     color:#8A8A8A;
-}
+  }
   .db{width:750px;
     height:120px;
     background-color:#fff;
     position:absolute;
     left:0px;
-    top:1010px;
+    top:1216px;
     overflow:hidden;
     margin:0px;
   }
@@ -270,14 +308,18 @@ a{color:#fff;
     width:100px;
     height:100px;
     position:absolute;
-    right:400px;
-    bottom:6px;
-
+    left:250px;
+    bottom:10px;
+    margin:0px;
   }
-  .gwctu,p{
-    color:#f00;
+ p{
+    color:#fff;
     font-size:30px;
     margin:0px;
+    position:absolute;
+    left:70px;
+    top:5px;
+   z-index:2;
   }
   .xinxin{
     width:100px;
@@ -287,11 +329,21 @@ a{color:#fff;
     bottom:-28px;
     margin:0px;
   }
+.honxin{
+  width:100px;
+  height:100px;
+  position:absolute;
+  left:0px;
+  bottom:-18px;
+  margin:0px;
+  z-index:2;
+}
   .guanzhu{width:100px;
     color:#747474;
     font-size:35px;
     height:100px;
     position:absolute;
+    background-color:#fff;
     left:100px;
-    bottom:-20px;}
+    bottom:7px;}
 </style>
