@@ -1,13 +1,15 @@
 <template>
   <div class="gdclass">
     <p>中国移动</p>
+    <!--顶部搜索框-->
     <div class="gdclassk">
       <div class="gdctub">
         <img src="../../assets/sstb.png" alt="搜索图标"/>
       </div>
         <input type="text" placeholder="搜索商品">
     </div>
-    <div class="gdcycd">
+    <!--具体分类部分-->
+    <div class="gdcycd"><!--原产地分类-->
       <div class="hontiao"></div>
      <p>原产地</p>
       <ul>
@@ -22,7 +24,7 @@
         <li>阿根廷</li>
       </ul>
     </div>
-    <div class="gdckg">
+    <div class="gdckg"><!--口感分类-->
       <div class="hontiao"></div>
       <p>口感</p>
       <ul>
@@ -34,7 +36,7 @@
         <li>辛辣</li>
       </ul>
     </div>
-    <div class="gdcycd">
+    <div class="gdcycd"><!--类型分类-->
       <div class="hontiao"></div>
       <p>类型</p>
       <ul>
@@ -47,7 +49,7 @@
         <li>冰酒</li>
       </ul>
     </div>
-    <div class="gdckg">
+    <div class="gdckg"><!--价格分类-->
       <div class="hontiao"></div>
       <p>价格</p>
       <ul>
@@ -59,7 +61,7 @@
         <li>500-799元</li>
       </ul>
     </div>
-    <div class="gdcbb">
+    <div class="gdcbb"><!--底部信息栏-->
       <ul>
         <p><img src="../../assets/gdcsyt.png" alt="首页"></p>
         <p><img src="../../assets/gdcfl.png" alt="分类"></p>
