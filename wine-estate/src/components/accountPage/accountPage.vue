@@ -108,7 +108,7 @@ main .menu span:nth-of-type(3){width:76px; height:110px; position:absolute; left
   cursor:pointer;}
 main .menu p{font-size:19px; color:#000; padding-top:12px; text-align:center; margin:0;}
 main .list{width:750px; height:158px; background-color:#fff; position:absolute; top:306px;
-  border-bottom:#bababa; border-top:1px #bababa solid;}
+  border-bottom:1px #bababa solid; border-top:1px #bababa solid;}
 main .list span:nth-of-type(1){width:186.75px; height:158px; border-right:1px #bababa solid;
   position:absolute; left:0px; display: block; cursor:pointer;}
 main .list span:nth-of-type(2){width:186.75px; height:158px; border-right:1px #bababa solid;

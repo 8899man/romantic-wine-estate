@@ -69,7 +69,7 @@ export default {
           //生日部分
           pickerVisible:null,
           value:null,
-          startDate: new Date('1980'),
+          startDate: new Date('1960'),
           endDate: new Date(),
           //性别部分
           popupVisible:false,
@@ -87,15 +87,6 @@ export default {
     getLibrary: function(){
       console.log("打开相册")
     },
-    //点击效果
-    changeColor(event){
-      var t=event.currentTarget;
-      t.style.backgroundColor="#ebebeb";
-    },
-    recoverColor(event){
-      var t=event.currentTarget;
-      t.style.backgroundColor="#fff";
-    },
     //生日部分
     openPicker() {
       this.$refs.picker.open();
@@ -106,7 +97,16 @@ export default {
     //性别部分
     sexPicker(){
       this.popupVisible=true;
-    }
+    },
+    //点击效果
+    changeColor(event){
+      var t=event.currentTarget;
+      t.style.backgroundColor="#ebebeb";
+    },
+    recoverColor(event){
+      var t=event.currentTarget;
+      t.style.backgroundColor="#fff";
+    },
   }
 }
 </script>

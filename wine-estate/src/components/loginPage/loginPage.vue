@@ -9,12 +9,12 @@
         <img src="../../assets/icon5.jpg" height="37" width="35" class="icon1"/>
         <img src="../../assets/icon6.jpg" height="37" width="35" class="icon2"/>
         <form  method="post" action="" @submit="checkForm">
-            <input type="text" name="loginText" v-model="loginText" placeholder="请输入手机号码/邮箱地址"
+            <input type="text" name="loginText" v-model.trim="loginText" placeholder="请输入手机号码/邮箱地址"
             @change="checkText"/>
-            <input type="password"  name="loginPassword" v-model="loginPassword" placeholder="请输入密码"
+            <input type="password"  name="loginPassword" v-model.trim="loginPassword" placeholder="请输入密码"
             @change="checkPassword"/>
             <!--<span class="tips" v-show="show">{{tips}}</span>-->
-            <button type="submit" name="loginSubmit" @mousedown="changeColor" @mouseup="recoverColor">立即登录</button>
+            <input type="submit" name="loginSubmit" @mousedown="changeColor($event)" @mouseup="recoverColor($event)" value="立即登录"/>
         </form>
         <a href="#">{{password}}</a>
         <a href="#">{{register}}</a>
@@ -90,10 +90,10 @@ main .icon2{position: absolute; top:487px; left:62px;}
 main input[type="text"]{width:571px; height:37px; left:120px; font-size:20px;
   border:none; border-bottom:2px #dbdbdb solid; position:absolute; top:408px;}
 main input[type="text"]:focus{border-bottom:2px #bb3337 solid; transition:0.6s all;}
-main input[type="password"]{width:571px; height:37px; left:120px; font-size:20px;
+main input[type="password"]{width:571px; height:37px; left:120px; font-size:20px; 
   border:none; border-bottom:2px #dbdbdb solid; position:absolute; top:487px;}
 main input[type="password"]:focus{border-bottom:2px #bb3337 solid; transition:0.6s all;}
-main button{width:670px; height:81px; background-color:#aa2834; border-radius:8px;
+main input[type="submit"]{width:670px; height:81px; background-color:#aa2834; border-radius:8px;
   font-size:30px; color:#fff; line-height:81px; position:absolute; top:585px; left:40px; cursor:pointer;
   margin:0; padding:0; border:1px solid transparent; outline: none;}
 main .tips{width:200px;height:100px; position:absolute; top:400px; left:275.5px;
@@ -104,5 +104,6 @@ a:link,a:visited,a:hover,a:active{
   color:inherit;
 }
 main a:nth-of-type(1){font-size:22px; color:#bfbfbf; position:absolute; top:693px; right:180px;}
+main a:nth-of-type(1):hover{color:#aa2834;}
 main a:nth-of-type(2){font-size:22px; color:#aa2834; position:absolute; top:693px; right:51px;}
 </style>
