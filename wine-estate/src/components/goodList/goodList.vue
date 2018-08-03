@@ -1,25 +1,28 @@
 <template>
   <div class="gdlist">
     <div class="ppp">中国移动</div>
+    <!--顶部搜索框及按钮-->
     <div class="gdlssk">
       <div class="gdlfh">
-        <img src="../../assets/icon.png" alt="返回上一页">
+        <img src="../../assets/icon.png" alt="返回上一页"><!--左边返回按钮-->
       </div>
       <div class="gdlzy">
-        <img src="../../assets/lianj.png" alt="返回主页">
+        <img src="../../assets/lianj.png" alt="返回主页"><!--右边回到主页按钮-->
       </div>
       <div class="gdltub">
-        <img src="../../assets/sstb.png" alt="搜索图标"/>
+        <img src="../../assets/sstb.png" alt="搜索图标"/><!--搜索框内的搜索图标-->
       </div>
-        <input type="text" placeholder="搜索商品">
+        <input type="text" placeholder="搜索商品"><!--搜索图标-->
     </div>
-    <div class="gdlxxk">
+    <!--排列方式nav-->
+    <div class="gdlxxk"><!--三种排列方式-->
       <ul>
         <a href="#"><li>默认</li></a>
         <a href="#"><li>销量</li></a>
         <a href="#"><li>价格</li></a>
       </ul>
     </div>
+    <!--商品列表部分-->
     <ul>
       <div class="gdlljz">
       <li >
