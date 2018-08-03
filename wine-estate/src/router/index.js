@@ -5,6 +5,7 @@ import watchList from '@/components/watchList/watchList'
 import shoppingCart from '@/components/shoppingCart/shoppingCart'
 import logged from '@/components/logged/logged'
 import bottom from '@/components/bottom/bottom'
+import newAddress from '@/components/newAddress/newAddress'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/logged',
       name: 'logged',
       component: logged
+    },
+    {
+      path: '/newAddress',
+      name: newAddress,
+      component: newAddress
     }
   ]
 })

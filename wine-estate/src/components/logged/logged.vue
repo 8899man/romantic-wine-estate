@@ -36,8 +36,35 @@
                 <input type="text" class="number" value="1" @keyup="number($event)">
                 <button class="add" @click="add($event)"></button>
               </li>
+              <li>
+                <div class="line"></div>
+                <div @click="change2($event)">
+                  <img src="../../assets/no.jpg" alt="#" class="no2">
+                  <img src="../../assets/yes.jpg" alt="#" class="yes2">
+                </div>
+                <img src="../../assets/wine22.jpg" alt="#">
+                <span class="name">拉菲传说波尔多红葡萄酒</span>
+                <span class="price">¥ 62.0</span>
+                <button class="sub" @click="sub($event)"></button>
+                <input type="text" class="number" value="1" @keyup="number($event)">
+                <button class="add" @click="add($event)"></button>
+              </li>
+              <li>
+                <div class="line"></div>
+                <div @click="change2($event)">
+                  <img src="../../assets/no.jpg" alt="#" class="no2">
+                  <img src="../../assets/yes.jpg" alt="#" class="yes2">
+                </div>
+                <img src="../../assets/wine22.jpg" alt="#">
+                <span class="name">拉菲传说波尔多红葡萄酒</span>
+                <span class="price">¥ 62.0</span>
+                <button class="sub" @click="sub($event)"></button>
+                <input type="text" class="number" value="1" @keyup="number($event)">
+                <button class="add" @click="add($event)"></button>
+              </li>
             </ul>
-            <div class="bottom">
+            <div style="width: 750px; height: 165px;"></div>
+            <div class="bottom1">
               <div @click="change3($event)">
                 <img src="../../assets/no.jpg" alt="#" class="all-no">
                 <img src="../../assets/yes.jpg" alt="#" class="all-yes">
@@ -45,13 +72,18 @@
               </div>
               <button class="del" @click="cancel($event)">{{del}}</button>
             </div>
-            <footer></footer>
+            <footer>
+              <bottom></bottom>
+              <img src="../../assets/shop_1.jpg" alt="#" class="shop_1">
+            </footer>
         </section>
     </div>
 </template>
 
 <script>
+  import bottom from '../bottom/bottom.vue'
 export default {
+  components: {bottom},
   data() {
     return {
       title: '购物车',
@@ -140,7 +172,6 @@ export default {
  @import url(../../style/common1.css);
   .logged{
     width: 750px;
-    height: 1334px;
     margin: 0 auto;
   }
   header{
@@ -197,6 +228,7 @@ export default {
     width: 100%;
     height: 340px;
     background-color: #ffffff;
+    margin-top: 10px;
     position: relative;
   }
   .body .goods li .no1{
@@ -291,7 +323,7 @@ export default {
     top: 240px;
     left: 300px;
   }
-  .body .bottom{
+  .body .bottom1{
     width: 750px;
     height: 70px;
     margin: 0 auto;
@@ -300,18 +332,18 @@ export default {
     position: fixed;
     bottom: 96px;
   }
-  .body .bottom .all-no{
+  .body .bottom1 .all-no{
     position: absolute;
     left: 10px;
     top: 10px;
   }
-  .body .bottom .all-yes{
+  .body .bottom1 .all-yes{
     position: absolute;
     left: 10px;
     top: 10px;
     display: none;
   }
-  .body .bottom .all{
+  .body .bottom1 .all{
     font-family: '华文中宋';
     font-size: 30px;
     color: #848484;
@@ -319,7 +351,7 @@ export default {
     left: 60px;
     top: 20px;
   }
-  .body .bottom .del{
+  .body .bottom1 .del{
     width: 161px;
     height: 57px;
     background: #e64348;
@@ -330,12 +362,12 @@ export default {
     right: 18px;
   }
   .body footer{
-    width: 750px;
-    height: 96px;
-    margin: 0 auto;
-    border-top: 1px #d6d6d6 solid;
-    background-color: #fff;
+    position: relative;
+  }
+  .body .shop_1{
     position: fixed;
-    bottom: 0;
+    bottom: 4px;
+    left: 50%;
+    margin-left: 80px;
   }
 </style>
