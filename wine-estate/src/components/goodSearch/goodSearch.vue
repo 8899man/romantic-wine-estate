@@ -2,17 +2,17 @@
   <div class="gdsearch">
     <p></p>
     <div class="searchk">
-      <div class="buttonl" >
+      <div class="buttonl" ><!--左边返回按钮-->
         <a href="#">返回</a>
       </div>
       <div class="buttonr" v-on:click="tadd">
-        <a href="#">搜索</a>
+        <a href="#">搜索</a><!--右边搜索按钮-->
       </div>
       <div class="tub">
         <img src="../../assets/sstb.png" alt="搜索图标"/>
       </div>
       <div class="searchkk">
-        <input type="text" placeholder="搜索商品" id="intext">
+        <input type="text" placeholder="搜索商品" id="intext"><!--搜索框-->
       </div>
     </div>
     <ul id="zlih">

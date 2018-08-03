@@ -1,8 +1,7 @@
 <template>
   <div class="gdetail">
-      <router-link to="goodList">
+    <!--顶部商品详情及其按钮部分-->
         <button ><img class="img1" src="../../assets/icon.png" alt="返回"/></button>
-      </router-link>
     <div class="gdetailxq">
       商品详情
     </div>
@@ -10,19 +9,19 @@
         <div class="gdetaillbt"><!--轮播图-->
           <mt-swipe :auto="2000">
             <mt-swipe-item >
-              <img class="img3" src="../../assets/wine.png" alt="无限轮播"/>
+              <img src="../../assets/wine.png" alt="无限轮播"/>
             </mt-swipe-item>
             <mt-swipe-item >
-              <img class="img3" src="../../assets/wine1.png" alt="无限轮播"/>
+              <img src="../../assets/wine1.png" alt="无限轮播"/>
             </mt-swipe-item>
             <mt-swipe-item >
-              <img class="img3" src="../../assets/wine2.png" alt="无限轮播"/>
+              <img src="../../assets/wine2.png" alt="无限轮播"/>
             </mt-swipe-item>
             <mt-swipe-item >
-              <img class="img3" src="../../assets/wine1.png" alt="无限轮播"/>
+              <img src="../../assets/wine1.png" alt="无限轮播"/>
             </mt-swipe-item>
             <mt-swipe-item >
-              <img class="img3" src="../../assets/wine2.png" alt="无限轮播"/>
+              <img src="../../assets/wine2.png" alt="无限轮播"/>
             </mt-swipe-item>
           </mt-swipe>
         </div>
@@ -40,7 +39,7 @@
          <li class="wshop">6526532</li>
        </ul>
     </div>
-    <div class="xxxx">
+    <div class="xxxx"><!--商品具体信息栏-->
       <ul>
         <li>原产地:美国</li>
         <li>口感:圆润</li>
@@ -143,8 +142,6 @@ a{color:#fff;
   position:absolute;
   right:0px;
   bottom:5px;}
-.img3{width:750px;
-  height:440px;}
   .gdetaillbt{
     width:750px;
     height:440px;
@@ -154,7 +151,6 @@ a{color:#fff;
     position:absolute;
     left:0px;
     top:128px;}
-  swipe{width:750px;height:440px}
   .wxin{background-color: #fff;
     height:286px;
     width:750px;
