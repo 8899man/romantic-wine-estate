@@ -7,15 +7,17 @@ import informationPage from '@/components/informationPage/informationPage'
 import accountPage from '@/components/accountPage/accountPage'
 import morePage from '@/components/morePage/morePage'
 import feedbackPage from '@/components/feedbackPage/feedbackPage'
-import { DatetimePicker } from 'mint-ui';
-import { Actionsheet } from 'mint-ui';
-import { Popup } from 'mint-ui';
-import { Picker } from 'mint-ui';
+import { DatetimePicker } from 'mint-ui'
+import { Actionsheet } from 'mint-ui'
+import { Popup } from 'mint-ui'
+import { Picker } from 'mint-ui'
+import { MessageBox } from 'mint-ui'
 
-Vue.component(Picker.name, Picker);
-Vue.component(Popup.name, Popup);
-Vue.component(Actionsheet.name, Actionsheet);
-Vue.component(DatetimePicker.name, DatetimePicker);
+Vue.component(MessageBox.name, MessageBox)
+Vue.component(Picker.name, Picker)
+Vue.component(Popup.name, Popup)
+Vue.component(Actionsheet.name, Actionsheet)
+Vue.component(DatetimePicker.name, DatetimePicker)
 Vue.use(Router)
 
 export default new Router({

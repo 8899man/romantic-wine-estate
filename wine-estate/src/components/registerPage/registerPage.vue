@@ -92,11 +92,12 @@ export default {
 
 <style scoped>
 #app{width:750px; height:1334px; margin: 0 auto;}
+/*页面banner部分*/
 header{width:750px; height:130px; background-color: #bb3337; position: relative;}
 header span{font-size:30px; color:#fff; position:absolute; top:57px; right:346px; cursor:default;}
 header a{width:25px; height:43px; position:absolute; top:55px; left:27px; cursor:pointer; display:block;
   line-height:0px;}
-
+/*页面主体部分*/
 main{position:relative; padding-top:144px;}
 main form>input{width:670px; height:85px; border:none; border-radius:37px; text-indent:42px;
   background-color:#eeeeee; margin-bottom: 40px; font-size:30px;}

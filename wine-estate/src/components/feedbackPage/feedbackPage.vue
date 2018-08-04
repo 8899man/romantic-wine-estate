@@ -50,6 +50,7 @@ export default {
 
 <style scoped>
 #app{width:750px; height:1334px; margin: 0 auto; background-color:#ebebeb;}
+/*页面banner部分*/
 header{width:750px; height:130px; background-color: #cd2131; position:relative;}
 header span{font-size:30px; color:#fff; position:absolute; top:64px; left:295px; cursor:default;}
 header a:nth-of-type(1){width:26px; height:43px; position:absolute; top:64px; left:20px; cursor:pointer;}
@@ -59,7 +60,7 @@ a:link,a:visited,a:hover,a:active{
   text-decoration: none;
   color:inherit;
 }    
-
+/*页面主体部分*/
 main{position:relative; padding-top:38px;}
 main p:nth-of-type(1){font-size:22px; color:#666666; position:absolute; left:20px; top:39px; margin:0px; cursor:default;}
 main textarea{width:709px; height:180px; border:none; display:block; font-size:16px; box-sizing:border-box; 

@@ -78,11 +78,12 @@ export default {
 
 <style scoped>
 #app{width:750px; height:1334px; margin: 0 auto;}
+/*页面banner部分*/
 header{width:750px; height:130px; background-color: #bb3337; position: relative;}
 header span{font-size:30px; color:#fff; position: absolute; top:61px; left:346px; cursor:default;}
 header a{width:24px; height:68px; position: absolute; top:49px; left:17px; cursor:pointer; display:block;
   line-height:0px;}
-
+/*页面主体部分*/
 main{position:relative;}
 main .logo{position: absolute; top:93px; left:275px; }
 main .icon1{position: absolute; top:408px; left:62px;}

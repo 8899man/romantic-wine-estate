@@ -82,6 +82,7 @@
 
 <style scoped>
 #app{width:750px; height:1334px; margin: 0 auto; background-color:#ebebeb;}
+/*页面banner部分*/
 header{width: 750px; height: 305px; background-image:url("../../assets/banner.jpg"); position:relative;
   border-bottom:1px #b06e70 solid;}
 header span{font-size:28px; color:#fff; position:absolute; top:50px; left:34px; cursor:default;}
@@ -92,7 +93,7 @@ header a:nth-of-type(2){width:26px; height:44px; position:absolute; top:144px; r
   display:block; line-height:0px;}
 header p{width:100%;position:absolute; top:226px; font-size:26px; color:#fff; text-align:center;
   cursor:default;}
-
+/*页面主体部分*/
 main{position: relative;}
 main .order{width:729px; height:80px; border-bottom:1px #dcdcdc solid; padding-left:21px; list-style:none;
   line-height:80px; text-align:left; cursor:default; background-color:#fff; }

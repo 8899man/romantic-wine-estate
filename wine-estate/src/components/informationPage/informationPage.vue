@@ -27,13 +27,15 @@
           <span>地址管理</span>
         </div>
         <mt-actionsheet
-          :actions= "data"
+          :actions= "photo"
           v-model="sheetVisible">
         </mt-actionsheet>
         <mt-datetime-picker
           v-model="pickerVisible"
           type="date"
           ref="picker"
+          confirmText="确定"
+          cancelText="取消"
           year-format="{value} 年"
           month-format="{value} 月"
           date-format="{value} 日"
@@ -41,10 +43,11 @@
           :startDate="startDate"
           :endDate="endDate">
         </mt-datetime-picker>
-        <mt-popup
-          v-model="popupVisible"
-          position="bottom">
-          <mt-picker :slots="slots"></mt-picker>
+        <mt-popup v-model="popupVisible" position="bottom">
+          <mt-picker :slots="slots" itemHeight="30" :show-toolbar="true">
+            <span class="sure" @click="handleSexConfirm">确定</span>
+            <span class="cansel" @click="handleSexConfirm">取消</span>
+          </mt-picker>
         </mt-popup>
       </main>
     </div>
@@ -58,7 +61,7 @@ export default {
           title:'个人信息',
           name:'',
           //头像部分
-          data: [{
+          photo: [{
             name: '拍照',
             method : this.getCamera
           }, {
@@ -98,6 +101,9 @@ export default {
     sexPicker(){
       this.popupVisible=true;
     },
+    handleSexConfirm () {
+
+    },
     //点击效果
     changeColor(event){
       var t=event.currentTarget;
@@ -113,10 +119,11 @@ export default {
 
 <style scoped>
 #app{width:750px; height:1334px; margin: 0 auto; background-color:#ebebeb;}
+/*页面banner部分*/
 header{width:750px; height:130px; background-color: #cd2131; position:relative;}
 header span{font-size:30px; color:#fff; position:absolute; top:60px; left:305px; cursor:default;}
 header a{width:26px; height:43px; position:absolute; top:58px; left:27px; cursor:pointer;}
-
+/*页面主体部分*/
 main{font-size:24px; text-align:left; position:relative;}
 main div:nth-of-type(1){width:750px; height:158px; background-color:#fff; border-bottom:1px #dbdbdb solid;
   line-height:158px;}
@@ -138,4 +145,8 @@ main div:nth-of-type(5){width:750px; height:98px; background-color:#fff; border-
 main div:nth-of-type(5) img{position:absolute; right:30px; top:392px;}
 main div:nth-of-type(6),main div:nth-of-type(7),main div:nth-of-type(8){width:750px; cursor:default;}
 main div span{padding-left:33px; font-size:24px; cursor:default;}
+main .sure{height:50px; width:100px; background-color:#fff; font-size:16px; color:#26a2ff;
+  position:relative; top:-61px; left:526px;}
+main .cansel{height:50px; width:100px; background-color:#fff; font-size:16px; color:#26a2ff;
+  position:relative; top:-61px; left:60px;}
 </style>
