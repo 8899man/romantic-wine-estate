@@ -12,11 +12,13 @@
       <div class="price">&yen<span></span></div>
       <div id="message">账号</div>
       <ul>
-        <li>
-          <img src="../../assets/beforeicon.jpg" height="42" width="42"/>
+        <li @click="change1">
+          <img src="../../assets/beforeicon.jpg" height="42" width="42" v-show="downIcon1"/>
+          <img src="../../assets/chooseicon.jpg" height="42" width="42" v-show="!downIcon1"/>
           &nbsp &nbsp 支付宝付款</li>
-        <li>
-          <img src="../../assets/beforeicon.jpg" height="42" width="42"/>
+        <li @click="change1">
+          <img src="../../assets/beforeicon.jpg" height="42" width="42" v-show="downIcon2"/>
+          <img src="../../assets/chooseicon.jpg" height="42" width="42" v-show="!downIcon2"/>
           &nbsp &nbsp 微信付款</li>
       </ul>
     </section>
@@ -28,7 +30,24 @@
 
 <script>
   export default {
-    name: "orderPay"
+    data () {
+      return {
+        downIcon1: true,
+        downIcon2: true
+      }
+    },
+    methods : {
+      change1(){
+          this.downIcon1 = !this.downIcon1
+          this.downIcon2 = !this.downIcon2
+      }
+
+
+
+
+
+    }
+
   }
 </script>
 
