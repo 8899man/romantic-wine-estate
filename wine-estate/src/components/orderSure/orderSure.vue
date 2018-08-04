@@ -1,92 +1,86 @@
 <template>
   <div class="main">
-    <div id="top"></div>
-    <div id="header" >
-      <div id="img"><img src="../../assets/icon2.png"></div>
-      <span>订单确认</span>
-    </div>
-    <div id="content">
-      <div id="message">
-        <div id="name"></div>
-        <div id="phone"></div>
-        <div id="address"></div>
-      </div>
-      <div id="good" class="clearfix">
-        <div id="wine"><img src="" alt=""></div>
-        <div id="numchange">共<span></span>件</div>
-      </div>
-      <div id="express" class="clearfix">
-        <div id="grayword">配送方式</div>
-        <div id="blackword">快递配送</div>
-      </div>
-      <div id="good-price" class="clearfix">
-        <div id="grayword">商品总额</div>
-        <div id="redword">&yen</div>
-      </div>
-      <div id="express-price" class="clearfix">
-        <div  id="grayword">运费</div>
-        <div id="redword">&yen</div>
-      </div>
-      <div id="pay-way" class="clearfix">
-        <div id="grayword">支付方式</div>
-        <div id="blackword">在线支付</div>
-      </div>
-    </div>
-    <div id="footer">
-      <div id="grayword">合计：</div>
+    <div class="top"></div>
+    <section class="head clearfix" >
+      <img src="../../assets/icon2.png" width="39" height="52">
+      <span>我的订单</span>
+    </section>
+    <section class="order-confirm">
+      <ul class="order-message">
+        <li id="name"><img src="../../assets/people.jpg" height="34" width="30"/></li>
+        <li id="phone"><img src="../../assets/phone.jpg" height="34" width="20"/></li>
+        <li id="address"></li>
+      </ul>
+      <ul class="good clearfix">
+        <li id="wine"><img src="" alt=""></li>
+        <li id="numchange">共<span></span>件</li>
+      </ul>
+      <ul class="clearfix express">
+        <li class="grayword">配送方式</li>
+        <li class="blackword">快递配送</li>
+      </ul>
+      <ul class="good-price clearfix">
+        <li class="grayword">商品总额</li>
+        <li class="redword">&yen</li>
+      </ul>
+      <ul class="express-price clearfix">
+        <li  class="grayword">运费</li>
+        <li class="redword">&yen</li>
+      </ul>
+      <ul class="pay-way clearfix">
+        <li class="grayword">支付方式</li>
+        <li class="blackword">在线支付</li>
+      </ul>
+    </section>
+    <section class="submit">
+      <div class="grayword">合计：</div>
       <input type="button" value="提交订单">
-    </div>
+    </section>
   </div>
-
 </template>
 
 <script>
   export default {
-        name: "orderSure"
-    }
+    name: "orderSure"
+  }
 </script>
 
 <style scoped>
   @import url(../../style/common.css);
   .main{margin: 0 auto;}
-  #top{
+  .top{
     height: 40px;
     width:750px;
     background:#bb3437;
     margin: 0 auto;
   }
-  #header{
+  .head{
     background: #bb3437;
     width:750px;
     margin: 0 auto;
-    padding-top: 18px;
+    padding: 18px 0px 18px 17px;
     position:relative;
-    padding-bottom: 18px;
   }
-  #img{
-    width: 39px;
-    height: 52px;
-    margin-left: 17px;
-  }
-  #header span{
+  img{
+    float: left}
+  .head span{
     font-size: 37px;
     color: #fff;position:absolute;
     top:0;left:0;right:0;bottom:0;
-    margin-top: 18px;
-  }
-  #content{
+    margin-top: 18px}
+  .order-confirm{
     background: #ebebeb;
     width: 750px;
     padding-top:81px;
     padding-bottom:81px;
     margin: 0 auto;
   }
-  #message,#good,#express,#express-price{margin-bottom: 81px;background: #fff}
-  #message{
+  .order-message,.good,.express,.express-price{margin-bottom: 81px;background: #fff}
+  .order-message{
     background: #fffae6;
     height: 138px;
   }
-  #good{
+  .good{
     height:123px;
 
   }
@@ -105,41 +99,41 @@
     float: right;
     margin-top: 50px;
   }
-  #express{
+  .express{
     height: 92px;
   }
-  #good-price{
+  .good-price{
     height: 92px;
     margin-bottom: 2px;
     background: #fff
   }
-  #express-price{
+  .express-price{
     height: 95px;
 
   }
-  #pay-way{
+  .pay-way{
     height: 92px;
     background: #fff;
   }
-  #footer{
+  .submit{
     height: 86px;
     width: 750px;
     margin: 0 auto;
   }
-  #grayword{
+  .grayword{
     font-size: 30px;
     color: #878787;
     margin-top:31px;
     margin-left: 18px;
     float: left;}
-  #blackword {
+  .blackword {
     font-size: 30px;
     color: #1e1e1e;
     float: right;
     margin-right:68px;
     margin-top: 31px;
   }
-  #redword {
+  .redword {
     color: #e24e4c;
     float: right;
     margin-top: 34px;

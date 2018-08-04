@@ -1,10 +1,10 @@
 <template>
   <div class="main">
-    <div id="top"></div>
-    <div id="header" >
-      <div id="img"><img src="../../assets/icon2.png"></div>
+    <div class="top"></div>
+    <section class="head clearfix" >
+      <img src="../../assets/icon2.png" width="39" height="52">
       <span>我的订单</span>
-    </div>
+    </section>
     <div class="nav clearfix">
       <ul>
         <li><a href="" v-on:click="change" >全部订单</a></li>
@@ -13,50 +13,47 @@
         <li><a href="" v-on:click="change">待评价</a></li>
       </ul>
     </div>
-    <div id="content">
-      <div id="order">
-        <div id="pay" ><span >卖家已发货</span></div>
+    <section class="my-orders">
+      <div class="accept-order">
+        <div class="state" ><span >卖家已发货</span></div>
         <div class="good clearfix">
           <div id="good-pic"><img src="" alt=""></div>
           <div id="good-name"></div>
-
         </div>
-        <div id="all"><span >共一件商品&nbsp合计:&yen19.90（含运费&yen0.00）</span></div>
-        <div id="forpay">
-          <input type="button" value="收货" id="take-goods">
-        </div>
+        <div class="all-price"><span>共一件商品&nbsp合计:&yen19.90（含运费&yen0.00）</span></div>
       </div>
-    </div>
+    </section>
+    <section class="forpay">
+      <input type="button" value="收货" id="take-goods">
+    </section>
   </div>
 </template>
 
 <script>
-    export default {
-        name: "forGoods"
-    }
+  export default {
+    name: "forGoods"
+  }
 </script>
 
 <style scoped>
   @import url(../../style/common.css);
   .main{margin: 0 auto;}
-  #top{
+  .top{
     height: 40px;
     width:750px;
     background:#bb3437;
     margin: 0 auto;
   }
-  #header{
+  .head{
     background: #bb3437;
     width:750px;
     margin: 0 auto;
-    padding-top: 18px;
+    padding: 18px 0px 18px 17px;
     position:relative;
-    padding-bottom: 18px;}
-  #img{
-    width: 39px;
-    height: 52px;
-    margin-left: 17px;}
-  #header span{
+  }
+  img{
+    float: left}
+  .head span{
     font-size: 37px;
     color: #fff;position:absolute;
     top:0;left:0;right:0;bottom:0;
@@ -78,22 +75,22 @@
     text-align: center;
   }
   #choose a{color: #bb3437;}
-  #content{
+  .my-orders{
     background: #f4f4f4;
     padding-top: 27px ;
     width: 750px;
     margin:  0 auto;
   }
-  #order{
+  .accept-order{
     padding-top: 42px;
     background: #fff;
   }
-  #pay{
+  .state{
     font-size: 30px;
     margin-left: 500px;
     margin-bottom: 40px;
   }
-  #pay span{color:  #bb3437;}
+  .state span{color:  #bb3437;}
   .good{
     background: #f4f4f4;
     padding: 13px 7px 47px 24px;
@@ -113,12 +110,12 @@
     float: left;
     margin-top: 25px;
   }
-  #all{
+  .all-price{
     margin-bottom: 35px;
     font-size: 30px;
     margin-left: 180px;
   }
-  #forpay{
+  .forpay{
     border-top: 1px solid #ddd;
     border-bottom: 2px solid #ddd;
     width: 750px;

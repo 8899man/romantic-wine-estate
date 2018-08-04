@@ -1,11 +1,11 @@
 <template>
   <div class="main">
-    <div id="top"></div>
-    <div id="header" >
+    <div class="top"></div>
+    <section class="head" >
       <span>订单成功</span>
-    </div>
-    <div id="content">
-      <div class="message">
+    </section>
+    <section class="order-success">
+      <div class="order-message">
         <div class="orders">订单编号
           <span></span>
         </div>
@@ -16,45 +16,45 @@
           <span>在线支付</span>
         </div>
       </div>
-    </div>
-    <div id="footer"></div>
+    </section>
+    <section id="footer"></section>
   </div>
 </template>
 
 <script>
-    export default {
-        name: "orderFinish"
-    }
+  export default {
+    name: "orderFinish"
+  }
 </script>
 
 <style scoped>
   @import url(../../style/common.css);
   .main{margin: 0 auto;}
-  #top{
+  .top{
     height: 40px;
     width:750px;
     background:#bb3437;
     margin: 0 auto;
   }
-  #header{
+  .head{
     background: #bb3437;
     width:750px;
     margin: 0 auto;
     padding-top: 18px;
     position:relative;
     padding-bottom: 70px;}
-  #header span{
+  .head span{
     font-size: 37px;
     color: #fff;position:absolute;
     top:0;left:0;right:0;bottom:0;
     margin-top: 18px}
-  #content{
+  .order-success{
     width: 750px;
     padding-bottom: 945px;
     background: #ebebeb;
     margin: 0 auto;
   }
-  .message{
+  .order-message{
     width: 750px;
     padding-top: 6px;
     background: #fff;
