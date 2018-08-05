@@ -8,14 +8,18 @@
         <img src="../../assets/logo.jpg" height="202" width="200" class="logo"/>
         <img src="../../assets/icon5.jpg" height="37" width="35" class="icon1"/>
         <img src="../../assets/icon6.jpg" height="37" width="35" class="icon2"/>
-        <form  method="post" action="" @submit="checkForm">
+        <form  method="post" action="" @submit.prevent="checkForm">
             <input type="text" name="loginText" v-model.trim="loginText" placeholder="请输入手机号码/邮箱地址"
             @change="checkText"/>
             <input type="password"  name="loginPassword" v-model.trim="loginPassword" placeholder="请输入密码"
             @change="checkPassword"/>
-            <!--<span class="tips" v-show="show">{{tips}}</span>-->
-            <input type="submit" name="loginSubmit" @mousedown="changeColor($event)" @mouseup="recoverColor($event)" value="立即登录"/>
+            <input type="submit" name="loginSubmit" @mousedown="changeColor($event)" @mouseup="recoverColor($event)"
+            value="立即登录"/>
         </form>
+        <span id="showLogin" v-show="showLogin">请输入正确的手机号或邮箱地址哦~</span>
+        <span id="showSubmit" v-show="showSubmit">请输入正确的密码哦~</span>
+        <span v-show="blankLogin" id="blankLogin">请填写完整哦~</span>
+        <span v-show="blankSubmit" id="blankSubmit">请填写完整哦~</span>
         <a href="#">{{password}}</a>
         <a href="#">{{register}}</a>
     </main>
@@ -30,21 +34,35 @@ export default {
       title: '登录',
       password: '忘记密码',
       register: '快速注册',
-      tips:''
+      showLogin:false,
+      showSubmit:false,
+      blankLogin:false,
+      blankSubmit:false
     }
   },
   methods:{
     //非空验证
     checkForm(){
-      if(this.loginText&&this.loginPasswordl){
+      if(this.loginText&&this.loginPassword){
+        this.blankLogin=false;
+        this.blankSubmit=false;
         return true;
       }
+      if(!this.loginText&&!this.loginPassword){
+        this.showLogin=false;
+        this.showSubmit=false;
+        this.blankLogin=true;
+        this.blankSubmit=true;
+        return false;
+      }
       if(!this.loginText){
-        alert("不能为空");
+        this.showLogin=false;
+        this.blankLogin=true;
         return false;
       }
       if(!this.loginPassword){
-        alert("不能为空");
+       this.showLogin=false;
+        this.blankSubmit=true;
         return false;
       }
     },
@@ -53,14 +71,22 @@ export default {
       var text1=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
       var text2=/^1[34578]\d{9}$/;
       if(!text1.test(this.loginText)&&!text2.test(this.loginText)){
-          alert("请输入正确的数手机号或邮箱地址");
+        this.blankLogin=false;
+        this.showLogin=true;
+        this.checkForm=false;
+      }
+      else{
+        this.showLogin=false;
       }
     },
     //6~16位密码验证
     checkPassword(){
       var password=/^[\da-zA-Z]{6,16}$/;
       if(!password.test(this.loginPassword)){
-        alert("请输入正确的密码");
+        this.blankSubmit=false;
+        this.showSubmit=true;
+      }else{
+        this.showLogin=true;
       }
     },
     //点击效果
@@ -85,7 +111,7 @@ header a{width:24px; height:68px; position: absolute; top:49px; left:17px; curso
   line-height:0px;}
 /*页面主体部分*/
 main{position:relative;}
-main .logo{position: absolute; top:93px; left:275px; }
+main .logo{position: absolute; top:93px; left:275px;}
 main .icon1{position: absolute; top:408px; left:62px;}
 main .icon2{position: absolute; top:487px; left:62px;}
 main input[type="text"]{width:571px; height:37px; left:120px; font-size:20px;
@@ -107,4 +133,8 @@ a:link,a:visited,a:hover,a:active{
 main a:nth-of-type(1){font-size:22px; color:#bfbfbf; position:absolute; top:693px; right:180px;}
 main a:nth-of-type(1):hover{color:#aa2834;}
 main a:nth-of-type(2){font-size:22px; color:#aa2834; position:absolute; top:693px; right:51px;}
+main #showLogin{position:absolute; top:458px; left:120px; color:#aa2834;}
+main #showSubmit{position:absolute; top:535px; left:120px; color:#aa2834;}
+main #blankLogin{position:absolute; top:458px; left:120px; color:#aa2834;}
+main #blankSubmit{position:absolute; top:535px; left:120px; color:#aa2834;}
 </style>

@@ -12,7 +12,9 @@ import { Actionsheet } from 'mint-ui'
 import { Popup } from 'mint-ui'
 import { Picker } from 'mint-ui'
 import { MessageBox } from 'mint-ui'
+import { Toast } from 'mint-ui';
 
+Vue.component(Toast.name, Toast)
 Vue.component(MessageBox.name, MessageBox)
 Vue.component(Picker.name, Picker)
 Vue.component(Popup.name, Popup)

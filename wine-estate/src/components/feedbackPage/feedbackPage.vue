@@ -3,7 +3,7 @@
     <header>
       <span>{{title}}</span>
       <a href="#"><img src="../../assets/back.png" height="43" width="25"/></a>
-      <a href="#" id="submit">提交</a>
+      <a href="#" id="submit" @click="document.getElementById('suggestion').submit()">提交</a>
     </header>
     <main>
       <P>反馈内容</P>
