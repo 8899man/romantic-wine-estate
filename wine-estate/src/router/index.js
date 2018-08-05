@@ -9,6 +9,7 @@ import orderDetails from '@/components/orderDetails/orderDetails'
 import orderSure from '@/components/orderSure/orderSure'
 import orderFinish from '@/components/orderFinish/orderFinish'
 import orderPay from '@/components/orderPay/orderPay'
+import commentlist from '@/components/commentlist/commentlist'
 
 Vue.use(Router)
 
@@ -58,6 +59,11 @@ export default new Router({
       path: '/orderPay',
       name: 'orderPay',
       component: orderPay
+    },
+    {
+      path: '/commentlist',
+      name: 'commentlist',
+      component: commentlist
     }
   ]
 })

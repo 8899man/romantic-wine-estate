@@ -12,15 +12,17 @@
       <div class="price">&yen<span></span></div>
       <div id="message">账号</div>
       <ul>
-        <li @click="change1">
-          <img src="../../assets/beforeicon.jpg" height="42" width="42" v-show="downIcon1"/>
-          <img src="../../assets/chooseicon.jpg" height="42" width="42" v-show="!downIcon1"/>
+        <li @click="changeicon1">
+          <img src="../../assets/beforeicon.jpg" height="42" width="42" v-show="downIcon"/>
+          <img src="../../assets/chooseicon.jpg" height="42" width="42" v-show="!downIcon"/>
           &nbsp &nbsp 支付宝付款</li>
-        <li @click="change1">
-          <img src="../../assets/beforeicon.jpg" height="42" width="42" v-show="downIcon2"/>
-          <img src="../../assets/chooseicon.jpg" height="42" width="42" v-show="!downIcon2"/>
+        <li @click="changeicon2">
+          <img src="../../assets/beforeicon.jpg" height="42" width="42" v-show="!downIcon"/>
+          <img src="../../assets/chooseicon.jpg" height="42" width="42" v-show="downIcon"/>
           &nbsp &nbsp 微信付款</li>
       </ul>
+
+
     </section>
     <section class="pay">
       <input type="button" value="立即付款">
@@ -30,23 +32,22 @@
 
 <script>
   export default {
-    data () {
+    data() {
       return {
-        downIcon1: true,
-        downIcon2: true
+        downIcon: true,
+
       }
     },
-    methods : {
-      change1(){
-          this.downIcon1 = !this.downIcon1
-          this.downIcon2 = !this.downIcon2
+    methods: {
+      changeicon1() {
+        this.downIcon = !this.downIcon
+      },
+      changeicon2() {
+        this.downIcon = !this.downIcon
       }
 
-
-
-
-
     }
+
 
   }
 </script>
