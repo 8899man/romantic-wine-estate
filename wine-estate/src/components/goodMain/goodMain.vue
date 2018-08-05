@@ -41,6 +41,8 @@
       </div >
       <div class="mthree" v-on:click="change()">
         <img src="../../assets/mtwo.png" alt="按钮图标"/><!--一楼按钮-->
+        <img  class="mx" v-show="exis" src="../../assets/mtwox.png" alt="按钮图标下">
+        <!--一楼按钮下-->
       </div>
       </div>
       <!--1F静态图部分-->
@@ -98,6 +100,8 @@
         </div >
         <div class="mthree" v-on:click="change1()">
           <img src="../../assets/mtwo.png" alt="按钮图标"/><!--2F按钮-->
+          <img  class="mx" v-show="exis1" src="../../assets/mtwox.png" alt="按钮图标下">
+          <!--二楼按钮下-->
         </div>
       </div>
       <!--2F静态图部分-->
@@ -155,6 +159,8 @@
         </div >
         <div class="mthree" v-on:click="change2()">
           <img src="../../assets/mtwo.png" alt="按钮图标"/><!--一楼按钮-->
+          <img  class="mx" v-show="exis2" src="../../assets/mtwox.png" alt="按钮图标下">
+          <!--三楼按钮下-->
         </div>
       </div>
       <!--3F静态图部分-->
@@ -331,24 +337,39 @@
     padding-top:25px;
    }
   .center{background-color:#E78C87;
-    width:480px;
+    width:450px;
     height:81px;
     margin-top:14px;
     border:none;
     color:#F8E8E7;
     font-size: 35px;
     float:left;}
+  input{
+    padding-left:40px;
+  }
+  .mx{
+    z-index:2;
+    position:absolute;
+    left:16px;
+    top:0px;
+    margin:0px;
+  }
   .gdetaillbt{
     width:750px;
     height:440px;
     margin:0px;
     padding:0px;
   }
+   swipe{
+     width:750px;
+     height:440px;
+   }
   .mainjt{
     width:750px;
-    height:410px;
+    height:412px;
     padding:0px;
     margin:0px;
+    border-bottom:#999 solid 2px;
   }
   .mainjta{
     float:left;
@@ -362,16 +383,19 @@
     height:410px;
     float:left;
     margin:0px;
+    border-left:#999 solid 1px;
   }
   .mainjtc{
-    width:175px;
+    width:170px;
     height:410px;
     float:right;
     padding-top:100px;
+    margin:0px;
+    border-right:#999 solid 1px;
   }
   .mainjtc p{
     height:60px;
-    width:175px;
+    width:165px;
     color:#626262;
     font-size:30px;
     line-height:60px;
@@ -401,6 +425,9 @@
   .mtwo,.mthree,.butt{
     float:left;
     margin:0px;
+  }
+  .mthree{
+    position:relative;
   }
   .mtwo{
     padding-top:5px;
