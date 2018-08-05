@@ -6,6 +6,8 @@ import shoppingCart from '@/components/shoppingCart/shoppingCart'
 import logged from '@/components/logged/logged'
 import bottom from '@/components/bottom/bottom'
 import newAddress from '@/components/newAddress/newAddress'
+import addList from '@/components/addList/addList'
+import comment from '@/components/comment/comment'
 
 Vue.use(Router)
 
@@ -40,6 +42,16 @@ export default new Router({
       path: '/newAddress',
       name: newAddress,
       component: newAddress
+    },
+    {
+      path: '/addList',
+      name: addList,
+      component: addList
+    },
+    {
+      path: '/comment',
+      name: comment,
+      component: comment
     }
   ]
 })

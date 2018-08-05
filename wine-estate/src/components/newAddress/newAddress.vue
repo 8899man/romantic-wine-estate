@@ -12,12 +12,12 @@
         </div>
         <mt-field label="详细地址" placeholder="请填写详细地址" ></mt-field>
         <mt-field label="手机号码" placeholder="请填写手机号码"></mt-field>
-        <button class="used">保存并使用</button>
+        <button class="used" @click="tip">保存并使用</button>
         <div class="shadow" ref="shadow"></div>
         <div class="check" ref="checked">
             <span>请选择地址</span>
-            <mt-picker :slots="slots" @change="onValueChange"></mt-picker>
-            <button class="yes" @click="cut">确认</button>
+            <mt-picker :slots="slots" ref="choose"></mt-picker>
+            <button class="yes" @click="affirm">确认</button>
             <button class="no" @click="cut">取消</button>
         </div>
     </div>
@@ -66,9 +66,20 @@ export default {
           this.$refs.shadow.style.display = 'none';
           this.$refs.checked.style.display = 'none';
       },
-      onValueChange(picker,values){
-          this.$refs.tex.value = picker.getSlotValue(0)+"  "+picker.getSlotValue(1)
-            +"  "+picker.getSlotValue(2);
+      affirm(){
+          var oDiv = this.$refs.choose;
+          var v1 = oDiv.getSlotValue(0);
+          var v2 = oDiv.getSlotValue(1);
+          var v3 = oDiv.getSlotValue(2);
+          this.$refs.tex.value = v1 + "  " + v2 + "  " + v3;
+          this.$refs.shadow.style.display = 'none';
+          this.$refs.checked.style.display = 'none';
+      },
+      tip(){
+          this.$toast({
+            message: '操作成功',
+            iconClass: 'icon icon-success'
+          })
       }
     }
 }
