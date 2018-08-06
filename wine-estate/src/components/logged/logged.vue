@@ -162,6 +162,10 @@ export default {
             oLi.parentNode.removeChild(oLi);
           }
         }
+      }else{
+        this.$router.push({
+          path: '/orderSure'
+        })
       }
     }
   }
@@ -361,10 +365,10 @@ export default {
     top: 5px;
     right: 18px;
   }
-  .body footer{
+  footer{
     position: relative;
   }
-  .body .shop_1{
+  .shop_1{
     position: fixed;
     bottom: 4px;
     left: 50%;

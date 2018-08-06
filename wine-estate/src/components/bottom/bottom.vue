@@ -1,15 +1,15 @@
 <template>
   <div class="bottom">
-    <div class="first">
+    <div class="first" @click="re1">
       <img src="../../assets/first_0.jpg" alt="#" class="first_0">
     </div>
-    <div class="nav">
+    <div class="nav" @click="re2">
       <img src="../../assets/nav_0.jpg" alt="#" class="nav_0">
     </div>
-    <div class="shop">
+    <div class="shop" @click="re3">
       <img src="../../assets/shop_0.jpg" alt="#" class="shop_0">
     </div>
-    <div class="my">
+    <div class="my" @click="re4">
       <img src="../../assets/my_0.jpg" alt="#" class="my_0">
     </div>
   </div>
@@ -19,6 +19,28 @@
   export default {
     data () {
       return  {}
+    },
+    methods: {
+      re1(){
+        this.$router.push({
+          path: '/goodMain'
+        })
+      },
+      re2(){
+        this.$router.push({
+          path: '/goodClass'
+        })
+      },
+      re3(){
+        this.$router.push({
+          path: '/logged'
+        })
+      },
+      re4(){
+        this.$router.push({
+          path: 'accountPage'
+        })
+      }
     }
   }
 </script>

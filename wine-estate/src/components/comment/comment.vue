@@ -8,10 +8,14 @@
         <div class="good">
             <img src="../../assets/wine44.jpg" alt="#" class="pic">
             <span>商品评分</span>
+            <ul>
+                <li v-for="h,index of arr" :class="{active:index<=n}" @click="change(index)"></li>
+            </ul>
         </div>
-        <div class="write"></div>
-        <div class="middle"></div>
-        <footer></footer>
+        <div class="write">
+            <textarea name="comment" cols="30" rows="10" placeholder="请发表你对本商品的看法吧~"></textarea>
+            <img src="../../assets/addImg.jpg" alt="#">
+        </div>
     </div>
 </template>
 
@@ -20,7 +24,14 @@ export default {
    data () {
      return {
        title: '发表评价',
-       upComment: '提交'
+       upComment: '提交',
+       arr: ["很差","一般","较好","很好","完美"],
+       n : -1
+     }
+   },
+   methods: {
+     change(index){
+       this.n = index;
      }
    }
 }
@@ -66,7 +77,7 @@ export default {
     width: 100%;
     height: 250px;
     position: relative;
-    border: 1px #ccc solid;
+    border-bottom: 3px #eee solid;
   }
   .good .pic{
     position: absolute;
@@ -82,14 +93,48 @@ export default {
     top: 70px;
     left: 220px;
   }
+  .good ul{
+    height: 35px;
+    position: absolute;
+    top: 130px;
+    left: 220px;
+  }
+  .good ul li{
+    width:35px;
+    float:left;
+    height:35px;
+    cursor:pointer;
+    border:1px #ff491b solid;
+    margin-right:10px;
+    border-radius:8px;
+    transition:all 0.4s;
+  }
+  .good ul li.active{
+    background-color:#ff491b;
+  }
+  .good ul li:hover{
+    transform:scale(1.1,1.1);
+  }
   .write{
     width: 730px;
     height: 450px;
-    border: 1px #ccc solid;
+    margin: 0 auto;
+    position: relative;
   }
-  .middle{
-    width: 100%;
-    height: 20px;
-    background-color: #eaeaea;
+  .write textarea{
+    width: 700px;
+    height: 240px;
+    font-size: 28px;
+    font-family: 新宋体;
+    color: #555;
+    border: 0px;
+    position: absolute;
+    top: 30px;
+    left: 20px;
+  }
+  .write img{
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
   }
 </style>

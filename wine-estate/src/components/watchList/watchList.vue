@@ -4,7 +4,9 @@
         <header class="head">
             <span class="title"><b>{{title}}</b></span>
             <a href="#" @click="redact" v-bind="bOn">{{write}}</a>
-            <img src="../../assets/icon13.png" alt="#">
+            <router-link to="accountPage">
+                <img src="../../assets/icon13.png" alt="#">
+            </router-link>
         </header>
         <ul class="list" ref="goods">
             <li>

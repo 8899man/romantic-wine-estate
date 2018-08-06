@@ -23,11 +23,15 @@
               <span class="price">¥ 398.0</span>
            </li>
         </ul>
+        <bottom></bottom>
+        <img src="../../assets/shop_1.jpg" alt="#" class="shop_1">
     </div>
 </template>
 
 <script>
+  import bottom from '../bottom/bottom.vue'
 export default {
+  components: {bottom},
   data () {
     return {
       title: '购物车'
@@ -36,7 +40,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
   @import url(../../style/common1.css);
   .shopping-cart{
     width: 750px;
@@ -116,5 +120,11 @@ export default {
     font-weight: bold;
     font-size: 26px;
     color: red;
+  }
+  .shop_1{
+    position: fixed;
+    bottom: 4px;
+    left: 50%;
+    margin-left: 80px;
   }
 </style>

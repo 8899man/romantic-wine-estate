@@ -2,8 +2,10 @@
     <div class="addlist">
         <header>
             <span class="title">{{title}}</span>
-            <img src="../../assets/icon13.png" alt="#">
-            <a href="#">{{newadd}}</a>
+            <div class="last" @click="lastPage">
+                <img src="../../assets/icon13.png" alt="#">
+            </div>
+            <router-link to="newAddress" class="a">{{newadd}}</router-link>
         </header>
         <ul class="list">
             <li>
@@ -13,7 +15,9 @@
                 <span class="phone">{{phone}}</span>
                 <span class="add1">{{add1}}</span>
                 <span class="add2">{{add2}}</span>
-                <img src="../../assets/creat.jpg" alt="#" class="creat">
+                <router-link to="newAddress">
+                  <img src="../../assets/creat.jpg" alt="#" class="creat">
+                </router-link>
             </li>
             <li>
               <img src="../../assets/cut.jpg" alt="#" class="cut" @click="deleteAdd($event)">
@@ -22,7 +26,9 @@
               <span class="phone">{{phone}}</span>
               <span class="add1">{{add1}}</span>
               <span class="add2">{{add2}}</span>
-              <img src="../../assets/creat.jpg" alt="#" class="creat">
+              <router-link to="newAddress">
+                <img src="../../assets/creat.jpg" alt="#" class="creat">
+              </router-link>
             </li>
         </ul>
     </div>
@@ -44,6 +50,9 @@ export default {
       deleteAdd(event){
           var oLi = event.currentTarget.parentNode;
           oLi.parentNode.removeChild(oLi);
+      },
+      lastPage(){
+          this.$router.go(-1)
       }
     }
 }
@@ -77,7 +86,7 @@ export default {
     top: 59px;
     left: 26px;
   }
-  header a{
+  header .a{
     color: #fff;
     font-family: '宋体';
     font-weight: bold;
