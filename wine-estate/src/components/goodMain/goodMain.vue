@@ -2,31 +2,47 @@
     <div class="gdmain">
       <!--顶部搜索及按钮部分-->
       <div class="mainsk">
-        <div class="left">
-          <img src="../../assets/mainfl.png" alt=""/><!--分类图标-->
-        </div>
+          <div class="left">
+            <router-link to="goodClass">
+            <img src="../../assets/mainfl.png" alt=""/><!--分类图标-->
+            </router-link>
+          </div>
+        <router-link to="goodSearch">
           <input class="center" type="text" placeholder="搜索商品"/>
+        </router-link>
         <div class="right">
+          <router-link to="goodSearch">
           <img src="../../assets/sstb.png" alt=""/><!--搜索图标-->
+          </router-link>
         </div>
       </div>
       <!--顶部轮播图部分-->
       <div class="gdetaillbt"><!--顶部轮播图-->
         <mt-swipe :auto="2000">
           <mt-swipe-item >
+            <router-link to="goodDetail">
             <img src="../../assets/wine.png" alt="无限轮播"/>
+            </router-link>
           </mt-swipe-item>
           <mt-swipe-item >
+            <router-link to="goodDetail">
             <img src="../../assets/wine1.png" alt="无限轮播"/>
+            </router-link>
           </mt-swipe-item>
           <mt-swipe-item >
+            <router-link to="goodDetail">
             <img src="../../assets/wine2.png" alt="无限轮播"/>
+            </router-link>
           </mt-swipe-item>
           <mt-swipe-item >
+            <router-link to="goodDetail">
             <img src="../../assets/wine1.png" alt="无限轮播"/>
+            </router-link>
           </mt-swipe-item>
           <mt-swipe-item >
+            <router-link to="goodDetail">
             <img src="../../assets/wine2.png" alt="无限轮播"/>
+            </router-link>
           </mt-swipe-item>
         </mt-swipe>
       </div>
@@ -49,7 +65,7 @@
       <div v-show="exis" class="mainjt">
         <div class="mainjta">
           <div class="mainjtb">
-            <img src="../../assets/mainjtt.png" alt="">
+            <img src="../../assets/mainjtt.png" alt="静态图">
           </div>
           <div class="mainjtc">
           <p>额问题官方网</p>
@@ -60,7 +76,7 @@
         </div>
         <div class="mainjta">
           <div class="mainjtb">
-            <img src="../../assets/mainjtt.png" alt="">
+            <img src="../../assets/mainjtt.png" alt="静态图">
           </div>
           <div class="mainjtc">
             <p>额问题官方网</p>
@@ -192,19 +208,29 @@
       <div v-show="exis2" class="gdetaillbt">
         <mt-swipe :auto="2000">
           <mt-swipe-item >
+            <router-link to="goodDetail">
             <img src="../../assets/wine.png" alt="无限轮播"/>
+            </router-link>
           </mt-swipe-item>
           <mt-swipe-item >
+            <router-link to="goodDetail">
             <img src="../../assets/wine1.png" alt="无限轮播"/>
+            </router-link>
           </mt-swipe-item>
           <mt-swipe-item >
+            <router-link to="goodDetail">
             <img src="../../assets/wine2.png" alt="无限轮播"/>
+            </router-link>
           </mt-swipe-item>
           <mt-swipe-item >
+            <router-link to="goodDetail">
             <img src="../../assets/wine1.png" alt="无限轮播"/>
+            </router-link>
           </mt-swipe-item>
           <mt-swipe-item >
+            <router-link to="goodDetail">
             <img src="../../assets/wine2.png" alt="无限轮播"/>
+            </router-link>
           </mt-swipe-item>
         </mt-swipe>
       </div>
@@ -212,105 +238,134 @@
       <div  class="mainjt">
         <div class="mainjta">
           <div class="mainjtb">
+            <router-link to="goodDetail">
             <img src="../../assets/mainjtt.png" alt="">
+            </router-link>
           </div>
           <div class="mainjtc">
+            <router-link to="goodDetail">
             <p>额问题官方网</p>
             <p></p>
             <p>销量: 3652</p>
             <p>&yen: 666</p>
+            </router-link>
           </div>
         </div>
         <div class="mainjta">
           <div class="mainjtb">
+            <router-link to="goodDetail">
             <img src="../../assets/mainjtt.png" alt="">
+            </router-link>
           </div>
           <div class="mainjtc">
+            <router-link to="goodDetail">
             <p>额问题官方网</p>
             <p></p>
             <p>销量: 3652</p>
             <p>&yen: 666</p>
+            </router-link>
           </div>
         </div>
       </div>
       <div  class="mainjt">
         <div class="mainjta">
           <div class="mainjtb">
-            <img src="../../assets/mainjtt.png" alt="">
+            <router-link to="goodDetail">
+              <img src="../../assets/mainjtt.png" alt="">
+            </router-link>
           </div>
           <div class="mainjtc">
-            <p>额问题官方网</p>
-            <p></p>
-            <p>销量: 3652</p>
-            <p>&yen: 666</p>
+            <router-link to="goodDetail">
+              <p>额问题官方网</p>
+              <p></p>
+              <p>销量: 3652</p>
+              <p>&yen: 666</p>
+            </router-link>
           </div>
         </div>
         <div class="mainjta">
           <div class="mainjtb">
-            <img src="../../assets/mainjtt.png" alt="">
+            <router-link to="goodDetail">
+              <img src="../../assets/mainjtt.png" alt="">
+            </router-link>
           </div>
           <div class="mainjtc">
-            <p>额问题官方网</p>
-            <p></p>
-            <p>销量: 3652</p>
-            <p>&yen: 666</p>
+            <router-link to="goodDetail">
+              <p>额问题官方网</p>
+              <p></p>
+              <p>销量: 3652</p>
+              <p>&yen: 666</p>
+            </router-link>
           </div>
         </div>
       </div>
       <div  class="mainjt">
         <div class="mainjta">
           <div class="mainjtb">
-            <img src="../../assets/mainjtt.png" alt="">
+            <router-link to="goodDetail">
+              <img src="../../assets/mainjtt.png" alt="">
+            </router-link>
           </div>
           <div class="mainjtc">
-            <p>额问题官方网</p>
-            <p></p>
-            <p>销量: 3652</p>
-            <p>&yen: 666</p>
+            <router-link to="goodDetail">
+              <p>额问题官方网</p>
+              <p></p>
+              <p>销量: 3652</p>
+              <p>&yen: 666</p>
+            </router-link>
           </div>
         </div>
         <div class="mainjta">
           <div class="mainjtb">
-            <img src="../../assets/mainjtt.png" alt="">
+            <router-link to="goodDetail">
+              <img src="../../assets/mainjtt.png" alt="">
+            </router-link>
           </div>
           <div class="mainjtc">
-            <p>额问题官方网</p>
-            <p></p>
-            <p>销量: 3652</p>
-            <p>&yen: 666</p>
+            <router-link to="goodDetail">
+              <p>额问题官方网</p>
+              <p></p>
+              <p>销量: 3652</p>
+              <p>&yen: 666</p>
+            </router-link>
           </div>
         </div>
       </div>
+      <bottom></bottom>
+        <img src="../../assets/first.jpg" class="first" alt="首页图片不见了">
     </div>
 </template>
 
 <script>
-    export default {
-      data (){
-        return {
-          exis:false,
-          exis1:false,
-          exis2:false
-        }
-      },
-      methods: {
-        change(){
-          this.exis = !this.exis;
-        },
-        change1(){
-          this.exis1 = !this.exis1;
-        },
-        change2(){
-          this.exis2 = !this.exis2;
-        }
-      }
+import bottom from '../bottom/bottom.vue'
+export default {
+  components: {bottom},
+  data () {
+    return {
+      exis:false,
+      exis1:false,
+      exis2:false
     }
+  },
+  methods: {
+    change () {
+      this.exis = !this.exis;
+    },
+    change1 () {
+      this.exis1 = !this.exis1;
+    },
+    change2 () {
+      this.exis2 = !this.exis2;
+    }
+  }
+}
 </script>
 
 <style scoped>
   .gdmain{width:750px;
     margin:0 auto;
     }
+  a{text-decoration:none;}
   .mainsk{
     width:690px;
     height:120px;
@@ -350,8 +405,8 @@
   .mx{
     z-index:2;
     position:absolute;
-    left:16px;
     top:0px;
+    right:0px;
     margin:0px;
   }
   .gdetaillbt{
@@ -360,10 +415,6 @@
     margin:0px;
     padding:0px;
   }
-   swipe{
-     width:750px;
-     height:440px;
-   }
   .mainjt{
     width:750px;
     height:412px;
@@ -383,7 +434,6 @@
     height:410px;
     float:left;
     margin:0px;
-    border-left:#999 solid 1px;
   }
   .mainjtc{
     width:170px;
@@ -391,7 +441,6 @@
     float:right;
     padding-top:100px;
     margin:0px;
-    border-right:#999 solid 1px;
   }
   .mainjtc p{
     height:60px;
@@ -431,5 +480,10 @@
   }
   .mtwo{
     padding-top:5px;
+  }
+  .first{
+    position:fixed;
+    left:420px;
+    bottom:14px;
   }
 </style>
