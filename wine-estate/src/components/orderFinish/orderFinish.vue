@@ -17,14 +17,19 @@
         </div>
       </div>
     </section>
-    <section id="footer"></section>
+    <footer>
+      <bottom></bottom>
+      <img src="../../assets/shop_1.jpg" height="86" width="71" id="shop_1"/></footer>
   </div>
 </template>
 
 <script>
+  import bottom from '../bottom/bottom.vue'
   export default {
+    components:{bottom},
     name: "orderFinish"
   }
+
 </script>
 
 <style scoped>
@@ -69,8 +74,15 @@
   }
 
 
-  #footer{
+  footer{
     width: 98px;
     border-top: 1px solid #c8c8c8;
+    position: relative;
   }
+#shop_1{
+  position: fixed;
+  bottom: 4px;
+  left: 50%;
+  margin-left: 80px;
+}
 </style>

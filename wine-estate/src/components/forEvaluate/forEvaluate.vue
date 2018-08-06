@@ -7,10 +7,10 @@
     </section>
     <div class="nav clearfix">
       <ul>
-        <li><a href="" v-on:click="change" >全部订单</a></li>
-        <li><a href="" v-on:click="change">待付款</a></li>
-        <li id="choose"><a href="" v-on:click="change">待收货</a></li>
-        <li><a href="" v-on:click="change">待评价</a></li>
+        <li><router-link to="allOrders"><a href="">全部订单</a></router-link></li>
+        <li><router-link to="obliGation"><a href="">待付款</a></router-link></li>
+        <li><router-link to="forGoods"><a href="">待收货</a></router-link></li>
+        <li id="choose"><a href="">待评价</a></li>
       </ul>
     </div>
     <section class="my-orders">
@@ -22,7 +22,8 @@
         </div>
         <div class="all-price"><span >共一件商品&nbsp合计:&yen19.90（含运费&yen0.00）</span></div>
         <div class="forpay">
-          <input type="button" value="评价" id="evalutation">
+          <router-link to ="comment"><input type="button" value="评价" id="evalutation"></router-link>
+
         </div>
       </div>
     </section>

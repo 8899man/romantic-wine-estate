@@ -33,8 +33,8 @@
       </ul>
     </section>
     <section class="submit">
-      <div class="grayword">合计：</div>
-      <input type="button" value="提交订单">
+      <li class="grayword">合计：</li>
+     <router-link to="orderFinish"><input type="button" value="提交订单"></router-link>
     </section>
   </div>
 </template>

@@ -5,20 +5,23 @@
       <img src="../../assets/icon2.png" width="39" height="52">
       <span>订单详情</span>
     </section>
-    <div class="content">
+    <section class="order-details">
       <img src="../../assets/wineback.jpg" alt="">
       <div class="message">
-        <div id="people" class="clearfix">
-          <div id="name">收货人: <span></span></div>
-          <div id="phone"> <span>12345655222</span></div>
+        <div  class="people clearfix">
+          <div class="name">收货人: <span></span></div>
+          <div class="phone"> <span>12345655222</span></div>
         </div>
-        <div id="adress">收货地址: <span></span></div>
+        <div class="adress">收货地址: <span></span></div>
       </div>
-      <div id="good"></div>
-      <div id="train-price"><span>运费</span></div>
-      <div id="all-price"><span>实付款</span></div>
-    </div>
-    <div id="footer"></div>
+      <div class="good"></div>
+      <div class="train-price"><span>运费</span></div>
+      <div class="all-price"><span>实付款</span></div>
+    </section>
+    <section class="forpay">
+      <input type="button" value="取消订单" id="no-order">
+      <router-link to="orderPay"><input type="button" value="付款" id="pay-m"></router-link>
+    </section>
   </div>
 </template>
 
@@ -41,17 +44,17 @@
     background: #bb3437;
     width:750px;
     margin: 0 auto;
-    padding-top: 18px;
+    padding: 18px 0px 18px 17px;
     position:relative;
-    padding-bottom: 18px;}
-  img{
+    }
+  .head img{
     float: left}
-  .header span{
+  .head span{
     font-size: 37px;
     color: #fff;position:absolute;
     top:0;left:0;right:0;bottom:0;
     margin-top: 18px;}
-  .content{
+  .order-details{
     width: 750px;
     margin: 0 auto;
     background: #f4f4f4;
@@ -67,38 +70,70 @@
     color: #535353;
     font-size:27px;
   }
-  #name{
+  .name{
     margin:0 0 19px 32px;
     float: left;
     color: #535353;
   }
 
-  #adress{
+  .adress{
     margin-left: 32px;
     color: #535353;
   }
-  #phone{
+  .phone{
     margin-right:24px;
     float: right;
   }
-  #good{
+  .good{
     padding-top: 92px;
     margin-top: 20px ;
     background: #fff;
   }
-  #train-price,#all-price{
+  .train-price,.all-price{
     height: 115px;
     background: #fff;
     padding-left: 26px;
     text-align: left;
   }
-  #train-price{padding-top: 40px;}
-  #all-price{
+  .train-price{padding-top: 40px;}
+  .all-price{
     padding-top: 55px;
 
   }
-  #footer{
+  input{
+    height: 75px;
+    background: #fff;
+    font-size: 30px;
+    display: inline-block;
 
+  }
+  .forpay{
+    border-top: 1px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    width: 750px;
+    height: 121px;
+    padding-top: 20px;
+    padding-left: 300px;
+    margin:  0 auto;
+  }
+  input{
+    height: 75px;
+    background: #fff;
+    font-size: 30px;
+    display: inline-block;
+
+  }
+  #no-order{
+    width: 170px;
+    border-radius: 40%;
+    border: 2px solid #bababa;
+    margin-right:35px ;
+  }
+  #pay-m{
+    width: 150px;
+    border-radius: 40%;
+    border: 2px solid #bb3437;
+    color:#bb3437;
   }
 
 </style>

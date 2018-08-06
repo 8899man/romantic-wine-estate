@@ -7,10 +7,10 @@
     </section>
     <div class="nav clearfix">
       <ul>
-        <li><a href="" v-on:click="change" >全部订单</a></li>
-        <li id="choose"><a href="" v-on:click="change">待付款</a></li>
-        <li><a href="" v-on:click="change">待收货</a></li>
-        <li><a href="" v-on:click="change">待评价</a></li>
+        <li><router-link to="allOrders"><a href="">全部订单</a></router-link></li>
+        <li id="choose"><a href="">待付款</a></li>
+        <li><router-link to="forGoods"><a href="">待收货</a></router-link></li>
+        <li><router-link to="forEvaluate"><a href="">待评价</a></router-link></li>
       </ul>
     </div>
     <section class="my-orders">
@@ -25,7 +25,8 @@
   </section>
   <section class="forpay">
     <input type="button" value="取消订单" id="no-order">
-    <input type="button" value="付款" id="pay-m">
+    <router-link to="orderPay"><input type="button" value="付款" id="pay-m"></router-link>
+
   </section>
   </div>
 </template>
@@ -123,6 +124,7 @@
     height: 121px;
     padding-top: 20px;
     padding-left: 300px;
+    margin:  0 auto;
   }
   input{
     height: 75px;

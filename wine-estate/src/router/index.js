@@ -10,6 +10,7 @@ import orderSure from '@/components/orderSure/orderSure'
 import orderFinish from '@/components/orderFinish/orderFinish'
 import orderPay from '@/components/orderPay/orderPay'
 import commentlist from '@/components/commentlist/commentlist'
+import bottom from '@/components/bottom/bottom'
 
 Vue.use(Router)
 
@@ -64,6 +65,11 @@ export default new Router({
       path: '/commentlist',
       name: 'commentlist',
       component: commentlist
+    },
+    {
+      path: '/bottom',
+      name: 'bottom',
+      component: bottom
     }
   ]
 })

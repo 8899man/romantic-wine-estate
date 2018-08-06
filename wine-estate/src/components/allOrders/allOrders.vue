@@ -1,48 +1,47 @@
 <template>
-    <div class="main">
-      <div class="top"></div>
-      <section class="head clearfix" >
-        <img src="../../assets/icon2.png" width="39" height="52">
-        <span>我的订单</span>
-      </section>
-      <div class="nav clearfix">
+  <div class="main">
+    <div class="top"></div>
+    <section class="head clearfix" >
+      <div @click="toBack()"><img  src="../../assets/icon2.png" width="39" height="52"></div>
+      <span>我的订单</span>
+    </section>
+    <div class="nav clearfix">
       <ul>
-        <li id="choose"><a href="" v-on:click="change" >全部订单</a></li>
-        <li><a href="" v-on:click="change">待付款</a></li>
-        <li><a href="" v-on:click="change">待收货</a></li>
-        <li><a href="" v-on:click="change">待评价</a></li>
+        <li id="choose"><a href="">全部订单</a></li>
+        <li><router-link to="obliGation"><a href="">待付款</a></router-link></li>
+        <li><router-link to="forGoods"><a href="">待收货</a></router-link></li>
+        <li><router-link to="forEvaluate"><a href="">待评价</a></router-link></li>
       </ul>
-      </div>
-      <section class="my-orders">
-       <div class="completed-order">
+    </div>
+    <section class="my-orders">
+      <div class="completed-order">
         <div class="state"><span >买家已付款</span></div>
-         <div class="good clearfix" >
+        <div class="good clearfix" >
           <div id="good-pic" ><img src="" alt=""></div>
           <div id="good-name" ></div>
         </div>
-         <div class="all-price"><span >共一件商品&nbsp合计:&yen19.90（含运费&yen0.00）</span></div>
-       </div>
-      </section>
-    </div>
+      </div>
+    </section>
+    <section class="all-price"><span >共一件商品&nbsp合计:&yen19.90（含运费&yen0.00）</span></section>
+  </div>
 </template>
 
 <script>
-export default{
-  data () {
-    return {
+  export default{
+    data(){
+      return {
 
-    }
+      }
     },
-      methods : {
-      change(){
-       this.a.color="#bb3437"
-
+    methods : {
+      toBack(){
+        this.$router.go(-1)
       }
 
 
     }
 
-}
+  }
 </script>
 
 <style scoped>
@@ -60,7 +59,7 @@ export default{
     margin: 0 auto;
     padding: 18px 0px 18px 17px;
     position:relative;
-    }
+  }
   img{
     float: left}
   .head span{
@@ -89,7 +88,7 @@ export default{
     background: #f4f4f4;
     padding-top: 27px ;
     width: 750px;
-    margin:  0 auto;
+    margin: 0 auto;
   }
   .completed-order{
     padding-top: 42px;
@@ -125,6 +124,4 @@ export default{
     font-size: 30px;
     margin-left: 180px;
   }
-
-
 </style>

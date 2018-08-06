@@ -3,7 +3,25 @@
     <div class="top"></div>
     <section class="head clearfix" >
       <img src="../../assets/icon2.png" width="39" height="52">
-      <span>我的订单</span>
+      <img src="" alt="">
+    </section>
+    <section class="comment-show">
+      <div class="commentary">
+        <div class="buyer">
+          <img src="" alt="">
+          <span class="head-portrait"></span>
+        </div>
+        <div class="buy-message">
+            <span></span>
+        </div>
+        <span></span>
+        <img src="" alt="" width="58px" height="58px">
+        <div class="view">
+          <input type="button" value="评论">
+          <input type="button">
+        </div>
+
+      </div>
     </section>
   </div>
 </template>
@@ -32,4 +50,11 @@
   }
   img{
     float: left}
+  .comment-show{
+    padding-top: 20px;
+    background: #f4f4f4;
+    width: 750px;
+    margin: 0 auto;
+  }
+
 </style>
