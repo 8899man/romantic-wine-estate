@@ -2,10 +2,10 @@
     <div id="app">
       <header>
           <span>{{title}}</span>
-          <a href="#"><img src="../../assets/back.png" height="43" width="25"/></a>
+          <router-link to="loginPage"><img src="../../assets/back.png" height="43" width="25"/></router-link>
       </header>
       <main>
-          <form method="post" action="" @submit.prevent="checkForm">
+          <form method="get" action="" @submit.prevent="checkForm">
               <input type="text" placeholder="请输入用户昵称" name="registerName" v-model.trim="registerName"/>
               <input type="password" placeholder="请输入6~16位密码" name="registerPassword"
                 v-model.trim="registerPassword" @change="checkPassword"/>
@@ -25,7 +25,7 @@
           <span id="tip">请填写完所有信息</span>
           <label><input type="checkbox" checked></label>
           <p>我已满十八周岁并接受也买服务条款</p>
-          <a href="#"><<        已有账户，立即登录</a>
+          <router-link to="loginPage"><<        已有账户，立即登录</router-link>
       </main>
     </div>
 </template>
@@ -90,17 +90,19 @@ export default {
           this.blankPassword=false;
         }
         else{
+          this.blankPassword=false;
           this.showPassword=false;
         }
       },
       //手机号验证
       checkMoblie(){
         var Moblie=/^1[34578]\d{9}$/;
-        if(!Mobile.test(this.registerMoblie)){
+        if(!Moblie.test(this.registerMoblie)){
           this.showMoblie=true;
           this.blankMoblie=false;
         }
         else{
+          this.blankMoblie=false;
           this.showMoblie=false;
         }
       },
@@ -112,6 +114,7 @@ export default {
           this.blankEmail=false;
         }
         else{
+          this.blankEmail=false;
           this.showEmail=false;
         }
       },

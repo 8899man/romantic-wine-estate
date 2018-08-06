@@ -2,8 +2,8 @@
   <div id="app">
     <header>
       <span>{{title}}</span>
-      <a href="#"><img src="../../assets/back.png" height="43" width="25"/></a>
-      <a href="#" id="submit" @click="document.getElementById('suggestion').submit()">提交</a>
+      <router-link to="morePage"><img src="../../assets/back.png" height="43" width="25"/></router-link>
+      <a href="#" id="submit" @click="refer">提交</a>
     </header>
     <main>
       <P>反馈内容</P>
@@ -11,7 +11,7 @@
       v-model.trim="suggestion" @keyup="submit">
       </textarea>
       <p>联系方式</p>
-      <form id="suggestion" method="post" action="">
+      <form id="suggestion" method="get" action="">
         <input type="text" placeholder="请填写您的QQ或邮箱地址，以方便我们与您联系" name="connection"
         v-model.trim="connection" @keyup="submit"/>
       </form>
@@ -25,7 +25,7 @@ export default {
     name: "feedbackPage",
     data(){
       return{
-        title:'更多页面',
+        title:'意见反馈',
         warning:false
       }
     },
@@ -35,13 +35,32 @@ export default {
           var text1=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
           var text2=/^[1-9][0-9]{4,10}$/;
           if(this.connection&&this.suggestion){
-            oa.style.color="#fff";
+            if(!text1.test(this.connection)&&!text2.test(this.connection)){
+              oa.style.color="#d63f4b"
+              this.warning=true;
+              return false;
+            }
+            else{
+              oa.style.color="#fff";
+              this.warning=false;
+            }
           }
           if(!this.connection){
             oa.style.color="#d63f4b";
+            return false;
           }
           if(!this.suggestion){
             oa.style.color="#d63f4b";
+            return false;
+          }
+        },
+        refer(){
+          var oRefer=document.getElementById("suggestion");
+          if(this.connection&&this.suggestion){
+            oRefer.submit();
+            this.$router.push({
+              path: '/morePage'
+            })
           }
         }
     }

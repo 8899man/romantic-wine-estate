@@ -7,6 +7,7 @@ import informationPage from '@/components/informationPage/informationPage'
 import accountPage from '@/components/accountPage/accountPage'
 import morePage from '@/components/morePage/morePage'
 import feedbackPage from '@/components/feedbackPage/feedbackPage'
+import bottom from '@/components/bottom'
 import { DatetimePicker } from 'mint-ui'
 import { Actionsheet } from 'mint-ui'
 import { Popup } from 'mint-ui'
@@ -55,9 +56,14 @@ export default new Router({
       component: morePage
     },
     {
-      path: '/feedbackPage',
+      path: '/feedbackPage', 
       name: 'feedbackPage',
       component: feedbackPage
+    },
+    {
+      path: '/',
+      name: 'bottom',
+      component: bottom
     }
   ]
 })

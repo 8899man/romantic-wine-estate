@@ -2,7 +2,7 @@
     <div id="app">
       <header>
         <span>{{title}}</span>
-        <a href="#"><img src="../../assets/back.png" height="43" width="26"/></a>
+        <router-link to="accountPage"><img src="../../assets/back.png" height="43" width="26"/></router-link>
       </header>
       <main>
         <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="actionSheet">

@@ -3,8 +3,8 @@
       <header>
         <span>{{title}}</span>
         <img src="../../assets/head.png" height="130" width="130" class="head"/>
-        <a href="#"><img src="../../assets/settings.png" height="66" width="66"/></a>
-        <a href="#"><img src="../../assets/return4.png" height="44" width="26"/></a>
+        <router-link to="morePage"><img src="../../assets/settings.png" height="66" width="66"/></router-link>
+        <router-link to="informationPage"><img src="../../assets/return4.png" height="44" width="26"/></router-link>
         <p>{{myName}}</p>
       </header>
       <main>
@@ -50,12 +50,15 @@
               </span>
           </div>
       </main>
+      <bottom></bottom>
     </div>
 </template>
 
 <script>
+    import bottom from '../bottom.vue'
     export default {
         name: "accountPage",
+        components:{bottom},
         data(){
           return{
             title:'我的账户',
