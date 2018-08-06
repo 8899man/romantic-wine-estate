@@ -4,13 +4,17 @@
     <!--顶部搜索框及按钮-->
     <div class="gdlssk">
       <div class="gdlfh">
-        <img src="../../assets/icon.png" alt="返回上一页"><!--左边返回按钮-->
+        <img src="../../assets/icon.png" v-on:click="retur()" alt="返回上一页"><!--左边返回按钮-->
       </div>
       <div class="gdlzy">
+        <router-link to="goodMain">
         <img src="../../assets/lianj.png" alt="返回主页"><!--右边回到主页按钮-->
+        </router-link>
       </div>
       <div class="gdltub">
+        <router-link to="goodSearch">
         <img src="../../assets/sstb.png" alt="搜索图标"/><!--搜索框内的搜索图标-->
+        </router-link>
       </div>
         <input type="text" placeholder="搜索商品"><!--搜索图标-->
     </div>
@@ -26,15 +30,18 @@
     <ul>
       <div class="gdlljz">
       <li >
-        <img src="../../assets/gdlwine.png" alt="左侧酒的图">
-        <div class="gdlyb">
-          <p>传说传说传说传说传说传说传说传说传说传说传说传说传说传说</p>
-          <p>销量646532</p>
-          <img src="../../assets/gdlmoney.png" alt="标志">
-          <p>60</p>
+        <router-link to="goodDetail">
+          <img src="../../assets/gdlwine.png" alt="左侧酒的图">
+          <div class="gdlyb">
+            <p>传说传说传说传说传说传说传说传说传说传说传说传说传说传说</p>
+            <p>销量646532</p>
+            <img src="../../assets/gdlmoney.png" alt="标志">
+            <p>60</p>
         </div>
+        </router-link>
       </li>
       <li >
+        <router-link to="goodDetail">
           <img src="../../assets/gdlwine.png" alt="左侧酒的图">
           <div class="gdlyb">
             <p>传说传说传说传说传说传说传说传说传说传说传说传说传说传说</p>
@@ -42,8 +49,10 @@
             <img src="../../assets/gdlmoney.png" alt="标志">
             <p>60</p>
           </div>
+        </router-link>
       </li>
       <li >
+        <router-link to="goodDetail">
           <img src="../../assets/gdlwine.png" alt="左侧酒的图">
           <div class="gdlyb">
             <p>传说传说传说传说传说传说传说传说传说传说传说传说传说传说</p>
@@ -51,8 +60,10 @@
             <img src="../../assets/gdlmoney.png" alt="标志">
             <p>60</p>
           </div>
+        </router-link>
       </li>
       <li >
+        <router-link to="goodDetail">
           <img src="../../assets/gdlwine.png" alt="左侧酒的图">
           <div class="gdlyb">
             <p>传说传说传说传说传说传说传说传说传说传说传说传说传说传说</p>
@@ -60,6 +71,7 @@
             <img src="../../assets/gdlmoney.png" alt="标志">
             <p>60</p>
           </div>
+        </router-link>
       </li>
   </div>
     </ul>
@@ -68,11 +80,20 @@
 
 <script>
     export default {
-      name: 'goodList'
+      data(){
+        return{
+        }
+      },
+      methods:{
+        retur(){
+          this.$router.go(-1);
+        }
+      }
     }
 </script>
 
 <style scoped>
+  a{text-decoration:none;}
   .gdlist{width:750px;
     margin:0 auto;
     padding:0px;
@@ -117,6 +138,7 @@
     width:416px;
     height:56px;
     margin:0px;
+    padding-left:30px;
     position:absolute;
     left:189px;
     top:6px;
@@ -124,15 +146,15 @@
     color:#F8E8E7;
     font-size: 24px;}
   ul,li{list-style:none;
-  padding:0px;
-  margin:0px;}
+    padding:0px;
+    margin:0px;}
   .gdlxxk li{width:250px;
-  height:88px;
-  line-height:88px;
-  float:left;
+    height:88px;
+    line-height:88px;
+    float:left;
     background-color:#fff;
-    color:#666666;
-    text-decoration:underline;}
+    color:#666;
+    }
   .gdlxxk{
     width:750px;
     height:88px;
@@ -140,8 +162,8 @@
     overflow:hidden;
   }
   a li:hover{
-    background-color:#999;
-    color:yellow;
+    background-color:#333;
+    color:#9F9F9F;
     font-size:40px;
   }
   .gdlljz li{
@@ -189,10 +211,6 @@
     text-align:left;
     font-size:28px;
     border-bottom:#EBEBEB solid 1px;
-  }
-  p:hover{
-    font-size:40px;
-    color:#333;
   }
   .gdlyb{
     height:220px;
