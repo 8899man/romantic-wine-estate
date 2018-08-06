@@ -2,11 +2,11 @@
   <div class="gdsearch">
     <p></p>
     <div class="searchk">
-      <div class="buttonl" ><!--左边返回按钮-->
-        <a href="#">返回</a>
+      <div class="buttonl" v-on:click="retur()"><!--左边返回按钮-->
+        返回
       </div>
       <div class="buttonr" v-on:click="tadd">
-        <a href="#">搜索</a><!--右边搜索按钮-->
+        <router-link to="goodList">搜索</router-link><!--右边搜索按钮-->
       </div>
       <div class="tub">
         <img src="../../assets/sstb.png" alt="搜索图标"/>
@@ -22,21 +22,24 @@
 
 <script>
 export default {
-    data (){
-      return {}
+  data () {
+    return {}
+  },
+  methods: {
+    retur () {
+      this.$router.go(-1)
     },
-   methods:{
-     tadd(){
-       var oInput=document.getElementById("intext");
-       var oUl=document.getElementById("zlih");
-       var oLi = document.createElement('li');
-       oLi.innerHTML = oInput.value;
-       if(oUl.children[14]){
-          oUl.removeChild(oUl.children[14]);
-       }
-       oUl.children[0]?oUl.insertBefore(oLi,oUl.children[0]):oUl.appendChild(oLi);
-     }
-   }
+    tadd () {
+      const oInput = document.getElementById('intext')
+      const oUl = document.getElementById('zlih')
+      const oLi = document.createElement('li')
+      oLi.innerHTML = oInput.value
+      if (oUl.children[14]) {
+        oUl.removeChild(oUl.children[14])
+      }
+      oUl.children[0] ? oUl.insertBefore(oLi, oUl.children[0]) : oUl.appendChild(oLi)
+    }
+  }
 }
 </script>
 
@@ -58,13 +61,13 @@ a{color:#fff;
   background-color:#d02131;
   position:relative;}
 .buttonl{height:30px;
-  width:72px;
+  width:112px;
   line-height:30px;
   font-size: 30px;
   color:#fff;
   margin:0 auto;
   position: absolute;
-  left:40px;
+  left:0px;
   top:29px;}
 .buttonr{height:30px;
   width:72px;
