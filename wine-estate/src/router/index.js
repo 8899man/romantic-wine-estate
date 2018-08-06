@@ -6,6 +6,7 @@ import goodSearch from '@/components/goodSearch/goodSearch'
 import goodClass from '@/components/goodClass/goodClass'
 import goodMain from '@/components/goodMain/goodMain'
 import goodDetail from '@/components/goodDetail/goodDetail'
+import bottom from '@/components/bottom/bottom'
 import Mint from 'mint-ui'
 
 import 'mint-ui/lib/style.css'
@@ -43,6 +44,11 @@ export default new Router({
       path: '/goodDetail',
       name: 'goodDetail',
       component: goodDetail
+    },
+    {
+      path: '/bottom',
+      name: 'bottom',
+      component: bottom
     }
   ]
 })
