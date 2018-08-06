@@ -1,11 +1,17 @@
 <template>
   <div class="gdetail">
     <!--顶部商品详情及其按钮部分-->
-        <button ><img class="img1" src="../../assets/icon.png" alt="返回"/></button>
+        <div v-on:click="retur()">
+          <img class="img1"  src="../../assets/icon.png" alt="返回上一页"/>
+        </div>
     <div class="gdetailxq">
       商品详情
     </div>
-      <button><img class="img2" src="../../assets/lianj.png" alt="链接"/></button>
+      <div>
+        <router-link to="goodMain">
+        <img class="img2" src="../../assets/lianj.png" alt="返回主页"/>
+        </router-link>
+      </div>
         <div class="gdetaillbt"><!--轮播图-->
           <mt-swipe :auto="2000">
             <mt-swipe-item >
@@ -50,7 +56,9 @@
       <div class="spcir">
         商品评论
         <button class="und"><!--跳转到评论的按钮-->
+          <router-link to="commentlist">
           <img src="../../assets/und.png" alt="图标">
+          </router-link>
         </button>
       </div>
       <div class="hpd"><!--好评度-->
@@ -91,16 +99,19 @@
 export default {
   data () {
     return {
-      exist:false
+      exist: false
     }
   },
   methods: {
-    add(){
-      var value1 = document.getElementById("number");
-      value1.innerHTML = Number(value1.innerHTML)+1;
+    add () {
+      const value1 = document.getElementById('number')
+      value1.innerHTML = Number(value1.innerHTML) + 1
     },
-    change(){
-     this.exist = !this.exist;
+    change () {
+      this.exist = !this.exist
+    },
+    retur () {
+      this.$router.go(-1)
     }
   }
 }
