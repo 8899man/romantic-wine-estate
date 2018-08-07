@@ -2,8 +2,8 @@
     <div class="comment">
         <header>
             <span class="title"><b>{{title}}</b></span>
-            <img src="../../assets/icon13.png" alt="#">
-            <a href="#">{{upComment}}</a>
+            <img src="../../assets/icon13.png" alt="#" @click="rel">
+            <a href="#" @click="writeComment">{{upComment}}</a>
         </header>
         <div class="good">
             <img src="../../assets/wine44.jpg" alt="#" class="pic">
@@ -11,10 +11,13 @@
             <ul>
                 <li v-for="h,index of arr" :class="{active:index<=n}" @click="change(index)"></li>
             </ul>
+            <span class="word">{{arr[n]}}</span>
         </div>
         <div class="write">
             <textarea name="comment" cols="30" rows="10" placeholder="请发表你对本商品的看法吧~"></textarea>
-            <img src="../../assets/addImg.jpg" alt="#">
+            <img src="../../assets/addImg.jpg" alt="#" class="addImg" @click="loadImg">
+            <input type="file" class="upload">
+            <img id="imgContent">
         </div>
     </div>
 </template>
@@ -32,6 +35,26 @@ export default {
    methods: {
      change(index){
        this.n = index;
+     },
+     rel(){
+       this.$router.go(-1)
+     },
+     writeComment(){
+       this.$toast({
+         message: '操作成功',
+         iconClass: 'icon icon-success'
+       })
+     },
+     loadImg(){
+       alert('123');
+       var file = document.querySelector(".upload").files[0];
+       var reader = new FileReader();
+       var imgFile = 0;
+       reader.load = function(e) {
+         imgFile = e.target.result;
+         document.querySelector("#imgContent").attr('src', imgFile);
+       };
+       reader.readAsDataURL(file);
      }
    }
 }
@@ -115,6 +138,12 @@ export default {
   .good ul li:hover{
     transform:scale(1.1,1.1);
   }
+  .good .word{
+    position: absolute;
+    color: #ff491b;
+    top: 180px;
+    left: 220px;
+  }
   .write{
     width: 730px;
     height: 450px;
@@ -132,9 +161,14 @@ export default {
     top: 30px;
     left: 20px;
   }
-  .write img{
+  .write .addImg{
     position: absolute;
     left: 20px;
     bottom: 10px;
+  }
+  .tian{
+    position: absolute;
+    bottom: 20px;
+    left: 200px;
   }
 </style>

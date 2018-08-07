@@ -5,7 +5,7 @@
             <div class="last" @click="lastPage">
                 <img src="../../assets/icon13.png" alt="#">
             </div>
-            <router-link to="newAddress" class="a">{{newadd}}</router-link>
+            <a href="#" @click="creatAdd">{{newadd}}</a>
         </header>
         <ul class="list">
             <li>
@@ -53,6 +53,11 @@ export default {
       },
       lastPage(){
           this.$router.go(-1)
+      },
+      creatAdd(){
+        this.$router.push({
+          path: '/newAddress'
+        })
       }
     }
 }
@@ -86,7 +91,7 @@ export default {
     top: 59px;
     left: 26px;
   }
-  header .a{
+  header a{
     color: #fff;
     font-family: '宋体';
     font-weight: bold;

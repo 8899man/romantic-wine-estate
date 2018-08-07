@@ -4,9 +4,7 @@
         <header class="head">
             <span class="title"><b>{{title}}</b></span>
             <a href="#" @click="redact" v-bind="bOn">{{write}}</a>
-            <router-link to="accountPage">
-                <img src="../../assets/icon13.png" alt="#">
-            </router-link>
+            <img src="../../assets/icon13.png" alt="#" @click="rel">
         </header>
         <ul class="list" ref="goods">
             <li>
@@ -64,6 +62,11 @@ export default {
     deleteGood(event) {
         var oLi = event.currentTarget.parentNode;
         this.$refs.goods.removeChild(oLi);
+    },
+    rel(){
+        this.$router.push({
+          path: '/accountPage'
+        })
     }
   }
 }

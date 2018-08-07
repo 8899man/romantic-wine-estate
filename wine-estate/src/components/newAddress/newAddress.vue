@@ -2,9 +2,7 @@
     <div class="add">
         <header>
             <span class="title">{{title}}</span>
-            <router-link to="addList">
-              <img src="../../assets/icon13.png" alt="#">
-            </router-link>
+            <img src="../../assets/icon13.png" alt="#" @click="rel">
         </header>
         <div class="top"></div>
         <mt-field label="收件人" placeholder="请输入收件人姓名"></mt-field>
@@ -82,6 +80,9 @@ export default {
             message: '操作成功',
             iconClass: 'icon icon-success'
           })
+      },
+      rel(){
+          this.$router.go(-1)
       }
     }
 }
