@@ -2,7 +2,7 @@
     <div id="app">
       <header>
           <span>{{title}}</span>
-          <router-link to="loginPage"><img src="../../assets/back.png" height="43" width="25"/></router-link>
+          <a href="#"><img src="./img/back.png" height="43" width="25" alt="图片不见了哦~"/></a>
       </header>
       <main>
           <form method="get" action="" @submit.prevent="checkForm">
@@ -22,10 +22,9 @@
           <span v-show="blankMoblie" id="blankMoblie">请填写完整哦~</span>
           <span v-show="blankEmail" id="blankEmail">请填写完整哦~</span>
           <span v-show="blankName" id="blankName">请填写完整哦~</span>
-          <span id="tip">请填写完所有信息</span>
           <label><input type="checkbox" checked></label>
           <p>我已满十八周岁并接受也买服务条款</p>
-          <router-link to="loginPage"><<        已有账户，立即登录</router-link>
+          <a href="#" @click="routerloginPage"><<        已有账户，立即登录</a>
       </main>
     </div>
 </template>
@@ -46,12 +45,24 @@ export default {
       }
     },
     methods:{
-      //非空验证
       checkForm(){
-        var oTip=document.getElementById("tip")
+        var password=/^[\da-zA-Z]{6,16}$/;
+        var Moblie=/^1[34578]\d{9}$/;
+        var Email=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        //提交条件
         if(this.registerName&&this.registerPassword&&this.registerMoblie&&this.registerEmail){
-          return true;
+          this.blankPassword=false;
+          this.blankMoblie=false;
+          this.blankEmail=false;
+          this.blankName=false;
+          if(password.test(this.registerPassword)&&Moblie.test(this.registerMoblie)&&Email.test(this.registerEmail)){
+            return true;
+          }
+          else{
+            return false;
+          }
         }
+        //非空验证
         if(!this.registerName&&!this.registerPassword&&!this.registerMoblie&&!this.registerEmail){
           this.showPassword=false;
           this.showMoblie=false;
@@ -126,6 +137,15 @@ export default {
       recoverColor(event){
         var t=event.currentTarget;
         t.style.backgroundColor="#aa2834";
+      },
+      //跳转
+      routerloginPage(){
+        this.$router.push({
+          path: '/loginPage'
+        })
+      },
+      routeraccountPage(){
+
       }
     }
 }
@@ -162,7 +182,4 @@ a:link,a:visited,a:hover,a:active{
 }
 main a{font-size:23px; color:#616161; position:absolute; top:899px; left:83px;}
 main a:hover{color:#aa2834;}
-main #tip{width:300px;height:150px; position:absolute; top:300px; left:222.5px;
-  background-color:rgba(187,51,55,0.8); font-size:30px; color:#fff; line-height:150px;
-  border-radius:22px; display:none;}
 </style>

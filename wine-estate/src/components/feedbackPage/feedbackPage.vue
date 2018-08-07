@@ -2,7 +2,7 @@
   <div id="app">
     <header>
       <span>{{title}}</span>
-      <router-link to="morePage"><img src="../../assets/back.png" height="43" width="25"/></router-link>
+      <a @click="routermorePage"><img src="./img/back.png" height="43" width="25" alt="图片不见了哦~"/></a>
       <a href="#" id="submit" @click="refer">提交</a>
     </header>
     <main>
@@ -30,6 +30,7 @@ export default {
       }
     },
     methods:{
+        //验证
         submit(){
           var oa=document.getElementById("submit");
           var text1=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
@@ -43,6 +44,7 @@ export default {
             else{
               oa.style.color="#fff";
               this.warning=false;
+              return true;
             }
           }
           if(!this.connection){
@@ -54,6 +56,7 @@ export default {
             return false;
           }
         },
+        //提交跳转
         refer(){
           var oRefer=document.getElementById("suggestion");
           if(this.connection&&this.suggestion){
@@ -62,6 +65,11 @@ export default {
               path: '/morePage'
             })
           }
+        },
+        routermorePage(){
+          this.$router.push({
+              path: '/morePage'
+          })
         }
     }
 }

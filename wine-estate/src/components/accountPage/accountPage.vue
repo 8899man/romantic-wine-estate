@@ -2,49 +2,49 @@
     <div id="app">
       <header>
         <span>{{title}}</span>
-        <img src="../../assets/head.png" height="130" width="130" class="head"/>
-        <router-link to="morePage"><img src="../../assets/settings.png" height="66" width="66"/></router-link>
-        <router-link to="informationPage"><img src="../../assets/return4.png" height="44" width="26"/></router-link>
+        <img src="./img/head.png" height="130" width="130" class="head" alt="图片不见了哦~"/>
+        <a href="#" @click="routermorePage"><img src="./img/settings.png" height="66" width="66" alt="图片不见了哦~"/></a>
+        <a href="#" @click="routerinformationPage"><img src="./img/return4.png" height="44" width="26" alt="图片不见了哦~"/></a>
         <p>{{myName}}</p>
       </header>
       <main>
           <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" id="myOrder" class="order">
             <span>我的订单</span>
             <span>查看全部标签</span>
-            <img src="../../assets/return3.png" height="26" width="16"/>
+            <img src="./img/return3.png" height="26" width="16" alt="图片不见了哦~"/>
           </div>
           <div class="menu">
             <span>
-              <img src="../../assets/button1-4.jpg" height="73" width="73" alt="#"/>
+              <img src="./img/button1-4.png" height="73" width="73" alt="图片不见了哦~"/>
               <p>待付款</p>
             </span>
             <span>
-              <img src="../../assets/button2-4.jpg" height="73" width="73" alt="#"/>
+              <img src="./img/button2-4.png" height="73" width="73" alt="图片不见了哦~"/>
               <p>待收货</p>
             </span>
             <span>
-              <img src="../../assets/button3-4.jpg" height="73" width="73" alt="#"/>
+              <img src="./img/button3-4.png" height="73" width="73" alt="图片不见了哦~"/>
               <p>待评价</p>
             </span>
           </div>
           <div class="list">
               <span @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
-                <img src="../../assets/icon1-4.png" height="72" width="72" alt="#"/>
+                <img src="./img/icon1-4.png" height="72" width="72" alt="图片不见了哦~"/>
                 <p>存酒库</p>
                 <p>{{warehouse}}瓶</p>
               </span>
               <span @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
-                <img src="../../assets/icon2-4.png" height="72" width="72" alt="#"/>
+                <img src="./img/icon2-4.png" height="72" width="72" alt="图片不见了哦~"/>
                 <p>我的酒评</p>
                 <p>{{evaluate}}条</p>
               </span>
               <span @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
-                <img src="../../assets/icon3-4.png" height="72" width="72" alt="#"/>
+                <img src="./img/icon3-4.png" height="72" width="72" alt="图片不见了哦~"/>
                 <p>我的关注</p>
                 <p>{{attention}}个</p>
               </span>
               <span @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
-                <img src="../../assets/icon4-4.png" height="72" width="72" alt="#"/>
+                <img src="./img/icon4-4.png" height="72" width="72" alt="图片不见了哦~"/>
                 <p>我的优惠券</p>
                 <p>{{discount}}张</p>
               </span>
@@ -78,6 +78,17 @@
         recoverColor(event){
           var t=event.currentTarget;
           t.style.backgroundColor="#fff";
+        },
+        //跳转
+        routermorePage(){
+           this.$router.push({
+              path: '/morePage'
+            })
+        },
+        routerinformationPage(){
+           this.$router.push({
+              path: '/informationPage'
+            })
         }
       } 
     }
@@ -86,7 +97,7 @@
 <style scoped>
 #app{width:750px; height:1334px; margin: 0 auto; background-color:#ebebeb;}
 /*页面banner部分*/
-header{width: 750px; height: 305px; background-image:url("../../assets/banner.jpg"); position:relative;
+header{width: 750px; height: 305px; background-image:url("./img/banner.jpg"); position:relative;
   border-bottom:1px #b06e70 solid;}
 header span{font-size:28px; color:#fff; position:absolute; top:50px; left:34px; cursor:default;}
 header .head{position:absolute; top:100px; left:310px; cursor:default;}

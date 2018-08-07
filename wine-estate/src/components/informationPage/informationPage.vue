@@ -2,28 +2,28 @@
     <div id="app">
       <header>
         <span>{{title}}</span>
-        <router-link to="accountPage"><img src="../../assets/back.png" height="43" width="26"/></router-link>
+        <a href="#" @click="routeraccountPage"><img src="./img/back.png" height="43" width="26" alt="图片不见了哦~"/></a>
       </header>
       <main>
         <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="actionSheet">
-          <img src="../../assets/head.png" height="130" width="130"/>
+          <img src="./img/head.png" height="130" width="130" alt="图片不见了哦~"/>
           <span>头像</span>
-          <img src="../../assets/return3.png" height="26" width="16" class="goto"/>
+          <img src="./img/return3.png" height="26" width="16" class="goto" alt="图片不见了哦~"/>
         </div>
         <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
           <span>昵称</span>
-          <img src="../../assets/return3.png" height="26" width="16"/>
+          <img src="./img/return3.png" height="26" width="16" alt="图片不见了哦~"/>
           <p>{{name}}</p>
         </div>
         <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="sexPicker">
           <span>性别</span>
-          <img src="../../assets/return3.png" height="26" width="16"/>
+          <img src="./img/return3.png" height="26" width="16" alt="图片不见了哦~"/>
         </div>
         <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="openPicker">
           <span>生日</span>
-          <img src="../../assets/return3.png" height="26" width="16"/>
+          <img src="./img/return3.png" height="26" width="16" alt="图片不见了哦~"/>
         </div>
-        <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
+        <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="routernewAddress">
           <span>地址管理</span>
         </div>
         <mt-actionsheet
@@ -44,9 +44,9 @@
           :endDate="endDate">
         </mt-datetime-picker>
         <mt-popup v-model="popupVisible" position="bottom">
-          <mt-picker :slots="slots" itemHeight="30" :show-toolbar="true">
+          <mt-picker :slots="slots" itemHeight="30" :show-toolbar="true" @change="onValuesChange(picker,values)">
             <span class="sure" @click="handleSexConfirm">确定</span>
-            <span class="cansel" @click="handleSexConfirm">取消</span>
+            <span class="cansel" @click="canselSexConfirm">取消</span>
           </mt-picker>
         </mt-popup>
       </main>
@@ -87,8 +87,18 @@ export default {
     getCamera: function(){
       console.log("打开照相机")
     },
-    getLibrary: function(){
-      console.log("打开相册")
+    getLibrary: function(divid){
+      plus.gallery.pick(function(p){
+          plus.io.resolveLocalFileSystemURL(p, function(entry) {
+            compressImage(entry.toLocalURL(),entry.name,divid);
+            },function(e){
+              plus.nativeUI.toast("读取拍照文件错误：" + e.message);
+            });
+      },function(e){
+      },{
+        filename: "_doc/camera/",
+        filter:"image"
+        });
     },
     //生日部分
     openPicker() {
@@ -102,7 +112,13 @@ export default {
       this.popupVisible=true;
     },
     handleSexConfirm () {
-
+    },
+    canselSexConfirm(){
+      this.popupVisible=false;
+    },
+    onValuesChange(picker,values){
+       this.value = values[0];  
+       console.log(this.value) 
     },
     //点击效果
     changeColor(event){
@@ -113,6 +129,17 @@ export default {
       var t=event.currentTarget;
       t.style.backgroundColor="#fff";
     },
+    //跳转
+    routeraccountPage(){
+      this.$router.push({
+        path: '/accountPage'
+      })
+    },
+    routernewAddress(){
+       this.$router.push({
+        path: '/newAddress'
+      })
+    }
   }
 }
 </script>

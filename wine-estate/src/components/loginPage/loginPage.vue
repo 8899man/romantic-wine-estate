@@ -2,12 +2,12 @@
   <div id="app">
     <header>
         <span>{{title}}</span>
-        <a href="#"><img src="../../assets/back.png" height="68" width="24"/></a>
+        <a href="#" @click="routergoodMain"><img src="./img/back.png" height="52" width="30" alt="图片不见了哦~"/></a>
     </header>
     <main>
-        <img src="../../assets/logo.jpg" height="202" width="200" class="logo"/>
-        <img src="../../assets/icon5-4.jpg" height="37" width="35" class="icon1"/>
-        <img src="../../assets/icon6-4.jpg" height="37" width="35" class="icon2"/>
+        <img src="./img/logo.png" height="202" width="200" class="logo" alt="图片不见了哦~"/>
+        <img src="./img/icon5-4.png" height="37" width="35" class="icon1" alt="图片不见了哦~"/>
+        <img src="./img/icon6-4.png" height="37" width="35" class="icon2" alt="图片不见了哦~"/>
         <form  method="get" action=""  @submit.prevent="checkForm">
             <input type="text" name="loginText" v-model.trim="loginText" placeholder="请输入手机号码/邮箱地址"
             @change="checkText"/>
@@ -21,7 +21,7 @@
         <span v-show="blankLogin" id="blankLogin">请填写完整哦~</span>
         <span v-show="blankPassword" id="blankPassword">请填写完整哦~</span>
         <a href="#">忘记密码</a>
-        <router-link to="registerPage">快速注册</router-link>
+        <a href="#" @click="routerregisterPage">快速注册</a>
     </main>
   </div>
 </template>
@@ -39,31 +39,40 @@ export default {
     }
   },
   methods:{
-    //非空验证
-  checkForm(){
-      if(this.loginText&&this.loginPassword){
-        this.blankLogin=false;
-        this.blankPassword=false;
-        return true;
-      }
-      if(!this.loginText&&!this.loginPassword){
-            this.showLogin=false;
-            this.showPassword=false;
-            this.blankLogin=true;
-            this.blankPassword=true;
+    checkForm(){
+        var text1=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        var text2=/^1[34578]\d{9}$/;
+        var password=/^[\da-zA-Z]{6,16}$/;
+        //提交条件
+        if(this.loginText&&this.loginPassword){
+          this.blankLogin=false;
+          this.blankPassword=false;
+          if(text1.test(this.loginText)||text2.test(this.loginText)&&password.test(this.loginPassword)){
+            return true;
+          }
+          else{
             return false;
           }
-      if(!this.loginText){
-              this.showLogin=false;
-              this.blankLogin=true;
-              return false;
-            }
-      if(!this.loginPassword){
-              this.showPassword=false;
-              this.blankPassword=true;
-              return false;
-            }
-  },
+        }
+        //非空验证
+        if(!this.loginText&&!this.loginPassword){
+          this.showLogin=false;
+          this.showPassword=false;
+          this.blankLogin=true;
+          this.blankPassword=true;
+          return false;
+        }
+        if(!this.loginText){
+          this.showLogin=false;
+          this.blankLogin=true;
+          return false;
+        }
+        if(!this.loginPassword){ 
+          this.showPassword=false;
+          this.blankPassword=true;
+          return false;
+        }
+    },
     //手机和邮箱验证
     checkText(){
       var text1=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
@@ -96,7 +105,18 @@ export default {
     recoverColor(event){
       var t=event.currentTarget;
       t.style.backgroundColor="#aa2834";
-      }
+      },
+    //跳转
+    routerregisterPage(){
+        this.$router.push({
+          path: '/registerPage'
+        })
+    },
+    routergoodMain(){
+        this.$router.push({
+          path: '/registerPage'
+        })
+    }
   }
 }
 </script>

@@ -2,22 +2,20 @@
     <div id="app">
      <header>
         <span>{{title}}</span>
-        <router-link to="accountPage"><img src="../../assets/back.png" height="43" width="25"/></router-link>
+        <a href="#" @click="routeraccountPage"><img src="./img/back.png" height="43" width="25" alt="图片不见了哦~"/></a>
      </header>
      <main>
-        <router-link to="feedbackPage">
-            <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" class="feedback">
-                <img src="../../assets/icon7-4.png" height="44" width="44">
-                <p>意见反馈</p>
-            </div>
-        </router-link>
-        <div class="related">
-            <img src="../../assets/icon8-4.png" height="44" width="44"/>
+        <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="routerfeedbackPage">
+            <img src="./img/icon7-4.png" height="44" width="44" alt="图片不见了哦~"/>
+            <p>意见反馈</p>
+        </div>
+        <div>
+            <img src="./img/icon8-4.png" height="44" width="44" alt="图片不见了哦~"/>
             <p>关于我们</p>
             <p class=" edition">{{editionnumber}}</p>
         </div>
-        <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="logOff" class="logoff">
-            <img src="../../assets/icon9-4.png" height="44" width="44"/>
+        <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="logOff">
+            <img src="./img/icon9-4.png" height="44" width="44" alt="图片不见了哦~"/>
             <p>退出登录</p>
         </div>
      </main>
@@ -61,6 +59,17 @@ export default {
                 type:'info',
                 });
             });
+        },
+        //跳转
+        routeraccountPage(){
+            this.$router.push({
+                path: '/accountPage'
+            })
+        },
+        routerfeedbackPage(){
+            this.$router.push({
+                path: '/feedbackPage'
+            })
         }
     }
 }
@@ -74,16 +83,16 @@ header span{font-size:30px; color:#fff; position:absolute; top:60px; left:340px;
 header a{width:26px; height:43px; position:absolute; top:58px; left:27px; cursor:pointer; display:block;}
 /*页面主体部分*/
 main{position:relative;}
-main .feedback{width:750px; height:83px; background-color:#fff;
+main div:nth-of-type(1){width:750px; height:83px; background-color:#fff;
  border-bottom:1px #dcdcdc solid; border-top:1px #dcdcdc solid; margin-bottom:71px; text-align:left;}
-main .feedback img{position:absolute; left:48px; top:20px;}
-main .related{width:750px; height:83px; background-color:#fff;
+main div:nth-of-type(1) img{position:absolute; left:48px; top:20px;}
+main div:nth-of-type(2){width:750px; height:83px; background-color:#fff;
  border-bottom:1px #dcdcdc solid; border-top:1px #dcdcdc solid; margin-bottom:71px; text-align:left;}
-main .related img{position:absolute; left:48px; top:176px;}
-main .related .edition{font-size:18px; position:absolute; left:657px; color:#8e8e8e; margin:0px;}
-main .logoff{width:750px; height:83px; background-color:#fff;
+main div:nth-of-type(2) img{position:absolute; left:48px; top:176px;}
+main div:nth-of-type(2) .edition{font-size:18px; position:absolute; left:657px; color:#8e8e8e; margin:0px;}
+main div:nth-of-type(3){width:750px; height:83px; background-color:#fff;
  border-bottom:1px #dcdcdc solid; border-top:1px #dcdcdc solid; margin-bottom:71px; text-align:left; cursor:pointer;}
-main .logoff img{position:absolute; left:48px; top:332px;}
+main div:nth-of-type(3) img{position:absolute; left:48px; top:332px;}
 main div p{font-size:24px; line-height:83px; position:absolute; left:165px; margin:0; cursor:default;}
 main .mint-msgbox{width:750px;}
 a:link,a:visited,a:hover,a:active{
