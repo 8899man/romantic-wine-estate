@@ -1,77 +1,61 @@
 <template>
   <div class="gdlist">
-    <div class="ppp">中国移动</div>
+    <div class="ppp"></div>
     <!--顶部搜索框及按钮-->
     <div class="gdlssk">
       <div class="gdlfh">
         <img src="../../assets/icon.png" v-on:click="retur()" alt="返回上一页"><!--左边返回按钮-->
       </div>
       <div class="gdlzy">
-        <router-link to="goodMain">
-        <img src="../../assets/lianj.png" alt="返回主页"><!--右边回到主页按钮-->
-        </router-link>
+        <img src="../../assets/lianj.png" v-on:click="push()" alt="返回主页"><!--右边回到主页按钮-->
       </div>
       <div class="gdltub">
-        <router-link to="goodSearch">
         <img src="../../assets/sstb.png" alt="搜索图标"/><!--搜索框内的搜索图标-->
-        </router-link>
       </div>
-        <input type="text" placeholder="搜索商品"><!--搜索图标-->
+        <input type="text" v-on:click="push1()" placeholder="搜索商品"><!--搜索图标-->
     </div>
     <!--排列方式nav-->
     <div class="gdlxxk"><!--三种排列方式-->
       <ul>
-        <a href="#"><li>默认</li></a>
-        <a href="#"><li>销量</li></a>
-        <a href="#"><li>价格</li></a>
+        <li>默认</li>
+        <li>销量</li>
+        <li>价格</li>
       </ul>
     </div>
     <!--商品列表部分-->
     <ul>
       <div class="gdlljz">
       <li >
-        <router-link to="goodDetail">
           <img src="../../assets/gdlwine.png" alt="左侧酒的图">
           <div class="gdlyb">
             <p>传说传说传说传说传说传说传说传说传说传说传说传说传说传说</p>
-            <p>销量646532</p>
-            <img src="../../assets/gdlmoney.png" alt="标志">
-            <p>60</p>
+            <p>销量 646532</p>
+            <p>&yen 60</p>
         </div>
-        </router-link>
       </li>
       <li >
-        <router-link to="goodDetail">
           <img src="../../assets/gdlwine.png" alt="左侧酒的图">
           <div class="gdlyb">
             <p>传说传说传说传说传说传说传说传说传说传说传说传说传说传说</p>
-            <p>销量646532</p>
-            <img src="../../assets/gdlmoney.png" alt="标志">
-            <p>60</p>
+            <p>销量 646532</p>
+            <p>&yen 60</p>
           </div>
-        </router-link>
       </li>
       <li >
-        <router-link to="goodDetail">
           <img src="../../assets/gdlwine.png" alt="左侧酒的图">
           <div class="gdlyb">
             <p>传说传说传说传说传说传说传说传说传说传说传说传说传说传说</p>
-            <p>销量646532</p>
-            <img src="../../assets/gdlmoney.png" alt="标志">
-            <p>60</p>
+            <p>销量 646532</p>
+            <p>&yen 60</p>
           </div>
-        </router-link>
       </li>
       <li >
-        <router-link to="goodDetail">
           <img src="../../assets/gdlwine.png" alt="左侧酒的图">
           <div class="gdlyb">
             <p>传说传说传说传说传说传说传说传说传说传说传说传说传说传说</p>
-            <p>销量646532</p>
-            <img src="../../assets/gdlmoney.png" alt="标志">
-            <p>60</p>
+            <p>销量 646532</p>
+            <p>&yen 60</p>
           </div>
-        </router-link>
       </li>
   </div>
     </ul>
@@ -79,17 +63,27 @@
 </template>
 
 <script>
-    export default {
-      data(){
-        return{
-        }
-      },
-      methods:{
-        retur(){
-          this.$router.go(-1);
-        }
-      }
+export default {
+  data () {
+    return {
     }
+  },
+  methods: {
+    retur () {
+      this.$router.go(-1);
+    },
+    push () {
+      this.$router.push({
+        path: '/goodMain'
+      })
+    },
+    push1 () {
+      this.$router.push({
+        path: '/goodSearch'
+      })
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -161,8 +155,8 @@
     font-size:28px;
     overflow:hidden;
   }
-  a li:hover{
-    background-color:#333;
+  li:hover{
+    background-color:#666;
     color:#9F9F9F;
     font-size:40px;
   }
@@ -201,13 +195,13 @@
     text-align:left;
     font-size:24px;
   }
-  p:nth-child(4){
+  p:nth-child(3){
     background-color:#fff;
     width:750px;
     height:80px;
     margin:0px;
     padding:0px;
-    color:#333;
+    color:#f00;
     text-align:left;
     font-size:28px;
     border-bottom:#EBEBEB solid 1px;
@@ -217,11 +211,5 @@
     width:750px;
     margin:0px;
     padding:0px;
-  }
-  .gdlyb img{
-    width:20px;
-    height:20px;
-    padding-top:7px;
-    margin-right:8px;
   }
 </style>

@@ -2,47 +2,39 @@
   <div class="gdetail">
     <!--顶部商品详情及其按钮部分-->
         <div v-on:click="retur()">
-          <img class="img1"  src="../../assets/icon.png" alt="返回上一页"/>
+          <img class="img1"  src="../../assets/icon.png" alt="返回按钮不见了"/>
         </div>
     <div class="gdetailxq">
       商品详情
     </div>
       <div>
-        <router-link to="goodMain">
-        <img class="img2" src="../../assets/lianj.png" alt="返回主页"/>
-        </router-link>
+        <img class="img2" src="../../assets/lianj.png" v-on:click="push()" alt="主页按钮不见了"/>
       </div>
         <div class="gdetaillbt"><!--轮播图-->
           <mt-swipe :auto="2000">
             <mt-swipe-item >
-              <img src="../../assets/wine.png" alt="无限轮播"/>
+              <img src="../../assets/wine.png" alt="图片不见了"/>
             </mt-swipe-item>
             <mt-swipe-item >
-              <img src="../../assets/wine1.png" alt="无限轮播"/>
+              <img src="../../assets/wine1.png" alt="图片不见了"/>
             </mt-swipe-item>
             <mt-swipe-item >
-              <img src="../../assets/wine2.png" alt="无限轮播"/>
+              <img src="../../assets/wine2.png" alt="图片不见了"/>
             </mt-swipe-item>
             <mt-swipe-item >
-              <img src="../../assets/wine1.png" alt="无限轮播"/>
+              <img src="../../assets/wine1.png" alt="图片不见了"/>
             </mt-swipe-item>
             <mt-swipe-item >
-              <img src="../../assets/wine2.png" alt="无限轮播"/>
+              <img src="../../assets/wine2.png" alt="图片不见了"/>
             </mt-swipe-item>
           </mt-swipe>
         </div>
     <div class="wxin"><!--具体信息栏-->
-      <div class="wmoney"><!--价格前面的标志-->
-        <img src="../../assets/money.png" alt="标志">
-      </div>
-      <div class="whot"><!--热销-->
-        <img src="../../assets/hot.png" alt="标志">
-      </div>
        <ul><!--商品名称及价格等-->
          <li class="wname">传说传说传传说传说传说传说传说vvv传说传说传说传说传说传说</li>
          <li class="wyname">RafeiRafeiRafei</li>
-         <li class="wpiece">62</li>
-         <li class="wshop">6526532</li>
+         <li class="wpiece">&yen 62</li>
+         <li class="wshop">热销 6526532</li>
        </ul>
     </div>
     <div class="xxxx"><!--商品具体信息栏-->
@@ -55,11 +47,9 @@
     <div class="wcir"><!--评论栏-->
       <div class="spcir">
         商品评论
-        <button class="und"><!--跳转到评论的按钮-->
-          <router-link to="commentlist">
-          <img src="../../assets/und.png" alt="图标">
-          </router-link>
-        </button>
+        <div class="und"><!--跳转到评论的按钮-->
+          <img src="../../assets/und.png" v-on:vlick="push1()" alt="跳转的图标">
+        </div>
       </div>
       <div class="hpd"><!--好评度-->
         好评度
@@ -75,18 +65,18 @@
       </div>
     </div>
     <div class="db"><!--底部信息栏-->
-      <button class="gouwu" v-on:click="add"><!--加入购物车按钮-->
+      <div class="gouwu" v-on:click="add"><!--加入购物车按钮-->
        加入购物车
-      </button>
+      </div>
       <div class="xinxin"><!--原本空心图片-->
-        <img src="../../assets/xinxin.png"/>
+        <img src="../../assets/xinxin.png" alt="心形图不见了"/>
       </div>
       <div class="honxin"><!--点击关注时候变红的心形-->
         <img v-show="exist" id="changec" src="../../assets/honxin.png" alt="红心">
       </div>
-      <button class="guanzhu" v-on:click="change()"><!--点击关注的按钮-->
+      <div class="guanzhu" v-on:click="change()"><!--点击关注的按钮-->
         关注
-      </button>
+      </div>
       <div class="gwctu">
         <p id="number">0</p>
         <img src="../../assets/gwctu.png"><!--购物车图标-->
@@ -112,7 +102,17 @@ export default {
     },
     retur () {
       this.$router.go(-1)
-    }
+    },
+    push () {
+      this.$router.push({
+        path: '/goodMain'
+      })
+    },
+    push1 () {
+      this.$router.push({
+        path: '/commentlist'
+      })
+    },
   }
 }
 </script>
@@ -125,11 +125,6 @@ export default {
   padding:0px;
   position:relative;
   }
-button{
-  border:none;
-  margin:0px;
-  padding:0px;
-}
 .img1{width:30px;
   height:52px;
   position:absolute;
@@ -191,7 +186,7 @@ a{color:#fff;
     width:708px;
     height:82px;
     position:absolute;
-    left:66px;
+    left:44px;
     top:200px;
     color:#F9121A;
     font-size:50px;
@@ -201,24 +196,12 @@ a{color:#fff;
   .wshop{width:660px;
     height:102px;
     position:absolute;
-    left:110px;
+    left:43px;
     top:263px;
     font-size:25px;
     color:#B5B5B5;
     margin:0px ;
     padding:0px ;
-  }
-  .wmoney{
-    position:absolute;
-    left:40px;
-    top:218px;
-  }
-  .whot{
-    position:absolute;
-    left:34px;
-    top:263px;
-    width:80px;
-    height:80px;
   }
   .wcir{background-color:#EBEBEB;
     width:750px;
@@ -230,18 +213,20 @@ a{color:#fff;
     }
   .xxxx{
     width:750px;
-    height:216px;
+    height:210px;
     position:absolute;
     left:0px;
     top:875px;
-    border-bottom:#DADADA solid 2px;
     color:#8A8A8A;
+    padding:0px;
+    margin-top:-14px;
     }
   .xxxx li{
     width:750px;
     height:70px;
-    font-size:35px;
+    font-size:30px;
     line-height:70px;
+    margin:0px;
   }
   .spcir{width:750px;
     height:60px;
@@ -326,7 +311,7 @@ a{color:#fff;
     position:absolute;
     left:70px;
     top:5px;
-   z-index:2;
+    z-index:2;
   }
   .xinxin{
     width:100px;
@@ -345,12 +330,12 @@ a{color:#fff;
   margin:0px;
   z-index:2;
 }
-  .guanzhu{width:100px;
+  .guanzhu{width:70px;
     color:#747474;
-    font-size:35px;
+    font-size:30px;
     height:100px;
     position:absolute;
     background-color:#fff;
     left:100px;
-    bottom:7px;}
+    bottom:-25px;}
 </style>

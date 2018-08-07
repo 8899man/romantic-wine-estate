@@ -5,14 +5,14 @@
       <div class="buttonl" v-on:click="retur()"><!--左边返回按钮-->
         返回
       </div>
-      <div class="buttonr" v-on:click="tadd">
-        <router-link to="goodList">搜索</router-link><!--右边搜索按钮-->
+      <div class="buttonr" v-on:click="push()">
+        搜索<!--右边搜索按钮-->
       </div>
       <div class="tub">
         <img src="../../assets/sstb.png" alt="搜索图标"/>
       </div>
       <div class="searchkk">
-        <input type="text" placeholder="搜索商品" id="intext"><!--搜索框-->
+        <input type="text" placeholder="搜索商品" v-on:click="tadd" id="intext"><!--搜索框-->
       </div>
     </div>
     <ul id="zlih">
@@ -29,11 +29,16 @@ export default {
     retur () {
       this.$router.go(-1)
     },
+    push () {
+      this.$router.push({
+        path: '/goodList'
+      })
+    },
     tadd () {
-      const oInput = document.getElementById('intext')
-      const oUl = document.getElementById('zlih')
-      const oLi = document.createElement('li')
-      oLi.innerHTML = oInput.value
+      const oInput = document.getElementById('intext');
+      const oUl = document.getElementById('zlih');
+      const oLi = document.createElement('li');
+      oLi.innerHTML = oInput.value;
       if (oUl.children[14]) {
         oUl.removeChild(oUl.children[14])
       }

@@ -2,47 +2,31 @@
     <div class="gdmain">
       <!--顶部搜索及按钮部分-->
       <div class="mainsk">
-          <div class="left">
-            <router-link to="goodClass">
-            <img src="../../assets/mainfl.png" alt=""/><!--分类图标-->
-            </router-link>
+          <div class="left" >
+            <img src="../../assets/mainfl.png" v-on:click="push()" alt="分类图标不见了"/><!--分类图标-->
           </div>
-        <router-link to="goodSearch">
-          <input class="center" type="text" placeholder="搜索商品"/>
-        </router-link>
-        <div class="right">
-          <router-link to="goodSearch">
-          <img src="../../assets/sstb.png" alt=""/><!--搜索图标-->
-          </router-link>
+          <input class="center"  type="text" v-on:click="push1()" placeholder="搜索商品"/>
+        <div class="right" >
+          <img src="../../assets/sstb.png" alt="搜索图标不见了"/><!--搜索图标-->
         </div>
       </div>
       <!--顶部轮播图部分-->
       <div class="gdetaillbt"><!--顶部轮播图-->
         <mt-swipe :auto="2000">
           <mt-swipe-item >
-            <router-link to="goodDetail">
-            <img src="../../assets/wine.png" alt="无限轮播"/>
-            </router-link>
+            <img src="../../assets/wine.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <router-link to="goodDetail">
-            <img src="../../assets/wine1.png" alt="无限轮播"/>
-            </router-link>
+            <img src="../../assets/wine1.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <router-link to="goodDetail">
-            <img src="../../assets/wine2.png" alt="无限轮播"/>
-            </router-link>
+            <img src="../../assets/wine2.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <router-link to="goodDetail">
-            <img src="../../assets/wine1.png" alt="无限轮播"/>
-            </router-link>
+            <img src="../../assets/wine1.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <router-link to="goodDetail">
-            <img src="../../assets/wine2.png" alt="无限轮播"/>
-            </router-link>
+            <img src="../../assets/wine2.png" alt="图片不见了"/>
           </mt-swipe-item>
         </mt-swipe>
       </div>
@@ -90,19 +74,19 @@
       <div v-show="exis" class="gdetaillbt">
         <mt-swipe :auto="2000">
           <mt-swipe-item >
-            <img  src="../../assets/wine.png" alt="无限轮播"/>
+            <img  src="../../assets/wine.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img  src="../../assets/wine1.png" alt="无限轮播"/>
+            <img  src="../../assets/wine1.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img  src="../../assets/wine2.png" alt="无限轮播"/>
+            <img  src="../../assets/wine2.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img  src="../../assets/wine1.png" alt="无限轮播"/>
+            <img  src="../../assets/wine1.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img  src="../../assets/wine2.png" alt="无限轮播"/>
+            <img  src="../../assets/wine2.png" alt="图片不见了"/>
           </mt-swipe-item>
         </mt-swipe>
       </div>
@@ -124,7 +108,7 @@
       <div v-show="exis1" class="mainjt">
         <div class="mainjta">
           <div class="mainjtb">
-            <img src="../../assets/mainjtt.png" alt="">
+            <img src="../../assets/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
             <p>额问题官方网</p>
@@ -135,7 +119,7 @@
         </div>
         <div class="mainjta">
           <div class="mainjtb">
-            <img src="../../assets/mainjtt.png" alt="">
+            <img src="../../assets/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
             <p>额问题官方网</p>
@@ -149,19 +133,19 @@
       <div v-show="exis1" class="gdetaillbt">
         <mt-swipe :auto="2000">
           <mt-swipe-item >
-            <img src="../../assets/wine.png" alt="无限轮播"/>
+            <img src="../../assets/wine.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img src="../../assets/wine1.png" alt="无限轮播"/>
+            <img src="../../assets/wine1.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img src="../../assets/wine2.png" alt="无限轮播"/>
+            <img src="../../assets/wine2.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img src="../../assets/wine1.png" alt="无限轮播"/>
+            <img src="../../assets/wine1.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img src="../../assets/wine2.png" alt="无限轮播"/>
+            <img src="../../assets/wine2.png" alt="图片不见了"/>
           </mt-swipe-item>
         </mt-swipe>
       </div>
@@ -183,7 +167,7 @@
       <div v-show="exis2" class="mainjt">
         <div class="mainjta">
           <div class="mainjtb">
-            <img src="../../assets/mainjtt.png" alt="">
+            <img src="../../assets/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
             <p>额问题官方网</p>
@@ -194,7 +178,7 @@
         </div>
         <div class="mainjta">
           <div class="mainjtb">
-            <img src="../../assets/mainjtt.png" alt="">
+            <img src="../../assets/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
             <p>额问题官方网</p>
@@ -208,29 +192,20 @@
       <div v-show="exis2" class="gdetaillbt">
         <mt-swipe :auto="2000">
           <mt-swipe-item >
-            <router-link to="goodDetail">
-            <img src="../../assets/wine.png" alt="无限轮播"/>
-            </router-link>
+
+            <img src="../../assets/wine.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <router-link to="goodDetail">
-            <img src="../../assets/wine1.png" alt="无限轮播"/>
-            </router-link>
+            <img src="../../assets/wine1.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <router-link to="goodDetail">
-            <img src="../../assets/wine2.png" alt="无限轮播"/>
-            </router-link>
+            <img src="../../assets/wine2.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <router-link to="goodDetail">
-            <img src="../../assets/wine1.png" alt="无限轮播"/>
-            </router-link>
+            <img src="../../assets/wine1.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <router-link to="goodDetail">
-            <img src="../../assets/wine2.png" alt="无限轮播"/>
-            </router-link>
+            <img src="../../assets/wine2.png" alt="图片不见了"/>
           </mt-swipe-item>
         </mt-swipe>
       </div>
@@ -238,9 +213,7 @@
       <div  class="mainjt">
         <div class="mainjta">
           <div class="mainjtb">
-            <router-link to="goodDetail">
-            <img src="../../assets/mainjtt.png" alt="">
-            </router-link>
+            <img src="../../assets/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
             <router-link to="goodDetail">
@@ -253,86 +226,66 @@
         </div>
         <div class="mainjta">
           <div class="mainjtb">
-            <router-link to="goodDetail">
-            <img src="../../assets/mainjtt.png" alt="">
-            </router-link>
+            <img src="../../assets/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
-            <router-link to="goodDetail">
             <p>额问题官方网</p>
             <p></p>
             <p>销量: 3652</p>
             <p>&yen: 666</p>
-            </router-link>
           </div>
         </div>
       </div>
       <div  class="mainjt">
         <div class="mainjta">
           <div class="mainjtb">
-            <router-link to="goodDetail">
-              <img src="../../assets/mainjtt.png" alt="">
-            </router-link>
+              <img src="../../assets/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
-            <router-link to="goodDetail">
               <p>额问题官方网</p>
               <p></p>
               <p>销量: 3652</p>
               <p>&yen: 666</p>
-            </router-link>
           </div>
         </div>
         <div class="mainjta">
           <div class="mainjtb">
-            <router-link to="goodDetail">
-              <img src="../../assets/mainjtt.png" alt="">
-            </router-link>
+              <img src="../../assets/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
-            <router-link to="goodDetail">
               <p>额问题官方网</p>
               <p></p>
               <p>销量: 3652</p>
               <p>&yen: 666</p>
-            </router-link>
           </div>
         </div>
       </div>
       <div  class="mainjt">
         <div class="mainjta">
           <div class="mainjtb">
-            <router-link to="goodDetail">
-              <img src="../../assets/mainjtt.png" alt="">
-            </router-link>
+              <img src="../../assets/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
-            <router-link to="goodDetail">
               <p>额问题官方网</p>
               <p></p>
               <p>销量: 3652</p>
               <p>&yen: 666</p>
-            </router-link>
           </div>
         </div>
         <div class="mainjta">
           <div class="mainjtb">
-            <router-link to="goodDetail">
-              <img src="../../assets/mainjtt.png" alt="">
-            </router-link>
+              <img src="../../assets/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
-            <router-link to="goodDetail">
               <p>额问题官方网</p>
               <p></p>
               <p>销量: 3652</p>
               <p>&yen: 666</p>
-            </router-link>
           </div>
         </div>
       </div>
       <bottom></bottom>
-        <img src="../../assets/first.jpg" class="first" alt="首页图片不见了">
+        <img src="../../assets/first.jpg" class="first" alt="首页图标不见了">
     </div>
 </template>
 
@@ -356,6 +309,16 @@ export default {
     },
     change2 () {
       this.exis2 = !this.exis2;
+    },
+    push () {
+      this.$router.push({
+        path: '/goodClass'
+      })
+    },
+    push1 () {
+      this.$router.push({
+        path: '/goodSearch'
+      })
     }
   }
 }
@@ -483,7 +446,7 @@ export default {
   }
   .first{
     position:fixed;
-    left:420px;
+    left:500px;
     bottom:14px;
   }
 </style>

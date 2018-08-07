@@ -1,66 +1,64 @@
 <template>
   <div class="gdclass">
-    <p>中国移动</p>
+    <p></p>
     <!--顶部搜索框-->
     <div class="gdclassk">
       <div class="gdctub">
-        <router-link to="goodSearch">
           <img src="../../assets/sstb.png" alt="搜索图标"/>
-        </router-link>
       </div>
-        <input type="text" placeholder="搜索商品">
+        <input type="text" v-on:click="push()" placeholder="搜索商品">
     </div>
     <!--具体分类部分-->
     <div class="gdcycd"><!--原产地分类-->
       <div class="hontiao"></div>
      <p>原产地</p>
       <ul>
-        <li><router-link to="goodList">法国</router-link></li>
-        <li><router-link to="goodList">意大利</router-link></li>
-        <li><router-link to="goodList">澳大利亚</router-link></li>
-        <li><router-link to="goodList">德国</router-link></li>
-        <li><router-link to="goodList">美国</router-link></li>
-        <li><router-link to="goodList">西班牙</router-link></li>
-        <li><router-link to="goodList">智利</router-link></li>
-        <li><router-link to="goodList">新西兰</router-link></li>
-        <li><router-link to="goodList">阿根廷</router-link></li>
+        <li>法国</li>
+        <li>意大利</li>
+        <li>澳大利亚</li>
+        <li>德国</li>
+        <li>美国</li>
+        <li>西班牙</li>
+        <li>智利</li>
+        <li>新西兰</li>
+        <li>阿根廷</li>
       </ul>
     </div>
     <div class="gdckg"><!--口感分类-->
       <div class="hontiao"></div>
       <p>口感</p>
       <ul>
-        <li><router-link to="goodList">平衡</router-link></li>
-        <li><router-link to="goodList">圆润</router-link></li>
-        <li><router-link to="goodList">清爽</router-link></li>
-        <li><router-link to="goodList">清雅</router-link></li>
-        <li><router-link to="goodList">饱满</router-link></li>
-        <li><router-link to="goodList">辛辣</router-link></li>
+        <li>平衡</li>
+        <li>圆润</li>
+        <li>清爽</li>
+        <li>清雅</li>
+        <li>饱满</li>
+        <li>辛辣</li>
       </ul>
     </div>
     <div class="gdcycd"><!--类型分类-->
       <div class="hontiao"></div>
       <p>类型</p>
       <ul>
-        <li><router-link to="goodList">红葡萄酒</router-link></li>
-        <li><router-link to="goodList">白葡萄酒</router-link></li>
-        <li><router-link to="goodList">桃红葡萄酒</router-link></li>
-        <li><router-link to="goodList">起泡酒</router-link></li>
-        <li><router-link to="goodList">加强葡萄酒</router-link></li>
-        <li><router-link to="goodList">香槟</router-link></li>
-        <li><router-link to="goodList">冰酒</router-link></li>
+        <li>红葡萄酒</li>
+        <li>白葡萄酒</li>
+        <li>桃红葡萄酒</li>
+        <li>起泡酒</li>
+        <li>加强葡萄酒</li>
+        <li>香槟</li>
+        <li>冰酒</li>
       </ul>
     </div>
     <div class="gdckg"><!--价格分类-->
       <div class="hontiao"></div>
       <p>价格</p>
       <ul>
-        <li><router-link to="goodList">1-49元</router-link></li>
-        <li><router-link to="goodList">50-99元</router-link></li>
-        <li><router-link to="goodList">100-199元</router-link></li>
-        <li><router-link to="goodList">200-299元</router-link></li>
-        <li><router-link to="goodList">300-499元</router-link></li>
-        <li><router-link to="goodList">500+元</router-link></li>
+        <li>1-499元</li>
+        <li>500-999元</li>
+        <li>1000-1499元</li>
+        <li>1500-1999元</li>
+        <li>2000-2499元</li>
+        <li>2500+元</li>
       </ul>
     </div>
       <bottom></bottom>
@@ -73,7 +71,13 @@ import bottom from '../bottom/bottom.vue'
 export default {
   components: {bottom},
   data () {
-    return {
+    return {}
+  },
+  methods: {
+    push () {
+      this.$router.push({
+        path: '/goodSearch'
+      })
     }
   }
 }
@@ -171,7 +175,7 @@ export default {
     font-size:22px;
   }
  li:hover{
-    background-color:#333;
+    background-color:#666;
     font-size:40px;}
  a:visited{
    color:#9F9F9F;
@@ -198,7 +202,7 @@ export default {
   }
   .nav{
     position:fixed;
-    left:620px;
+    left:700px;
     bottom:12px;
   }
 </style>
