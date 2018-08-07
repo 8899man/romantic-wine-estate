@@ -10,8 +10,9 @@ import bottom from '@/components/bottom/bottom'
 import Mint from 'mint-ui'
 
 import 'mint-ui/lib/style.css'
+
 Vue.use(Mint);
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
