@@ -29,7 +29,6 @@
     components:{bottom},
     name: "orderFinish"
   }
-
 </script>
 
 <style scoped>
@@ -64,7 +63,6 @@
     padding-top: 6px;
     background: #fff;
     padding-bottom: 28px;
-
   }
   .orders{
     margin: 18px 31px 0 31px;
@@ -72,17 +70,15 @@
     color:#434343;
     text-align: left;
   }
-
-
   footer{
     width: 98px;
     border-top: 1px solid #c8c8c8;
     position: relative;
   }
-#shop_1{
-  position: fixed;
-  bottom: 4px;
-  left: 50%;
-  margin-left: 80px;
-}
+  #shop_1{
+    position: fixed;
+    bottom: 4px;
+    left: 50%;
+    margin-left: 80px;
+  }
 </style>

@@ -7,10 +7,10 @@
     </section>
     <div class="nav clearfix">
       <ul>
-        <li><router-link to="allOrders"><a href="">全部订单</a></router-link></li>
-        <li id="choose"><a href="">待付款</a></li>
-        <li><router-link to="forGoods"><a href="">待收货</a></router-link></li>
-        <li><router-link to="forEvaluate"><a href="">待评价</a></router-link></li>
+        <li @click="allorders"><a href="">全部订单</a></li>
+        <li id="choose" @click="obligation"><a href="">待付款</a>
+        <li @click="forgoods"><a href="">待收货</a></li>
+        <li @click="forevaluate"><a href="">待评价</a></li>
       </ul>
     </div>
     <section class="my-orders">
@@ -25,7 +25,7 @@
   </section>
   <section class="forpay">
     <input type="button" value="取消订单" id="no-order">
-    <router-link to="orderPay"><input type="button" value="付款" id="pay-m"></router-link>
+    <input @click="orderpay" type="button" value="付款" id="pay-m">
 
   </section>
   </div>
@@ -33,7 +33,43 @@
 
 <script>
   export default {
-    name: "obligation"
+    data() {
+      return {}
+    },
+    methods: {
+      toBack() {
+        this.$router.go(-1)
+      },
+      allorders: function () {
+        this.$router.push({
+          path: '/allOrders'
+        })
+
+      },
+      forevaluate: function () {
+        this.$router.push({
+          path: '/forEvaluate'
+        })
+
+      },
+      forgoods: function () {
+        this.$router.push({
+          path: '/forGoods'
+        })
+
+      },
+      obligation: function () {
+        this.$router.push({
+          path: '/obliGation'
+        })
+
+      },
+      orderpay: function(){
+        this.$router.push({
+          path:'/orderPay'
+        })
+      }
+    }
   }
 </script>
 

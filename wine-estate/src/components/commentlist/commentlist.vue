@@ -8,19 +8,20 @@
     <section class="comment-show">
       <div class="commentary">
         <div class="buyer">
-          <img src="" alt="">
-          <span class="head-portrait"></span>
+          <img src="" alt="" width="30px" height="30px">
+          <span>sss</span>
         </div>
         <div class="buy-message">
-            <span></span>
+            <span>1777</span>
         </div>
-        <span></span>
-        <img src="" alt="" width="58px" height="58px">
-        <div class="view">
-          <input type="button" value="评论">
-          <input type="button">
+        <div class="goodcomments">
+          <span>sda</span>
+            <img src="" alt="" width="330px" height="330px">
+          <div class="view clearfix">
+            <button><img src="../../assets/addcomment.jpg" height="33" width="34"/>评论</button>
+            <button><img src="../../assets/like.jpg" height="33" width="34"/>0</button>
+          </div>
         </div>
-
       </div>
     </section>
   </div>
@@ -48,7 +49,7 @@
     padding: 18px 0px 18px 17px;
     position:relative;
   }
-  img{
+  .head img{
     float: left}
   .comment-show{
     padding-top: 20px;
@@ -56,5 +57,52 @@
     width: 750px;
     margin: 0 auto;
   }
-
+  .buyer {
+    padding: 42px 0 42px 40px;
+    background: #fff;
+    font-size: 25px;
+    text-align: left;
+  }
+  .buyer img{
+    border-radius: 50%;
+  }
+  .buy-message{
+    padding: 30px 0 30px 40px;
+    background: #fff;
+    text-align: left;
+  }
+  .buy-message{
+    color: #999;
+    font-size: 30px;
+  }
+  .goodcomments{
+    padding: 20px 0 50px 30px;
+    background: #fff;
+    text-align: left;
+  }
+  .goodcomments span {
+    font-size: 42px;
+    margin-bottom: 45px;
+  }
+  .goodcomments img{
+    display: block;
+  }
+  .view{
+    padding: 20px 0 20px 340px;
+    background: #fff;
+  }
+  button{
+    border: 1px solid #999;
+    font-size: 24px;
+    width: 150px;
+    height: 60px;
+    padding:13px 30px 15px 30px;
+    background: #fff;
+    border-radius: 40%;
+    float: left;
+    margin-right: 20px;
+  }
+  button img{
+    float: left;
+  }
 </style>

@@ -25,7 +25,7 @@
 
     </section>
     <section class="pay">
-      <input type="button" value="立即付款">
+      <input @click="orderpay" type="button" value="立即付款">
     </section>
   </div>
 </template>
@@ -44,6 +44,11 @@
       },
       changeicon2() {
         this.downIcon = !this.downIcon
+      },
+      orderpay: function(){
+        this.$router.push({
+          path:'/orderPay'
+        })
       }
 
     }

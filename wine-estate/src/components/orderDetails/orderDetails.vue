@@ -20,14 +20,27 @@
     </section>
     <section class="forpay">
       <input type="button" value="取消订单" id="no-order">
-      <router-link to="orderPay"><input type="button" value="付款" id="pay-m"></router-link>
+      <input @click="orderpay" type="button" value="付款" id="pay-m">
     </section>
   </div>
 </template>
 
 <script>
     export default {
-        name: "orderDetails"
+      data() {
+        return {}
+      },
+      methods: {
+        toBack() {
+          this.$router.go(-1)
+        },
+        orderpay: function () {
+          this.$router.push({
+            path: '/orderPay'
+          })
+
+        },
+      }
     }
 </script>
 

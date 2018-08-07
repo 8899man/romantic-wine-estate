@@ -34,14 +34,27 @@
     </section>
     <section class="submit">
       <li class="grayword">合计：</li>
-     <router-link to="orderFinish"><input type="button" value="提交订单"></router-link>
+     <input type="button" value="提交订单">
     </section>
   </div>
 </template>
 
 <script>
   export default {
-    name: "orderSure"
+    data() {
+      return {}
+    },
+    methods: {
+      toBack() {
+        this.$router.go(-1)
+      },
+      orderfinish: function () {
+        this.$router.push({
+          path: '/orderFinish'
+        })
+
+      },
+    }
   }
 </script>
 
