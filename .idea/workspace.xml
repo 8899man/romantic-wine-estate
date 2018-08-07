@@ -2,17 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38efaa33-da47-4b8a-8ebc-1a4b5aade356" name="默认" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wine-estate/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wine-estate/src/assets/icon5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/wine-estate/src/assets/icon6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wine-estate/src/assets/first.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/wine-estate/src/components/accountPage/accountPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/src/components/accountPage/accountPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wine-estate/src/components/feedbackPage/feedbackPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/src/components/feedbackPage/feedbackPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wine-estate/src/components/informationPage/informationPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/src/components/informationPage/informationPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wine-estate/src/components/loginPage/loginPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/src/components/loginPage/loginPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wine-estate/src/components/morePage/morePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/src/components/morePage/morePage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wine-estate/src/components/registerPage/registerPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/src/components/registerPage/registerPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wine-estate/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/src/router/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -27,14 +23,15 @@
     <session id="2634301">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="7" />
+          <entry key="project.closed" value="8" />
           <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.33" value="1" />
           <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.4" value="3" />
           <entry key="project.open.time.44" value="1" />
           <entry key="project.open.time.45" value="1" />
           <entry key="project.open.time.5" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -91,8 +88,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/wine-estate/src/components/loginPage/loginPage.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="175">
+              <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -311,6 +308,15 @@
               <item name="components" type="462c0819:PsiDirectoryNode" />
               <item name="loginPage" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="romantic-wine-estate" type="b2602c69:ProjectViewProjectNode" />
+              <item name="romantic-wine-estate" type="462c0819:PsiDirectoryNode" />
+              <item name="wine-estate" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="loginPage" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -360,11 +366,12 @@
       <workItem from="1533217548110" duration="284000" />
       <workItem from="1533545014486" duration="327000" />
       <workItem from="1533562826475" duration="209000" />
+      <workItem from="1533633720933" duration="104000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4195000" />
+    <option name="totallyTimeSpent" value="4299000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -395,13 +402,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/wine-estate/src/components/morePage/morePage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/wine-estate/src/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1075">
@@ -409,6 +409,13 @@
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wine-estate/src/components/morePage/morePage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -421,8 +428,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wine-estate/src/components/loginPage/loginPage.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="175">
+          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="66" />
         </state>
       </provider>
     </entry>
