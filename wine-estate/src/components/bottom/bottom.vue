@@ -16,33 +16,33 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return  {}
+export default {
+  data () {
+    return {}
+  },
+  methods: {
+    re1 () {
+      this.$router.push({
+        path: '/goodMain'
+      })
     },
-    methods: {
-      re1(){
-        this.$router.push({
-          path: '/goodMain'
-        })
-      },
-      re2(){
-        this.$router.push({
-          path: '/goodClass'
-        })
-      },
-      re3(){
-        this.$router.push({
-          path: '/logged'
-        })
-      },
-      re4(){
-        this.$router.push({
-          path: 'accountPage'
-        })
-      }
+    re2 () {
+      this.$router.push({
+        path: '/goodClass'
+      })
+    },
+    re3 () {
+      this.$router.push({
+        path: '/logged'
+      })
+    },
+    re4 () {
+      this.$router.push({
+        path: '/accountPage'
+      })
     }
   }
+}
 </script>
 
 <style>
@@ -64,20 +64,24 @@
     position: absolute;
     top: 10px;
     left: 25px;
+    cursor:pointer;
   }
   .nav .nav_0{
     position: absolute;
     top: 8px;
     left: 230px;
+    cursor:pointer;
   }
   .shop .shop_0{
     position: absolute;
     top: 12px;
     right: 230px;
+    cursor:pointer;
   }
   .my .my_0 {
     position: absolute;
     top: 10px;
     right: 25px;
+    cursor:pointer;
   }
 </style>
