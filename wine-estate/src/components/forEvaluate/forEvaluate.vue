@@ -11,6 +11,10 @@
         <li><a href="" v-on:click="change">待付款</a></li>
         <li id="choose"><a href="" v-on:click="change">待收货</a></li>
         <li><a href="" v-on:click="change">待评价</a></li>
+        <li @click="allorders"><a href="">全部订单</a></li>
+        <li @click="obligation"><a href="">待付款</a>
+        <li @click="forgoods"><a href="">待收货</a></li>
+        <li  id="choose"  @click="forevaluate"><a href="">待评价</a></li>
       </ul>
     </div>
     <section class="my-orders">
@@ -30,9 +34,44 @@
 </template>
 
 <script>
-    export default {
-        name: "forEvaluate"
+export default {
+    data() {
+      return {}
+    },
+    methods: {
+      toBack() {
+        this.$router.go(-1)
+      },
+      allorders: function () {
+        this.$router.push({
+          path: '/allOrders'
+        })
+
+      },
+      forevaluate: function () {
+        this.$router.push({
+          path: '/forEvaluate'
+        })
+
+      },
+      forgoods: function () {
+        this.$router.push({
+          path: '/forGoods'
+        })
+
+      },
+      obligation: function () {
+        this.$router.push({
+          path: '/obliGation'
+        })
+      },
+      orderpay: function () {
+        this.$router.push({
+          path: '/orderpay'
+        })
+      }
     }
+  }
 </script>
 
 <style scoped>

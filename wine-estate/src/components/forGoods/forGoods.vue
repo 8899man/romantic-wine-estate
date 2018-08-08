@@ -2,69 +2,67 @@
   <div class="main">
     <div class="top"></div>
     <section class="head clearfix" >
-      <div @click="toBack()"><img  src="../../assets/icon2.png" width="39" height="52"></div>
+      <img src="../../assets/icon2.png" width="39" height="52">
       <span>我的订单</span>
     </section>
     <div class="nav clearfix">
       <ul>
-        <li id="choose" @click="allorders"><a href="">全部订单</a></li>
+        <li @click="allorders"><a href="">全部订单</a></li>
         <li @click="obligation"><a href="">待付款</a>
-        <li @click="forgoods"><a href="">待收货</a></li>
+        <li id="choose" @click="forgoods"><a href="">待收货</a></li>
         <li @click="forevaluate"><a href="">待评价</a></li>
       </ul>
     </div>
     <section class="my-orders">
-      <div class="completed-order">
-        <div class="state"><span >买家已付款</span></div>
-        <div class="good clearfix" >
-          <div id="good-pic" ><img src="" alt=""></div>
-          <div id="good-name" ></div>
+      <div class="accept-order">
+        <div class="state" ><span >卖家已发货</span></div>
+        <div class="good clearfix">
+          <div id="good-pic"><img src="" alt=""></div>
+          <div id="good-name"></div>
         </div>
+        <div class="all-price"><span>共一件商品&nbsp合计:&yen19.90（含运费&yen0.00）</span></div>
       </div>
     </section>
-    <section class="all-price"><span >共一件商品&nbsp合计:&yen19.90（含运费&yen0.00）</span></section>
+    <section class="forpay">
+      <input type="button" value="收货" id="take-goods">
+    </section>
   </div>
 </template>
 
 <script>
-  export default{
-    data(){
-      return {
-
-      }
+  export default {
+    data() {
+      return {}
     },
-    methods : {
-      toBack(){
+    methods: {
+      toBack() {
         this.$router.go(-1)
       },
-      allorders:function () {
+      allorders: function () {
         this.$router.push({
-          path:'/allOrders'
+          path: '/allOrders'
         })
 
       },
-      forevaluate:function () {
+      forevaluate: function () {
         this.$router.push({
-          path:'/forEvaluate'
+          path: '/forEvaluate'
         })
 
       },
-      forgoods:function () {
+      forgoods: function () {
         this.$router.push({
-          path:'/forGoods'
+          path: '/forGoods'
         })
 
       },
-      obligation:function () {
+      obligation: function () {
         this.$router.push({
-          path:'/obliGation'
+          path: '/obliGation'
         })
 
       },
-
-
     }
-
   }
 </script>
 
@@ -99,7 +97,7 @@
     width:187px;
     height:88px;
     float:left;
-    padding: 30px;
+    padding: 31px;
 
   }
   .nav ul li a{
@@ -112,11 +110,10 @@
     background: #f4f4f4;
     padding-top: 27px ;
     width: 750px;
-    margin: 0 auto;
+    margin:  0 auto;
   }
-  .completed-order{
+  .accept-order{
     padding-top: 42px;
-    padding-bottom: 28px;
     background: #fff;
   }
   .state{
@@ -124,11 +121,12 @@
     margin-left: 500px;
     margin-bottom: 40px;
   }
-  .state span{color: #bb3437;}
+  .state span{color:  #bb3437;}
   .good{
     background: #f4f4f4;
-    padding: 20px 7px 25px 24px;
+    padding: 13px 7px 47px 24px;
     margin-bottom: 38px;
+
   }
   #good-pic{
     width:140px;
@@ -145,7 +143,31 @@
     margin-top: 25px;
   }
   .all-price{
+    margin-bottom: 35px;
     font-size: 30px;
     margin-left: 180px;
+  }
+  .forpay{
+    border-top: 1px solid #ddd;
+    border-bottom: 2px solid #ddd;
+    width: 750px;
+    height: 121px;
+    padding-top: 20px;
+    padding-left: 300px;
+    margin: 0 auto;
+  }
+  input{
+    height: 75px;
+    background: #fff;
+    font-size: 30px;
+    display: inline-block;
+
+  }
+  #take-goods{
+    width: 150px;
+    border-radius: 40%;
+    border: 2px solid #bb3437;
+    color:#bb3437;
+    margin-left:205px ;
   }
 </style>
