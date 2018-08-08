@@ -2,30 +2,30 @@
   <div class="gdetail">
     <!--顶部商品详情及其按钮部分-->
         <div v-on:click="retur()">
-          <img class="img1"  src="../../assets/icon.png" alt="返回按钮不见了"/>
+          <img class="img1"  src="./img/icon.png" alt="返回按钮不见了"/>
         </div>
     <div class="gdetailxq">
       商品详情
     </div>
       <div>
-        <img class="img2" src="../../assets/lianj.png" v-on:click="push()" alt="主页按钮不见了"/>
+        <img class="img2" src="./img/lianj.png" v-on:click="push()" alt="主页按钮不见了"/>
       </div>
         <div class="gdetaillbt"><!--轮播图-->
           <mt-swipe :auto="2000">
             <mt-swipe-item >
-              <img src="../../assets/wine.png" alt="图片不见了"/>
+              <img src="./img/wine.png" alt="图片不见了"/>
             </mt-swipe-item>
             <mt-swipe-item >
-              <img src="../../assets/wine1.png" alt="图片不见了"/>
+              <img src="./img/wine1.png" alt="图片不见了"/>
             </mt-swipe-item>
             <mt-swipe-item >
-              <img src="../../assets/wine2.png" alt="图片不见了"/>
+              <img src="./img/wine2.png" alt="图片不见了"/>
             </mt-swipe-item>
             <mt-swipe-item >
-              <img src="../../assets/wine1.png" alt="图片不见了"/>
+              <img src="./img/wine1.png" alt="图片不见了"/>
             </mt-swipe-item>
             <mt-swipe-item >
-              <img src="../../assets/wine2.png" alt="图片不见了"/>
+              <img src="./img/wine2.png" alt="图片不见了"/>
             </mt-swipe-item>
           </mt-swipe>
         </div>
@@ -48,7 +48,7 @@
       <div class="spcir">
         商品评论
         <div class="und"><!--跳转到评论的按钮-->
-          <img src="../../assets/und.png" v-on:vlick="push1()" alt="跳转的图标">
+          <img src="./img/und.png" v-on:vlick="push1()" alt="跳转的图标">
         </div>
       </div>
       <div class="hpd"><!--好评度-->
@@ -69,17 +69,17 @@
        加入购物车
       </div>
       <div class="xinxin"><!--原本空心图片-->
-        <img src="../../assets/xinxin.png" alt="心形图不见了"/>
+        <img src="./img/xinxin.png" alt="心形图不见了"/>
       </div>
       <div class="honxin"><!--点击关注时候变红的心形-->
-        <img v-show="exist" id="changec" src="../../assets/honxin.png" alt="红心">
+        <img v-show="exist" id="changec" src="./img/honxin.png" alt="红心">
       </div>
       <div class="guanzhu" v-on:click="change()"><!--点击关注的按钮-->
         关注
       </div>
       <div class="gwctu">
         <p id="number">0</p>
-        <img src="../../assets/gwctu.png"><!--购物车图标-->
+        <img src="./img/gwctu.png"><!--购物车图标-->
       </div>
       </div>
     </div>

@@ -3,30 +3,30 @@
       <!--顶部搜索及按钮部分-->
       <div class="mainsk">
           <div class="left" >
-            <img src="../../assets/mainfl.png" v-on:click="push()" alt="分类图标不见了"/><!--分类图标-->
+            <img src="./img/mainfl.png" v-on:click="push()" alt="分类图标不见了"/><!--分类图标-->
           </div>
           <input class="center"  type="text" v-on:click="push1()" placeholder="搜索商品"/>
         <div class="right" >
-          <img src="../../assets/sstb.png" alt="搜索图标不见了"/><!--搜索图标-->
+          <img src="./img/sstb.png" alt="搜索图标不见了"/><!--搜索图标-->
         </div>
       </div>
       <!--顶部轮播图部分-->
       <div class="gdetaillbt"><!--顶部轮播图-->
         <mt-swipe :auto="2000">
           <mt-swipe-item >
-            <img src="../../assets/wine.png" alt="图片不见了"/>
+            <img src="./img/wine.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img src="../../assets/wine1.png" alt="图片不见了"/>
+            <img src="./img/wine1.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img src="../../assets/wine2.png" alt="图片不见了"/>
+            <img src="./img/wine2.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img src="../../assets/wine1.png" alt="图片不见了"/>
+            <img src="./img/wine1.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img src="../../assets/wine2.png" alt="图片不见了"/>
+            <img src="./img/wine2.png" alt="图片不见了"/>
           </mt-swipe-item>
         </mt-swipe>
       </div>
@@ -34,14 +34,14 @@
       <div class="mfirst">
         <!--1F按钮部分-->
         <div class="mtwo">
-          <img src="../../assets/mfirst.png" alt="两杯酒图标"/>
+          <img src="./img/mfirst.png" alt="两杯酒图标"/>
         </div>
       <div class="butt">
         1F 进口葡萄酒
       </div >
       <div class="mthree" v-on:click="change()">
-        <img src="../../assets/mtwo.png" alt="按钮图标"/><!--一楼按钮-->
-        <img  class="mx" v-show="exis" src="../../assets/mtwox.png" alt="按钮图标下">
+        <img src="./img/mtwo.png" alt="按钮图标"/><!--一楼按钮-->
+        <img  class="mx" v-show="exis" src="./img/mtwox.png" alt="按钮图标下">
         <!--一楼按钮下-->
       </div>
       </div>
@@ -49,7 +49,7 @@
       <div v-show="exis" class="mainjt">
         <div class="mainjta">
           <div class="mainjtb">
-            <img src="../../assets/mainjtt.png" alt="静态图">
+            <img src="./img/mainjtt.png" alt="静态图">
           </div>
           <div class="mainjtc">
           <p>额问题官方网</p>
@@ -60,7 +60,7 @@
         </div>
         <div class="mainjta">
           <div class="mainjtb">
-            <img src="../../assets/mainjtt.png" alt="静态图">
+            <img src="./img/mainjtt.png" alt="静态图">
           </div>
           <div class="mainjtc">
             <p>额问题官方网</p>
@@ -74,33 +74,33 @@
       <div v-show="exis" class="gdetaillbt">
         <mt-swipe :auto="2000">
           <mt-swipe-item >
-            <img  src="../../assets/wine.png" alt="图片不见了"/>
+            <img  src="./img/wine.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img  src="../../assets/wine1.png" alt="图片不见了"/>
+            <img  src="./img/wine1.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img  src="../../assets/wine2.png" alt="图片不见了"/>
+            <img  src="./img/wine2.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img  src="../../assets/wine1.png" alt="图片不见了"/>
+            <img  src="./img/wine1.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img  src="../../assets/wine2.png" alt="图片不见了"/>
+            <img  src="./img/wine2.png" alt="图片不见了"/>
           </mt-swipe-item>
         </mt-swipe>
       </div>
       <!--2F可隐藏的静态图,轮播图及按钮部分-->
       <div class="mfirst">
         <div class="mtwo">
-          <img src="../../assets/mfirst.png" alt="两杯酒图标"/>
+          <img src="./img/mfirst.png" alt="两杯酒图标"/>
         </div>
         <div class="butt">
           2F 国产葡萄酒
         </div >
         <div class="mthree" v-on:click="change1()">
-          <img src="../../assets/mtwo.png" alt="按钮图标"/><!--2F按钮-->
-          <img  class="mx" v-show="exis1" src="../../assets/mtwox.png" alt="按钮图标下">
+          <img src="./img/mtwo.png" alt="按钮图标"/><!--2F按钮-->
+          <img  class="mx" v-show="exis1" src="./img/mtwox.png" alt="按钮图标下">
           <!--二楼按钮下-->
         </div>
       </div>
@@ -108,7 +108,7 @@
       <div v-show="exis1" class="mainjt">
         <div class="mainjta">
           <div class="mainjtb">
-            <img src="../../assets/mainjtt.png" alt="图片不见了">
+            <img src="./img/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
             <p>额问题官方网</p>
@@ -119,7 +119,7 @@
         </div>
         <div class="mainjta">
           <div class="mainjtb">
-            <img src="../../assets/mainjtt.png" alt="图片不见了">
+            <img src="./img/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
             <p>额问题官方网</p>
@@ -133,33 +133,33 @@
       <div v-show="exis1" class="gdetaillbt">
         <mt-swipe :auto="2000">
           <mt-swipe-item >
-            <img src="../../assets/wine.png" alt="图片不见了"/>
+            <img src="./img/wine.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img src="../../assets/wine1.png" alt="图片不见了"/>
+            <img src="./img/wine1.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img src="../../assets/wine2.png" alt="图片不见了"/>
+            <img src="./img/wine2.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img src="../../assets/wine1.png" alt="图片不见了"/>
+            <img src="./img/wine1.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img src="../../assets/wine2.png" alt="图片不见了"/>
+            <img src="./img/wine2.png" alt="图片不见了"/>
           </mt-swipe-item>
         </mt-swipe>
       </div>
       <!--3F可隐藏的静态图,轮播图及按钮部分-->
       <div class="mfirst">
         <div class="mtwo">
-          <img src="../../assets/mfirst.png" alt="两杯酒图标"/>
+          <img src="./img/mfirst.png" alt="两杯酒图标"/>
         </div>
         <div class="butt">
           3F 经典葡萄酒
         </div >
         <div class="mthree" v-on:click="change2()">
-          <img src="../../assets/mtwo.png" alt="按钮图标"/><!--一楼按钮-->
-          <img  class="mx" v-show="exis2" src="../../assets/mtwox.png" alt="按钮图标下">
+          <img src="./img/mtwo.png" alt="按钮图标"/><!--一楼按钮-->
+          <img  class="mx" v-show="exis2" src="./img/mtwox.png" alt="按钮图标下">
           <!--三楼按钮下-->
         </div>
       </div>
@@ -167,7 +167,7 @@
       <div v-show="exis2" class="mainjt">
         <div class="mainjta">
           <div class="mainjtb">
-            <img src="../../assets/mainjtt.png" alt="图片不见了">
+            <img src="./img/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
             <p>额问题官方网</p>
@@ -178,7 +178,7 @@
         </div>
         <div class="mainjta">
           <div class="mainjtb">
-            <img src="../../assets/mainjtt.png" alt="图片不见了">
+            <img src="./img/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
             <p>额问题官方网</p>
@@ -193,19 +193,19 @@
         <mt-swipe :auto="2000">
           <mt-swipe-item >
 
-            <img src="../../assets/wine.png" alt="图片不见了"/>
+            <img src="./img/wine.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img src="../../assets/wine1.png" alt="图片不见了"/>
+            <img src="./img/wine1.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img src="../../assets/wine2.png" alt="图片不见了"/>
+            <img src="./img/wine2.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img src="../../assets/wine1.png" alt="图片不见了"/>
+            <img src="./img/wine1.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
-            <img src="../../assets/wine2.png" alt="图片不见了"/>
+            <img src="./img/wine2.png" alt="图片不见了"/>
           </mt-swipe-item>
         </mt-swipe>
       </div>
@@ -213,7 +213,7 @@
       <div  class="mainjt">
         <div class="mainjta">
           <div class="mainjtb">
-            <img src="../../assets/mainjtt.png" alt="图片不见了">
+            <img src="./img/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
             <router-link to="goodDetail">
@@ -226,7 +226,7 @@
         </div>
         <div class="mainjta">
           <div class="mainjtb">
-            <img src="../../assets/mainjtt.png" alt="图片不见了">
+            <img src="./img/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
             <p>额问题官方网</p>
@@ -239,7 +239,7 @@
       <div  class="mainjt">
         <div class="mainjta">
           <div class="mainjtb">
-              <img src="../../assets/mainjtt.png" alt="图片不见了">
+              <img src="./img/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
               <p>额问题官方网</p>
@@ -250,7 +250,7 @@
         </div>
         <div class="mainjta">
           <div class="mainjtb">
-              <img src="../../assets/mainjtt.png" alt="图片不见了">
+              <img src="./img/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
               <p>额问题官方网</p>
@@ -263,7 +263,7 @@
       <div  class="mainjt">
         <div class="mainjta">
           <div class="mainjtb">
-              <img src="../../assets/mainjtt.png" alt="图片不见了">
+              <img src="./img/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
               <p>额问题官方网</p>
@@ -274,7 +274,7 @@
         </div>
         <div class="mainjta">
           <div class="mainjtb">
-              <img src="../../assets/mainjtt.png" alt="图片不见了">
+              <img src="./img/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
               <p>额问题官方网</p>
@@ -285,7 +285,7 @@
         </div>
       </div>
       <bottom></bottom>
-        <img src="../../assets/first.jpg" class="first" alt="首页图标不见了">
+        <img src="./img/first.jpg" class="first" alt="首页图标不见了">
     </div>
 </template>
 

@@ -4,7 +4,7 @@
     <!--顶部搜索框-->
     <div class="gdclassk">
       <div class="gdctub">
-          <img src="../../assets/sstb.png" alt="搜索图标"/>
+          <img src="./img/sstb.png" alt="搜索图标"/>
       </div>
         <input type="text" v-on:click="push()" placeholder="搜索商品">
     </div>
@@ -62,7 +62,7 @@
       </ul>
     </div>
       <bottom></bottom>
-      <img src="../../assets/nav.jpg" class="nav" alt="分类图片不见了">
+      <img src="./img/nav.jpg" class="nav" alt="分类图片不见了">
   </div>
 </template>
 

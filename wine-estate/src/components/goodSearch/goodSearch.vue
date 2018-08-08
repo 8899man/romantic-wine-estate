@@ -9,7 +9,7 @@
         搜索<!--右边搜索按钮-->
       </div>
       <div class="tub">
-        <img src="../../assets/sstb.png" alt="搜索图标"/>
+        <img src="./img/sstb.png" alt="搜索图标"/>
       </div>
       <div class="searchkk">
         <input type="text" placeholder="搜索商品" v-on:click="tadd" id="intext"><!--搜索框-->
