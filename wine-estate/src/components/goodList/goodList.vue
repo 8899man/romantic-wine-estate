@@ -4,13 +4,13 @@
     <!--顶部搜索框及按钮-->
     <div class="gdlssk">
       <div class="gdlfh">
-        <img src="../../assets/icon.png" v-on:click="retur()" alt="返回上一页"><!--左边返回按钮-->
+        <img src="./img/icon.png" v-on:click="retur()" alt="返回上一页"><!--左边返回按钮-->
       </div>
       <div class="gdlzy">
-        <img src="../../assets/lianj.png" v-on:click="push()" alt="返回主页"><!--右边回到主页按钮-->
+        <img src="./img/lianj.png" v-on:click="push()" alt="返回主页"><!--右边回到主页按钮-->
       </div>
       <div class="gdltub">
-        <img src="../../assets/sstb.png" alt="搜索图标"/><!--搜索框内的搜索图标-->
+        <img src="./img/sstb.png" alt="搜索图标"/><!--搜索框内的搜索图标-->
       </div>
         <input type="text" v-on:click="push1()" placeholder="搜索商品"><!--搜索图标-->
     </div>
@@ -26,7 +26,7 @@
     <ul>
       <div class="gdlljz">
       <li >
-          <img src="../../assets/gdlwine.png" alt="左侧酒的图">
+          <img src="./img/gdlwine.png" alt="左侧酒的图">
           <div class="gdlyb">
             <p>传说传说传说传说传说传说传说传说传说传说传说传说传说传说</p>
             <p>销量 646532</p>
@@ -34,7 +34,7 @@
         </div>
       </li>
       <li >
-          <img src="../../assets/gdlwine.png" alt="左侧酒的图">
+          <img src="./img/gdlwine.png" alt="左侧酒的图">
           <div class="gdlyb">
             <p>传说传说传说传说传说传说传说传说传说传说传说传说传说传说</p>
             <p>销量 646532</p>
@@ -42,7 +42,7 @@
           </div>
       </li>
       <li >
-          <img src="../../assets/gdlwine.png" alt="左侧酒的图">
+          <img src="./img/gdlwine.png" alt="左侧酒的图">
           <div class="gdlyb">
             <p>传说传说传说传说传说传说传说传说传说传说传说传说传说传说</p>
             <p>销量 646532</p>
@@ -50,7 +50,7 @@
           </div>
       </li>
       <li >
-          <img src="../../assets/gdlwine.png" alt="左侧酒的图">
+          <img src="./img/gdlwine.png" alt="左侧酒的图">
           <div class="gdlyb">
             <p>传说传说传说传说传说传说传说传说传说传说传说传说传说传说</p>
             <p>销量 646532</p>
