@@ -2,7 +2,7 @@
     <div class="add">
         <header>
             <span class="title">{{title}}</span>
-            <img src="../../assets/icon13.png" alt="#" @click="rel">
+            <img src="./img/icon13.png" alt="#" @click="rel">
         </header>
         <div class="top"></div>
         <mt-field label="收件人" placeholder="请输入收件人姓名"></mt-field>

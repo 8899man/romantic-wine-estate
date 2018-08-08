@@ -2,11 +2,11 @@
     <div class="comment">
         <header>
             <span class="title"><b>{{title}}</b></span>
-            <img src="../../assets/icon13.png" alt="#" @click="rel">
+            <img src="./img/icon13.png" alt="#" @click="rel">
             <a href="#" @click="writeComment">{{upComment}}</a>
         </header>
         <div class="good">
-            <img src="../../assets/wine44.jpg" alt="#" class="pic">
+            <img src="./img/wine44.jpg" alt="#" class="pic">
             <span>商品评分</span>
             <ul>
                 <li v-for="h,index of arr" :class="{active:index<=n}" @click="change(index)"></li>
@@ -15,7 +15,7 @@
         </div>
         <div class="write">
             <textarea name="comment" cols="30" rows="10" placeholder="请发表你对本商品的看法吧~"></textarea>
-            <img src="../../assets/addImg.jpg" alt="#" class="addImg" @click="loadImg">
+            <img src="./img/addImg.jpg" alt="#" class="addImg" @click="loadImg">
             <input type="file" class="upload">
             <img id="imgContent">
         </div>

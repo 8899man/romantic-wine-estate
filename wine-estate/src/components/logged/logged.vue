@@ -13,10 +13,10 @@
                 <li>
                     <div class="line"></div>
                     <div @click="change2($event)">
-                      <img src="../../assets/no.jpg" alt="#" class="no2">
-                      <img src="../../assets/yes.jpg" alt="#" class="yes2">
+                      <img src="./img/no.jpg" alt="#" class="no2">
+                      <img src="./img/yes.jpg" alt="#" class="yes2">
                     </div>
-                    <img src="../../assets/wine22.jpg" alt="#">
+                    <img src="./img/wine22.jpg" alt="#">
                     <span class="name">拉菲传说波尔多红葡萄酒</span>
                     <span class="price">¥ 62.0</span>
                     <button class="sub" @click="sub($event)"></button>
@@ -26,10 +26,10 @@
               <li>
                 <div class="line"></div>
                 <div @click="change2($event)">
-                  <img src="../../assets/no.jpg" alt="#" class="no2">
-                  <img src="../../assets/yes.jpg" alt="#" class="yes2">
+                  <img src="./img/no.jpg" alt="#" class="no2">
+                  <img src="./img/yes.jpg" alt="#" class="yes2">
                 </div>
-                <img src="../../assets/wine22.jpg" alt="#">
+                <img src="./img/wine22.jpg" alt="#">
                 <span class="name">拉菲传说波尔多红葡萄酒</span>
                 <span class="price">¥ 62.0</span>
                 <button class="sub" @click="sub($event)"></button>
@@ -39,10 +39,10 @@
               <li>
                 <div class="line"></div>
                 <div @click="change2($event)">
-                  <img src="../../assets/no.jpg" alt="#" class="no2">
-                  <img src="../../assets/yes.jpg" alt="#" class="yes2">
+                  <img src="./img/no.jpg" alt="#" class="no2">
+                  <img src="./img/yes.jpg" alt="#" class="yes2">
                 </div>
-                <img src="../../assets/wine22.jpg" alt="#">
+                <img src="./img/wine22.jpg" alt="#">
                 <span class="name">拉菲传说波尔多红葡萄酒</span>
                 <span class="price">¥ 62.0</span>
                 <button class="sub" @click="sub($event)"></button>
@@ -52,10 +52,10 @@
               <li>
                 <div class="line"></div>
                 <div @click="change2($event)">
-                  <img src="../../assets/no.jpg" alt="#" class="no2">
-                  <img src="../../assets/yes.jpg" alt="#" class="yes2">
+                  <img src="./img/no.jpg" alt="#" class="no2">
+                  <img src="./img/yes.jpg" alt="#" class="yes2">
                 </div>
-                <img src="../../assets/wine22.jpg" alt="#">
+                <img src="./img/wine22.jpg" alt="#">
                 <span class="name">拉菲传说波尔多红葡萄酒</span>
                 <span class="price">¥ 62.0</span>
                 <button class="sub" @click="sub($event)"></button>
@@ -66,15 +66,15 @@
             <div style="width: 750px; height: 165px;"></div>
             <div class="bottom1">
               <div @click="change3($event)">
-                <img src="../../assets/no.jpg" alt="#" class="all-no">
-                <img src="../../assets/yes.jpg" alt="#" class="all-yes">
+                <img src="./img/no.jpg" alt="#" class="all-no">
+                <img src="./img/yes.jpg" alt="#" class="all-yes">
                 <span class="all">全选</span>
               </div>
               <button class="del" @click="cancel($event)">{{del}}</button>
             </div>
             <footer>
               <bottom></bottom>
-              <img src="../../assets/shop_1.jpg" alt="#" class="shop_1">
+              <img src="./img/shop_1.jpg" alt="#" class="shop_1">
             </footer>
         </section>
     </div>
@@ -299,7 +299,7 @@ export default {
     height: 50px;
     border: 0;
     outline: none;
-    background-image: url(../../assets/sub.jpg);
+    background-image: url(./img/sub.jpg);
     position: absolute;
     top: 240px;
     left: 250px;
@@ -309,7 +309,7 @@ export default {
     height: 50px;
     border: 0;
     outline: none;
-    background-image: url(../../assets/add.jpg);
+    background-image: url(./img/add.jpg);
     position: absolute;
     top: 240px;
     left: 400px;

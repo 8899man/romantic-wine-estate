@@ -4,29 +4,29 @@
         <header class="head">
             <span class="title"><b>{{title}}</b></span>
             <a href="#" @click="redact" v-bind="bOn">{{write}}</a>
-            <img src="../../assets/icon13.png" alt="#" @click="rel">
+            <img src="./img/icon13.png" alt="#" @click="rel">
         </header>
         <ul class="list" ref="goods">
             <li>
-              <img src="../../assets/delete.png" alt="#" @click="deleteGood($event)">
+              <img src="./img/delete.png" alt="#" @click="deleteGood($event)">
               <div class="goods" v-bind:class="className">
-                  <img src="../../assets/wine33.jpg" alt="#">
+                  <img src="./img/wine33.jpg" alt="#">
                   <span class="wine-name"><b>奔富138西粒子歌海螺幕合怀特干红...</b></span>
                   <span class="wine-price">￥ 279.00</span>
               </div>
             </li>
             <li>
-              <img src="../../assets/delete.png" alt="#" @click="deleteGood($event)">
+              <img src="./img/delete.png" alt="#" @click="deleteGood($event)">
               <div class="goods" v-bind:class="className">
-                  <img src="../../assets/wine33.jpg" alt="#">
+                  <img src="./img/wine33.jpg" alt="#">
                   <span class="wine-name"><b>奔富138西粒子歌海螺幕合怀特干红...</b></span>
                   <span class="wine-price">￥ 280.00</span>
               </div>
             </li>
             <li>
-              <img src="../../assets/delete.png" alt="#" @click="deleteGood($event)">
+              <img src="./img/delete.png" alt="#" @click="deleteGood($event)">
               <div class="goods" v-bind:class="className">
-                  <img src="../../assets/wine33.jpg" alt="#">
+                  <img src="./img/wine33.jpg" alt="#">
                   <span class="wine-name"><b>奔富138西粒子歌海螺幕合怀特干红...</b></span>
                   <span class="wine-price">￥ 281.00</span>
               </div>

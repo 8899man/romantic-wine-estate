@@ -4,32 +4,32 @@
         <header class="head">
             <span><b>{{title}}</b></span>
         </header>
-        <img src="../../assets/shopping.jpg" alt="#" class="shop">
+        <img src="./img/shopping.jpg" alt="#" class="shop">
         <p class="tip">你的购物车内还没有商品哦</p>
         <div class="your-like">
-          <img src="../../assets/line.jpg" alt="#" class="left">
+          <img src="./img/line.jpg" alt="#" class="left">
           <span class="like">猜你喜欢</span>
-          <img src="../../assets/line.jpg" alt="#" class="right">
+          <img src="./img/line.jpg" alt="#" class="right">
         </div>
         <ul class="goods">
            <li>
-              <img src="../../assets/wine11.jpg" alt="#">
+              <img src="./img/wine11.jpg" alt="#">
               <span class="name">傲葡山庄干红葡萄酒</span>
               <span class="price">¥ 398.0</span>
            </li>
            <li>
-              <img src="../../assets/wine11.jpg" alt="#">
+              <img src="./img/wine11.jpg" alt="#">
               <span class="name">傲葡山庄干红葡萄酒</span>
               <span class="price">¥ 398.0</span>
            </li>
         </ul>
         <bottom></bottom>
-        <img src="../../assets/shop_1.jpg" alt="#" class="shop_1">
+        <img src="./img/shop_1.jpg" alt="#" class="shop_1">
     </div>
 </template>
 
 <script>
-  import bottom from '../bottom/bottom.vue'
+import bottom from '../bottom/bottom.vue'
 export default {
   components: {bottom},
   data () {
