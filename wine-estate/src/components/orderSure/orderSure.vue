@@ -7,8 +7,8 @@
     </section>
     <section class="order-confirm">
       <ul class="order-message">
-        <li id="name"><img src="../../assets/people.jpg" height="34" width="30"/></li>
-        <li id="phone"><img src="../../assets/phone.jpg" height="34" width="20"/></li>
+        <li id="name"><img src="img/people.jpg" height="34" width="30"/></li>
+        <li id="phone"><img src="img/phone.jpg" height="34" width="20"/></li>
         <li id="address"></li>
       </ul>
       <ul class="good clearfix">

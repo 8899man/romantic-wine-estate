@@ -6,7 +6,7 @@
       <span>订单详情</span>
     </section>
     <section class="order-details">
-      <img src="../../assets/wineback.jpg" alt="">
+      <img src="img/wineback.jpg" alt="">
       <div class="message">
         <div  class="people clearfix">
           <div class="name">收货人: <span></span></div>

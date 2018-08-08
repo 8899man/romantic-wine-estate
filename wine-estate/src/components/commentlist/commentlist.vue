@@ -18,8 +18,8 @@
           <span>sda</span>
             <img src="" alt="" width="330px" height="330px">
           <div class="view clearfix">
-            <button><img src="../../assets/addcomment.jpg" height="33" width="34"/>评论</button>
-            <button><img src="../../assets/like.jpg" height="33" width="34"/>0</button>
+            <button><img src="img/addcomment.jpg" height="33" width="34"/>评论</button>
+            <button><img src="img/like.jpg" height="33" width="34"/>0</button>
           </div>
         </div>
       </div>

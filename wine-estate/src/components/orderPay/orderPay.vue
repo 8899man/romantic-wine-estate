@@ -2,10 +2,10 @@
   <div class="main">
     <div id="top"></div>
     <div class="back">
-      <img src="../../assets/payback.jpg" height="532" width="750"/>
+      <img src="img/payback.jpg" height="532" width="750"/>
     </div>
     <section class="head clearfix" >
-      <img src="../../assets/icon22.jpg" width="39" height="52">
+      <img src="img/icon22.jpg" width="39" height="52">
       <span>我的订单</span>
     </section>
     <section class="pay-way">
@@ -13,12 +13,12 @@
       <div id="message">账号</div>
       <ul>
         <li @click="changeicon1">
-          <img src="../../assets/beforeicon.jpg" height="42" width="42" v-show="downIcon"/>
-          <img src="../../assets/chooseicon.jpg" height="42" width="42" v-show="!downIcon"/>
+          <img src="img/beforeicon.jpg" height="42" width="42" v-show="downIcon"/>
+          <img src="img/chooseicon.jpg" height="42" width="42" v-show="!downIcon"/>
           &nbsp &nbsp 支付宝付款</li>
         <li @click="changeicon2">
-          <img src="../../assets/beforeicon.jpg" height="42" width="42" v-show="!downIcon"/>
-          <img src="../../assets/chooseicon.jpg" height="42" width="42" v-show="downIcon"/>
+          <img src="img/beforeicon.jpg" height="42" width="42" v-show="!downIcon"/>
+          <img src="img/chooseicon.jpg" height="42" width="42" v-show="downIcon"/>
           &nbsp &nbsp 微信付款</li>
       </ul>
 

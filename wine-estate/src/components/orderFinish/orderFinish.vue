@@ -19,7 +19,7 @@
     </section>
     <footer>
       <bottom></bottom>
-      <img src="../../assets/shop_1.jpg" height="86" width="71" id="shop_1"/></footer>
+      <img src="img/shop_1.jpg" height="86" width="71" id="shop_1"/></footer>
   </div>
 </template>
 
