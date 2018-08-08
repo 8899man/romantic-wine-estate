@@ -55,7 +55,7 @@
 </template>
 
 <script>
-    import bottom from '../bottom.vue'
+    import bottom from '../bottom/bottom.vue'
     export default {
         name: "accountPage",
         components:{bottom},
