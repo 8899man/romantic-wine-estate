@@ -202,7 +202,7 @@ export default {
   }
   .nav{
     position:fixed;
-    left:700px;
+    left:620px;
     bottom:12px;
   }
 </style>

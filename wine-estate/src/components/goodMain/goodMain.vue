@@ -446,7 +446,7 @@ export default {
   }
   .first{
     position:fixed;
-    left:500px;
+    left:424px;
     bottom:14px;
   }
 </style>

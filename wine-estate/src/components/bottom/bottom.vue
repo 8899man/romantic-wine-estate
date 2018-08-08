@@ -1,16 +1,16 @@
 <template>
   <div class="bottom">
     <div class="first" @click="re1">
-      <img src="../../assets/first_0.jpg" height="77" width="73" alt="#" class="first_0"/>
+      <img src="./img/first_0.jpg" height="77" width="73" alt="#" class="first_0"/>
     </div>
     <div class="nav" @click="re2">
-      <img src="../../assets/nav_0.jpg" alt="#" class="nav_0">
+      <img src="./img/nav_0.jpg" alt="#" class="nav_0">
     </div>
     <div class="shop" @click="re3">
-      <img src="../../assets/shop_0.jpg" alt="#" class="shop_0">
+      <img src="./img/shop_0.jpg" alt="#" class="shop_0">
     </div>
     <div class="my" @click="re4">
-      <img src="../../assets/my_0.jpg" alt="#" class="my_0">
+      <img src="./img/my_0.jpg" alt="#" class="my_0">
     </div>
   </div>
 </template>
