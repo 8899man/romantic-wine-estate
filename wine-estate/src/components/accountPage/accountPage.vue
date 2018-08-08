@@ -3,26 +3,26 @@
       <header>
         <span>{{title}}</span>
         <img src="./img/head.png" height="130" width="130" class="head" alt="图片不见了哦~"/>
-        <a href="#" @click="routermorePage"><img src="./img/settings.png" height="66" width="66" alt="图片不见了哦~"/></a>
-        <a href="#" @click="routerinformationPage"><img src="./img/return4.png" height="44" width="26" alt="图片不见了哦~"/></a>
+        <img src="./img/settings.png" height="66" width="66" alt="图片不见了哦~" @click="routermorePage"/>
+        <img src="./img/return4.png" height="44" width="26" alt="图片不见了哦~" @click="routerinformationPage"/>
         <p>{{myName}}</p>
       </header>
       <main>
           <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" id="myOrder" class="order">
-            <span>我的订单</span>
+            <span @click="routerallorders">我的订单</span>
             <span>查看全部标签</span>
             <img src="./img/return3.png" height="26" width="16" alt="图片不见了哦~"/>
           </div>
           <div class="menu">
-            <span>
+            <span @click="routerallorders">
               <img src="./img/button1-4.png" height="73" width="73" alt="图片不见了哦~"/>
               <p>待付款</p>
             </span>
-            <span>
+            <span @click="routerallorders">
               <img src="./img/button2-4.png" height="73" width="73" alt="图片不见了哦~"/>
               <p>待收货</p>
             </span>
-            <span>
+            <span @click="routerallorders">
               <img src="./img/button3-4.png" height="73" width="73" alt="图片不见了哦~"/>
               <p>待评价</p>
             </span>
@@ -89,6 +89,11 @@
            this.$router.push({
               path: '/informationPage'
             })
+        },
+        routerallorders(){
+          this.$router.push({
+              path: '/allorders'
+          })
         }
       } 
     }
@@ -100,10 +105,10 @@
 header{width: 750px; height: 305px; background-image:url("./img/banner.jpg"); position:relative;
   border-bottom:1px #b06e70 solid;}
 header span{font-size:28px; color:#fff; position:absolute; top:50px; left:34px; cursor:default;}
-header .head{position:absolute; top:100px; left:310px; cursor:default;}
-header a:nth-of-type(1){width:66px; height:66px; position:absolute; top:38px; right:13px; cursor:pointer;
+header .head{position:absolute; top:100px; left:310px; cursor:default; border:3px #fff solid; border-radius:50%;}
+header img:nth-of-type(2){width:66px; height:66px; position:absolute; top:38px; right:13px; cursor:pointer;
   display:block; line-height:0px;}
-header a:nth-of-type(2){width:26px; height:44px; position:absolute; top:144px; right:24px; cursor:pointer;
+header img:nth-of-type(3){width:26px; height:44px; position:absolute; top:144px; right:24px; cursor:pointer;
   display:block; line-height:0px;}
 header p{width:100%;position:absolute; top:226px; font-size:26px; color:#fff; text-align:center;
   cursor:default;}

@@ -2,7 +2,7 @@
   <div id="app">
     <header>
         <span>{{title}}</span>
-        <a href="#" @click="routergoodMain"><img src="./img/back.png" height="52" width="30" alt="图片不见了哦~"/></a>
+        <img src="./img/back.png" height="52" width="30" alt="图片不见了哦~" @click="routergoodMain">
     </header>
     <main>
         <img src="./img/logo.png" height="202" width="200" class="logo" alt="图片不见了哦~"/>
@@ -126,7 +126,7 @@ export default {
 /*页面banner部分*/
 header{width:750px; height:130px; background-color: #bb3337; position: relative;}
 header span{font-size:30px; color:#fff; position: absolute; top:61px; left:346px; cursor:default;}
-header a{width:24px; height:68px; position: absolute; top:49px; left:17px; cursor:pointer; display:block;
+header img{width:24px; height:68px; position: absolute; top:49px; left:17px; cursor:pointer; display:block;
   line-height:0px;}
 /*页面主体部分*/
 main{position:relative;}

@@ -2,7 +2,7 @@
   <div id="app">
     <header>
       <span>{{title}}</span>
-      <a @click="routermorePage"><img src="./img/back.png" height="43" width="25" alt="图片不见了哦~"/></a>
+      <img src="./img/back.png" height="43" width="25" alt="图片不见了哦~" @click="routermorePage"/>
       <a href="#" id="submit" @click="refer">提交</a>
     </header>
     <main>
@@ -80,12 +80,11 @@ export default {
 /*页面banner部分*/
 header{width:750px; height:130px; background-color: #cd2131; position:relative;}
 header span{font-size:30px; color:#fff; position:absolute; top:64px; left:295px; cursor:default;}
-header a:nth-of-type(1){width:26px; height:43px; position:absolute; top:64px; left:20px; cursor:pointer;}
-header a:nth-of-type(2){position:absolute; top:68px; right:49px; cursor:pointer; font-size:24px;
+header img{width:26px; height:43px; position:absolute; top:64px; left:20px; cursor:pointer;}
+header a{position:absolute; top:68px; right:49px; cursor:pointer; font-size:24px;
   color:#d63f4b;}  
 a:link,a:visited,a:hover,a:active{
   text-decoration: none;
-  color:inherit;
 }    
 /*页面主体部分*/
 main{position:relative; padding-top:38px;}

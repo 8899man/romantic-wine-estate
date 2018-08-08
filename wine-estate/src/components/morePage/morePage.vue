@@ -2,7 +2,7 @@
     <div id="app">
      <header>
         <span>{{title}}</span>
-        <a href="#" @click="routeraccountPage"><img src="./img/back.png" height="43" width="25" alt="图片不见了哦~"/></a>
+        <img src="./img/back.png" height="43" width="25" alt="图片不见了哦~" @click="routeraccountPage"/>
      </header>
      <main>
         <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="routerfeedbackPage">
@@ -80,7 +80,7 @@ export default {
 /*页面banner部分*/
 header{width:750px; height:130px; background-color: #bb3337; position:relative;}
 header span{font-size:30px; color:#fff; position:absolute; top:60px; left:340px; cursor:default;}
-header a{width:26px; height:43px; position:absolute; top:58px; left:27px; cursor:pointer; display:block;}
+header img{width:26px; height:43px; position:absolute; top:58px; left:27px; cursor:pointer; display:block;}
 /*页面主体部分*/
 main{position:relative;}
 main div:nth-of-type(1){width:750px; height:83px; background-color:#fff;
