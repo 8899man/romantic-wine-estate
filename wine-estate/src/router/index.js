@@ -11,6 +11,7 @@ import orderFinish from '@/components/orderFinish/orderFinish'
 import orderPay from '@/components/orderPay/orderPay'
 import commentlist from '@/components/commentlist/commentlist'
 import bottom from '@/components/bottom/bottom'
+import addcomment from '@/components/addcomment/addcomment'
 
 Vue.use(Router)
 
@@ -70,6 +71,13 @@ export default new Router({
       path: '/bottom',
       name: 'bottom',
       component: bottom
+    },
+    {
+      path: '/addcomment',
+      name: 'addcomment',
+      component: addcomment
     }
+
+
   ]
 })
