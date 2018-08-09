@@ -28,9 +28,9 @@
 </template>
 
 <script>
-    export default {
-        name: "commentlist"
-    }
+export default {
+  name: 'commentlist'
+}
 </script>
 
 <style scoped>

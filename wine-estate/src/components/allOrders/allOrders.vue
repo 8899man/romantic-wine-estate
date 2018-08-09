@@ -22,50 +22,43 @@
         </div>
       </div>
     </section>
-    <section class="all-price"><span >共一件商品&nbsp合计:&yen19.90（含运费&yen0.00）</span></section>
+    <section class="all-price"><span > 共一件商品&nbsp合计:&yen19.90（含运费&yen0.00</span></section>
   </div>
 </template>
 
 <script>
-  export default{
-    data(){
-      return {
-
-      }
+export default{
+  data () {
+    return {
+    }
+  },
+  methods: {
+    toBack () {
+      this.$router.go(-1)
     },
-    methods : {
-      toBack(){
-        this.$router.go(-1)
-      },
-      allorders:function () {
-        this.$router.push({
-          path:'/allOrders'
-        })
-
-      },
-      forevaluate:function () {
-        this.$router.push({
-          path:'/forEvaluate'
-        })
-
-      },
-      forgoods:function () {
-        this.$router.push({
-          path:'/forGoods'
-        })
-
-      },
-      obligation:function () {
-        this.$router.push({
-          path:'/obliGation'
-        })
-
-      },
-
+    allorders: function () {
+      this.$router.push({
+        path: '/allOrders'
+      })
+    },
+    forevaluate: function () {
+      this.$router.push({
+        path: '/forEvaluate'
+      })
+    },
+    forgoods: function () {
+      this.$router.push({
+        path: '/forGoods'
+      })
+    },
+    obligation: function () {
+      this.$router.push({
+        path: '/obliGation'
+      })
 
     }
-
   }
+}
 </script>
 
 <style scoped>

@@ -21,8 +21,6 @@
           <img src="img/chooseicon.jpg" height="42" width="42" v-show="downIcon"/>
           &nbsp &nbsp 微信付款</li>
       </ul>
-
-
     </section>
     <section class="pay">
       <input @click="orderpay" type="button" value="立即付款">
@@ -31,30 +29,26 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {
-        downIcon: true,
-
-      }
-    },
-    methods: {
-      changeicon1() {
-        this.downIcon = !this.downIcon
-      },
-      changeicon2() {
-        this.downIcon = !this.downIcon
-      },
-      orderpay: function(){
-        this.$router.push({
-          path:'/orderPay'
-        })
-      }
-
+export default {
+  data () {
+    return {
+      downIcon: true
     }
-
-
+  },
+  methods: {
+    changeicon1 () {
+      this.downIcon = !this.downIcon
+    },
+    changeicon2 () {
+      this.downIcon = !this.downIcon
+    },
+    orderpay: function () {
+      this.$router.push({
+        path: '/orderPay'
+      })
+    }
   }
+}
 </script>
 
 <style scoped>

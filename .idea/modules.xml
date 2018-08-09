@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectModuleManager">
@@ -6,7 +6,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/romantic-wine-estate.iml" filepath="$PROJECT_DIR$/.idea/romantic-wine-estate.iml" />
     </modules>
   </component>
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ProjectModuleManager">
@@ -14,5 +13,8 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/romantic-Wine-estate.iml" filepath="$PROJECT_DIR$/.idea/romantic-Wine-estate.iml" />
     </modules>
   </component>
->>>>>>> f16f5c805bc88c26b632be2f8f5b6b2edbdc20ac
+      <module fileurl="file://$PROJECT_DIR$/.idea/romantic-wine-estate.iml" filepath="$PROJECT_DIR$/.idea/romantic-wine-estate.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/romantic-wine-estate.iml" filepath="$PROJECT_DIR$/.idea/romantic-wine-estate.iml" />
+    </modules>
+  </component>
 </project>

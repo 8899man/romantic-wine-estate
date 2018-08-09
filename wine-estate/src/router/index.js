@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
+
 import allOrders from '@/components/allOrders/allOrders'
 import obliGation from '@/components/obliGation/obliGation'
 import forEvaluate from '@/components/forEvaluate/forEvaluate'
@@ -11,6 +12,14 @@ import orderFinish from '@/components/orderFinish/orderFinish'
 import orderPay from '@/components/orderPay/orderPay'
 import commentlist from '@/components/commentlist/commentlist'
 
+import watchList from '@/components/watchList/watchList'
+import shoppingCart from '@/components/shoppingCart/shoppingCart'
+import logged from '@/components/logged/logged'
+
+import newAddress from '@/components/newAddress/newAddress'
+import addList from '@/components/addList/addList'
+import comment from '@/components/comment/comment'
+
 import goodList from '@/components/goodList/goodList'
 import goodSearch from '@/components/goodSearch/goodSearch'
 import goodClass from '@/components/goodClass/goodClass'
@@ -20,8 +29,8 @@ import Mint from 'mint-ui'
 
 import 'mint-ui/lib/style.css'
 
-Vue.use(Mint);
-Vue.use(Router);
+Vue.use(Mint)
+Vue.use(Router)
 import loginPage from '@/components/loginPage/loginPage'
 import registerPage from '@/components/registerPage/registerPage'
 import informationPage from '@/components/informationPage/informationPage'
@@ -34,7 +43,7 @@ import { Actionsheet } from 'mint-ui'
 import { Popup } from 'mint-ui'
 import { Picker } from 'mint-ui'
 import { MessageBox } from 'mint-ui'
-import { Toast } from 'mint-ui';
+import { Toast } from 'mint-ui'
 
 Vue.component(Toast.name, Toast)
 Vue.component(MessageBox.name, MessageBox)
@@ -153,6 +162,36 @@ export default new Router({
       path: '/bottom',
       name: 'bottom',
       component: bottom
+    },
+    {
+      path: '/watchList',
+      name: 'watchList',
+      component: watchList
+    },
+    {
+      path: '/shoppingCart',
+      name: 'shoppingCart',
+      component: shoppingCart
+    },
+    {
+      path: '/logged',
+      name: 'logged',
+      component: logged
+    },
+    {
+      path: '/newAddress',
+      name: newAddress,
+      component: newAddress
+    },
+    {
+      path: '/addList',
+      name: addList,
+      component: addList
+    },
+    {
+      path: '/comment',
+      name: comment,
+      component: comment
     }
   ]
 })
