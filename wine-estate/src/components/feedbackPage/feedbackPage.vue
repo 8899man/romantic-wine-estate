@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <span>{{title}}</span>
+      <span>意见反馈</span>
       <img src="./img/back.png" height="43" width="25" alt="图片不见了哦~" @click="routermorePage"/>
       <a href="#" id="submit" @click="refer">提交</a>
     </header>
@@ -25,7 +25,6 @@ export default {
     name: "feedbackPage",
     data(){
       return{
-        title:'意见反馈',
         warning:false
       }
     },
@@ -39,21 +38,17 @@ export default {
             if(!text1.test(this.connection)&&!text2.test(this.connection)){
               oa.style.color="#d63f4b"
               this.warning=true;
-              return false;
             }
             else{
               oa.style.color="#fff";
               this.warning=false;
-              return true;
             }
           }
           if(!this.connection){
             oa.style.color="#d63f4b";
-            return false;
           }
           if(!this.suggestion){
             oa.style.color="#d63f4b";
-            return false;
           }
         },
         //提交跳转
@@ -94,5 +89,5 @@ main textarea{width:709px; height:180px; border:none; display:block; font-size:1
 main p:nth-of-type(2){font-size:22px; color:#666666; position:absolute; left:20px;; top:310px; margin:0px; cursor:default;} 
 main form input{width:709px; height:71px; border:none; position:absolute; top:352px; left:20px;  box-sizing:border-box;
   padding-left:17px; font-size:16px;}
-main span{position:absolute; left:20px; top:435px; font-size:16px; color:#fb6b14}  
+main span{position:absolute; left:20px; top:435px; font-size:16px; color:#aa2834}  
 </style>

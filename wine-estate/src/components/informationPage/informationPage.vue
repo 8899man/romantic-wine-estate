@@ -1,7 +1,7 @@
 <template>
     <div id="app">
       <header>
-        <span>{{title}}</span>
+        <span>个人信息</span>
         <img src="./img/back.png" height="43" width="26" alt="图片不见了哦~" @click="routeraccountPage"/>
       </header>
       <main>
@@ -58,7 +58,6 @@ export default {
   name: "informationPage",
       data(){
         return{
-          title:'个人信息',
           name:'',
           //头像部分
           photo: [{
@@ -87,18 +86,7 @@ export default {
     getCamera: function(){
       console.log("打开照相机")
     },
-    getLibrary: function(divid){
-      plus.gallery.pick(function(p){
-          plus.io.resolveLocalFileSystemURL(p, function(entry) {
-            compressImage(entry.toLocalURL(),entry.name,divid);
-            },function(e){
-              plus.nativeUI.toast("读取拍照文件错误：" + e.message);
-            });
-      },function(e){
-      },{
-        filename: "_doc/camera/",
-        filter:"image"
-        });
+    getLibrary: function(){
     },
     //生日部分
     openPicker() {

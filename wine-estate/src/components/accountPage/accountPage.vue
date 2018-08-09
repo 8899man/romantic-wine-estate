@@ -1,15 +1,15 @@
 <template>
     <div id="app">
       <header>
-        <span>{{title}}</span>
+        <span>我的账户</span>
         <img src="./img/head.png" height="130" width="130" class="head" alt="图片不见了哦~"/>
         <img src="./img/settings.png" height="66" width="66" alt="图片不见了哦~" @click="routermorePage"/>
         <img src="./img/return4.png" height="44" width="26" alt="图片不见了哦~" @click="routerinformationPage"/>
         <p>{{myName}}</p>
       </header>
       <main>
-          <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" id="myOrder" class="order">
-            <span @click="routerallorders">我的订单</span>
+          <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="routerallorders" id="myOrder" class="order">
+            <span>我的订单</span>
             <span>查看全部标签</span>
             <img src="./img/return3.png" height="26" width="16" alt="图片不见了哦~"/>
           </div>
@@ -61,7 +61,6 @@
         components:{bottom},
         data(){
           return{
-            title:'我的账户',
             myName:'',
             warehouse:'0',
             evaluate:'0',
