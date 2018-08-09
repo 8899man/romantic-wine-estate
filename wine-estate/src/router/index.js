@@ -29,8 +29,8 @@ import Mint from 'mint-ui'
 
 import 'mint-ui/lib/style.css'
 
-Vue.use(Mint);
-Vue.use(Router);
+Vue.use(Mint)
+Vue.use(Router)
 import loginPage from '@/components/loginPage/loginPage'
 import registerPage from '@/components/registerPage/registerPage'
 import informationPage from '@/components/informationPage/informationPage'
@@ -43,15 +43,15 @@ import { Actionsheet } from 'mint-ui'
 import { Popup } from 'mint-ui'
 import { Picker } from 'mint-ui'
 import { MessageBox } from 'mint-ui'
-import { Toast } from 'mint-ui';
+import { Toast } from 'mint-ui'
 
-Vue.component(Toast.name, Toast);
-Vue.component(MessageBox.name, MessageBox);
-Vue.component(Picker.name, Picker);
-Vue.component(Popup.name, Popup);
-Vue.component(Actionsheet.name, Actionsheet);
-Vue.component(DatetimePicker.name, DatetimePicker);
-Vue.use(Router);
+Vue.component(Toast.name, Toast)
+Vue.component(MessageBox.name, MessageBox)
+Vue.component(Picker.name, Picker)
+Vue.component(Popup.name, Popup)
+Vue.component(Actionsheet.name, Actionsheet)
+Vue.component(DatetimePicker.name, DatetimePicker)
+Vue.use(Router)
 
 export default new Router({
   routes: [

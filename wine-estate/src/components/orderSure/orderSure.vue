@@ -21,11 +21,11 @@
       </ul>
       <ul class="good-price clearfix">
         <li class="grayword">商品总额</li>
-        <li class="redword">&yen</li>
+        <li class="redword">& yen</li>
       </ul>
       <ul class="express-price clearfix">
         <li  class="grayword">运费</li>
-        <li class="redword">&yen</li>
+        <li class="redword">& yen</li>
       </ul>
       <ul class="pay-way clearfix">
         <li class="grayword">支付方式</li>
@@ -33,7 +33,9 @@
       </ul>
     </section>
     <section class="submit">
+      <ul>
       <li class="grayword">合计：</li>
+      </ul>
      <input type="button" value="提交订单">
     </section>
   </div>

@@ -59,8 +59,8 @@ export default {
         this.className.change = false
       }
     },
-    deleteGood(event) {
-      const oLi = event.currentTarget.parentNode;
+    deleteGood (event) {
+      const oLi = event.currentTarget.parentNode
       this.$refs.goods.removeChild(oLi)
     },
     rel () {
