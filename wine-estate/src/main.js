@@ -7,9 +7,9 @@ import router from './router'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 
-Vue.use(VueRouter)
-Vue.use(MintUI)
-Vue.config.productionTip = false
+Vue.use(VueRouter);
+Vue.use(MintUI);
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
@@ -17,4 +17,4 @@ new Vue({
   router,
   components: { App },
   template: '<App/>'
-})
+});

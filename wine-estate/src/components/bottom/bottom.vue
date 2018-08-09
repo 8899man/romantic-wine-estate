@@ -1,7 +1,7 @@
 <template>
   <div class="bottom">
     <div class="first" @click="re1">
-      <img src="./img/first_0.jpg" height="77" width="73" alt="#" class="first_0"/>
+       <img src="./img/first_0.jpg" alt="#" class="first_0">
     </div>
     <div class="nav" @click="re2">
       <img src="./img/nav_0.jpg" alt="#" class="nav_0">

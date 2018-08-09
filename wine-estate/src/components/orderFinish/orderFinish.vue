@@ -24,11 +24,11 @@
 </template>
 
 <script>
-  import bottom from '../bottom/bottom.vue'
-  export default {
-    components:{bottom},
-    name: "orderFinish"
-  }
+import bottom from '../bottom/bottom.vue'
+export default {
+  components: {bottom},
+  name: 'orderFinish'
+}
 </script>
 
 <style scoped>

@@ -366,7 +366,6 @@ export default {
     padding-left:40px;
   }
   .mx{
-    z-index:2;
     position:absolute;
     top:0px;
     right:0px;
