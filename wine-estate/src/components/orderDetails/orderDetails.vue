@@ -6,7 +6,7 @@
       <span>订单详情</span>
     </section>
     <section class="order-details">
-      <img src="img/wineback.jpg" alt="">
+      <img src="./img/wineback.jpg" alt="">
       <div class="message">
         <div  class="people clearfix">
           <div class="name">收货人: <span></span></div>
@@ -17,11 +17,19 @@
       <div class="good"></div>
       <div class="train-price"><span>运费</span></div>
       <div class="all-price"><span>实付款</span></div>
+      <ul class="order-message">
+        <li>订单编号 <span></span></li>
+        <li>创建时间 <span></span></li>
+        <li>付款时间 <span></span></li>
+        <li>发货时间 <span></span></li>
+        <li>成交时间 <span></span></li>
+      </ul>
     </section>
     <section class="forpay">
       <input type="button" value="取消订单" id="no-order">
       <input @click="orderpay" type="button" value="付款" id="pay-m">
     </section>
+
   </div>
 </template>
 
@@ -57,21 +65,22 @@
     background: #bb3437;
     width:750px;
     margin: 0 auto;
-    padding: 18px 0px 18px 17px;
+    padding: 18px 0 18px 17px;
     position:relative;
     }
   .head img{
     float: left}
   .head span{
     font-size: 37px;
-    color: #fff;position:absolute;
+    color: #fff;
+    position:absolute;
     top:0;left:0;right:0;bottom:0;
     margin-top: 18px;}
   .order-details{
     width: 750px;
     margin: 0 auto;
     background: #f4f4f4;
-    padding-bottom: 180px;
+
   }
   .message{
     padding: 23px 24px 63px 30px;
@@ -147,6 +156,14 @@
     border-radius: 40%;
     border: 2px solid #bb3437;
     color:#bb3437;
+  }
+  .order-message{
+    margin-top: 20px;
+    background: #fff;
+    text-align: left;
+    padding-left:30px;
+    font-size: 20px;
+    
   }
 
 </style>
