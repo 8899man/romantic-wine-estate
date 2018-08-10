@@ -42,13 +42,13 @@
 </template>
 
 <script>
-  export default {
-    data() {
-      return {}
-    },
-    methods: {
-      toBack() {
-        this.$router.go(-1)
+export default {
+  data() {
+  return {}
+ },
+methods: {
+toBack() {
+this.$router.go(-1)
       },
       orderfinish: function () {
         this.$router.push({
@@ -61,7 +61,7 @@
 </script>
 
 <style scoped>
-  @import url(../../style/common.css);
+  @import url(../../style/common1.css);
   .main{margin: 0 auto;}
   .top{
     height: 40px;

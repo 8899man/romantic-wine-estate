@@ -73,7 +73,7 @@ export default {
 </script>
 
 <style>
-  @import url(../../style/common.css);
+  @import url(../../style/common1.css);
   .watch-list{
     width: 750px;
     height: 1334px;

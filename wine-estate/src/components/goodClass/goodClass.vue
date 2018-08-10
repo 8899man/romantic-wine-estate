@@ -53,12 +53,12 @@
       <div class="hontiao"></div>
       <p>价格</p>
       <ul>
-        <li>1-499元</li>
-        <li>500-999元</li>
-        <li>1000-1499元</li>
-        <li>1500-1999元</li>
-        <li>2000-2499元</li>
-        <li>2500+元</li>
+        <li>1-99元</li>
+        <li>100-199元</li>
+        <li>200-299元</li>
+        <li>300-399元</li>
+        <li>400-499元</li>
+        <li>500-5000元</li>
       </ul>
     </div>
       <bottom></bottom>
@@ -87,10 +87,7 @@ export default {
   a{text-decoration:none;
     }
   .gdclass{width:750px;
-    margin-top:0px;
-    margin-bottom:80px;
-    margin-left:auto;
-    margin-right:auto;
+    margin:0px auto 80px;
     padding:0px;
     background-color:#EBEBEB;}
   .hontiao{
@@ -141,7 +138,6 @@ export default {
     font-size:24px;
     line-height:60px;
     text-align:left;
-    padding-left:20px;
     margin:0px;
   }
   .gdckg{
@@ -157,7 +153,6 @@ export default {
     font-size:24px;
     line-height:60px;
     text-align:left;
-    padding-left:20px;
     margin:0px;
   }
   ul li{
@@ -177,6 +172,9 @@ export default {
  li:hover{
     background-color:#666;
     font-size:40px;}
+ li:active{
+   background-color:#d02131;
+ }
  a:visited{
    color:#9F9F9F;
    text-decoration:none;

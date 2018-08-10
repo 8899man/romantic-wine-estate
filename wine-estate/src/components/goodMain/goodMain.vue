@@ -30,6 +30,15 @@
           </mt-swipe-item>
         </mt-swipe>
       </div>
+      <div class="intro">
+        <h2>关于葡萄酒</h2>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;葡萄酒是具有多种营养成分的酒精饮料.
+        适度饮用葡萄酒能直接对人体的神经系统产生作用，提高肌肉的张度.
+        除此之外，葡萄酒中含有的多种氨基酸、矿物质和维生素等，能直接被人体吸收.
+        因此葡萄酒能对维持和调节人体的生理机能起到良好的作用.
+        尤其对身体虚弱、患有睡眠障碍者及老年人的效果更好.
+        可以说葡萄酒是一个良好的滋补品.
+      </div>
       <!--1F可隐藏的静态图,轮播图及按钮部分-->
       <div class="mfirst">
         <!--1F按钮部分-->
@@ -192,7 +201,6 @@
       <div v-show="exis2" class="gdetaillbt">
         <mt-swipe :auto="2000">
           <mt-swipe-item >
-
             <img src="./img/wine.png" alt="图片不见了"/>
           </mt-swipe-item>
           <mt-swipe-item >
@@ -216,12 +224,10 @@
             <img src="./img/mainjtt.png" alt="图片不见了">
           </div>
           <div class="mainjtc">
-            <router-link to="goodDetail">
             <p>额问题官方网</p>
             <p></p>
             <p>销量: 3652</p>
             <p>&yen: 666</p>
-            </router-link>
           </div>
         </div>
         <div class="mainjta">
@@ -284,8 +290,9 @@
           </div>
         </div>
       </div>
-      <bottom></bottom>
-        <img src="./img/first.jpg" class="first" alt="首页图标不见了">
+      <bottom>
+      </bottom>
+      <img src="./img/first.jpg" class="first" alt="首页图标不见了">
     </div>
 </template>
 
@@ -377,6 +384,19 @@ export default {
     margin:0px;
     padding:0px;
   }
+  .intro{
+    background-color:#ccc;
+    color:#fff;
+    width:710px;
+    height:230px;
+    margin:0px;
+    padding:20px;
+    font-size:20px;
+    text-align:left;
+  }
+  .intro h2{
+    text-align:center;
+  }
   .mainjt{
     width:750px;
     height:412px;
@@ -415,7 +435,7 @@ export default {
   }
   p:nth-child(4){
     color:#f00;
-    font-size:50px;
+    font-size:30px;
   }
   .butt{
      width:580px;
@@ -445,7 +465,7 @@ export default {
   }
   .first{
     position:fixed;
-    left:424px;
-    bottom:14px;
+    left:420px;
+    bottom:13px;
   }
 </style>

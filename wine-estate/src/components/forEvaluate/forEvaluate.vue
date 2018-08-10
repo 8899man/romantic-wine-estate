@@ -74,8 +74,8 @@ export default {
   }
 </script>
 
-<style scoped>
-  @import url(../../style/common.css);
+<style>
+  @import url(../../style/common1.css);
   .main{margin: 0 auto;}
   .top{
     height: 40px;
