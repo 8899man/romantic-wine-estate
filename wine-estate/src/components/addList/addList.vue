@@ -3,31 +3,31 @@
         <header>
             <span class="title">{{title}}</span>
             <div class="last" @click="lastPage">
-                <img src="../../assets/icon13.png" alt="#">
+                <img src="./img/icon13.png" alt="#">
             </div>
             <a href="#" @click="creatAdd">{{newadd}}</a>
         </header>
         <ul class="list">
             <li>
-                <img src="../../assets/cut.jpg" alt="#" class="cut" @click="deleteAdd($event)">
+                <img src="./img/cut.jpg" alt="#" class="cut" @click="deleteAdd($event)">
                 <div class="line"></div>
                 <span class="name">{{name}}</span>
                 <span class="phone">{{phone}}</span>
                 <span class="add1">{{add1}}</span>
                 <span class="add2">{{add2}}</span>
                 <router-link to="newAddress">
-                  <img src="../../assets/creat.jpg" alt="#" class="creat">
+                  <img src="./img/creat.jpg" alt="#" class="creat">
                 </router-link>
             </li>
             <li>
-              <img src="../../assets/cut.jpg" alt="#" class="cut" @click="deleteAdd($event)">
+              <img src="./img/cut.jpg" alt="#" class="cut" @click="deleteAdd($event)">
               <div class="line"></div>
               <span class="name">{{name}}</span>
               <span class="phone">{{phone}}</span>
               <span class="add1">{{add1}}</span>
               <span class="add2">{{add2}}</span>
               <router-link to="newAddress">
-                <img src="../../assets/creat.jpg" alt="#" class="creat">
+                <img src="./img/creat.jpg" alt="#" class="creat">
               </router-link>
             </li>
         </ul>
