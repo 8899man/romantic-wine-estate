@@ -10,6 +10,7 @@
       <img src="./img/shop_0.jpg" alt="#" class="shop_0">
     </div>
     <div class="my" @click="re4">
+      <img src="../../assets/my_1.jpg" alt="#" class="my_0">
       <img src="./img/my_0.jpg" alt="#" class="my_0">
     </div>
   </div>

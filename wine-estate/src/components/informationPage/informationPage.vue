@@ -1,8 +1,8 @@
 <template>
     <div id="app">
       <header>
-        <span>{{title}}</span>
-        <a href="#" @click="routeraccountPage"><img src="./img/back.png" height="43" width="26" alt="图片不见了哦~"/></a>
+        <span>个人信息</span>
+        <img src="./img/back.png" height="43" width="26" alt="图片不见了哦~" @click="routeraccountPage"/>
       </header>
       <main>
         <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="actionSheet">
@@ -58,7 +58,6 @@ export default {
   name: "informationPage",
       data(){
         return{
-          title:'个人信息',
           name:'',
           //头像部分
           photo: [{
@@ -87,18 +86,7 @@ export default {
     getCamera: function(){
       console.log("打开照相机")
     },
-    getLibrary: function(divid){
-      plus.gallery.pick(function(p){
-          plus.io.resolveLocalFileSystemURL(p, function(entry) {
-            compressImage(entry.toLocalURL(),entry.name,divid);
-            },function(e){
-              plus.nativeUI.toast("读取拍照文件错误：" + e.message);
-            });
-      },function(e){
-      },{
-        filename: "_doc/camera/",
-        filter:"image"
-        });
+    getLibrary: function(){
     },
     //生日部分
     openPicker() {
@@ -148,8 +136,8 @@ export default {
 #app{width:750px; height:1334px; margin: 0 auto; background-color:#ebebeb;}
 /*页面banner部分*/
 header{width:750px; height:130px; background-color: #cd2131; position:relative;}
-header span{font-size:30px; color:#fff; position:absolute; top:60px; left:305px; cursor:default;}
-header a{width:26px; height:43px; position:absolute; top:58px; left:27px; cursor:pointer;}
+header span{font-size:30px; color:#fff; position:absolute; top:60px; left:312px; cursor:default;}
+header img{width:26px; height:43px; position:absolute; top:58px; left:27px; cursor:pointer;}
 /*页面主体部分*/
 main{font-size:24px; text-align:left; position:relative;}
 main div:nth-of-type(1){width:750px; height:158px; background-color:#fff; border-bottom:1px #dbdbdb solid;
@@ -173,7 +161,8 @@ main div:nth-of-type(5) img{position:absolute; right:30px; top:392px;}
 main div:nth-of-type(6),main div:nth-of-type(7),main div:nth-of-type(8){width:750px; cursor:default;}
 main div span{padding-left:33px; font-size:24px; cursor:default;}
 main .sure{height:50px; width:100px; background-color:#fff; font-size:16px; color:#26a2ff;
-  position:relative; top:-61px; left:526px;}
+  position:relative; top:-61px; left:520px;}
 main .cansel{height:50px; width:100px; background-color:#fff; font-size:16px; color:#26a2ff;
   position:relative; top:-61px; left:60px;}
+.mint-msgbox-wrapper >>> .mint-msgbox{width:600px;}
 </style>

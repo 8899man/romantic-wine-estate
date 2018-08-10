@@ -1,18 +1,19 @@
 <template>
     <div id="app">
       <header>
-          <span>{{title}}</span>
-          <a href="#"><img src="./img/back.png" height="43" width="25" alt="图片不见了哦~"/></a>
+          <span>注册</span>
+          <img src="./img/back.png" height="43" width="25" alt="图片不见了哦~" @click="routerloginPage"/>
       </header>
       <main>
-          <form method="get" action="" @submit.prevent="checkForm">
-              <input type="text" placeholder="请输入用户昵称" name="registerName" v-model.trim="registerName"/>
+          <form method="post" action="" @submit.prevent="checkForm">
+              <input type="text" placeholder="请输入用户昵称" name="registerName" v-model.trim="registerName"
+              @click="dispearName"/>
               <input type="password" placeholder="请输入6~16位密码" name="registerPassword"
-                v-model.trim="registerPassword" @change="checkPassword"/>
+                v-model.trim="registerPassword" @change="checkPassword" @click="dispearPassword"/>
               <input type="text" placeholder="请输入手机号" name="registerMoblie"
-                v-model.trim="registerMoblie" @change="checkMoblie"/>
+                v-model.trim="registerMoblie" @change="checkMoblie" @click="dispearMoblie"/>
               <input type="text" placeholder="请输入邮箱地址" name="registerEmail"
-                v-model.trim="registerEmail" @change="checkEmail"/>
+                v-model.trim="registerEmail" @change="checkEmail" @click="dispearEmail"/>
               <input type="submit" @mousedown="changeColor($event)" @mouseup="recoverColor($event)" value="快速注册"/>
           </form>
           <span v-show="showPassword" id="showPassword">请输入正确的密码哦~</span>
@@ -34,7 +35,6 @@ export default {
     name: "registerPage",
     data() {
       return {
-        title: '注册',
         showPassword:false,
         showMoblie:false,
         showEmail:false,
@@ -56,14 +56,12 @@ export default {
           this.blankEmail=false;
           this.blankName=false;
           if(password.test(this.registerPassword)&&Moblie.test(this.registerMoblie)&&Email.test(this.registerEmail)){
-            return true;
           }
           else{
-            return false;
           }
         }
         //非空验证
-        if(!this.registerName&&!this.registerPassword&&!this.registerMoblie&&!this.registerEmail){
+        else if(!this.registerName&&!this.registerPassword&&!this.registerMoblie&&!this.registerEmail){
           this.showPassword=false;
           this.showMoblie=false;
           this.showEmail=false;
@@ -71,26 +69,21 @@ export default {
           this.blankMoblie=true;
           this.blankEmail=true;
           this.blankName=true;
-          return false;
         }
         if(!this.registerName){
           this.blankName=true;
-          return false;
         }
         if(!this.registerPassword){
           this.showPassword=false;
           this.blankPassword=true;
-          return false;
         }
         if(!this.registerMoblie){
           this.showMoblie=false;
           this.blankMoblie=true;
-          return false;
         }
         if(!this.registerEmail){
           this.showEmail=false;
           this.blankEmail=true;
-          return false;
         }
       },
       //密码验证
@@ -129,7 +122,23 @@ export default {
           this.showEmail=false;
         }
       },
-       //点击效果
+      //点击提示栏消失
+      dispearName(){
+        this.blankName=false;
+      },
+      dispearPassword(){
+        this.showPassword=false;
+        this.blankPassword=false;
+      },
+      dispearMoblie(){
+        this.showMoblie=false;
+        this.blankMoblie=false;
+      },
+      dispearEmail(){
+        this.showEmail=false;
+        this.blankEmail=false;
+      },
+      //点击效果
       changeColor(event){
         var t=event.currentTarget;
         t.style.backgroundColor="#95282c";
@@ -156,16 +165,20 @@ export default {
 /*页面banner部分*/
 header{width:750px; height:130px; background-color: #bb3337; position: relative;}
 header span{font-size:30px; color:#fff; position:absolute; top:57px; right:346px; cursor:default;}
-header a{width:25px; height:43px; position:absolute; top:55px; left:27px; cursor:pointer; display:block;
+header img{width:25px; height:43px; position:absolute; top:55px; left:27px; cursor:pointer; display:block;
   line-height:0px;}
 /*页面主体部分*/
 main{position:relative; padding-top:144px;}
-main form>input{width:670px; height:85px; border:none; border-radius:37px; text-indent:42px;
-  background-color:#eeeeee; margin-bottom: 40px; font-size:30px;} 
-main form>input:focus{border:1.5px #aa2834 solid; transition:0.06s all;}
-main input[type="submit"]{width:671px; height:81px; background-color:#aa2834; border-radius:22px;
-  color:#fff; line-height:81px; position:absolute; top:770px; left:36px; cursor:pointer;
+main input[type="text"],main input[type="password"]{width:670px; height:85px; border:none; border-radius:37px; text-indent:42px;
+  background-color:#eeeeee; margin-bottom:40px; font-size:30px; transition:0.06s all;} 
+main input[type="text"]:focus{border:1.5px #aa2834 solid;}
+main input[type="password"]:focus{border:1.5px #aa2834 solid;}
+main input[type="submit"]{width:671px; height:81px; background-color:#aa2834; border-radius:22px; font-size:30px;
+  color:#fff; box-shadow:0 3px 6px 0 rgba(0, 0, 0, 0.3); transition: all .3s ease-out;
+  line-height:81px; position:absolute; top:770px; left:36px; cursor:pointer;
   margin:0; padding:0; border:1px solid transparent; outline:none;}
+main input[type="submit"]:hover{background-color:#c3363a; text-decoration:none;
+  box-shadow:0 5px 11px 0px rgba(0, 0, 0, 0.3);}
 main input[type="checkbox"]{position:absolute; top:683px; left:100px; cursor:pointer;
   width:30px; height:30px;}
 main p{font-size:25px; color:#616161; position:absolute; top:658px; left:158px; cursor: default;}
@@ -180,6 +193,6 @@ a:link,a:visited,a:hover,a:active{
   text-decoration: none;
   color:inherit;
 }
-main a{font-size:23px; color:#616161; position:absolute; top:899px; left:83px;}
+main a{font-size:23px; color:#616161; position:absolute; top:899px; left:83px; transition: all .3s ease-out;}
 main a:hover{color:#aa2834;}
 </style>

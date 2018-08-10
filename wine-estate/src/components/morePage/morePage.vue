@@ -1,8 +1,8 @@
 <template>
     <div id="app">
      <header>
-        <span>{{title}}</span>
-        <a href="#" @click="routeraccountPage"><img src="./img/back.png" height="43" width="25" alt="图片不见了哦~"/></a>
+        <span>更多</span>
+        <img src="./img/back.png" height="43" width="25" alt="图片不见了哦~" @click="routeraccountPage"/>
      </header>
      <main>
         <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="routerfeedbackPage">
@@ -27,7 +27,6 @@ export default {
     name: "morePage",
     data(){
       return{
-        title:'更多',
         editionnumber:'V1.1'
       }
     },
@@ -63,7 +62,7 @@ export default {
         //跳转
         routeraccountPage(){
             this.$router.push({
-                path: '/accountPage'
+            path: '/accountPage'
             })
         },
         routerfeedbackPage(){
@@ -78,9 +77,9 @@ export default {
 <style scoped>
 #app{width:750px; height:1334px; margin: 0 auto; background-color:#ebebeb;}
 /*页面banner部分*/
-header{width:750px; height:130px; background-color: #bb3337; position:relative;}
+header{width:750px; height:130px; background-color: #cd2131; position:relative;}
 header span{font-size:30px; color:#fff; position:absolute; top:60px; left:340px; cursor:default;}
-header a{width:26px; height:43px; position:absolute; top:58px; left:27px; cursor:pointer; display:block;}
+header img{width:26px; height:43px; position:absolute; top:58px; left:27px; cursor:pointer; display:block;}
 /*页面主体部分*/
 main{position:relative;}
 main div:nth-of-type(1){width:750px; height:83px; background-color:#fff;
