@@ -16,7 +16,10 @@
       <div class="responseview">
         <span>sda</span>
       </div>
-
+        <div class="my-view clearfix">
+          <textarea   placeholder="说点什么？" style="border: none"></textarea>
+          <button>评论</button>
+        </div>
     </section>
   </div>
 </template>
@@ -86,5 +89,38 @@
   .responseview span {
     font-size: 40px;
   }
+  .my-view{
+    width:750px;
+    margin: 0 auto;
+    background: #fff;
+    padding:23px 0 23px 30px;
+  }
+  textarea{
+    width: 530px;
+    height: 54px;
+    font-size: 26px;
+    border-radius: 10%;
+    background: #f5f5f5;
+    line-height: 60px;
+    padding-left: 16px;
+    overflow: hidden;
+    float: left;
+    margin-right: 30px;
+    resize:none;
+  }
+  textarea::-moz-placeholder  {
+     color: #d9d9d9;}
+  .my-view button {
+    float: left;
+    width: 70px;
+    height: 45px;
+    border-radius: 20%;
+    background: #fff;
+    font-size: 20px;
+
+
+  }
+
+
 
 </style>
