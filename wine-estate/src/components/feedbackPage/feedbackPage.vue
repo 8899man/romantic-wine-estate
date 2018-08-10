@@ -12,10 +12,10 @@
       </textarea>
       <p>联系方式</p>
       <form id="suggestion" method="get" action="">
-        <input type="text" placeholder="请填写您的QQ或邮箱地址，以方便我们与您联系" name="connection"
+        <input type="text" placeholder="请填写您的手机号或邮箱地址，以方便我们与您联系" name="connection"
         v-model.trim="connection" @keyup="submit"/>
       </form>
-      <span v-show="warning">请填写正确的QQ号或邮箱地址</span>
+      <span v-show="warning">请填写正确的手机号或邮箱地址</span>
     </main>
   </div>
 </template>
@@ -33,7 +33,7 @@ export default {
         submit(){
           var oa=document.getElementById("submit");
           var text1=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-          var text2=/^[1-9][0-9]{4,10}$/;
+          var text2=/^1[34578]\d{9}$/;
           if(this.connection&&this.suggestion){
             if(!text1.test(this.connection)&&!text2.test(this.connection)){
               oa.style.color="#d63f4b"

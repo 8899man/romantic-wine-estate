@@ -5,13 +5,22 @@
             <img src="./img/back.png" height="43" width="26" alt="图片不见了哦~" @click="routerloginPage">
         </header>
         <main>
-            <form action="" method="post">
-                <input type="text" placeholder="请输入手机号码" name="forgetMoblie" v-model.trim="forgetMoblie"/>
+            <form action="" method="post" @submit.prevent="checkForm">
+                <input type="text" placeholder="请输入手机号码" name="forgetMoblie" v-model.trim="forgetMoblie"
+                 @change="checkMoblie"/>
                 <input type="text" placeholder="请输入验证码" name="forgetIdentify" v-model.trim="forgetIdentify"/>
-                <input type="password" placeholder="请输入新的密码" name="forgetIdentify" v-model.trim="forgetIdentify"/>
+                <input type="password" placeholder="请输入新6~16位的密码" name="forgetPassword" v-model.trim="forgetPassword"
+                 @change="checkPassword"/>
                 <input type="submit" value="确定"/>
             </form>
-            <button>获取验证码</button>
+            <button @click.stop="Identifying"  v-show="!showTime"
+            @mousedown="changeColor($event)" @mouseup="recoverColor($event)">获取验证码</button>
+            <button v-show="showTime">{{time}}秒后重新获取</button>
+            <span v-show="showMoblie" id="showMoblie">请输入正确的手机号哦~</span>
+            <span v-show="showPassword" id="showPassword">请输入正确的密码哦~</span>
+            <span v-show="blankMoblie" id="blankMoblie">请填写完整哦~</span>
+            <span v-show="blankIdentify" id="blankIdentify">请填写完整哦~</span>
+            <span v-show="blankPassword" id="blankPassword">请填写完整哦~</span>
         </main>
     </div>
 </template>
@@ -19,11 +28,56 @@
 <script>
 export default {
     name: "forgetpasswordPage",
+    data(){
+      return{
+        showMoblie:false,
+        showPassword:false,
+        blankMoblie:false,
+        blankIdentify:false,
+        blankPassword:false,
+        showTime:false,
+        time:0
+      }
+    },
     methods:{
+      //非空验证
+      checkForm(){
+        var password=/^[\da-zA-Z]{6,16}$/;
+        var Moblie=/^1[34578]\d{9}$/;
+        //提交条件
+        if(this.registerPassword&&this.registerMoblie){
+          this.blankPassword=false;
+          this.blankIdentify=false;
+          this.blankMoblie=false;
+          if(password.test(this.registerPassword)&&Moblie.test(this.registerMoblie)){
+          }
+          else{
+          }
+        }
+        //非空验证
+        if(!this.registerPassword&&!this.blankIdentify&&!this.registerMoblie){
+          this.showPassword=false;
+          this.showMoblie=false;
+          this.blankPassword=true;
+          this.blankIdentify=true;
+          this.blankMoblie=true;
+        }
+        if(!this.registerPassword){
+          this.showPassword=false;
+          this.blankPassword=true;
+        }
+        if(!this.blankIdentify){
+          this.blankIdentify=true;
+        }
+        if(!this.registerMoblie){
+          this.showMoblie=false;
+          this.blankMoblie=true;
+        }
+      },
       //手机号验证
       checkMoblie(){
         var Moblie=/^1[34578]\d{9}$/;
-        if(!Moblie.test(this.registerMoblie)){
+        if(!Moblie.test(this.forgetMoblie)){
           this.showMoblie=true;
           this.blankMoblie=false;
         }
@@ -31,6 +85,42 @@ export default {
           this.blankMoblie=false;
           this.showMoblie=false;
         }
+      },
+      //密码验证
+      checkPassword(){
+        var password=/^[\da-zA-Z]{6,16}$/;
+        if(!password.test(this.forgetPassword)){
+          this.showPassword=true;
+          this.blankPassword=false;
+        }
+        else{
+          this.blankPassword=false;
+          this.showPassword=false;
+        }
+      },
+      //发送验证码
+      Identifying(){
+        var Moblie=/^1[34578]\d{9}$/;
+        if(Moblie.test(this.forgetMoblie)){
+          this.showTime=true;
+          this.time=60;
+          var timer=setInterval(()=>{
+              this.time--;
+              if(this.time<=0){
+                  this.showTime=false;
+                  clearInterval(timer);
+              }
+          }, 1000);
+        }
+      },
+      //点击效果
+      changeColor(event){
+        var t=event.currentTarget;
+        t.style.backgroundColor="#95282c";
+      },
+      recoverColor(event){
+        var t=event.currentTarget;
+        t.style.backgroundColor="#aa2834";
       },
       //跳转
       routerloginPage(){
@@ -49,18 +139,26 @@ header{width:750px; height:130px; background-color: #bb3337; position:relative;}
 header span{font-size:30px; color:#fff; position:absolute; top:60px; left:312px; cursor:default;}
 header img{width:26px; height:43px; position:absolute; top:58px; left:27px; cursor:pointer;}
 /*页面主体部分*/
-main{position:relative; padding-top:144px;}
+main{position:relative; padding-top:152px;}
 main input[type="text"],main input[type="password"]{width:670px; height:85px; border:none; border-radius:37px; text-indent:42px;
-  background-color:#eeeeee; margin-bottom:70px; font-size:30px; transition:0.06s all;} 
+  background-color:#eeeeee; margin-bottom:50px; font-size:30px; transition:0.06s all;} 
 main input[type="text"]:focus{border:1.5px #aa2834 solid;}
 main input[type="password"]:focus{border:1.5px #aa2834 solid;}
 main input[type="submit"]{width:671px; height:81px; background-color:#aa2834; border-radius:22px; font-size:30px;
   color:#fff; box-shadow:0 3px 6px 0 rgba(0, 0, 0, 0.3); transition: all .3s ease-out;
-  line-height:81px; position:absolute; top:700px; left:36px; cursor:pointer;
+  line-height:81px; position:absolute; top:660px; left:36px; cursor:pointer;
   margin:0; padding:0; border:1px solid transparent; outline:none;}
 main input[type="submit"]:hover{background-color:#c3363a; text-decoration:none; 
   box-shadow:0 5px 11px 0px rgba(0, 0, 0, 0.3);}
-main button{width:100px; height:50px; background-color:#aa2834; border-radius:22px; font-size:16px; color:#fff;
-  position:absolute; right:68px; top:163px; cursor:pointer;
+main button:nth-of-type(1){width:100px; height:50px; background-color:#aa2834; border-radius:22px; font-size:16px; color:#fff;
+  position:absolute; right:68px; top:171px; cursor:pointer;
   margin:0; padding:0; border:1px solid transparent; outline:none;}
+main button:nth-of-type(2){width:100px; height:50px; background-color:#aa2834; border-radius:22px; font-size:12px; color:#fff;
+  position:absolute; right:68px; top:171px; cursor:pointer;
+  margin:0; padding:0; border:1px solid transparent; outline:none;}
+main #showPassword{position:absolute; top:528px; left:86px; color:#aa2834;}
+main #showMoblie{position:absolute; top:253px; left:86px; color:#aa2834;}
+main #blankPassword{position:absolute; top:528px; left:86px; color:#aa2834;}
+main #blankIdentify{position:absolute; top:390px; left:86px; color:#aa2834;}
+main #blankMoblie{position:absolute; top:253px; left:86px; color:#aa2834;}
 </style>

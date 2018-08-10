@@ -6,13 +6,14 @@
       </header>
       <main>
           <form method="post" action="" @submit.prevent="checkForm">
-              <input type="text" placeholder="请输入用户昵称" name="registerName" v-model.trim="registerName"/>
+              <input type="text" placeholder="请输入用户昵称" name="registerName" v-model.trim="registerName"
+              @click="dispearName"/>
               <input type="password" placeholder="请输入6~16位密码" name="registerPassword"
-                v-model.trim="registerPassword" @change="checkPassword"/>
+                v-model.trim="registerPassword" @change="checkPassword" @click="dispearPassword"/>
               <input type="text" placeholder="请输入手机号" name="registerMoblie"
-                v-model.trim="registerMoblie" @change="checkMoblie"/>
+                v-model.trim="registerMoblie" @change="checkMoblie" @click="dispearMoblie"/>
               <input type="text" placeholder="请输入邮箱地址" name="registerEmail"
-                v-model.trim="registerEmail" @change="checkEmail"/>
+                v-model.trim="registerEmail" @change="checkEmail" @click="dispearEmail"/>
               <input type="submit" @mousedown="changeColor($event)" @mouseup="recoverColor($event)" value="快速注册"/>
           </form>
           <span v-show="showPassword" id="showPassword">请输入正确的密码哦~</span>
@@ -60,7 +61,7 @@ export default {
           }
         }
         //非空验证
-        if(!this.registerName&&!this.registerPassword&&!this.registerMoblie&&!this.registerEmail){
+        else if(!this.registerName&&!this.registerPassword&&!this.registerMoblie&&!this.registerEmail){
           this.showPassword=false;
           this.showMoblie=false;
           this.showEmail=false;
@@ -121,7 +122,23 @@ export default {
           this.showEmail=false;
         }
       },
-       //点击效果
+      //点击提示栏消失
+      dispearName(){
+        this.blankName=false;
+      },
+      dispearPassword(){
+        this.showPassword=false;
+        this.blankPassword=false;
+      },
+      dispearMoblie(){
+        this.showMoblie=false;
+        this.blankMoblie=false;
+      },
+      dispearEmail(){
+        this.showEmail=false;
+        this.blankEmail=false;
+      },
+      //点击效果
       changeColor(event){
         var t=event.currentTarget;
         t.style.backgroundColor="#95282c";

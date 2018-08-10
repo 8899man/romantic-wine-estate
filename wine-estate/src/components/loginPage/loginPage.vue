@@ -10,9 +10,9 @@
         <img src="./img/icon6-4.png" height="37" width="35" class="icon2" alt="图片不见了哦~"/>
         <form  method="post" action=""  @submit.prevent="checkForm">
             <input type="text" name="loginText" v-model.trim="loginText" placeholder="请输入手机号码/邮箱地址"
-            @change="checkText"/>
+            @change="checkText" @click="dispearText"/>
             <input type="password"  name="loginPassword" v-model.trim="loginPassword" placeholder="请输入密码"
-            @change="checkPassword"/>
+            @change="checkPassword" @click="dispearPassword"/>
             <input type="submit" name="loginSubmit" @mousedown="changeColor($event)" @mouseup="recoverColor($event)"
             value="立即登录"/>
         </form>
@@ -52,7 +52,7 @@ export default {
           }
         }
         //非空验证
-        if(!this.loginText&&!this.loginPassword){
+        else if(!this.loginText&&!this.loginPassword){
           this.showLogin=false;
           this.showPassword=false;
           this.blankLogin=true;
@@ -91,8 +91,16 @@ export default {
         this.showPassword=false;
       }
     },
+    //点击提示栏消失
+    dispearText(){
+      this.showLogin=false;
+      this.blankLogin=false;
+    },
+    dispearPassword(){
+      this.showPassword=false;
+      this.blankPassword=false;
+    },
     //点击效果
-    
     //跳转
     routerregisterPage(){
         this.$router.push({
