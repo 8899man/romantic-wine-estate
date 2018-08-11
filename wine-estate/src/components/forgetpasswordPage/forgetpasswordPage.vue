@@ -45,38 +45,38 @@ export default {
         var password=/^[\da-zA-Z]{6,16}$/;
         var Email=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
         //提交条件
-        if(this.registerPassword&&this.registerEmail){
+        if(this.forgetPassword&&this.forgetEmail){
           this.blankPassword=false;
           this.blankIdentify=false;
           this.blankEmail=false;
-          if(password.test(this.registerPassword)&&Email.test(this.registerEmail)){
+          if(password.test(this.forgetPassword)&&Email.test(this.forgetEmail)){
           }
           else{
           }
         }
         //非空验证
-        if(!this.registerPassword&&!this.blankIdentify&&!this.registerEmail){
+        if(!this.forgetPassword&&!this.forgetIdentify&&!this.forgetEmail){
           this.showPassword=false;
           this.showEmail=false;
           this.blankPassword=true;
           this.blankIdentify=true;
           this.blankEmail=true;
         }
-        if(!this.registerPassword){
+        if(!this.forgetPassword){
           this.showPassword=false;
           this.blankPassword=true;
         }
-        if(!this.blankIdentify){
+        if(!this.forgetIdentify){
           this.blankIdentify=true;
         }
-        if(!this.registerEmail){
+        if(!this.forgetEmail){
           this.showEmail=false;
           this.blankEmail=true;
         }
       },
       //邮箱地址验证
-      checkMoblie(){
-        var Email=/^1[34578]\d{9}$/;
+      checkEmail(){
+        var Email=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
         if(!Email.test(this.forgetEmail)){
           this.showEmail=true;
           this.blankEmail=false;
@@ -100,7 +100,7 @@ export default {
       },
       //发送验证码
       Identifying(){
-        var Email=/^1[34578]\d{9}$/;
+        var Email=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
         if(Email.test(this.forgetEmail)){
           this.showTime=true;
           this.time=60;
