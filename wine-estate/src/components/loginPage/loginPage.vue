@@ -103,9 +103,12 @@ export default {
     //点击效果
     //跳转
     routerregisterPage(){
-        this.$router.push({
+      var timer=setTimeout(()=>{
+         this.$router.push({
           path: '/registerPage'
         })
+        clearTimeout(timer);
+      },10)
     },
     routergoodMain(){
         this.$router.push({

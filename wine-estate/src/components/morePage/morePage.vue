@@ -90,7 +90,7 @@ main div:nth-of-type(2){width:750px; height:83px; background-color:#fff;
 main div:nth-of-type(2) img{position:absolute; left:48px; top:176px;}
 main div:nth-of-type(2) .edition{font-size:18px; position:absolute; left:657px; color:#8e8e8e; margin:0px;}
 main div:nth-of-type(3){width:750px; height:83px; background-color:#fff;
- border-bottom:1px #dcdcdc solid; border-top:1px #dcdcdc solid; margin-bottom:71px; text-align:left; cursor:pointer;}
+ border-bottom:1px #dcdcdc solid; border-top:1px #dcdcdc solid; margin-bottom:71px; text-align:left;}
 main div:nth-of-type(3) img{position:absolute; left:48px; top:332px;}
 main div p{font-size:24px; line-height:83px; position:absolute; left:165px; margin:0; cursor:default;}
 main .mint-msgbox{width:750px;}
@@ -98,4 +98,5 @@ a:link,a:visited,a:hover,a:active{
   text-decoration: none;
   color:inherit;
 }
+.mint-msgbox-wrapper >>> .mint-msgbox{width:200px;}
 </style>

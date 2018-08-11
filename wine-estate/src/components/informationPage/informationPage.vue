@@ -99,7 +99,7 @@ export default {
     sexPicker(){
       this.popupVisible=true;
     },
-    handleSexConfirm () {
+    handleSexConfirm(){
     },
     canselSexConfirm(){
       this.popupVisible=false;
@@ -164,5 +164,4 @@ main .sure{height:50px; width:100px; background-color:#fff; font-size:16px; colo
   position:relative; top:-61px; left:520px;}
 main .cansel{height:50px; width:100px; background-color:#fff; font-size:16px; color:#26a2ff;
   position:relative; top:-61px; left:60px;}
-.mint-msgbox-wrapper >>> .mint-msgbox{width:600px;}
 </style>

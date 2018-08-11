@@ -6,8 +6,8 @@
         </header>
         <main>
             <form action="" method="post" @submit.prevent="checkForm">
-                <input type="text" placeholder="请输入手机号码" name="forgetMoblie" v-model.trim="forgetMoblie"
-                 @change="checkMoblie"/>
+                <input type="text" placeholder="请输入邮箱地址" name="forgetEmail" v-model.trim="forgetEmail"
+                 @change="checkEmail"/>
                 <input type="text" placeholder="请输入验证码" name="forgetIdentify" v-model.trim="forgetIdentify"/>
                 <input type="password" placeholder="请输入新6~16位的密码" name="forgetPassword" v-model.trim="forgetPassword"
                  @change="checkPassword"/>
@@ -16,9 +16,9 @@
             <button @click.stop="Identifying"  v-show="!showTime"
             @mousedown="changeColor($event)" @mouseup="recoverColor($event)">获取验证码</button>
             <button v-show="showTime">{{time}}秒后重新获取</button>
-            <span v-show="showMoblie" id="showMoblie">请输入正确的手机号哦~</span>
+            <span v-show="showEmail" id="showEmail">请输入正确的邮箱地址哦~</span>
             <span v-show="showPassword" id="showPassword">请输入正确的密码哦~</span>
-            <span v-show="blankMoblie" id="blankMoblie">请填写完整哦~</span>
+            <span v-show="blankEmail" id="blankEmail">请填写完整哦~</span>
             <span v-show="blankIdentify" id="blankIdentify">请填写完整哦~</span>
             <span v-show="blankPassword" id="blankPassword">请填写完整哦~</span>
         </main>
@@ -30,9 +30,9 @@ export default {
     name: "forgetpasswordPage",
     data(){
       return{
-        showMoblie:false,
+        showEmail:false,
         showPassword:false,
-        blankMoblie:false,
+        blankEmail:false,
         blankIdentify:false,
         blankPassword:false,
         showTime:false,
@@ -43,24 +43,24 @@ export default {
       //非空验证
       checkForm(){
         var password=/^[\da-zA-Z]{6,16}$/;
-        var Moblie=/^1[34578]\d{9}$/;
+        var Email=/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
         //提交条件
-        if(this.registerPassword&&this.registerMoblie){
+        if(this.registerPassword&&this.registerEmail){
           this.blankPassword=false;
           this.blankIdentify=false;
-          this.blankMoblie=false;
-          if(password.test(this.registerPassword)&&Moblie.test(this.registerMoblie)){
+          this.blankEmail=false;
+          if(password.test(this.registerPassword)&&Email.test(this.registerEmail)){
           }
           else{
           }
         }
         //非空验证
-        if(!this.registerPassword&&!this.blankIdentify&&!this.registerMoblie){
+        if(!this.registerPassword&&!this.blankIdentify&&!this.registerEmail){
           this.showPassword=false;
-          this.showMoblie=false;
+          this.showEmail=false;
           this.blankPassword=true;
           this.blankIdentify=true;
-          this.blankMoblie=true;
+          this.blankEmail=true;
         }
         if(!this.registerPassword){
           this.showPassword=false;
@@ -69,21 +69,21 @@ export default {
         if(!this.blankIdentify){
           this.blankIdentify=true;
         }
-        if(!this.registerMoblie){
-          this.showMoblie=false;
-          this.blankMoblie=true;
+        if(!this.registerEmail){
+          this.showEmail=false;
+          this.blankEmail=true;
         }
       },
-      //手机号验证
+      //邮箱地址验证
       checkMoblie(){
-        var Moblie=/^1[34578]\d{9}$/;
-        if(!Moblie.test(this.forgetMoblie)){
-          this.showMoblie=true;
-          this.blankMoblie=false;
+        var Email=/^1[34578]\d{9}$/;
+        if(!Email.test(this.forgetEmail)){
+          this.showEmail=true;
+          this.blankEmail=false;
         }
         else{
-          this.blankMoblie=false;
-          this.showMoblie=false;
+          this.blankEmail=false;
+          this.showEmail=false;
         }
       },
       //密码验证
@@ -100,8 +100,8 @@ export default {
       },
       //发送验证码
       Identifying(){
-        var Moblie=/^1[34578]\d{9}$/;
-        if(Moblie.test(this.forgetMoblie)){
+        var Email=/^1[34578]\d{9}$/;
+        if(Email.test(this.forgetEmail)){
           this.showTime=true;
           this.time=60;
           var timer=setInterval(()=>{
@@ -157,8 +157,8 @@ main button:nth-of-type(2){width:100px; height:50px; background-color:#aa2834; b
   position:absolute; right:68px; top:171px; cursor:pointer;
   margin:0; padding:0; border:1px solid transparent; outline:none;}
 main #showPassword{position:absolute; top:528px; left:86px; color:#aa2834;}
-main #showMoblie{position:absolute; top:253px; left:86px; color:#aa2834;}
+main #showEmail{position:absolute; top:253px; left:86px; color:#aa2834;}
 main #blankPassword{position:absolute; top:528px; left:86px; color:#aa2834;}
 main #blankIdentify{position:absolute; top:390px; left:86px; color:#aa2834;}
-main #blankMoblie{position:absolute; top:253px; left:86px; color:#aa2834;}
+main #blankEmail{position:absolute; top:253px; left:86px; color:#aa2834;}
 </style>
