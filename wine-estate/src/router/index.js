@@ -12,7 +12,7 @@ import orderPay from '@/components/orderPay/orderPay'
 import commentlist from '@/components/commentlist/commentlist'
 import bottom from '@/components/bottom/bottom'
 import addcomment from '@/components/addcomment/addcomment'
-
+import orderheader from '@/components/orderheader/orderheader'
 Vue.use(Router)
 
 export default new Router({
@@ -76,8 +76,12 @@ export default new Router({
       path: '/addcomment',
       name: 'addcomment',
       component: addcomment
+    },
+    {
+      path: '/orderheader',
+      name: 'orderheader',
+      component: orderheader
     }
-
 
   ]
 })

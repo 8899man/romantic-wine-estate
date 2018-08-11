@@ -1,16 +1,12 @@
 <template>
   <div class="main">
-    <div class="top"></div>
-    <section class="head clearfix" >
-      <div @click="toBack()"><img  src="../../assets/icon2.png" width="39" height="52"></div>
-      <span>我的订单</span>
-    </section>
+    <orderheader></orderheader>
     <div class="nav clearfix">
       <ul>
-        <li id="choose" @click="allorders"><a href="">全部订单</a></li>
-        <li @click="obligation"><a href="">待付款</a>
-        <li @click="forgoods"><a href="">待收货</a></li>
-        <li @click="forevaluate"><a href="">待评价</a></li>
+        <li id="choose">全部订单</li>
+        <li @click="obligation">待付款</li>>
+        <li @click="forgoods">待收货</li>
+        <li @click="forevaluate">待评价</li>
       </ul>
     </div>
     <section class="my-orders">
@@ -27,10 +23,11 @@
 </template>
 
 <script>
+  import orderheader from '../orderheader/orderheader.vue'
   export default{
+    components:{orderheader},
     data(){
       return {
-
       }
     },
     methods : {
@@ -71,26 +68,6 @@
 <style scoped>
   @import url(../../style/common.css);
   .main{margin: 0 auto;}
-  .top{
-    height: 40px;
-    width:750px;
-    background:#bb3437;
-    margin: 0 auto;
-  }
-  .head{
-    background: #bb3437;
-    width:750px;
-    margin: 0 auto;
-    padding: 18px 0px 18px 17px;
-    position:relative;
-  }
-  img{
-    float: left}
-  .head span{
-    font-size: 37px;
-    color: #fff;position:absolute;
-    top:0;left:0;right:0;bottom:0;
-    margin-top: 18px}
   .nav{
     width: 750px;
     background-image:url("../../assets/navback.jpg");
@@ -102,12 +79,12 @@
     padding: 30px;
 
   }
-  .nav ul li a{
+  .nav ul li {
     font-size:30px;
     color: #878787;
     text-align: center;
   }
-  #choose a{color: #bb3437;}
+  #choose {color: #bb3437;}
   .my-orders{
     background: #f4f4f4;
     padding-top: 27px ;

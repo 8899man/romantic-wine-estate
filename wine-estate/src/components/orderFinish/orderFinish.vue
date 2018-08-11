@@ -1,9 +1,6 @@
 <template>
   <div class="main">
-    <div class="top"></div>
-    <section class="head" >
-      <span>订单成功</span>
-    </section>
+    <orderheader theme="订单完成"></orderheader>
     <section class="order-success">
       <div class="order-message">
         <div class="orders">订单编号
@@ -25,7 +22,9 @@
 
 <script>
   import bottom from '../bottom/bottom.vue'
-  export default {
+  import orderheader from '../orderheader/orderheader.vue'
+  export default{
+    components:{orderheader},
     components:{bottom},
     name: "orderFinish"
   }
@@ -34,24 +33,6 @@
 <style scoped>
   @import url(../../style/common.css);
   .main{margin: 0 auto;}
-  .top{
-    height: 40px;
-    width:750px;
-    background:#bb3437;
-    margin: 0 auto;
-  }
-  .head{
-    background: #bb3437;
-    width:750px;
-    margin: 0 auto;
-    padding-top: 18px;
-    position:relative;
-    padding-bottom: 70px;}
-  .head span{
-    font-size: 37px;
-    color: #fff;position:absolute;
-    top:0;left:0;right:0;bottom:0;
-    margin-top: 18px}
   .order-success{
     width: 750px;
     padding-bottom: 945px;

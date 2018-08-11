@@ -56,9 +56,9 @@
     border-top: 1px #d6d6d6 solid;
     background-color: #fff;
     position: fixed;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
   .first .first_0{
     position: absolute;

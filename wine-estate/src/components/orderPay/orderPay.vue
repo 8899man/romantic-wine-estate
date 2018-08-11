@@ -2,10 +2,10 @@
   <div class="main">
     <div id="top"></div>
     <div class="back">
-      <img src="img/payback.jpg" height="532" width="750"/>
+      <img src="./img/payback.jpg" height="532" width="750"/>
     </div>
     <section class="head clearfix" >
-      <img src="img/icon22.jpg" width="39" height="52">
+      <img src="./img/icon22.jpg" width="39" height="52">
       <span>我的订单</span>
     </section>
     <section class="pay-way">

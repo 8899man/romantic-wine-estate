@@ -1,10 +1,6 @@
 <template>
   <div class="main">
-    <div class="top"></div>
-    <section class="head clearfix" >
-      <img src="../../assets/icon2.png" width="39" height="52">
-      <span>我的订单</span>
-    </section>
+    <orderheader></orderheader>
     <div class="nav clearfix">
       <ul>
         <li @click="allorders"><a href="">全部订单</a></li>
@@ -31,7 +27,9 @@
 </template>
 
 <script>
-  export default {
+  import orderheader from '../orderheader/orderheader.vue'
+  export default{
+    components:{orderheader},
     data() {
       return {}
     },
@@ -74,26 +72,6 @@
 <style scoped>
   @import url(../../style/common.css);
   .main{margin: 0 auto;}
-  .top{
-    height: 40px;
-    width:750px;
-    background:#bb3437;
-    margin: 0 auto;
-  }
-  .head{
-    background: #bb3437;
-    width:750px;
-    margin: 0 auto;
-    padding: 18px 0px 18px 17px;
-    position:relative;
-   }
-  img{
-    float: left}
-  .head span{
-    font-size: 37px;
-    color: #fff;position:absolute;
-    top:0;left:0;right:0;bottom:0;
-    margin-top: 18px}
   .nav{
     width: 750px;
     background-image:url("../../assets/navback.jpg");
