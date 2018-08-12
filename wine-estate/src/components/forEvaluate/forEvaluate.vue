@@ -3,15 +3,19 @@
     <orderheader></orderheader>
     <div class="nav clearfix">
       <ul>
-        <li @click="allorders"><a href="">全部订单</a></li>
-        <li @click="obligation"><a href="">待付款</a>
-        <li @click="forgoods"><a href="">待收货</a></li>
-        <li  id="choose"  @click="forevaluate"><a href="">待评价</a></li>
+        <li @click="allorders">全部订单</li>
+        <li @click="obligation">待付款</li>
+        <li @click="forgoods">待收货</li>
+        <li  id="choose" ><a>待评价</a></li>
       </ul>
     </div>
     <section class="my-orders">
       <div class="accept-order">
-        <div class="state"><span>交易成功</span></div>
+        <div  class="storemsg clearfix" >
+          <img src="../../assets/store.jpg" height="30" width="30"/>
+          <span id="storename">ss</span>
+          <span class="state">交易成功</span>
+        </div>
         <div class="good clearfix">
           <div id="good-pic"><img src="" alt=""></div>
           <div id="good-name"></div>
@@ -19,7 +23,6 @@
         <div class="all-price"><span >共一件商品&nbsp合计:&yen19.90（含运费&yen0.00）</span></div>
         <div class="forpay">
           <input type="button" value="评价" id="evalutation">
-
         </div>
       </div>
     </section>
@@ -83,7 +86,7 @@
     padding: 31px;
 
   }
-  .nav ul li a{
+  .nav ul li{
     font-size:30px;
     color: #878787;
     text-align: center;
@@ -99,12 +102,24 @@
     padding-top: 42px;
     background: #fff;
   }
-  .state{
+  .storemsg{
     font-size: 30px;
-    margin-left: 500px;
-    margin-bottom: 40px;
+    margin:0 0 40px 40px ;
   }
-  .state span{color:  #bb3437;}
+  .storemsg img{
+    float: left;
+    margin-right: 25px;
+  }
+  #storename{
+    float: left;
+
+  }
+  .state{
+    color: #bb3437;
+    display: block;
+    float: right;
+    margin-right: 50px;
+  }
   .good{
     background: #f4f4f4;
     padding: 13px 7px 47px 24px;

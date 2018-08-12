@@ -2,7 +2,7 @@
   <div class="order-header">
   <div class="top"></div>
   <section class="head clearfix" >
-    <div @click="toBack()"><img  src="../../assets/icon2.png" width="39" height="52"></div>
+    <img @click="routerBack" src="./img/icon2.png" >
     <span>{{theme}}</span>
   </section>
   </div>
@@ -14,10 +14,10 @@
           return {
           }
         },
-        methods:{
-          toBacka: function(){
-            this.$router.back(-1)
-          }
+          methods:{
+            routerBack(){
+              this.$router.go(-1);
+            }
         },
       props: {
         theme: {
@@ -48,7 +48,7 @@
     height: 52px;
 
   }
-  img{
+  .head img{
     float: left}
   .head span{
     font-size: 37px;

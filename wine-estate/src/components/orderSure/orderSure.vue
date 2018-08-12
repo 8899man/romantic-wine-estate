@@ -3,13 +3,13 @@
     <orderheader theme="订单确认"></orderheader>
     <section class="order-confirm">
       <ul class="order-message">
-        <li id="name"><img src="img/people.jpg" height="34" width="30"/></li>
-        <li id="phone"><img src="img/phone.jpg" height="34" width="20"/></li>
+        <li id="name"><img src="./img/people.jpg" height="34" width="30"/></li>
+        <li id="phone"><img src="./img/phone.jpg" height="34" width="20"/></li>
         <li id="address"></li>
       </ul>
       <ul class="good clearfix">
         <li id="wine"><img src="" alt=""></li>
-        <li id="numchange">共<span></span>件</li>
+        <li id="numchange">共<span>0</span>件</li>
       </ul>
       <ul class="clearfix express">
         <li class="grayword">配送方式</li>
@@ -62,8 +62,7 @@
   .order-confirm{
     background: #ebebeb;
     width: 750px;
-    padding-top:81px;
-    padding-bottom:81px;
+    padding-top:81px 0 81px;
     margin: 0 auto;
   }
   .order-message,.good,.express,.express-price{margin-bottom: 81px;background: #fff}

@@ -3,22 +3,27 @@
     <orderheader></orderheader>
     <div class="nav clearfix">
       <ul>
-        <li id="choose">全部订单</li>
-        <li @click="obligation">待付款</li>>
+        <li id="choose"><a href="">全部订单</a></li>
+        <li @click="obligation">待付款</li>
         <li @click="forgoods">待收货</li>
         <li @click="forevaluate">待评价</li>
       </ul>
     </div>
     <section class="my-orders">
       <div class="completed-order">
-        <div class="state"><span >买家已付款</span></div>
-        <div class="good clearfix" >
-          <div id="good-pic" ><img src="" alt=""></div>
-          <div id="good-name" ></div>
+        <div  class="storemsg clearfix" >
+          <img src="../../assets/store.jpg" height="30" width="30"/>
+          <span id="storename">ss</span>
+          <span class="state">买家已付款</span>
         </div>
+        <div class="good clearfix">
+          <div id="good-pic"><img src="" alt=""></div>
+          <div id="good-name"></div>
+        </div>
+        <div class="all-price"><span >共一件商品&nbsp合计:&yen19.90（含运费&yen0.00）</span></div>
       </div>
     </section>
-    <section class="all-price"><span >共一件商品&nbsp合计:&yen19.90（含运费&yen0.00）</span></section>
+
   </div>
 </template>
 
@@ -28,6 +33,7 @@
     components:{orderheader},
     data(){
       return {
+
       }
     },
     methods : {
@@ -76,35 +82,43 @@
     width:187px;
     height:88px;
     float:left;
-    padding: 30px;
-
-  }
-  .nav ul li {
+    padding: 31px;
     font-size:30px;
     color: #878787;
     text-align: center;
   }
-  #choose {color: #bb3437;}
+  #choose a{color: #bb3437;}
   .my-orders{
     background: #f4f4f4;
     padding-top: 27px ;
     width: 750px;
-    margin: 0 auto;
+    margin:  0 auto;
   }
   .completed-order{
     padding-top: 42px;
-    padding-bottom: 28px;
     background: #fff;
   }
-  .state{
+  .storemsg{
     font-size: 30px;
-    margin-left: 500px;
-    margin-bottom: 40px;
+    margin:0 0 40px 40px ;
   }
-  .state span{color: #bb3437;}
+  .storemsg img{
+    float: left;
+    margin-right: 25px;
+  }
+  #storename{
+    float: left;
+
+  }
+  .state{
+    color: #bb3437;
+    display: block;
+    float: right;
+    margin-right: 50px;
+  }
   .good{
     background: #f4f4f4;
-    padding: 20px 7px 25px 24px;
+    padding: 13px 7px 47px 24px;
     margin-bottom: 38px;
   }
   #good-pic{
@@ -122,7 +136,10 @@
     margin-top: 25px;
   }
   .all-price{
+    margin-bottom: 35px;
     font-size: 30px;
     margin-left: 180px;
   }
+
+
 </style>

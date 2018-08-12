@@ -3,27 +3,31 @@
     <orderheader></orderheader>
     <div class="nav clearfix">
       <ul>
-        <li @click="allorders">全部订单</li>
-        <li id="choose" @click="obligation"><a href="">待付款</a>
-        <li @click="forgoods"><a href="">待收货</a></li>
-        <li @click="forevaluate"><a href="">待评价</a></li>
+        <li @click="allorders"> 全部订单 </li>
+        <li id="choose" ><a href="">待付款</a></li>
+        <li @click="forgoods"> 待收货 </li>
+        <li @click="forevaluate"> 待评价 </li>
       </ul>
     </div>
     <section class="my-orders">
       <div class="pay-money">
-        <div  class="state" ><span >等待买家付款</span></div>
+        <div  class="storemsg clearfix" >
+          <img src="../../assets/store.jpg" height="30" width="30"/>
+          <span id="storename">ss</span>
+          <span class="state">等待买家付款</span>
+        </div>
         <div class="good clearfix">
           <div id="good-pic"><img src="" alt=""></div>
           <div id="good-name"></div>
         </div>
         <div class="all-price"><span >共一件商品&nbsp合计:&yen19.90（含运费&yen0.00）</span></div>
-  </div>
-  </section>
-  <section class="forpay">
-    <input type="button" value="取消订单" id="no-order">
-    <input @click="orderpay" type="button" value="付款" id="pay-m">
+      </div>
+    </section>
+    <section class="forpay">
+      <input type="button" value="取消订单" id="no-order">
+      <input @click="orderpay" type="button" value="付款" id="pay-m">
 
-  </section>
+    </section>
   </div>
 </template>
 
@@ -38,31 +42,31 @@
       toBack() {
         this.$router.go(-1)
       },
-      allorders() {
+      allorders: function () {
         this.$router.push({
           path: '/allOrders'
         })
 
       },
-      forevaluate() {
+      forevaluate: function () {
         this.$router.push({
           path: '/forEvaluate'
         })
 
       },
-      forgoods () {
+      forgoods: function () {
         this.$router.push({
           path: '/forGoods'
         })
 
       },
-      obligation(){
+      obligation: function () {
         this.$router.push({
           path: '/obliGation'
         })
 
       },
-      orderpay(){
+      orderpay: function(){
         this.$router.push({
           path:'/orderPay'
         })
@@ -83,14 +87,11 @@
     height:88px;
     float:left;
     padding: 31px;
-
-  }
-  .nav ul li {
     font-size:30px;
     color: #878787;
     text-align: center;
   }
-  #choose{color: #bb3437;}
+  #choose a{color: #bb3437;}
   .my-orders{
     background: #f4f4f4;
     padding-top: 27px ;
@@ -101,12 +102,25 @@
     padding-top: 42px;
     background: #fff;
   }
-  .state{
+
+  .storemsg{
     font-size: 30px;
-    margin-left: 500px;
-    margin-bottom: 40px;
+    margin:0 0 40px 40px ;
   }
-  .state span{color: #bb3437;}
+  .storemsg img{
+       float: left;
+    margin-right: 25px;
+  }
+  #storename{
+     float: left;
+
+  }
+  .state{
+    color: #bb3437;
+  display: block;
+  float: right;
+  margin-right: 50px;
+  }
   .good{
     background: #f4f4f4;
     padding: 13px 7px 47px 24px;

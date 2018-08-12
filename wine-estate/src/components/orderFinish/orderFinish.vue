@@ -16,7 +16,7 @@
     </section>
     <footer>
       <bottom></bottom>
-      <img src="img/shop_1.jpg" height="86" width="71" id="shop_1"/></footer>
+      <img src="./img/shop_1.jpg" height="86" width="71" id="shop_1"/></footer>
   </div>
 </template>
 
@@ -24,8 +24,10 @@
   import bottom from '../bottom/bottom.vue'
   import orderheader from '../orderheader/orderheader.vue'
   export default{
-    components:{orderheader},
-    components:{bottom},
+    components:{
+      orderheader,
+      bottom},
+
     name: "orderFinish"
   }
 </script>
