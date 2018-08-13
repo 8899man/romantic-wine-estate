@@ -2,23 +2,23 @@
   <div class="main">
     <div id="top"></div>
     <div class="back">
-      <img src="img/payback.jpg" height="532" width="750"/>
+      <img src="./img/payback.jpg" height="532" width="750"/>
     </div>
     <section class="head clearfix" >
-      <img src="img/icon22.jpg" width="39" height="52">
-      <span>我的订单</span>
+      <img src="./img/icon22.jpg" width="37" height="47" @click="toBack">
+      <span>确认付款</span>
     </section>
     <section class="pay-way">
-      <div class="price">&yen<span></span></div>
-      <div id="message">账号</div>
+      <div class="price">&yen&nbsp<span>24.00</span></div>
+      <div id="message">账号 &nbsp <span>123456</span> </div>
       <ul>
         <li @click="changeicon1">
-          <img src="img/beforeicon.jpg" height="42" width="42" v-show="downIcon"/>
-          <img src="img/chooseicon.jpg" height="42" width="42" v-show="!downIcon"/>
+          <img src="./img/beforeicon.jpg" height="42" width="42" v-show="downIcon"/>
+          <img src="./img/chooseicon.jpg" height="42" width="42" v-show="!downIcon"/>
           &nbsp &nbsp 支付宝付款</li>
         <li @click="changeicon2">
-          <img src="img/beforeicon.jpg" height="42" width="42" v-show="!downIcon"/>
-          <img src="img/chooseicon.jpg" height="42" width="42" v-show="downIcon"/>
+          <img src="./img/beforeicon.jpg" height="42" width="42" v-show="!downIcon"/>
+          <img src="./img/chooseicon.jpg" height="42" width="42" v-show="downIcon"/>
           &nbsp &nbsp 微信付款</li>
       </ul>
     </section>
@@ -46,8 +46,12 @@ export default {
       this.$router.push({
         path: '/orderPay'
       })
+      },
+      toBack: function(){
+        this.$router.back(-1)
+      }
     }
-  }
+
 }
 </script>
 
@@ -59,7 +63,6 @@ export default {
   }
   #top{
     height: 40px;
-    width:750px;
     background:#bb3437;
   }
   .back{
@@ -67,44 +70,40 @@ export default {
   }
   .head{
     background: #f6f6f6;
-    width:750px;
-    margin: 0 auto;
     padding: 18px 0px 18px 17px;
     position:relative;
+    height: 88px;
   }
-  img{
+  .head img{
     float: left}
   .head span{
     font-size: 37px;
     position:absolute;
     top:0;left:0;right:0;bottom:0;
-    margin-top: 18px}
+    margin-top: 18px;
+    color: black}
   .pay-way{
     border-top: 1px solid #dcdcdc;
-    width: 750px;
     background: #f6f6f6;
-    padding: 57px 0 117px 27px;
+    padding: 54px 0 117px 27px;
     text-align: left;
   }
   .price{
     font-size: 50px;
-    margin:0 0 68px 238px;
+    margin:0 0 60px 250px;
   }
   #message{
+    padding-bottom: 36px;
+  }
+  ul li, #message{
     font-size: 30px;
-    margin-bottom: 36px;
     color: #676767;
     border-bottom: #eaeaea solid 1px;
-
   }
   ul li{
-    font-size: 30px;
-    margin: 30px 0 30px;
-    color: #676767;
-    border-bottom: #eaeaea solid 1px;
+    padding: 25px 0 25px;
   }
   .pay{
-    width: 750px;
     padding: 0 32px 29px 32px;
     background:#f6f6f6 ;
   }

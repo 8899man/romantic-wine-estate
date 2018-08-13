@@ -2,6 +2,7 @@
   <div class="bottom">
     <div class="first" @click="re1">
        <img src="./img/first_0.jpg" alt="#" class="first_0">
+      <img src="./img/first_0.jpg" alt="#" class="first_0">
     </div>
     <div class="nav" @click="re2">
       <img src="./img/nav_0.jpg" alt="#" class="nav_0">
@@ -57,9 +58,9 @@ export default {
     border-top: 1px #d6d6d6 solid;
     background-color: #fff;
     position: fixed;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
   .first .first_0{
     position: absolute;

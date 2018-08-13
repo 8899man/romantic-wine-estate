@@ -1,21 +1,21 @@
 <template>
   <div class="main">
-    <div class="top"></div>
-    <section class="head clearfix" >
-      <img src="../../assets/icon2.png" width="39" height="52">
-      <span>我的订单</span>
-    </section>
+    <orderheader></orderheader>
     <div class="nav clearfix">
       <ul>
-        <li @click="allorders"><a href="">全部订单</a></li>
-        <li @click="obligation"><a href="">待付款</a>
-        <li id="choose" @click="forgoods"><a href="">待收货</a></li>
-        <li @click="forevaluate"><a href="">待评价</a></li>
+        <li @click="allorders">全部订单</li>
+        <li @click="obligation">待付款</li>
+        <li id="choose"><a href="">待收货</a></li>
+        <li @click="forevaluate">待评价</li>
       </ul>
     </div>
     <section class="my-orders">
       <div class="accept-order">
-        <div class="state" ><span >卖家已发货</span></div>
+        <div  class="storemsg clearfix" >
+          <img src="../../assets/store.jpg" height="30" width="30"/>
+          <span id="storename">ss</span>
+          <span class="state">卖家已发货</span>
+        </div>
         <div class="good clearfix">
           <div id="good-pic"><img src="" alt=""></div>
           <div id="good-name"></div>
@@ -30,7 +30,9 @@
 </template>
 
 <script>
-  export default {
+  import orderheader from '../orderheader/orderheader.vue'
+  export default{
+    components:{orderheader},
     data() {
       return {}
     },
@@ -69,26 +71,6 @@
 <style scoped>
   @import url(../../style/common1.css);
   .main{margin: 0 auto;}
-  .top{
-    height: 40px;
-    width:750px;
-    background:#bb3437;
-    margin: 0 auto;
-  }
-  .head{
-    background: #bb3437;
-    width:750px;
-    margin: 0 auto;
-    padding: 18px 0px 18px 17px;
-    position:relative;
-  }
-  img{
-    float: left}
-  .head span{
-    font-size: 37px;
-    color: #fff;position:absolute;
-    top:0;left:0;right:0;bottom:0;
-    margin-top: 18px}
   .nav{
     width: 750px;
     background-image:url("../../assets/navback.jpg");
@@ -98,9 +80,6 @@
     height:88px;
     float:left;
     padding: 31px;
-
-  }
-  .nav ul li a{
     font-size:30px;
     color: #878787;
     text-align: center;
@@ -116,12 +95,24 @@
     padding-top: 42px;
     background: #fff;
   }
-  .state{
+  .storemsg{
     font-size: 30px;
-    margin-left: 500px;
-    margin-bottom: 40px;
+    margin:0 0 40px 40px ;
   }
-  .state span{color:  #bb3437;}
+  .storemsg img{
+    float: left;
+    margin-right: 25px;
+  }
+  #storename{
+    float: left;
+
+  }
+  .state{
+    color: #bb3437;
+    display: block;
+    float: right;
+    margin-right: 50px;
+  }
   .good{
     background: #f4f4f4;
     padding: 13px 7px 47px 24px;

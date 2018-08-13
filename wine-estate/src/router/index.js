@@ -50,6 +50,7 @@ Vue.component(Picker.name, Picker)
 Vue.component(Popup.name, Popup)
 Vue.component(Actionsheet.name, Actionsheet)
 Vue.component(DatetimePicker.name, DatetimePicker)
+import orderheader from '@/components/orderheader/orderheader'
 Vue.use(Router)
 
 export default new Router({
@@ -207,6 +208,11 @@ export default new Router({
       path: '/addcomment',
       name: 'addcomment',
       component: addcomment
+    },
+    {
+      path: '/orderheader',
+      name: 'orderheader',
+      component: orderheader
     }
   ]
 })
