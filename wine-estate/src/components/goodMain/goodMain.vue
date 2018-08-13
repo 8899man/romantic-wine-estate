@@ -49,7 +49,7 @@
         1F 进口葡萄酒
       </div >
       <div class="mthree" v-on:click="change()">
-        <img src="./img/mtwo.png" alt="按钮图标"/><!--一楼按钮-->
+        <img src="./img/mtwo.png" v-show="exis3" alt="按钮图标"/><!--一楼按钮-->
         <img  class="mx" v-show="exis" src="./img/mtwox.png" alt="按钮图标下">
         <!--一楼按钮下-->
       </div>
@@ -61,10 +61,11 @@
             <img src="./img/mainjtt.png" alt="静态图">
           </div>
           <div class="mainjtc">
-          <p>额问题官方网</p>
+            <p>额问题官方网额问题官方网额问题题官方网额问题问题</p>
             <p></p>
-          <p>销量: 3652</p>
-          <p>&yen: 666</p>
+            <p></p>
+            <p>销量: 3652</p>
+            <p>&yen: 666</p>
           </div>
         </div>
         <div class="mainjta">
@@ -73,6 +74,7 @@
           </div>
           <div class="mainjtc">
             <p>额问题官方网</p>
+            <p></p>
             <p></p>
             <p>销量: 3652</p>
             <p>&yen: 666</p>
@@ -108,7 +110,7 @@
           2F 国产葡萄酒
         </div >
         <div class="mthree" v-on:click="change1()">
-          <img src="./img/mtwo.png" alt="按钮图标"/><!--2F按钮-->
+          <img src="./img/mtwo.png" v-show="exis4" alt="按钮图标"/><!--2F按钮-->
           <img  class="mx" v-show="exis1" src="./img/mtwox.png" alt="按钮图标下">
           <!--二楼按钮下-->
         </div>
@@ -122,6 +124,7 @@
           <div class="mainjtc">
             <p>额问题官方网</p>
             <p></p>
+            <p></p>
             <p>销量: 3652</p>
             <p>&yen: 666</p>
           </div>
@@ -132,6 +135,7 @@
           </div>
           <div class="mainjtc">
             <p>额问题官方网</p>
+            <p></p>
             <p></p>
             <p>销量: 3652</p>
             <p>&yen: 666</p>
@@ -167,7 +171,7 @@
           3F 经典葡萄酒
         </div >
         <div class="mthree" v-on:click="change2()">
-          <img src="./img/mtwo.png" alt="按钮图标"/><!--一楼按钮-->
+          <img src="./img/mtwo.png" v-show="exis5" alt="按钮图标"/><!--一楼按钮-->
           <img  class="mx" v-show="exis2" src="./img/mtwox.png" alt="按钮图标下">
           <!--三楼按钮下-->
         </div>
@@ -181,6 +185,7 @@
           <div class="mainjtc">
             <p>额问题官方网</p>
             <p></p>
+            <p></p>
             <p>销量: 3652</p>
             <p>&yen: 666</p>
           </div>
@@ -191,6 +196,7 @@
           </div>
           <div class="mainjtc">
             <p>额问题官方网</p>
+            <p></p>
             <p></p>
             <p>销量: 3652</p>
             <p>&yen: 666</p>
@@ -226,6 +232,7 @@
           <div class="mainjtc">
             <p>额问题官方网</p>
             <p></p>
+            <p></p>
             <p>销量: 3652</p>
             <p>&yen: 666</p>
           </div>
@@ -236,6 +243,7 @@
           </div>
           <div class="mainjtc">
             <p>额问题官方网</p>
+            <p></p>
             <p></p>
             <p>销量: 3652</p>
             <p>&yen: 666</p>
@@ -250,6 +258,7 @@
           <div class="mainjtc">
               <p>额问题官方网</p>
               <p></p>
+              <p></p>
               <p>销量: 3652</p>
               <p>&yen: 666</p>
           </div>
@@ -260,6 +269,7 @@
           </div>
           <div class="mainjtc">
               <p>额问题官方网</p>
+              <p></p>
               <p></p>
               <p>销量: 3652</p>
               <p>&yen: 666</p>
@@ -274,6 +284,7 @@
           <div class="mainjtc">
               <p>额问题官方网</p>
               <p></p>
+              <p></p>
               <p>销量: 3652</p>
               <p>&yen: 666</p>
           </div>
@@ -285,11 +296,13 @@
           <div class="mainjtc">
               <p>额问题官方网</p>
               <p></p>
+              <p></p>
               <p>销量: 3652</p>
               <p>&yen: 666</p>
           </div>
         </div>
       </div>
+      <div class="tiao"></div>
       <bottom>
       </bottom>
       <img src="./img/first.jpg" class="first" alt="首页图标不见了">
@@ -304,18 +317,24 @@ export default {
     return {
       exis:false,
       exis1:false,
-      exis2:false
+      exis2:false,
+      exis3:true,
+      exis4:true,
+      exis5:true,
     }
   },
   methods: {
     change () {
       this.exis = !this.exis;
+      this.exis3 = !this.exis3;
     },
     change1 () {
       this.exis1 = !this.exis1;
+      this.exis4 = !this.exis4;
     },
     change2 () {
       this.exis2 = !this.exis2;
+      this.exis5 = !this.exis5;
     },
     push () {
       this.$router.push({
@@ -375,7 +394,7 @@ export default {
   .mx{
     position:absolute;
     top:0px;
-    right:0px;
+    right:-80px;
     margin:0px;
   }
   .gdetaillbt{
@@ -386,7 +405,7 @@ export default {
   }
   .intro{
     background-color:#ccc;
-    color:#fff;
+    color:#333;
     width:710px;
     height:230px;
     margin:0px;
@@ -402,7 +421,7 @@ export default {
     height:412px;
     padding:0px;
     margin:0px;
-    border-bottom:#999 solid 2px;
+    border:1px #ccc solid;
   }
   .mainjta{
     float:left;
@@ -421,19 +440,22 @@ export default {
     width:170px;
     height:410px;
     float:right;
-    padding-top:100px;
+    padding-top:60px;
     margin:0px;
   }
   .mainjtc p{
     height:60px;
     width:165px;
     color:#626262;
-    font-size:30px;
+    font-size:20px;
     line-height:60px;
     text-align:left;
     margin:0px;
   }
   p:nth-child(4){
+    font-size:25px;
+  }
+  p:nth-child(5){
     color:#f00;
     font-size:30px;
   }
@@ -441,7 +463,7 @@ export default {
      width:580px;
      height:79px;
      line-height:79px;
-     font-size:35px;
+     font-size:30px;
      text-align:left;
      float:left;
    }
@@ -467,5 +489,9 @@ export default {
     position:fixed;
     left:420px;
     bottom:13px;
+  }
+  .tiao{
+    width:750px;
+    height:88px;
   }
 </style>

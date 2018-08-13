@@ -70,7 +70,7 @@ export default {
   },
   methods: {
     retur () {
-      this.$router.go(-1);
+      this.$router.go(-1)
     },
     push () {
       this.$router.push({
@@ -146,8 +146,10 @@ export default {
     height:88px;
     line-height:88px;
     float:left;
-    background-color:#fff;
     color:#666;
+    border-radius:15px;
+    -moz-transition:background-color 1s;
+    -moz-transition-timing-function:ease-in-out;
     }
   .gdlxxk{
     width:750px;
@@ -160,11 +162,14 @@ export default {
     color:#9F9F9F;
     font-size:40px;
   }
+  li:active{
+   color:#fff;
+  }
   .gdlljz li{
     width:750px;
     height:222px;
     background-color:#fff;
-      border-bottom:#EBEBEB solid 1px;
+    border-bottom:#EBEBEB solid 1px;
     border-top:#EBEBEB solid 1px;
     padding:0px;
   }

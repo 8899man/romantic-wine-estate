@@ -5,14 +5,14 @@
       <div class="buttonl" v-on:click="retur()"><!--左边返回按钮-->
         返回
       </div>
-      <div class="buttonr" v-on:click="push()">
+      <div class="buttonr" v-bind:click="tadd" v-on:click="push()">
         搜索<!--右边搜索按钮-->
       </div>
       <div class="tub">
         <img src="./img/sstb.png" alt="搜索图标"/>
       </div>
       <div class="searchkk">
-        <input type="text" placeholder="搜索商品" v-on:click="tadd" id="intext"><!--搜索框-->
+        <input type="text" placeholder="搜索商品"  id="intext"><!--搜索框-->
       </div>
     </div>
     <ul id="zlih">

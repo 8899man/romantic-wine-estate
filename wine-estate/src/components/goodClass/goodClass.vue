@@ -168,13 +168,17 @@ export default {
     line-height:80px;
     text-align:center;
     font-size:22px;
+    border-radius:15px;
+    -moz-transition:background-color 1s;
+    -moz-transition-timing-function:ease-in-out;
   }
+ li:active{
+   color:#fff;
+ }
  li:hover{
     background-color:#666;
-    font-size:40px;}
- li:active{
-   background-color:#d02131;
- }
+    font-size:40px;
+  }
  a:visited{
    color:#9F9F9F;
    text-decoration:none;
