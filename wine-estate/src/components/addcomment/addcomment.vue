@@ -7,10 +7,10 @@
       </div>
       <div class="responser">
         <img src="" alt="" width="60px" height="60px">
-        <span>sss</span>
+        <span>王的注视</span>
       </div>
       <div class="responseview">
-        <span>sda</span>
+        <span>我觉得这个评论写的还阔以</span>
       </div>
         <div class="my-view clearfix">
           <textarea   placeholder="说点什么？" style="border: none"></textarea>
@@ -30,15 +30,18 @@
 
 <style scoped>
   @import url(../../style/common.css);
-  .main{margin: 0 auto;}
+  .main{
+    margin: 0 auto;
+    position: relative;
+    height: 1334px;
+    width: 750px;
+  }
   .commentview{
     padding-top: 20px;
     background: #f4f4f4;
-    width: 750px;
-    margin: 0 auto;
   }
   .response{
-    padding: 20px 0 30px 25px;
+    padding: 20px 25px 30px 25px;
     background: #fff;
     text-align: left;
   }
@@ -72,9 +75,13 @@
     margin: 0 auto;
     background: #fff;
     padding:23px 0 23px 40px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
   textarea{
-    width: 570px;
+    width: 580px;
     height: 54px;
     font-size: 26px;
     border-radius: 10%;

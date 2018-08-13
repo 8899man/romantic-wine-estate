@@ -3,13 +3,13 @@
     <orderheader theme="订单完成"></orderheader>
     <section class="order-success">
       <div class="order-message">
-        <div class="orders">订单编号
-          <span></span>
+        <div class="orders">订单编号&nbsp
+          <span>12345</span>
         </div>
-        <div class="orders">订单金额
-          <span></span>
+        <div class="orders">订单金额&nbsp
+          <span>87</span>
         </div>
-        <div class="orders">付款方式
+        <div class="orders">付款方式&nbsp
           <span>在线支付</span>
         </div>
       </div>
@@ -37,7 +37,7 @@
   .main{margin: 0 auto;}
   .order-success{
     width: 750px;
-    padding-bottom: 945px;
+    padding-bottom: 907px;
     background: #ebebeb;
     margin: 0 auto;
   }
@@ -55,7 +55,6 @@
   }
   footer{
     width: 98px;
-    border-top: 1px solid #c8c8c8;
     position: relative;
   }
   #shop_1{

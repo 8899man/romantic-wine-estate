@@ -5,16 +5,16 @@
       <div class="commentary">
         <div class="buyer">
           <img src="" alt="" width="60px" height="60px">
-          <span>sss</span>
+          <span>王的直视</span>
         </div>
         <div class="buy-message">
-            <span>1777</span>
+            <span>2018.08.06</span>
         </div>
         <div class="goodcomments">
-          <span>sda</span>
-            <img src="" alt="" width="330px" height="330px">
+          <span>我举得还阔以，给个好评</span>
+            <img class="commentpic" width="330px" height="330px">
           <div class="view clearfix">
-            <button class="beigin" @click="addcomments"><img src="./img/addcomment.jpg" height="33" width="34"/>评论</button>
+            <button class="beigin" @click="addcomment"><img src="./img/addcomment.jpg" height="33" width="34"/>评论</button>
             <button @click="likethis(index)" :class='[styles]'><img src="./img/like.jpg" height="34" width="38" v-show="!red"/>
               <img src="./img/redlike.jpg" height="34" width="38" v-show="red"/>{{likenum}}
               </button>
@@ -50,9 +50,9 @@
             this.styles = 'beigin'
           }
         },
-        addcomments: function () {
+        addcomment: function () {
           this.$router.push({
-            path: '/'
+            path: '/addcomment'
           })
         }
 
@@ -91,14 +91,15 @@
     font-size: 25px;
   }
   .goodcomments{
-    padding: 20px 0 50px 30px;
+    padding: 20px 20px 50px 30px;
     background: #fff;
     text-align: left;
   }
   .goodcomments span {
     font-size: 45px;
   }
-  .goodcomments img{
+  .commentpic{
+    margin-top: 20px;
     display:block;
     background: antiquewhite;
 
