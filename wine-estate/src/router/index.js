@@ -28,7 +28,10 @@ import accountPage from '@/components/accountPage/accountPage'
 import morePage from '@/components/morePage/morePage'
 import feedbackPage from '@/components/feedbackPage/feedbackPage'
 import forgetpasswordPage from '@/components/forgetpasswordPage/forgetpasswordPage'
+
 import addcomment from '@/components/addcomment/addcomment'
+import mytracksPage from '@/components/mytracksPage/mytracksPage'
+
 import bottom from '@/components/bottom/bottom'
 import { DatetimePicker } from 'mint-ui'
 import { Actionsheet } from 'mint-ui'
@@ -159,6 +162,11 @@ export default new Router({
       path: '/forgetpasswordPage',
       name: 'forgetpasswordPage',
       component: forgetpasswordPage
+    },
+    {
+      path: '/mytracksPage',
+      name: 'mytracksPage',
+      component: mytracksPage
     },
     {
       path: '/bottom',
