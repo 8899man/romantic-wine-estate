@@ -32,7 +32,6 @@
     <div class="wxin"><!--具体信息栏-->
        <ul><!--商品名称及价格等-->
          <li class="wname">传说传说传传说传说传说传说传说vvv传说传说传说传说传说传说</li>
-         <li class="wyname">RafeiRafeiRafei</li>
          <li class="wpiece">&yen 62</li>
          <li class="wshop">热销 6526532</li>
        </ul>
@@ -112,7 +111,7 @@ export default {
       this.$router.push({
         path: '/commentlist'
       })
-    },
+    }
   }
 }
 </script>
@@ -158,7 +157,7 @@ a{color:#fff;
     left:0px;
     top:128px;}
   .wxin{background-color: #fff;
-    height:286px;
+    height:273px;
     width:750px;
     position:absolute;
     left:0px;
@@ -174,20 +173,12 @@ a{color:#fff;
     height:50px;
     margin-top:-10px;
     }
-  .wyname{
-    width:730px;
-    height:50px;
-    color:#B5B5B5;
-    font-size:35px;
-    margin:0px;
-    padding-top:60px;
-  }
   .wpiece{
     width:708px;
     height:82px;
     position:absolute;
     left:44px;
-    top:200px;
+    top:160px;
     color:#F9121A;
     font-size:50px;
     margin:0px;
@@ -197,8 +188,8 @@ a{color:#fff;
     height:102px;
     position:absolute;
     left:43px;
-    top:263px;
-    font-size:25px;
+    top:230px;
+    font-size:30px;
     color:#B5B5B5;
     margin:0px ;
     padding:0px ;
