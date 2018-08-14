@@ -3,14 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="38efaa33-da47-4b8a-8ebc-1a4b5aade356" name="默认" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wine-estate/config/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/config/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wine-estate/src/components/accountPage/accountPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/src/components/accountPage/accountPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wine-estate/src/components/feedbackPage/feedbackPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/src/components/feedbackPage/feedbackPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wine-estate/src/components/forgetpasswordPage/forgetpasswordPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/src/components/forgetpasswordPage/forgetpasswordPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wine-estate/src/components/informationPage/informationPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/src/components/informationPage/informationPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wine-estate/src/components/loginPage/loginPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/src/components/loginPage/loginPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wine-estate/src/components/morePage/morePage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/src/components/morePage/morePage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wine-estate/src/components/registerPage/registerPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/src/components/registerPage/registerPage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wine-estate/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wine-estate/src/components/mytracksPage/mytracksPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/src/components/mytracksPage/mytracksPage.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wine-estate/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/wine-estate/src/main.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -31,25 +28,27 @@
           <entry key="project.open.time.31" value="1" />
           <entry key="project.open.time.32" value="1" />
           <entry key="project.open.time.33" value="1" />
+          <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.37" value="1" />
           <entry key="project.open.time.4" value="3" />
           <entry key="project.open.time.44" value="1" />
           <entry key="project.open.time.45" value="1" />
-          <entry key="project.open.time.5" value="3" />
-          <entry key="project.opened" value="14" />
+          <entry key="project.open.time.5" value="4" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="17" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="js" value="1" />
+          <entry key="js" value="2" />
           <entry key="mytracksPage" value="1" />
-          <entry key="vue" value="12" />
+          <entry key="vue" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JavaScript" value="1" />
-          <entry key="Vue.js" value="13" />
+          <entry key="JavaScript" value="2" />
+          <entry key="Vue.js" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -59,14 +58,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="1" />
-          <entry key="vue" value="68" />
+          <entry key="js" value="10" />
+          <entry key="vue" value="146" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="1" />
-          <entry key="Vue.js" value="68" />
+          <entry key="JavaScript" value="10" />
+          <entry key="Vue.js" value="146" />
         </counts>
       </usages-collector>
     </session>
@@ -100,11 +99,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/wine-estate/src/components/mytracksPage/mytracksPage.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="700">
+              <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/wine-estate/src/components/accountPage/accountPage.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="82" column="30" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/wine-estate/config/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -130,10 +147,11 @@
         <option value="$PROJECT_DIR$/wine-estate/src/components/feedbackPage/feedbackPage.vue" />
         <option value="$PROJECT_DIR$/wine-estate/src/components/loginPage/loginPage.vue" />
         <option value="$PROJECT_DIR$/wine-estate/src/components/registerPage/registerPage.vue" />
-        <option value="$PROJECT_DIR$/wine-estate/src/components/accountPage/accountPage.vue" />
         <option value="$PROJECT_DIR$/wine-estate/src/components/forgetpasswordPage/forgetpasswordPage.vue" />
         <option value="$PROJECT_DIR$/wine-estate/src/components/informationPage/informationPage.vue" />
         <option value="$PROJECT_DIR$/wine-estate/src/components/mytracksPage/mytracksPage.vue" />
+        <option value="$PROJECT_DIR$/wine-estate/config/index.js" />
+        <option value="$PROJECT_DIR$/wine-estate/src/components/accountPage/accountPage.vue" />
       </list>
     </option>
   </component>
@@ -173,6 +191,7 @@
       <path value="$PROJECT_DIR$/node_modules/ansi-styles/package.json" />
       <path value="$PROJECT_DIR$/node_modules/array-find-index/package.json" />
       <path value="$PROJECT_DIR$/node_modules/atob/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/axios/package.json" />
       <path value="$PROJECT_DIR$/node_modules/babel-code-frame/package.json" />
       <path value="$PROJECT_DIR$/node_modules/balanced-match/package.json" />
       <path value="$PROJECT_DIR$/node_modules/big.js/package.json" />
@@ -194,6 +213,7 @@
       <path value="$PROJECT_DIR$/node_modules/esutils/package.json" />
       <path value="$PROJECT_DIR$/node_modules/extend/package.json" />
       <path value="$PROJECT_DIR$/node_modules/fastparse/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/follow-redirects/package.json" />
       <path value="$PROJECT_DIR$/node_modules/fs-extra/package.json" />
       <path value="$PROJECT_DIR$/node_modules/fs.realpath/package.json" />
       <path value="$PROJECT_DIR$/node_modules/glob/package.json" />
@@ -204,6 +224,7 @@
       <path value="$PROJECT_DIR$/node_modules/icss-utils/package.json" />
       <path value="$PROJECT_DIR$/node_modules/inflight/package.json" />
       <path value="$PROJECT_DIR$/node_modules/inherits/package.json" />
+      <path value="$PROJECT_DIR$/node_modules/is-buffer/package.json" />
       <path value="$PROJECT_DIR$/node_modules/js-tokens/package.json" />
       <path value="$PROJECT_DIR$/node_modules/jsesc/package.json" />
       <path value="$PROJECT_DIR$/node_modules/json5/package.json" />
@@ -286,7 +307,7 @@
       <path value="$PROJECT_DIR$/wine-estate/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="15" />
     <option name="y" value="30" />
     <option name="width" value="1890" />
@@ -297,7 +318,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -314,27 +334,13 @@
               <item name="romantic-wine-estate" type="b2602c69:ProjectViewProjectNode" />
               <item name="romantic-wine-estate" type="462c0819:PsiDirectoryNode" />
               <item name="wine-estate" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="romantic-wine-estate" type="b2602c69:ProjectViewProjectNode" />
-              <item name="romantic-wine-estate" type="462c0819:PsiDirectoryNode" />
-              <item name="wine-estate" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="romantic-wine-estate" type="b2602c69:ProjectViewProjectNode" />
-              <item name="romantic-wine-estate" type="462c0819:PsiDirectoryNode" />
-              <item name="wine-estate" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="registerPage" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -385,16 +391,20 @@
       <workItem from="1534122132301" duration="34000" />
       <workItem from="1534145092710" duration="196000" />
       <workItem from="1534148448368" duration="506000" />
+      <workItem from="1534237877053" duration="232000" />
+      <workItem from="1534239615123" duration="1041000" />
+      <workItem from="1534240949947" duration="303000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5123000" />
+    <option name="totallyTimeSpent" value="6467000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24305004" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24305004" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -406,12 +416,31 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49960285" weight="0.32740214" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49960285" visible="true" weight="0.32562277" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50039715" side_tool="true" weight="0.32740214" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24305004" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.49960285" visible="true" weight="0.3268206" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50039715" side_tool="true" weight="0.32740214" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -433,13 +462,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/wine-estate/src/components/accountPage/accountPage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" column="10" selection-start-line="9" selection-start-column="10" selection-end-line="9" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -480,8 +502,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/wine-estate/src/components/mytracksPage/mytracksPage.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="700">
+          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wine-estate/config/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/wine-estate/src/components/accountPage/accountPage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="82" column="30" selection-start-line="82" selection-start-column="30" selection-end-line="82" selection-end-column="30" />
         </state>
       </provider>
     </entry>
