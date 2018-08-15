@@ -53,12 +53,12 @@
       <div class="hontiao"></div>
       <p>价格</p>
       <ul>
-        <li>1-99元</li>
-        <li>100-199元</li>
-        <li>200-299元</li>
-        <li>300-399元</li>
-        <li>400-499元</li>
-        <li>500-5000元</li>
+        <li>1-499元</li>
+        <li>500-999元</li>
+        <li>1000-1499元</li>
+        <li>1500-1999元</li>
+        <li>2000-2499元</li>
+        <li>2500+</li>
       </ul>
     </div>
       <bottom></bottom>
@@ -101,27 +101,31 @@ export default {
     background-color:#d02131;
     margin:0px;
     padding:0px;}
-  .gdclassk{height:88px;
+  .gdclassk{height:85px;
     width:750px;
     background-color:#d02131;
     position:relative;}
   .gdctub{height:58px;
     width:44px;
     position:absolute;
-    top:16px;
+    top:0px;
     left:145px;
     background-color:#DE8F8B;
     margin:0px;
     padding:0px;
   }
+  .gdctub img {
+    width:44px;
+    height:56px;
+  }
   input{background-color:#DE8F8B;
     width:416px;
-    height:56px;
+    height:54px;
     padding-left:30px;
     margin:0px;
     position:absolute;
     left:189px;
-    top:16px;
+    top:0px;
     border:none;
     color:#F8E8E7;
     font-size: 24px;}
@@ -162,7 +166,7 @@ export default {
   }
   li{
     height:80px;
-    width:220px;
+    width:200px;
     float:left;
     color:#9F9F9F;
     line-height:80px;
@@ -204,7 +208,9 @@ export default {
   }
   .nav{
     position:fixed;
-    left:620px;
+    left:240px;
     bottom:12px;
+    width:60px;
+    height:70px;
   }
 </style>

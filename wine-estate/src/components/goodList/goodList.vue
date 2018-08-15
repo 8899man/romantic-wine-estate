@@ -110,6 +110,10 @@ export default {
     left:60px;
     top:10px;
   }
+  .gdlfh img{
+    width:30px;
+    height:50px;
+  }
   .gdlzy{
     margin:0px;
     padding:0px;
@@ -119,6 +123,10 @@ export default {
     right:60px;
     top:30px;
   }
+  .gdlzy img{
+    width:87px;
+    height:50px;
+  }
   .gdltub{height:58px;
     width:44px;
     position:absolute;
@@ -127,6 +135,10 @@ export default {
     background-color:#DC908C;
     margin:0px;
     padding:0px;
+  }
+  .gdltub img{
+    width:44px;
+    height:60px;
   }
   input{background-color:#DC908C;
     width:416px;
@@ -181,14 +193,14 @@ export default {
   }
  p:nth-child(1){
     background-color:#fff;
-    width:750px;
+    width:720px;
     height:104px;
     margin:0px;
     padding-top:10px;
     color:#333;
     text-align:left;
     font-size:28px;
-   border-top:#EBEBEB solid 1px;
+    border-top:#EBEBEB solid 1px;
   }
   p:nth-child(2){
     background-color:#fff;
@@ -204,7 +216,7 @@ export default {
     background-color:#fff;
     width:750px;
     height:80px;
-    margin:0px;
+    margin-top:10px;
     padding:0px;
     color:#f00;
     text-align:left;
@@ -214,7 +226,5 @@ export default {
   .gdlyb{
     height:220px;
     width:750px;
-    margin:0px;
-    padding:0px;
   }
 </style>

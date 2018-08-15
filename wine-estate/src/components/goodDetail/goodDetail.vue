@@ -93,8 +93,15 @@ export default {
   },
   methods: {
     add () {
-      const value1 = document.getElementById('number')
-      value1.innerHTML = Number(value1.innerHTML) + 1
+      const value1 = document.getElementById('number');
+      value1.innerHTML = Number(value1.innerHTML) + 1;
+      this.$http.get("/api/comment.htm",{
+        params: {}
+      }).then(function(res) {
+        console.log(res.data);
+      }).catch(function(error) {
+        console.log(error);
+      });
     },
     change () {
       this.exist = !this.exist
@@ -145,7 +152,7 @@ a{color:#fff;
 .img2{width:87px;
   height:50px;
   position:absolute;
-  right:0px;
+  right:10px;
   bottom:5px;}
   .gdetaillbt{
     width:750px;
@@ -156,6 +163,10 @@ a{color:#fff;
     position:absolute;
     left:0px;
     top:128px;}
+  .gdetaillbt img{
+    width:750px;
+    height:440px;
+  }
   .wxin{background-color: #fff;
     height:273px;
     width:750px;
@@ -177,7 +188,7 @@ a{color:#fff;
     width:708px;
     height:82px;
     position:absolute;
-    left:44px;
+    left:90px;
     top:160px;
     color:#F9121A;
     font-size:50px;
@@ -187,7 +198,7 @@ a{color:#fff;
   .wshop{width:660px;
     height:102px;
     position:absolute;
-    left:43px;
+    left:90px;
     top:230px;
     font-size:30px;
     color:#B5B5B5;
@@ -209,7 +220,7 @@ a{color:#fff;
     left:0px;
     top:875px;
     color:#8A8A8A;
-    padding:0px;
+    margin-left:-30px;
     margin-top:-14px;
     }
   .xxxx li{
@@ -232,6 +243,10 @@ a{color:#fff;
     right:0px;
     top:-1.5px;
     background-color:#EBEBEB;
+  }
+  .und img{
+    width:55px;
+    height:58px;
   }
   .hpd{width:750px;
     height:34px;
@@ -295,12 +310,16 @@ a{color:#fff;
     bottom:10px;
     margin:0px;
   }
+  .gwctu img{
+    width:96px;
+    height:85px;
+  }
  p{
     color:#fff;
     font-size:30px;
     margin:0px;
     position:absolute;
-    left:70px;
+    left:65px;
     top:5px;
     z-index:2;
   }
@@ -312,6 +331,10 @@ a{color:#fff;
     bottom:-28px;
     margin:0px;
   }
+  .xinxin img{
+  width:79px;
+  height:68px;
+   }
 .honxin{
   width:100px;
   height:100px;
@@ -320,6 +343,10 @@ a{color:#fff;
   bottom:-18px;
   margin:0px;
   z-index:2;
+}
+.honxin img {
+  width:75px;
+  height:58px;
 }
   .guanzhu{width:70px;
     color:#747474;

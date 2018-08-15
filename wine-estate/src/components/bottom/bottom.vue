@@ -2,7 +2,6 @@
   <div class="bottom">
     <div class="first" @click="re1">
        <img src="./img/first_0.jpg" alt="#" class="first_0">
-      <img src="./img/first_0.jpg" alt="#" class="first_0">
     </div>
     <div class="nav" @click="re2">
       <img src="./img/nav_0.jpg" alt="#" class="nav_0">
@@ -11,7 +10,6 @@
       <img src="./img/shop_0.jpg" alt="#" class="shop_0">
     </div>
     <div class="my" @click="re4">
-      <img src="../../assets/my_1.jpg" alt="#" class="my_0">
       <img src="./img/my_0.jpg" alt="#" class="my_0">
     </div>
   </div>
@@ -68,11 +66,19 @@ export default {
     left: 25px;
     cursor:pointer;
   }
+  .first img{
+    width:73px;
+    height:77px;
+  }
   .nav .nav_0{
     position: absolute;
     top: 8px;
     left: 230px;
     cursor:pointer;
+  }
+  .nav img{
+    width:67px;
+    height:86px;
   }
   .shop .shop_0{
     position: absolute;
@@ -80,10 +86,18 @@ export default {
     right: 230px;
     cursor:pointer;
   }
+  .shop img{
+    width:60px;
+    height:70px;
+  }
   .my .my_0 {
     position: absolute;
     top: 10px;
     right: 25px;
     cursor:pointer;
+  }
+  .my img{
+    width:73px;
+    height:80px;
   }
 </style>

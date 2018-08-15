@@ -53,7 +53,7 @@ export default {
   margin:0 auto;
   padding:0px;
   background-color:#EBEBEB;
-  height:1000px;}
+  height:1334px;}
 p{width:750px;
   height:40px;
   background-color:#d02131;
@@ -88,7 +88,7 @@ a{color:#fff;
   background-color: #AA2834;
   margin:0 auto;
   padding:0px;}
- .tub{height:58px;
+ .tub{height:60px;
    width:44px;
    position:absolute;
    top:16px;
@@ -97,6 +97,10 @@ a{color:#fff;
    margin:0px;
    padding:0px;
    }
+ .tub img{
+   width:44px;
+   height:56px;
+ }
  img{margin:0px;
    padding:0px;
    width:44px;

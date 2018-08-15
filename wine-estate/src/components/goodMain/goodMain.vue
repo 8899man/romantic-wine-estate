@@ -37,7 +37,7 @@
           <img src="./img/mfirst.png" alt="两杯酒图标"/>
         </div>
       <div class="butt">
-        1F 进口葡萄酒
+        1F 杰卡斯山庄
       </div >
       <div class="mthree" v-on:click="change()">
         <img src="./img/mtwo.png" v-show="exis3" alt="按钮图标"/><!--一楼按钮-->
@@ -98,7 +98,7 @@
           <img src="./img/mfirst.png" alt="两杯酒图标"/>
         </div>
         <div class="butt">
-          2F 国产葡萄酒
+          2F 洛神山庄
         </div >
         <div class="mthree" v-on:click="change1()">
           <img src="./img/mtwo.png" v-show="exis4" alt="按钮图标"/><!--2F按钮-->
@@ -159,7 +159,7 @@
           <img src="./img/mfirst.png" alt="两杯酒图标"/>
         </div>
         <div class="butt">
-          3F 经典葡萄酒
+          3F 路易拉菲
         </div >
         <div class="mthree" v-on:click="change2()">
           <img src="./img/mtwo.png" v-show="exis5" alt="按钮图标"/><!--一楼按钮-->
@@ -357,12 +357,16 @@ export default {
     overflow:hidden;
     position:relative;
    }
-  .right{height:58px;
+  .right{height:68px;
     width:80px;
     background-color:#E78C87;
     float:left;
     margin-top:14px;
-    padding-top:25px;
+    padding-top:15px;
+  }
+  .right img{
+    width:44px;
+    height:58px;
   }
   .left{
     float:left;
@@ -371,13 +375,17 @@ export default {
     margin:0px;
     padding-top:25px;
    }
+  .left img{
+    width:86px;
+    height:57px;
+  }
   .center{background-color:#E78C87;
     width:450px;
     height:81px;
     margin-top:14px;
     border:none;
     color:#F8E8E7;
-    font-size: 35px;
+    font-size:35px;
     float:left;}
   input{
     padding-left:40px;
@@ -394,15 +402,17 @@ export default {
     margin:0px;
     padding:0px;
   }
-  .intro h2{
-    text-align:center;
+  .gdetaillbt img{
+    width:750px;
+    height:440px;
   }
   .mainjt{
     width:750px;
-    height:412px;
+    height:410px;
     padding:0px;
     margin:0px;
     border:1px #ccc solid;
+    overflow: hidden;
   }
   .mainjta{
     float:left;
@@ -410,6 +420,10 @@ export default {
     height:410px;
     padding:0px;
     margin:0px;
+  }
+  .mainjtb img{
+    width:200px;
+    height:410px;
   }
   .mainjtb{
     width:200px;
@@ -441,7 +455,7 @@ export default {
     font-size:30px;
   }
   .butt{
-     width:580px;
+     width:450px;
      height:79px;
      line-height:79px;
      font-size:30px;
@@ -458,21 +472,31 @@ export default {
   }
   .mtwo,.mthree,.butt{
     float:left;
-    margin:0px;
+    margin-left:40px;
   }
   .mthree{
     position:relative;
   }
+  .mthree img {
+    width:75px;
+    height:75px;
+  }
   .mtwo{
     padding-top:5px;
   }
+  .mtwo img{
+    width:67px;
+    height:70px;
+  }
   .first{
     position:fixed;
-    left:420px;
-    bottom:13px;
+    left:35px;
+    bottom:15px;
+    width:48px;
+    height:68px;
   }
   .tiao{
     width:750px;
-    height:88px;
+    height:80px;
   }
 </style>
