@@ -43,7 +43,7 @@
                 <img src="./img/icon2-4.png" alt="图片不见了哦~"/>
                 <p>我的酒评</p>
               </span>
-        <span @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
+        <span @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="routerwatchList">
                 <img src="./img/icon3-4.png" alt="图片不见了哦~"/>
                 <p>我的关注</p>
               </span>
@@ -140,6 +140,26 @@
           }
         })
       },
+
+      routerwatchList() {
+        this.$http.get("/api/info.htm", {
+          params: {}
+        }).then((res) => {
+          if (!res.data.status) {
+            this.$messagebox.alert("", {
+              message: "请先登录哦~",
+              title: "提示",
+              showConfirmButton: true,
+              confirmButtonText: "确定"
+            });
+          } else {
+            this.$router.push({
+              path: "/watchList"
+            });
+          }
+        })
+      },
+
       routermytracksPage() {
         this.$http.get("/api/info.htm", {
           params: {}
