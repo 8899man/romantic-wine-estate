@@ -7,28 +7,12 @@
             <img src="./img/icon13.png" alt="#" @click="rel">
         </header>
         <ul class="list" ref="goods">
-            <li>
+            <li v-for="item in data" :id="item.goodsId">
               <img src="./img/delete.png" alt="#" @click="deleteGood($event)">
               <div class="goods" v-bind:class="className">
-                  <img src="./img/wine33.jpg" alt="#">
-                  <span class="wine-name"><b>奔富138西粒子歌海螺幕合怀特干红...</b></span>
-                  <span class="wine-price">￥ 279.00</span>
-              </div>
-            </li>
-            <li>
-              <img src="./img/delete.png" alt="#" @click="deleteGood($event)">
-              <div class="goods" v-bind:class="className">
-                  <img src="./img/wine33.jpg" alt="#">
-                  <span class="wine-name"><b>奔富138西粒子歌海螺幕合怀特干红...</b></span>
-                  <span class="wine-price">￥ 280.00</span>
-              </div>
-            </li>
-            <li>
-              <img src="./img/delete.png" alt="#" @click="deleteGood($event)">
-              <div class="goods" v-bind:class="className">
-                  <img src="./img/wine33.jpg" alt="#">
-                  <span class="wine-name"><b>奔富138西粒子歌海螺幕合怀特干红...</b></span>
-                  <span class="wine-price">￥ 281.00</span>
+                  <img :src="item.smallPic" alt="#">
+                  <span class="wine-name"><b>{{item.goodsTitle}}</b></span>
+                  <span class="wine-price">¥ {{item.goodsPrice}}</span>
               </div>
             </li>
         </ul>
@@ -42,7 +26,8 @@ export default {
       title: '我的关注',
       write: '编辑',
       className: {'goods': true, 'change': false},
-      bOn: true
+      bOn: true,
+      data:[]
     }
   },
   methods :{
@@ -62,12 +47,34 @@ export default {
     deleteGood(event) {
         var oLi = event.currentTarget.parentNode;
         this.$refs.goods.removeChild(oLi);
+        var Id = oLi.id;
+        this.$http.get("/api/cancelAttention.htm",{
+          params:{
+            goodsId: Id
+          }
+        }).then((res) => {
+          console.log(res.data);
+        }).catch((error) => {
+          console.log(error);
+        })
     },
     rel(){
         this.$router.push({
           path: '/accountPage'
         })
+    },
+    watchGoods(){
+      this.$http.get("/api/searchAttention.htm",{
+        params:{}
+      }).then((res) => {
+        this.data = res.data.data;
+      }).catch((error) => {
+        console.log(error);
+      })
     }
+  },
+  created:function() {
+    this.watchGoods();
   }
 }
 </script>
@@ -79,6 +86,7 @@ export default {
     height: 1334px;
     margin: 0 auto;
     padding: 0;
+    overflow: hidden;
   }
   .head{
     width: 100%;
@@ -105,6 +113,8 @@ export default {
     right: 31px;
   }
   .head img{
+    width: 30px;
+    height: 52px;
     position: absolute;
     top: 59px;
     left: 26px;
@@ -119,6 +129,8 @@ export default {
     list-style: none;
   }
   .list li img{
+    width: 40px;
+    height: 40px;
     position: absolute;
     top: 85px;
     left: 40px;
@@ -137,6 +149,8 @@ export default {
     margin-left: 80px;
   }
   .list li .goods img{
+    width: 146px;
+    height: 169px;
     position: absolute;
     top: 10px;
     left: 5px;
@@ -154,6 +168,6 @@ export default {
     font-size: 21px;
     position: absolute;
     top: 133px;
-    left: 160px;
+    left: 170px;
   }
 </style>

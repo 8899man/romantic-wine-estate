@@ -32,8 +32,33 @@
         })
       },
       re3(){
-        this.$router.push({
-          path: '/logged'
+        var _this = this;
+        this.$http.get("/api/status.htm",{
+          params:{}
+        }).then((res) => {
+          console.log(res.data.status);
+          if(res.data.status == "0"){
+            _this.$router.push({
+              path:'/loginPage'
+            })
+          }else{
+            _this.$http.get("/api/isempty.htm",{
+              params:{}
+            }).then((res) => {
+              console.log(res.data.status);
+              if(res.data.status == "0"){
+                _this.router.push({
+                  path:'/shoppingCart'
+                })
+              }else{
+                _this.router.push({
+                  path:'/logged'
+                })
+              }
+            })
+          }
+        }).catch((error) => {
+          console.log(error);
         })
       },
       re4(){
@@ -61,21 +86,29 @@
     right: 0px;
   }
   .first .first_0{
+    width: 73px;
+    height: 77px;
     position: absolute;
     top: 10px;
     left: 25px;
   }
   .nav .nav_0{
+    width: 67px;
+    height: 86px;
     position: absolute;
     top: 8px;
     left: 230px;
   }
   .shop .shop_0{
+    width: 60px;
+    height: 70px;
     position: absolute;
     top: 12px;
     right: 230px;
   }
   .my .my_0 {
+    width: 73px;
+    height: 80px;
     position: absolute;
     top: 10px;
     right: 25px;

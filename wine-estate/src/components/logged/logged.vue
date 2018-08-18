@@ -10,58 +10,19 @@
                 <p>手机下单也买酒商品满99元包运费</p>
             </div>
             <ul class="goods">
-                <li>
+                <li v-for="item in data" :id="item.goodsId">
                     <div class="line"></div>
                     <div @click="change2($event)">
                       <img src="./img/no.jpg" alt="#" class="no2">
                       <img src="./img/yes.jpg" alt="#" class="yes2">
                     </div>
-                    <img src="./img/wine22.jpg" alt="#">
-                    <span class="name">拉菲传说波尔多红葡萄酒</span>
-                    <span class="price">¥ 62.0</span>
+                    <img :src="item.smallPic" alt="#">
+                    <span class="name">{{item.goodsTitle}}</span>
+                    <span class="price">¥ {{item.goodsPrice}}</span>
                     <button class="sub" @click="sub($event)"></button>
-                    <input type="text" class="number" value="1" @keyup="number($event)">
+                    <input type="text" class="number" :value="item.goodsNum" @keyup="number($event)">
                     <button class="add" @click="add($event)"></button>
                 </li>
-              <li>
-                <div class="line"></div>
-                <div @click="change2($event)">
-                  <img src="./img/no.jpg" alt="#" class="no2">
-                  <img src="./img/yes.jpg" alt="#" class="yes2">
-                </div>
-                <img src="./img/wine22.jpg" alt="#">
-                <span class="name">拉菲传说波尔多红葡萄酒</span>
-                <span class="price">¥ 62.0</span>
-                <button class="sub" @click="sub($event)"></button>
-                <input type="text" class="number" value="1" @keyup="number($event)">
-                <button class="add" @click="add($event)"></button>
-              </li>
-              <li>
-                <div class="line"></div>
-                <div @click="change2($event)">
-                  <img src="./img/no.jpg" alt="#" class="no2">
-                  <img src="./img/yes.jpg" alt="#" class="yes2">
-                </div>
-                <img src="./img/wine22.jpg" alt="#">
-                <span class="name">拉菲传说波尔多红葡萄酒</span>
-                <span class="price">¥ 62.0</span>
-                <button class="sub" @click="sub($event)"></button>
-                <input type="text" class="number" value="1" @keyup="number($event)">
-                <button class="add" @click="add($event)"></button>
-              </li>
-              <li>
-                <div class="line"></div>
-                <div @click="change2($event)">
-                  <img src="./img/no.jpg" alt="#" class="no2">
-                  <img src="./img/yes.jpg" alt="#" class="yes2">
-                </div>
-                <img src="./img/wine22.jpg" alt="#">
-                <span class="name">拉菲传说波尔多红葡萄酒</span>
-                <span class="price">¥ 62.0</span>
-                <button class="sub" @click="sub($event)"></button>
-                <input type="text" class="number" value="1" @keyup="number($event)">
-                <button class="add" @click="add($event)"></button>
-              </li>
             </ul>
             <div style="width: 750px; height: 165px;"></div>
             <div class="bottom1">
@@ -82,13 +43,16 @@
 
 <script>
   import bottom from '../bottom/bottom.vue'
+  var goodId = "";
+  var goodNum = "";
 export default {
   components: {bottom},
   data() {
     return {
       title: '购物车',
       finish: '完成',
-      del: '删除'
+      del: '删除',
+      data: []
     }
   },
   methods: {
@@ -159,15 +123,69 @@ export default {
           var c = aY[i].style.display;
           if(c == "block"){
             var oLi = aY[i].parentNode.parentNode;
+            if(!goodId){
+              goodId = oLi.id + "";
+            }else{
+              goodId = goodId + "," + oLi.id;
+            }
             oLi.parentNode.removeChild(oLi);
           }
         }
+        console.log(goodId);
+        this.$http.get("/api/delete.htm",{
+          params:{
+            goodsId: goodId
+          }
+        }).then(function(res) {
+          console.log(res.data);
+        }).catch(function(error) {
+          console.log(error);
+        })
       }else{
+        for(let i=0;i<aY.length;i++){
+          let b = aY[i].style.display;
+          if(b == "block"){
+            var oLi1 = aY[i].parentNode.parentNode;
+            if(!goodNum){
+              goodNum = oLi1.id + "";
+            }else{
+              goodNum = goodNum + "," + oLi1.id;
+            }
+          }
+        }
+        this.$http.get("/api/select.htm",{
+          params:{
+            goodsId:goodNum
+          }
+        }).then(function(res) {
+          console.log(res.data);
+        }).catch(function(error) {
+          console.log(error);
+        })
+        this.$http.get("/api/putordermessage.htm?userId=5689522",{
+            params:{}
+          }).then((res) => {
+            console.log(res.data);
+          }).catch((error) => {
+            console.log(error);
+          })
         this.$router.push({
           path: '/orderSure'
         })
       }
+    },
+    newGoods(){
+      this.$http.get("/api/querybyuserid.htm",{
+        params:{}
+      }).then((res) => {
+        this.data = res.data.data.products;
+      }).catch(function(error){
+        console.log(error);
+      })
     }
+  },
+  created:function() {
+    this.newGoods();
   }
 }
 </script>
@@ -232,27 +250,8 @@ export default {
     width: 100%;
     height: 340px;
     background-color: #ffffff;
-    margin-top: 10px;
+    padding-top: 15px;
     position: relative;
-  }
-  .body .goods li .no1{
-    position: absolute;
-    top: 5px;
-    left: 15px;
-  }
-  .body .goods li .yes1{
-    position: absolute;
-    top: 5px;
-    left: 15px;
-    display: none;
-  }
-  .body .goods li .top{
-    font-family: '华文中宋';
-    font-size: 26px;
-    color: #848484;
-    position: absolute;
-    top: 15px;
-    left: 70px;
   }
   .body .goods li .line{
     width: 100%;
@@ -262,17 +261,23 @@ export default {
     top: 54px;
   }
   .body .goods li .no2{
+    width: 44px;
+    height: 44px;
     position: absolute;
     top: 170px;
     left: 30px;
   }
   .body .goods li .yes2{
+    width: 44px;
+    height: 44px;
     position: absolute;
     top: 170px;
     left: 30px;
     display: none;
   }
   .body .goods li img{
+    width: 112px;
+    height: 222px;
     position: absolute;
     top: 85px;
     left: 90px;
@@ -299,7 +304,8 @@ export default {
     height: 50px;
     border: 0;
     outline: none;
-    background-image: url(./img/sub.jpg);
+    background: url(./img/sub.jpg) no-repeat;
+    background-size: 50px 50px;
     position: absolute;
     top: 240px;
     left: 250px;
@@ -309,7 +315,8 @@ export default {
     height: 50px;
     border: 0;
     outline: none;
-    background-image: url(./img/add.jpg);
+    background: url(./img/add.jpg) no-repeat;
+    background-size: 50px 50px;
     position: absolute;
     top: 240px;
     left: 400px;
@@ -337,11 +344,15 @@ export default {
     bottom: 96px;
   }
   .body .bottom1 .all-no{
+    width: 44px;
+    height: 44px;
     position: absolute;
     left: 10px;
     top: 10px;
   }
   .body .bottom1 .all-yes{
+    width: 44px;
+    height: 44px;
     position: absolute;
     left: 10px;
     top: 10px;
@@ -369,6 +380,8 @@ export default {
     position: relative;
   }
   .shop_1{
+    width: 71px;
+    height: 86px;
     position: fixed;
     bottom: 4px;
     left: 50%;
