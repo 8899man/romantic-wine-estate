@@ -106,15 +106,15 @@ export default {
     })
   },
   methods: {
-    retur() {
+    retur () {
       this.$router.go(-1)
     },
-    push() {
+    push () {
       this.$router.push({
         path: '/goodMain'
       })
     },
-    push1() {
+    push1 () {
       let goodsId = this.$route.query.goodsId
       this.$router.push({
         path: '/commentlist',
