@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {}
   },
   methods: {
@@ -127,6 +127,9 @@ export default {
   }
   .my img{
     width:73px;
-    height:80px;
+    height:80px;}
+  .my img,.shop img,.first img,.nav img{
+    height:86px;
+    width:71px;
   }
 </style>

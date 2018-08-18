@@ -3,11 +3,13 @@
     <orderheader theme="订单完成"></orderheader>
     <section class="order-success">
       <div class="order-message">
-        <div class="orders">订单编号&nbsp
-          <span>12345</span>
+        <div>
+        <div class="orders" >订单编号&nbsp
+          <span id="ordernum">{{data.orderNum}}</span>
         </div>
-        <div class="orders">订单金额&nbsp
-          <span>87</span>
+        <div class="orders" >订单金额&nbsp
+          <span id="payment">{{data.payment}}</span>
+        </div>
         </div>
         <div class="orders">付款方式&nbsp
           <span>在线支付</span>
@@ -16,19 +18,41 @@
     </section>
     <footer>
       <bottom></bottom>
-      <img src="./img/shop_1.jpg" height="86" width="71" id="shop_1"/></footer>
+      <img src="./img/shop_1.jpg"  id="shop_1"/></footer>
   </div>
 </template>
 
 <script>
-  import bottom from '../bottom/bottom.vue'
   import orderheader from '../orderheader/orderheader.vue'
-  export default{
-    components:{
+  import bottom from '../bottom/bottom.vue'
+  export default {
+    components: {
       orderheader,
       bottom},
+    data() {
+      return {
+          data:{},
+      }
+    },
+    methods:{
+      selectorder() {
+        this.$http.get("/api/selectorder.htm", {
+          params: {
+            orderNum:ordernum
+          }
+        }).then((res)=>{
+          console.log(res.data);
+          this.data= res.data.data;
 
-    name: "orderFinish"
+        }).catch((error) =>{
+          console.log(error);
+        });
+      }
+    },
+    created : function () {
+      this.selectorder();
+      ordernum=this.$route.query.ordernum
+    }
   }
 </script>
 <style scoped>
@@ -53,13 +77,17 @@
     text-align: left;
   }
   footer{
-    width: 98px;
+    width: 86px;
     position: relative;
+  }
+  footer img{
+    height:86px;
+    width:71px;
   }
   #shop_1{
     position: fixed;
-    bottom: 4px;
-    left: 50%;
+    bottom: 0px;
+    left: 49.5%;
     margin-left: 80px;
   }
 </style>

@@ -31,7 +31,8 @@ import forgetpasswordPage from '@/components/forgetpasswordPage/forgetpasswordPa
 
 import addcomment from '@/components/addcomment/addcomment'
 import mytracksPage from '@/components/mytracksPage/mytracksPage'
-
+import orderheader from '@/components/orderheader/orderheader'
+import qrcode from '@/components/qrcode/qrcode'
 import bottom from '@/components/bottom/bottom'
 import { DatetimePicker } from 'mint-ui'
 import { Actionsheet } from 'mint-ui'
@@ -50,7 +51,7 @@ Vue.component(Picker.name, Picker)
 Vue.component(Popup.name, Popup)
 Vue.component(Actionsheet.name, Actionsheet)
 Vue.component(DatetimePicker.name, DatetimePicker)
-import orderheader from '@/components/orderheader/orderheader'
+
 Vue.use(Router)
 
 export default new Router({
@@ -246,6 +247,11 @@ export default new Router({
       name: 'orderheader',
       component: orderheader,
       meta:{keepAlive:false}
+    },
+    {
+      path: '/qrcode',
+      name: 'qrcode',
+      component: qrcode
     }
   ]
 })

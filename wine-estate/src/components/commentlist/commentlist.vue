@@ -2,68 +2,126 @@
   <div class="main">
     <orderheader theme="商品评论"></orderheader>
     <section class="comment-show">
-      <div class="commentary">
-        <div class="buyer">
-          <img src="" alt="" width="60px" height="60px">
-          <span>王的直视</span>
-        </div>
-        <div class="buy-message">
-            <span>2018.08.06</span>
-        </div>
-        <div class="goodcomments">
-          <span>我举得还阔以，给个好评</span>
-            <img class="commentpic" width="330px" height="330px">
-          <div class="view clearfix">
-            <button class="beigin" @click="addcomment"><img src="./img/addcomment.jpg" height="33" width="34"/>评论</button>
-            <button @click="likethis(index)" :class='[styles]'><img src="./img/like.jpg" height="34" width="38" v-show="!red"/>
-              <img src="./img/redlike.jpg" height="34" width="38" v-show="red"/>{{likenum}}
-              </button>
+      <ul>
+        <li v-for="item in data">
+          <div class="commentary" >
+            <div class="buyer">
+              <img :src="item.headPic" alt="">
+              <span>{{item.userName}}</span>
             </div>
-        </div>
-      </div>
-    </section>
+            <div class="buy-message">
+              <span>{{item.createTime}}</span>
+            </div>
+            <div class="goodcomments" :id="item.userId">
+              <span>{{item.comment}}</span>
+              <img class="commentpic" :src="item.picAddress">
+              <div class="view clearfix" :name="item.commentId">
+                <button class="beigin" @click="addcomment($event)" ><img src="./img/addcomment.jpg" />评论</button>
+                <button @click="likethis($event)" :class='[styles]'>
+                  <img src="./img/like.jpg">
+                  <img  src="./img/redlike.jpg" class="redlike" :name="item.likeNumber" :id="item.commentId"/> <span>{{item.likeNumber}}</span>
+                </button>
+              </div>
+            </div>
           </div>
+        </li >
+      </ul>
+    </section>
+  </div>
 
 </template>
-
-
 <script>
+  var goodsId=null;
   import orderheader from '../orderheader/orderheader.vue'
-  export default{
-    components:{orderheader},
-      data() {
-        return {
-          red: false,
-          likenum:0,
-          styles:'beigin'
+  var b = null;
+  export default {
+    components: {orderheader},
+    data() {
+      return {
+        red: false,
+        styles: 'beigin',
+        data:[]
+      }
+    },
+    methods:{
+
+      likethis(event) {
+        var oImg=event.currentTarget.querySelector(".redlike");
+        var oS=event.currentTarget;
+        var oSpan = oS.querySelector("span");
+        if(oImg.style.display=="none"){
+          oImg.style.display="block"
+          oS.className = 'changered';
+          oSpan.innerHTML=Number(oImg.name)+1;
+          c="0";
+          oSpan.style.color="#ff5000"
         }
+        else{
+          oImg.style.display="none";
+          oS.className = 'beigin';
+          oSpan.innerHTML=Number(oImg.name);
+          c="1";
+          oSpan.style.color="black"
+        }
+        var _this=this;
+        var d=event.currentTarget.parentNode.parentNode;
+        this.$http.get("/api/addLikeNum.htm", {
+          params: {
+            commentId: b.id,
+            goodsId:goodsId,
+            status: d.id
+          },
+        }).then(function (res) {
+          console.log(res.data);
+
+        }).catch(function (error) {
+          console.log(error);
+        })
       },
-      methods: {
-        likethis() {
-          this.red = !this.red
-          if (this.red) {
-            this.likenum++;
-            this.styles = 'changered'
+      addcomment(event){
+        var a=event.currentTarget.parentNode;
+        console.log(a);
+        var b=event.currentTarget.parentNode.parentNode.id;
+        this.$router.push({
+          path: '/addcomment',
+          query:{
+            commentId:a,
+            userId:b,
+            goodsId:goodsId
           }
-          else {
-            this.likenum--;
-            this.styles = 'beigin'
+        })
+      }
+    },
+    created(){
+        goodsId=this.$route.query.goodsId
+        let _this = this;
+        this.$http.get("/api/queryGoodsAllComments.htm", {
+          params: {
+            goodsId: goodsId
           }
-        },
-        addcomment: function () {
-          this.$router.push({
-            path: '/addcomment'
-          })
-        }
+        }).then(function (res) {
+          console.log(res.data);
+          if(res.data.data==null){
+            alert("查询失败或者该商品没有评论")
+          }
+          else{
+          _this.data = res.data.data;
+          }
+        }).catch(function (error) {
+          console.log(error);
+        })
+
+
 
     }
-    }
+  }
 
 </script>
-
 <style scoped>
   @import url(../../style/common1.css);
-  .main{margin: 0 auto;}
+  .main{
+    margin: 0 auto;
+  }
   .comment-show{
     padding-top: 20px;
     background: #f4f4f4;
@@ -78,9 +136,10 @@
   }
   .buyer img{
     border-radius: 50%;
-    background: bisque;
     margin-right: 35px;
-   }
+    width:60px;
+    height:60px;
+  }
   .buy-message{
     padding: 20px 0 20px 40px;
     background: #fff;
@@ -98,11 +157,13 @@
   .goodcomments span {
     font-size: 45px;
   }
+  .goodcomments img{
+    width:330px;
+    height:330px;
+  }
   .commentpic{
     margin-top: 20px;
     display:block;
-    background: antiquewhite;
-
   }
   .view{
     padding: 20px 0 20px 340px;
@@ -117,15 +178,35 @@
     border-radius: 40%;
     float: left;
     margin-right: 20px;
+    position: relative;
   }
   button img{
     float: left;
   }
+
   .beigin{
     border: 1px solid #999;
+  }
+  .beigin img{
+    width: 34px;
+    height: 33px;
   }
   .changered{
     border: 1px solid #ff5000;
     color: #ff5000;
+
+  }
+  .changered img{
+    height:34px;
+    width:38px;
+  }
+  .redlike{
+    display: none;
+    position: absolute;
+    left:20%;
+  }
+  .view span{
+    font-size: 25px;
+
   }
 </style>

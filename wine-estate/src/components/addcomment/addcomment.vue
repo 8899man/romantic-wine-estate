@@ -5,26 +5,91 @@
       <div class="response">
         <span>全部回复</span>
       </div>
-      <div class="responser">
-        <img src="" alt="" width="60px" height="60px">
-        <span>王的注视</span>
-      </div>
-      <div class="responseview">
-        <span>我觉得这个评论写的还阔以</span>
-      </div>
+      <ul  v-for="item in data">
+        <li  >
+        <div class="responser">
+          <img :src="item.headPic" alt="" >
+          <span>{{item.userName}}</span>
+        </div>
+        <div class="responseview">
+          <span>{{item.comment}}</span>
+        </div>
+      </li>
+      </ul>
+      <ul >
+        <li>
+          <div class="responser"  >
+            <img :src="data1.headPic" alt="" >
+              <span>{{data1.userName}}</span>
+          </div>
+          <div class="responseview">
+            <span id="b">{{b}}</span>
+          </div>
+        </li>
+      </ul>
         <div class="my-view clearfix">
           <textarea   placeholder="说点什么？" style="border: none"></textarea>
-          <button>评论</button>
+          <button @click="addmy">评论</button>
         </div>
     </section>
   </div>
 </template>
 
 <script>
+  let goodsId= null;
   import orderheader from '../orderheader/orderheader.vue'
   export default{
-    components:{orderheader},
+    components: {orderheader},
+    data() {
+      return {
+        data:[],
+        data1:[],
+        b:""
+      }
+    },
+    methods: {
+      getaddcomment() {
+        var _this = this;
+        this.$http.get("/api/queryCommentAllReply.htm", {
+          params: {
+            goodsId: goodsId,
+            parentCommentId: parentcommentid,
+          }
+        }).then(function (res) {
+          console.log(res.data);
+          _this.data = res.data.data;
+        }).catch(function (error) {
+          console.log(error);
+        })
+      },
 
+    addmy(){
+      var _this=this;
+      var acomment=document.querySelector("textarea").value;
+
+      this.$http.get("/api/addCommentReply.htm", {
+        params: {
+          parentCommentId:parentcommentid,
+          comment:acomment,
+          prefixMatch:prefixmatch
+        }
+      }).then(function (res) {
+        console.log(res.data);
+        _this.b=acomment;
+        document.querySelector("textarea").value=null
+        _this.data1 = res.data.data;
+      }).catch(function (error) {
+        console.log(error);
+      })
+    },
+    },
+    created (){
+      this.getaddcomment();
+      parentcommentid=this.$route.query.commentId;
+      prefixmatch=this.$route.query.userId
+      goodsId=this.$route.query.goodsId
+
+    }
     }
 </script>
 
@@ -32,9 +97,11 @@
   @import url(../../style/common1.css);
   .main{
     margin: 0 auto;
-    position: relative;
     height: 1334px;
+    border-bottom: 1px #999 solid;
+    overflow: hidden;
     width: 750px;
+    position: relative;
   }
   .commentview{
     padding-top: 20px;
@@ -58,8 +125,9 @@
   }
   .responser img{
     border-radius: 50%;
-    background: bisque;
     margin-right: 35px;
+    width:60px;
+    height:60px
   }
 
   .responseview{

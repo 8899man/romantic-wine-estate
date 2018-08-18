@@ -27,11 +27,11 @@
         <li>类型:{{category}}</li>
       </ul>
     </div>
-    <div class="wcir"><!--评论栏-->
+    <div class="wcir" v-on:click="push1()"><!--评论栏-->
       <div class="spcir">
         商品评论
         <div class="und"><!--跳转到评论的按钮-->
-          <img src="./img/und.png" v-on:vlick="push1()" alt="跳转的图标">
+          <img src="./img/und.png"  alt="跳转的图标">
         </div>
       </div>
       <div class="hpd"><!--好评度-->
@@ -69,8 +69,9 @@
 </template>
 
 <script>
+let Id = null;
 export default {
-  data() {
+  data () {
     return {
       exist: false,
       goodsTitle: '',
@@ -83,9 +84,9 @@ export default {
       commentNum: ''
     }
   },
-  created() {
+  created () {
     // 接受商品id
-    let Id = this.$route.query.goodsId
+    Id = this.$route.query.goodsId
     this.$http.get('/api/queryByGoodsId.htm/?', {
       params: {
         goodsId: Id
@@ -115,7 +116,7 @@ export default {
       })
     },
     push1 () {
-      let goodsId = this.$route.query.goodsId
+      let goodsId = Id
       this.$router.push({
         path: '/commentlist',
         query: {goodsId: goodsId}

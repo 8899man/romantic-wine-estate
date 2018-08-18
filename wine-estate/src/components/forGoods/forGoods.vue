@@ -9,22 +9,29 @@
         <li @click="forevaluate">待评价</li>
       </ul>
     </div>
+
     <section class="my-orders">
       <div class="accept-order">
-        <div  class="storemsg clearfix" >
-          <img src="../../assets/store.jpg" height="30" width="30"/>
-          <span id="storename">ss</span>
+        <ul>
+          <li v-for="item in data3"  >
+            <div >
+        <div  class="storemsg clearfix"  @click="orderdetail($event)" :id="item.orderNum">
+          <img src="../../assets/store.jpg" />
+          <span id="storename">{{data1.sellerId}}</span>
           <span class="state">卖家已发货</span>
         </div>
-        <div class="good clearfix">
-          <div id="good-pic"><img src="" alt=""></div>
-          <div id="good-name"></div>
+        <div class="good clearfix" v-for="item1 in data2">
+          <div id="good-pic"><img :src="item1.smallPic" alt=""></div>
+          <div id="good-name">{{item1.goodsTitle}}</div>
         </div>
-        <div class="all-price"><span>共一件商品&nbsp合计:&yen19.90（含运费&yen0.00）</span></div>
+            </div>
+        <div class="all-price"><span> &nbsp合计:&yen{{data1.payment}}（含运费&yen0.00）</span></div>
+      <div class="forpay">
+        <input type="button" value="收货" id="take-goods">
       </div>
-    </section>
-    <section class="forpay">
-      <input type="button" value="收货" id="take-goods">
+          </li>
+        </ul>
+      </div>
     </section>
   </div>
 </template>
@@ -34,7 +41,13 @@
   export default{
     components:{orderheader},
     data() {
-      return {}
+      return {
+        data:{},
+        data1:{},
+        data2:[],
+        data3:[],
+        stop:[]
+      }
     },
     methods: {
       toBack() {
@@ -58,12 +71,42 @@
         })
 
       },
+      orderdetail(event){
+        var oLi=event.currentTarget;
+        this.$router.push({
+          path: '/orderdetail',
+          query:{ordernum:oLi.id}
+
+        })
+      },
       obligation: function () {
         this.$router.push({
           path: '/obliGation'
         })
-
       },
+      getordermsg() {
+        var this1 = this;
+        this.$http.get("/api/orderStatus.htm", {
+          params: {
+            userId: "5689522"
+          }
+        }).then(function (res) {
+          var data3=[];
+          for(var i=0;i<res.data.data.length;i++) {
+            if (res.data.data[i].status == 3) {
+              this1.data1 = res.data.data[i];
+              this1.data2 = res.data.data[i].goodsList;
+              this1.data3= data3.push(this1.data1);
+              console.log(this1.data3)
+            }
+          }
+        }).catch(function (error) {
+          console.log(error);
+        })
+      }
+    },
+    created(){
+      this.getordermsg();
     }
   }
 </script>
@@ -73,13 +116,15 @@
   .main{margin: 0 auto;}
   .nav{
     width: 750px;
-    background-image:url("../../assets/navback.jpg");
     margin: 0 auto;}
   .nav li{
     width:187px;
     height:88px;
     float:left;
     padding: 31px;
+
+  }
+  .nav ul li{
     font-size:30px;
     color: #878787;
     text-align: center;
@@ -102,6 +147,8 @@
   .storemsg img{
     float: left;
     margin-right: 25px;
+    height:30px;
+    width:30px;
   }
   #storename{
     float: left;
@@ -117,21 +164,18 @@
     background: #f4f4f4;
     padding: 13px 7px 47px 24px;
     margin-bottom: 38px;
-
   }
   #good-pic{
-    width:140px;
-    height:140px;
-    background: antiquewhite;
     float: left;
     margin-right: 30px;
   }
+  #good-pic img{
+    width:90px;
+    height:140px;
+  }
   #good-name{
-    width: 20px;
-    height:80px;
-    background: aquamarine;
-    float: left;
     margin-top: 25px;
+    text-align: left;
   }
   .all-price{
     margin-bottom: 35px;
@@ -143,9 +187,8 @@
     border-bottom: 2px solid #ddd;
     width: 750px;
     height: 121px;
-    padding-top: 20px;
-    padding-left: 300px;
-    margin: 0 auto;
+    padding: 20px 0 0 300px;
+
   }
   input{
     height: 75px;
@@ -160,5 +203,8 @@
     border: 2px solid #bb3437;
     color:#bb3437;
     margin-left:205px ;
+  }
+  .my-orders li{
+    margin-bottom: 10px;
   }
 </style>

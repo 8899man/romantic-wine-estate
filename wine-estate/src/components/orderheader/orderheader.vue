@@ -50,7 +50,10 @@
 
   }
   .head img{
-    float: left}
+    float: left;
+    width: 25px;
+    height: 35px;
+  }
   .head span{
     font-size: 37px;
     color: #fff;position:absolute;

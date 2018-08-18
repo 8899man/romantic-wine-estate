@@ -11,19 +11,23 @@
     </div>
     <section class="my-orders">
       <div class="accept-order">
-        <div  class="storemsg clearfix" >
-          <img src="../../assets/store.jpg" height="30" width="30"/>
-          <span id="storename">ss</span>
+        <ul>
+          <li v-for="item in data3"  >
+        <div  class="storemsg clearfix" @click="orderdetail($event)" :id="item.orderNum">
+          <img src="../../assets/store.jpg" />
+          <span id="storename">{{data1.sellerId}}</span>
           <span class="state">交易成功</span>
         </div>
-        <div class="good clearfix">
-          <div id="good-pic"><img src="" alt=""></div>
-          <div id="good-name"></div>
+        <div class="good clearfix"  v-for="item1 in data2">
+          <div id="good-pic"><img :src="item1.smallPic" alt=""></div>
+          <div id="good-name">{{item1.goodsTitle}}</div>
         </div>
-        <div class="all-price"><span >共一件商品&nbsp合计:&yen19.90（含运费&yen0.00）</span></div>
+        <div class="all-price"><span > &nbsp合计:&yen{{data1.payment}}（含运费&yen0.00）</span></div>
         <div class="forpay">
-          <input type="button" value="评价" id="evalutation">
+          <input type="button" value="评价" id="evalutation" @click="comment($event)" :class="item1.goodId">
         </div>
+          </li>
+        </ul>
       </div>
     </section>
   </div>
@@ -34,7 +38,12 @@
   export default{
     components:{orderheader},
     data() {
-      return {}
+      return {
+        data:{},
+        data1:{},
+        data2:[],
+        data3:[]
+      }
     },
     methods: {
       toBack() {
@@ -63,13 +72,51 @@
           path: '/obliGation'
         })
       },
-      orderpay: function () {
+      comment: function (event) {
+        var ids=event.currentTarget.className;
+        var oLi=event.currentTarget.parentNode.parentNode;
         this.$router.push({
-          path: '/orderpay'
+          path: '/comment',
+          query:{
+            goodsId:ids,
+            ordernum:oLi.id
+          }
+        })
+      },
+      orderdetail(event){
+        var oLi=event.currentTarget;
+        this.$router.push({
+          path: '/orderdetail',
+          query:{ordernum:oLi.id}
+
+        })
+      },
+      getordermsg() {
+        var this1 = this;
+        this.$http.get("/api/orderStatus.htm", {
+          params: {
+            userId: "5689522"
+          }
+        }).then(function (res) {
+          var data3=[];
+          for(var i=0;i<res.data.data.length;i++) {
+            if (res.data.data[i].status == 7) {
+              this1.data1 = res.data.data[i];
+              this1.data2 = res.data.data[i].goodsList;
+              this1.data3= data3.push(this1.data1);
+              console.log(this1.data3)
+            }
+          }
+        }).catch(function (error) {
+          console.log(error);
         })
       }
+    },
+    created(){
+      this.getordermsg();
     }
   }
+
 </script>
 
 <style>
@@ -77,7 +124,6 @@
   .main{margin: 0 auto;}
   .nav{
     width: 750px;
-    background-image:url("../../assets/navback.jpg");
     margin: 0 auto;}
   .nav li{
     width:187px;
@@ -109,6 +155,8 @@
   .storemsg img{
     float: left;
     margin-right: 25px;
+    height:30px;
+    width:30px;
   }
   #storename{
     float: left;
@@ -126,18 +174,16 @@
     margin-bottom: 38px;
   }
   #good-pic{
-    width:140px;
-    height:140px;
-    background: antiquewhite;
     float: left;
     margin-right: 30px;
   }
+  #good-pic img{
+    width:90px;
+    height:140px;
+  }
   #good-name{
-    width: 20px;
-    height:80px;
-    background: aquamarine;
-    float: left;
     margin-top: 25px;
+    text-align: left;
   }
   .all-price{
     margin-bottom: 35px;
@@ -165,5 +211,8 @@
     border: 2px solid #bb3437;
     color:#bb3437;
     margin-left:205px ;
+  }
+  .my-orders li{
+    margin-bottom: 10px;
   }
 </style>
