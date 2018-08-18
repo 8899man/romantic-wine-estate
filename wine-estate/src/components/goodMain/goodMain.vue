@@ -457,7 +457,7 @@ export default {
   }
   .mainjtb img{
     width:200px;
-    height:410px;
+    height:380px;
     font-size:15px;
   }
   .mainjtb{

@@ -21,23 +21,23 @@ export default {
     return {}
   },
   methods: {
-    re1 () {
+    re1() {
       this.$router.push({
         path: '/goodMain'
       })
     },
-    re2 () {
+    re2() {
       this.$router.push({
         path: '/goodClass'
       })
     },
-    re3 () {
-      let _this = this
+    re3() {
+      let _this = this;
       this.$http.get('/api/status.htm', {
         params: {}
       }).then((res) => {
         console.log(res.data.status)
-        if (res.data.status =='0') {
+        if (res.data.status == '0') {
           _this.$router.push({
             path: '/loginPage'
           })
@@ -61,7 +61,7 @@ export default {
         console.log(error)
       })
     },
-    re4 () {
+    re4() {
       this.$router.push({
         path: '/accountPage'
       })

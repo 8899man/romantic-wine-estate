@@ -8,27 +8,14 @@
             <a href="#" @click="creatAdd">{{newadd}}</a>
         </header>
         <ul class="list">
-            <li>
+            <li v-for="item in data" :id="item.addressId">
                 <img src="./img/cut.jpg" alt="#" class="cut" @click="deleteAdd($event)">
                 <div class="line"></div>
-                <span class="name">{{name}}</span>
-                <span class="phone">{{phone}}</span>
-                <span class="add1">{{add1}}</span>
-                <span class="add2">{{add2}}</span>
-                <router-link to="newAddress">
-                  <img src="./img/creat.jpg" alt="#" class="creat">
-                </router-link>
-            </li>
-            <li>
-              <img src="./img/cut.jpg" alt="#" class="cut" @click="deleteAdd($event)">
-              <div class="line"></div>
-              <span class="name">{{name}}</span>
-              <span class="phone">{{phone}}</span>
-              <span class="add1">{{add1}}</span>
-              <span class="add2">{{add2}}</span>
-              <router-link to="newAddress">
-                <img src="./img/creat.jpg" alt="#" class="creat">
-              </router-link>
+                <span class="name">{{item.contact}}</span>
+                <span class="phone">{{item.mobile}}</span>
+                <span class="add1">{{item.province}} {{item.city}}  {{item.town}}</span>
+                <span class="add2">{{item.address}}</span>
+                <img src="./img/creat.jpg" alt="#" class="creat" @click="creatAdd($event)">
             </li>
         </ul>
     </div>
@@ -41,24 +28,47 @@ export default {
         title: '收货地址',
         newadd: '新增',
         name: '杨梦雪',
-        phone: '15171139313',
-        add1: '陕西  西安  长安区',
-        add2: '西安邮电大学长安校区西区'
+        data:[]
       }
     },
     methods: {
       deleteAdd(event){
           var oLi = event.currentTarget.parentNode;
+          var cutId = oLi.id;
           oLi.parentNode.removeChild(oLi);
+          this.$http.get("/api/deleteOneAddress.htm",{
+            params:{
+              addressId:cutId
+            }
+          }).then((res) => {
+            console.log(res.data);
+          }).catch((error) => {
+            console.log(error);
+          })
       },
       lastPage(){
           this.$router.go(-1)
       },
-      creatAdd(){
+      creatAdd(event){
+        var oLi = event.currentTarget.parentNode;
+        var addId = oLi.id;
         this.$router.push({
-          path: '/newAddress'
+          path: '/newAddress',
+          query:{ids:addId}
+        })
+      },
+      allAdd(){
+        this.$http.get("/api/queryAllAddress.htm?userId=000001",{
+          params:{}
+        }).then((res) => {
+          this.data = res.data.data;
+        }).catch((error) => {
+          console.log(error);
         })
       }
+    },
+    created:function() {
+      this.allAdd();
     }
 }
 </script>
@@ -87,6 +97,8 @@ export default {
     top: 80px;
   }
   header img{
+    width: 30px;
+    height: 52px;
     position: absolute;
     top: 59px;
     left: 26px;
@@ -114,6 +126,8 @@ export default {
     position: relative;
   }
   .list li .cut{
+    width: 60px;
+    height: 60px;
     position: absolute;
     top: 0px;
     right: 5px;
@@ -162,6 +176,8 @@ export default {
     left: 10px;
   }
   .list li .creat{
+    width: 70px;
+    height: 76px;
     position: absolute;
     top: 100px;
     right: 10px;
