@@ -3,7 +3,7 @@
     <div class="watch-list">
         <header class="head">
             <span class="title">{{title}}</span>
-            <a href="#" @click="redact" v-bind="bOn">{{write}}</a>
+            <span @click="redact" v-bind="bOn" class="a">{{write}}</span>
             <img src="./img/icon13.png" alt="#" @click="rel">
         </header>
         <ul class="list" ref="goods">
@@ -11,7 +11,7 @@
               <img src="./img/delete.png" alt="#" @click="deleteGood($event)">
               <div class="goods" v-bind:class="className">
                   <img :src="item.smallPic" alt="#">
-                  <span class="wine-name"><b>{{item.goodsTitle}}</b></span>
+                  <span class="wine-name">{{item.goodsTitle}}</span>
                   <span class="wine-price">¥ {{item.goodsPrice}}</span>
               </div>
             </li>
@@ -30,18 +30,18 @@ export default {
       data:[]
     }
   },
-  methods: {
-    redact () {
-      if (this.bOn) {
+  methods :{
+    redact() {
+      if(this.bOn){
         this.bOn = false;
         this.write = '完成';
         this.className.goods = false;
         this.className.change = true;
-      } else {
+      }else{
         this.bOn = true;
         this.write = '编辑';
         this.className.goods = true;
-        this.className.change = false
+        this.className.change = false;
       }
     },
     deleteGood(event) {
@@ -97,14 +97,15 @@ export default {
   .head .title{
     color: #fff;
     font-size: 40px;
+    font-family: '宋体';
     position: absolute;
     left: 50%;
     margin-left: -81px;
     top: 80px;
   }
-  .head a{
+  .head .a{
     color: #fff;
-    font-weight: bold;
+    font-family: '宋体';
     font-size: 36px;
     position: absolute;
     top: 83px;
@@ -139,7 +140,7 @@ export default {
     height: 195px;
     position: relative;
   }
-  .list li {
+  .list li .change{
     background-color: #fff;
     width: 750px;
     height: 195px;
@@ -156,6 +157,7 @@ export default {
   .list li .goods .wine-name{
     color: #000;
     font-size: 28px;
+    font-family: '新宋体';
     position: absolute;
     top: 55px;
     left: 160px;

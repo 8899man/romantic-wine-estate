@@ -4,7 +4,7 @@
         <header class="head">
             <span><b>{{title}}</b></span>
         </header>
-        <img src="./img/shopping.jpg" alt="#" class="shop">
+        <img src="./img/shopping.jpg" alt="#" class="shop" width="200px" height="200px">
         <p class="tip">你的购物车内还没有商品哦</p>
         <div class="your-like">
           <img src="./img/line.jpg" alt="#" class="left">
@@ -96,6 +96,7 @@ export default {
   .shop{
     width: 200px;
     height: 200px;
+    box-sizing: content-box;
     padding-top: 80px;
   }
   .tip{

@@ -240,7 +240,7 @@ export default {
   }
   .nav{
     position:fixed;
-    left:500px;
+    left:243px;
     bottom:12px;
     width:60px;
     height:70px;

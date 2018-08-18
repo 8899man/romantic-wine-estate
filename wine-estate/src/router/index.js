@@ -58,161 +58,194 @@ export default new Router({
     {
       path: '/',
       name: 'HelloWorld',
-      component: goodMain
+      component: goodMain,
+      meta:{keepAlive:false}
     },
     {
       path: '/goodList',
       name: 'goodList',
-      component: goodList
+      component: goodList,
+      meta:{keepAlive:false}
     },
     {
       path: '/goodSearch',
       name: 'goodSearch',
-      component: goodSearch
+      component: goodSearch,
+      meta:{keepAlive:false}
     },
     {
       path: '/goodClass',
       name: 'goodClass',
-      component: goodClass
+      component: goodClass,
+      meta:{keepAlive:false}
     },
     {
       path: '/goodMain',
       name: 'goodMain',
-      component: goodMain
+      component: goodMain,
+      meta:{keepAlive:false}
     },
     {
       path: '/goodDetail',
       name: 'goodDetail',
-      component: goodDetail
+      component: goodDetail,
+      meta:{keepAlive:false}
     },
     {
       path: '/loginPage',
       name: 'loginPage',
-      component: loginPage
+      component: loginPage,
+      meta:{keepAlive:false}
     },
     {
       path: '/registerPage',
       name: 'registerPage',
-      component: registerPage
+      component: registerPage,
+      meta:{keepAlive:false}
     },
     {
       path: '/informationPage',
       name: 'informationPage',
-      component: informationPage
+      component: informationPage,
+      meta:{keepAlive:false}
     },
     {
       path: '/accountPage',
       name: 'accountPage',
-      component: accountPage
+      component: accountPage,
+      meta:{keepAlive:false}
     },
     {
       path: '/morePage',
       name: 'morePage',
-      component: morePage
+      component: morePage,
+      meta:{keepAlive:false}
     },
     {
       path: '/feedbackPage',
       name: 'feedbackPage',
-      component: feedbackPage
-    },{
+      component: feedbackPage,
+      meta:{keepAlive:false}
+    },
+    {
       path: '/allOrders',
       name: 'allOrders',
-      component: allOrders
+      component: allOrders,
+      meta:{keepAlive:false}
     },
     {
       path: '/obliGation',
       name: 'obliGation',
-      component: obliGation
+      component: obliGation,
+      meta:{keepAlive:false}
     },
     {
       path: '/forEvaluate',
       name: 'forEvaluate',
-      component: forEvaluate
+      component: forEvaluate,
+      meta:{keepAlive:false}
     },
     {
       path: '/forGoods',
       name: 'forGoods',
-      component: forGoods
+      component: forGoods,
+      meta:{keepAlive:false}
     },
     {
       path: '/orderDetails',
       name: 'orderDetails',
-      component: orderDetails
+      component: orderDetails,
+      meta:{keepAlive:false}
     },
     {
       path: '/orderSure',
       name: 'orderSure',
-      component: orderSure
+      component: orderSure,
+      meta:{keepAlive:false}
     },
     {
       path: '/orderFinish',
       name: 'orderFinish',
-      component: orderFinish
+      component: orderFinish,
+      meta:{keepAlive:false}
     },
     {
       path: '/orderPay',
       name: 'orderPay',
-      component: orderPay
+      component: orderPay,
+      meta:{keepAlive:false}
     },
     {
       path: '/commentlist',
       name: 'commentlist',
-      component: commentlist
+      component: commentlist,
+      meta:{keepAlive:false}
     },
     {
       path: '/forgetpasswordPage',
       name: 'forgetpasswordPage',
-      component: forgetpasswordPage
+      component: forgetpasswordPage,
+      meta:{keepAlive:false}
     },
     {
       path: '/mytracksPage',
       name: 'mytracksPage',
-      component: mytracksPage
+      component: mytracksPage,
+      meta:{keepAlive:false}
     },
     {
       path: '/bottom',
       name: 'bottom',
-      component: bottom
+      component: bottom,
+      meta:{keepAlive:false}
     },
     {
       path: '/watchList',
       name: 'watchList',
-      component: watchList
+      component: watchList,
+      meta:{keepAlive:false}
     },
     {
       path: '/shoppingCart',
       name: 'shoppingCart',
-      component: shoppingCart
+      component: shoppingCart,
+      meta:{keepAlive:false}
     },
     {
       path: '/logged',
       name: 'logged',
-      component: logged
+      component: logged,
+      meta:{keepAlive:false}
     },
     {
       path: '/newAddress',
       name: newAddress,
-      component: newAddress
+      component: newAddress,
+      meta:{keepAlive:false}
     },
     {
       path: '/addList',
       name: addList,
-      component: addList
+      component: addList,
+      meta:{keepAlive:false}
     },
     {
       path: '/comment',
       name: comment,
-      component: comment
+      component: comment,
+      meta:{keepAlive:false}
     },
     {
       path: '/addcomment',
       name: 'addcomment',
-      component: addcomment
+      component: addcomment,
+      meta:{keepalive:false}
     },
     {
       path: '/orderheader',
       name: 'orderheader',
-      component: orderheader
+      component: orderheader,
+      meta:{keepAlive:false}
     }
   ]
 })

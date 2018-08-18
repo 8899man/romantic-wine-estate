@@ -54,7 +54,7 @@
         //传参
         Name: "",
         myBirthday: "",
-        headImg: require("./img/head.png"),
+        headImg: "",
         Id:''
       };
     },
@@ -130,7 +130,7 @@
             });
           } else {
             this.$router.push({
-              path: "/newAddress"
+              path: "/addList"
             });
           }
         })

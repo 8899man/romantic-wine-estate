@@ -54,7 +54,7 @@
       </div>
     </main>
     <bottom></bottom>
-    <img src="./img/my_1.jpg" alt="我的" class="wode">
+    <img src="./img/my_1.jpg" alt="我的" class="mine">
   </div>
 </template>
 
@@ -67,7 +67,7 @@
     data() {
       return {
         Name: "点击登录",
-        headImg: require("./img/head.png")
+        headImg: ""
       };
     },
     methods: {
@@ -204,6 +204,7 @@
     height: 1334px;
     margin: 0 auto;
     background-color: #ebebeb;
+    position: relative;
   }
 
   /*页面banner部分*/
@@ -414,11 +415,12 @@
     position: relative;
     right: 6px;
   }
-  .wode{
-    position:fixed;
-    right:280px;
-    bottom:12px;
-    height:72px;
-    width:68px;
+
+  .mine {
+    position: fixed;
+    right: 40px;
+    bottom: 12px;
+    height: 72px;
+    width: 68px;
   }
 </style>

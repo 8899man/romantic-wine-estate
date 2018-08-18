@@ -457,7 +457,7 @@ export default {
   }
   .mainjtb img{
     width:200px;
-    height:380px;
+    height:410px;
     font-size:15px;
   }
   .mainjtb{
@@ -526,7 +526,7 @@ export default {
     height:70px;}
   .first{
     position:fixed;
-    left:290px;
+    left:45px;
     bottom:15px;
     width:48px;
     height:68px;
