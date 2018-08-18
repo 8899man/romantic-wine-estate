@@ -2,7 +2,7 @@
   <!--关注列表-->
     <div class="watch-list">
         <header class="head">
-            <span class="title"><b>{{title}}</b></span>
+            <span class="title">{{title}}</span>
             <a href="#" @click="redact" v-bind="bOn">{{write}}</a>
             <img src="./img/icon13.png" alt="#" @click="rel">
         </header>

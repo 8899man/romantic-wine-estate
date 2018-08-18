@@ -45,13 +45,13 @@ export default {
           _this.$http.get('/api/isempty.htm', {
             params: {}
           }).then((res) => {
-            console.log(res.data.status)
-            if (res.data.status =='0') {
-              _this.router.push({
+            console.log(res.data.status);
+            if (res.data.status == 0) {
+              _this.$router.push({
                 path: '/shoppingCart'
               })
             } else {
-              _this.router.push({
+              _this.$router.push({
                 path: '/logged'
               })
             }
