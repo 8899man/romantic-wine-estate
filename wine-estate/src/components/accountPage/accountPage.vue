@@ -54,6 +54,7 @@
       </div>
     </main>
     <bottom></bottom>
+    <img src="./img/my_1.jpg" alt="我的" class="wode">
   </div>
 </template>
 
@@ -62,7 +63,7 @@
 
   export default {
     name: "accountPage",
-    components: { bottom },
+    components: {bottom},
     data() {
       return {
         Name: "点击登录",
@@ -392,5 +393,12 @@
     overflow: hidden;
     position: relative;
     right: 6px;
+  }
+  .wode{
+    position:fixed;
+    right:280px;
+    bottom:12px;
+    height:72px;
+    width:68px;
   }
 </style>
