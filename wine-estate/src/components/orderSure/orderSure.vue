@@ -2,14 +2,14 @@
   <div class="main">
     <orderheader theme="订单确认"></orderheader>
     <section class="order-confirm">
-      <ul class="order-message clearfix">
-        <li id="name"><img src="./img/people.jpg" height="30" width="25"/>&nbsp<span>老李</span></li>
-        <li id="phone"><img src="./img/phone.jpg" height="32" width="20"/>&nbsp<span>12345678</span></li>
-        <li id="address"><span>你是不是但hi会所啊电脑就行你</span></li>
+      <ul class="order-message clearfix" >
+        <li id="name"><img src="./img/people.jpg" />&nbsp<span>{{data.userId}}</span></li>
+        <li id="phone"><img src="./img/phone.jpg"/>&nbsp<span>{{data.receiverMobile}}</span></li>
+        <li id="address"><span>{{data.receiverAreaName}}</span></li>
       </ul>
-      <ul class="good clearfix">
-        <li id="wine"><img src="" alt=""></li>
-        <li id="numchange">共<span>0</span>件</li>
+      <ul class="good clearfix" v-for="item in data1">
+        <li id="wine" ><img :src="item.smallPic" alt="" id="winegood"></li>
+        <li id="numchange">共<span>{{item.goodsNum}}</span>件</li>
       </ul>
       <ul class="clearfix express">
         <li class="grayword">配送方式</li>
@@ -17,7 +17,7 @@
       </ul>
       <ul class="good-price clearfix">
         <li class="grayword">商品总额</li>
-        <li class="redword">&yen&nbsp<span>23.00</span></li>
+        <li class="redword">&yen&nbsp<span>{{data.payment}}</span></li>
       </ul>
       <ul class="express-price clearfix">
         <li  class="grayword">运费 </li>
@@ -39,7 +39,10 @@
   export default{
     components:{orderheader},
     data() {
-      return {}
+      return {
+        data: [],
+        data1: []
+      }
     },
     methods: {
       toBack() {
@@ -47,10 +50,43 @@
       },
       orderfinish: function () {
         this.$router.push({
-          path: '/orderFinish'
+          path: '/orderFinish',
+          query:{
+            ordernum:item.orderNum
+          }
         })
 
       },
+      ordersure1(){
+      var _this = this;
+        this.$http.get("/api/putordermessage.htm",{
+          params:{
+          }
+  }).then(function (res) {
+    console.log(res.data);
+    _this.data = res.data.data;
+
+  }).catch(function (error) {
+    console.log(error);
+  })
+  },
+      ordersure2(){
+        var _this = this;
+        this.$http.get("/api/selectaddressmessage.htm",{
+          params:{
+          }
+        }).then(function (res) {
+          console.log(res.data);
+          _this.data1 = res.data.data;
+
+        }).catch(function (error) {
+          console.log(error);
+        })
+      }
+    },
+    created () {
+      this.ordersure1()
+      this.ordersure2()
     }
   }
 </script>
@@ -64,7 +100,7 @@
     padding:81px 0 81px;
     margin: 0 auto;
   }
- .good,.express,.express-price{margin-bottom: 81px;background: #fff}
+ .express,.express-price{margin-bottom: 81px;background: #fff}
   .order-message{
     background: #fffae6;
     height: 148px;
@@ -77,6 +113,8 @@
   }
   .good{
     height:123px;
+    background: #fff;
+    margin-bottom: 10px;
   }
   #name {
     float: left;
@@ -103,6 +141,10 @@
     border: 1px solid #eaece9;
     margin: 18px 0 0 20px;
     float: left;
+  }
+  #wine img{
+    width: 65px;
+    height: 85px;
   }
   #numchange{
     font-size: 26px;

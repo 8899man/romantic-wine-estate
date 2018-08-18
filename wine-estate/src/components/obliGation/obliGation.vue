@@ -11,23 +11,27 @@
     </div>
     <section class="my-orders">
       <div class="pay-money">
+        <ul>
+          <li v-for="item in data3" @click="orderdetail($event)" :id="item.orderNum">
         <div  class="storemsg clearfix" >
           <img src="../../assets/store.jpg" height="30" width="30"/>
-          <span id="storename">ss</span>
+          <span id="storename">{{data1.sellerId}}</span>
           <span class="state">等待买家付款</span>
         </div>
-        <div class="good clearfix">
-          <div id="good-pic"><img src="" alt=""></div>
-          <div id="good-name"></div>
+        <div class="good clearfix" v-for="item1 in data2">
+          <div id="good-pic"><img :src="item1.smallPic" alt=""></div>
+          <div id="good-name">{{item1.goodsTitle}}</div>
         </div>
-        <div class="all-price"><span >共一件商品&nbsp合计:&yen19.90（含运费&yen0.00）</span></div>
+        <div class="all-price"><span > &nbsp合计:&yen{{data1.payment}}（含运费&yen0.00）</span></div>
+        <div class="forpay">
+          <input type="button" value="取消订单" id="no-order" @click="cancelorder">
+          <input @click="orderpay" type="button" value="付款" id="pay-m">
+        </div>
+          </li>
+        </ul>
       </div>
     </section>
-    <section class="forpay">
-      <input type="button" value="取消订单" id="no-order">
-      <input @click="orderpay" type="button" value="付款" id="pay-m">
 
-    </section>
   </div>
 </template>
 
@@ -36,7 +40,12 @@
   export default{
     components:{orderheader},
     data() {
-      return {}
+      return {
+        data:{},
+        data1:{},
+        data2:[],
+        data3:[]
+      }
     },
     methods: {
       toBack() {
@@ -66,21 +75,65 @@
         })
 
       },
+      orderdetail(event){
+        var oLi=event.currentTarget;
+        this.$router.push({
+          path: '/orderdetail',
+          query:{ordernum:oLi.id}
+
+        })
+      },
       orderpay: function(){
         this.$router.push({
           path:'/orderPay'
         })
+      },
+
+      cancelorder() {
+        var _this = this;
+        this.$http.get("/api/cancalorder.htm", {
+          params: {
+            orderNum: "2018081615020999591",
+          }
+        }).then(function (res) {
+        }).catch(function (error) {
+          console.log(error);
+        })
+      },
+      getordermsg() {
+        var this1 = this;
+        this.$http.get("/api/orderStatus.htm", {
+          params: {
+            userId: "5689522"
+          }
+        }).then(function (res) {
+          var data3=[];
+          for(var i=0;i<res.data.data.length;i++) {
+            if (res.data.data[i].status == 1) {
+              this1.data1 = res.data.data[i];
+              this1.data2 = res.data.data[i].goodsList;
+              this1.data3= data3.push(this1.data1);
+              console.log(this1.data3)
+            }
+          }
+        }).catch(function (error) {
+          console.log(error);
+        })
       }
+    },
+    created(){
+      this.getordermsg();
     }
   }
 </script>
 
 <style scoped>
   @import url(../../style/common.css);
-  .main{margin: 0 auto;}
+  .main{
+    margin: 0 auto;
+  }
   .nav{
     width: 750px;
-    background-image:url("../../assets/navback.jpg");
     margin: 0 auto;}
   .nav li{
     width:187px;
@@ -108,8 +161,10 @@
     margin:0 0 40px 40px ;
   }
   .storemsg img{
-       float: left;
+    float: left;
     margin-right: 25px;
+    height:30px;
+    width:30px;
   }
   #storename{
      float: left;
@@ -127,18 +182,16 @@
     margin-bottom: 38px;
   }
   #good-pic{
-    width:140px;
-    height:140px;
-    background: antiquewhite;
     float: left;
     margin-right: 30px;
   }
+  #good-pic img{
+    width:90px;
+    height:140px;
+  }
   #good-name{
-    width: 20px;
-    height:80px;
-    background: aquamarine;
-    float: left;
     margin-top: 25px;
+    text-align: left;
   }
   .all-price{
     margin-bottom: 35px;
@@ -172,6 +225,9 @@
     border-radius: 40%;
     border: 2px solid #bb3437;
     color:#bb3437;
+  }
+  .my-orders li{
+    margin-bottom: 10px;
   }
 </style>
 

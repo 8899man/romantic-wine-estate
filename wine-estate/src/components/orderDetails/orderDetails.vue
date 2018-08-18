@@ -2,41 +2,33 @@
   <div class="main">
     <orderheader theme="订单详情"></orderheader>
     <section class="order-details">
-      <img src="./img/wineback.jpg" alt="">
-      <div class="message">
+      <img  id="back" src="./img/wineback.jpg">
+      <div class="message" @click="addlist">
         <div  class="people clearfix">
-          <div class="name">收货人:&nbsp <span>老李</span></div>
-          <div class="phone"> <span>12345655222</span></div>
+          <div class="name">收货人:&nbsp <span>{{data.receiver}}</span></div>
+          <div class="phone"> <span>{{data.receiverMobile}}</span></div>
         </div>
-        <div>
+        <div class="position">
           <div class="clearfix"></div>
-          <img src="./img/position.jpg" height="37" width="30"/>
-          <div class="adress">收货地址:&nbsp  <span>我都in经常撒擦那你猜猜</span></div>
+          <div class="adress">收货地址:&nbsp <span>{{data.receiverAreaName}}</span></div>
         </div>
       </div>
       <div class="good">
         <div class="store clearfix">
-          <img src="../../assets/store.jpg" height="27" width="30"/>&nbsp&nbsp
-          <span>王的店铺</span>
+          <img src="../../assets/store.jpg"/>&nbsp&nbsp
+          <span>{{data.sellerId}}</span>
         </div>
-        <div class="goodmsg">
-          <img src="" alt="">
-          <span>不可描述♂♂</span>
+        <div class="goodmsg" v-for="item in data1">
+          <img :src="item.smallPic" alt="" id="goodpic">
+          <span>{{item.goodsTitle}}</span>
         </div>
       </div>
-      <div class="train-price">运费<span>&yen0.00</span></div>
-      <div class="all-price">实付款 <span>&yen22.00</span></div>
+      <div class="train-price">运费<span>&yen  0</span></div>
+      <div class="all-price">实付款 <span>&yen {{data.payment}}</span></div>
       <ul class="order-message">
-        <li>订单编号 <span>2312344</span></li>
-        <li>创建时间 <span>12.12.21</span></li>
-        <li>付款时间 <span>12.12.21</span></li>
-        <li>发货时间 <span>12.12.21</span></li>
-        <li>成交时间 <span>12.12.21</span></li>
+        <li>订单编号 <span>{{data.orderNum}}</span></li>
+        <li>创建时间<span>{{data.createTime}}</span></li>
       </ul>
-    </section>
-    <section class="forpay">
-      <input type="button" value="取消订单" id="no-order">
-      <input @click="orderpay" type="button" value="付款" id="pay-m">
     </section>
 
   </div>
@@ -44,23 +36,62 @@
 
 <script>
   import orderheader from '../orderheader/orderheader.vue'
-  export default{
-    components:{orderheader},
-      data() {
-        return {}
-      },
-      methods: {
-        toBack() {
-          this.$router.go(-1)
-        },
-        orderpay: function () {
-          this.$router.push({
-            path: '/orderPay'
-          })
-
-        },
+  export default {
+    components: {orderheader},
+    data() {
+      return {
+        data:{},
+        data1:{}
       }
+    },
+    methods: {
+      toBack() {
+        this.$router.go(-1)
+      },
+      orderpay: function () {
+        this.$router.push({
+          path: '/orderPay'
+        })
+      },
+     addlist: function () {
+        this.$router.push({
+          path: '/addList'
+        })
+      },
+     getdetail1(){
+        var _this=this;
+       this.$http.get("/api/selectorder.htm",{
+         params:{
+           orderNum:ordernum
+         }
+       }).then(function (res) {
+         console.log(res.data);
+         _this.data=res.data.data;
+
+       }).catch(function (error) {
+         console.log(error);
+       })
+     },
+
+      getdetail3() {
+        var this1=this;
+        this.$http.get("/api/selectaddressmessage.htm", {
+          params: {
+          }
+        }).then(function (res) {
+          console.log(res.data);
+            this1.data1 = res.data.data;
+        }).catch(function (error) {
+          console.log(error);
+        })
+      }
+     },
+    created (){
+      this.getdetail1();
+      this.getdetail3();
+      ordernum=this.$route.query.ordernum
     }
+  }
 </script>
 
 <style scoped>
@@ -72,7 +103,10 @@
     width: 750px;
     margin: 0 auto;
     background: #f4f4f4;
-
+  }
+  #back{
+    width:750px ;
+    height: 207px;
   }
   .message{
     padding: 23px 24px 60px 30px;
@@ -89,15 +123,19 @@
     float: left;
     color: #535353;
   }
-
   .adress{
-    margin-right: 230px;
+    margin-left:42px;
     color: #535353;
-    float: right;
+    float: left;
+
   }
   .phone{
     margin-right:24px;
     float: right;
+  }
+  .position img,.good img {
+    height:37px;
+    width:30px;
   }
   .good{
     padding-top: 25px;
@@ -117,13 +155,14 @@
     padding: 40px;
     text-align: left;
     font-size: 30px;
+    margin-bottom: 5px;
   }
   .goodmsg img{
-    width: 120px;
-    height: 120px;
-    background: beige;
+    width: 60px;
+    height: 70px;
     float: left;
     margin-right: 30px;
+    display: inline-block;
   }
   .train-price,.all-price{
     height: 115px;
@@ -134,7 +173,7 @@
     font-size:27px;
   }
   .train-price{
-    padding-top: 80px;}
+    padding-top: 60px;}
   .all-price{
     padding-top: 45px;
   }
@@ -153,45 +192,7 @@
   li span {
     color:#7c7c7c ;
   }
-  .forpay{
-    border-top: 1px solid #ddd;
-    border-bottom: 2px solid #ddd;
-    width: 750px;
-    height: 121px;
-    padding-top: 20px;
-    padding-left: 300px;
-    margin:  0 auto;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-  input{
-    height: 75px;
-    background: #fff;
-    font-size: 30px;
-    display: inline-block;
 
-  }
-  #no-order{
-    width: 170px;
-    border-radius: 40%;
-    border: 2px solid #bababa;
-    margin-right:35px ;
-  }
-  #pay-m{
-    width: 150px;
-    border-radius: 40%;
-    border: 2px solid #bb3437;
-    color:#bb3437;
-  }
-  .order-message{
-    margin-top: 20px;
-    background: #fff;
-    text-align: left;
-    padding-left:30px;
-    font-size: 20px;
 
-  }
 
 </style>

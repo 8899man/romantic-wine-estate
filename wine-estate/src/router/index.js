@@ -13,6 +13,7 @@ import commentlist from '@/components/commentlist/commentlist'
 import bottom from '@/components/bottom/bottom'
 import addcomment from '@/components/addcomment/addcomment'
 import orderheader from '@/components/orderheader/orderheader'
+import qrcode from '@/components/qrcode/qrcode'
 Vue.use(Router)
 
 export default new Router({
@@ -81,6 +82,11 @@ export default new Router({
       path: '/orderheader',
       name: 'orderheader',
       component: orderheader
+    },
+    {
+      path: '/qrcode',
+      name: 'qrcode',
+      component: qrcode
     }
 
   ]

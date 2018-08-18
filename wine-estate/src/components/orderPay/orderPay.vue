@@ -2,30 +2,28 @@
   <div class="main">
     <div id="top"></div>
     <div class="back">
-      <img src="./img/payback.jpg" height="532" width="750"/>
+      <img src="./img/payback.jpg" />
     </div>
     <section class="head clearfix" >
-      <img src="./img/icon22.jpg" width="37" height="47" @click="toBack">
+      <img src="./img/icon22.jpg"  @click="toBack">
       <span>确认付款</span>
     </section>
     <section class="pay-way">
-      <div class="price">&yen&nbsp<span>24.00</span></div>
-      <div id="message">账号 &nbsp <span>123456</span> </div>
+      <div class="price">&yen&nbsp<span>{{data.payment}}</span></div>
+      <div id="message">账号 &nbsp <span>{{data.userId}}</span> </div>
       <ul>
         <li @click="changeicon1">
-          <img src="./img/beforeicon.jpg" height="42" width="42" v-show="downIcon"/>
-          <img src="./img/chooseicon.jpg" height="42" width="42" v-show="!downIcon"/>
+          <img src="./img/beforeicon.jpg" v-show="downIcon"/>
+          <img src="./img/chooseicon.jpg" v-show="!downIcon"/>
           &nbsp &nbsp 支付宝付款</li>
         <li @click="changeicon2">
-          <img src="./img/beforeicon.jpg" height="42" width="42" v-show="!downIcon"/>
-          <img src="./img/chooseicon.jpg" height="42" width="42" v-show="downIcon"/>
+          <img src="./img/beforeicon.jpg"  v-show="!downIcon"/>
+          <img src="./img/chooseicon.jpg"  v-show="downIcon"/>
           &nbsp &nbsp 微信付款</li>
       </ul>
-
-
     </section>
     <section class="pay">
-      <input @click="orderpay" type="button" value="立即付款">
+      <input @click="qrcode" type="button" value="立即付款">
     </section>
   </div>
 </template>
@@ -34,7 +32,8 @@
   export default {
     data() {
       return {
-        downIcon: true,
+        downIcon: false,
+        data:{}
 
       }
     },
@@ -45,17 +44,42 @@
       changeicon2() {
         this.downIcon = !this.downIcon
       },
-      orderpay: function(){
+      qrcode: function(){
         this.$router.push({
-          path:'/orderPay'
-        })
+          path:'/qrcode'
+        });
+        this.$http.get("/api/order/apply.htm",{
+          params:{
+            payOrderNum:"2018081405382169551"
+          }
+        }).then(function (res) {
+          console.log(res.data);
+        }).catch(function(error) {
+          console.log(error);
+        });
       },
       toBack: function(){
         this.$router.back(-1)
-      }
+      },
+      getprice(){
+        var _this = this;
+        this.$http.get("/api/selectorder.htm",{
+          params:{
+            orderNum:"2018081615020949111"
+          }
+        }).then(function (res) {
+          console.log(res.data);
+          _this.data = res.data.data;
+        }).catch(function(error) {
+          console.log(error);
+        })
 
-    }
+      },
+    },
 
+ created(){
+      this.getprice();
+ }
 
   }
 </script>
@@ -70,16 +94,20 @@
     height: 40px;
     background:#bb3437;
   }
-  .back{
+  .back img{
     height: 532px;
+    width:750px;
   }
   .head{
     background: #f6f6f6;
-    padding: 18px 0px 18px 17px;
+    padding: 18px 0 18px 17px;
     position:relative;
   }
   .head img{
-    float: left}
+    float: left;
+    width:37px;
+    height:47px;
+  }
   .head span{
     font-size: 37px;
     position:absolute;
@@ -105,6 +133,10 @@
   }
   ul li{
     padding: 25px 0 25px;
+  }
+  li img{
+    width: 42px;
+    height: 42px;
   }
   .pay{
     padding: 0 32px 29px 32px;
