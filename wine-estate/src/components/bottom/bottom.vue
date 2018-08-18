@@ -32,8 +32,33 @@ export default {
       })
     },
     re3 () {
-      this.$router.push({
-        path: '/logged'
+      let _this = this
+      this.$http.get('/api/status.htm', {
+        params: {}
+      }).then((res) => {
+        console.log(res.data.status)
+        if (res.data.status =='0') {
+          _this.$router.push({
+            path: '/loginPage'
+          })
+        } else {
+          _this.$http.get('/api/isempty.htm', {
+            params: {}
+          }).then((res) => {
+            console.log(res.data.status)
+            if (res.data.status =='0') {
+              _this.router.push({
+                path: '/shoppingCart'
+              })
+            } else {
+              _this.router.push({
+                path: '/logged'
+              })
+            }
+          })
+        }
+      }).catch((error) => {
+        console.log(error)
       })
     },
     re4 () {

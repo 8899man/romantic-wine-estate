@@ -7,40 +7,24 @@
     <div class="gdetailxq">
       商品详情
     </div>
-      <div>
-        <img class="img2" src="./img/lianj.png" v-on:click="push()" alt="主页按钮不见了"/>
+      <div v-on:click="push()">
+        <img class="img2" src="./img/lianj.png"  alt="主页按钮不见了"/>
       </div>
         <div class="gdetaillbt"><!--轮播图-->
-          <mt-swipe :auto="2000">
-            <mt-swipe-item >
-              <img src="./img/wine.png" alt="图片不见了"/>
-            </mt-swipe-item>
-            <mt-swipe-item >
-              <img src="./img/wine1.png" alt="图片不见了"/>
-            </mt-swipe-item>
-            <mt-swipe-item >
-              <img src="./img/wine2.png" alt="图片不见了"/>
-            </mt-swipe-item>
-            <mt-swipe-item >
-              <img src="./img/wine1.png" alt="图片不见了"/>
-            </mt-swipe-item>
-            <mt-swipe-item >
-              <img src="./img/wine2.png" alt="图片不见了"/>
-            </mt-swipe-item>
-          </mt-swipe>
+              <img :src="goodsImage" alt="图片不见了"/>
         </div>
-    <div class="wxin"><!--具体信息栏-->
+    <div class="wxin" ><!--具体信息栏-->
        <ul><!--商品名称及价格等-->
-         <li class="wname">传说传说传传说传说传说传说传说vvv传说传说传说传说传说传说</li>
-         <li class="wpiece">&yen 62</li>
-         <li class="wshop">热销 6526532</li>
+         <li class="wname">{{goodsTitle}}</li>
+         <li class="wpiece">&yen {{goodsPrice}}</li>
+         <li class="wshop">热销 {{sellNum}}</li>
        </ul>
     </div>
     <div class="xxxx"><!--商品具体信息栏-->
       <ul>
-        <li>原产地:美国</li>
-        <li>口感:圆润</li>
-        <li>类型:起泡酒</li>
+        <li>原产地:{{placeOfArea}}</li>
+        <li>口感:{{taste}}</li>
+        <li>类型:{{category}}</li>
       </ul>
     </div>
     <div class="wcir"><!--评论栏-->
@@ -54,17 +38,17 @@
         好评度
       </div>
       <div class="hpdz"><!--接受好评度的数据-->
-        93%
+        <p>{{favourableRate * 100}}%</p>
       </div>
       <div class="hprs"><!--评论人数-->
         评论人数
       </div>
       <div class="hpds"><!--评论人数的数据-->
-        685123
+        {{commentNum}}
       </div>
     </div>
     <div class="db"><!--底部信息栏-->
-      <div class="gouwu" v-on:click="add"><!--加入购物车按钮-->
+      <div class="gouwu" v-on:click="add()"><!--加入购物车按钮-->
        加入购物车
       </div>
       <div class="xinxin"><!--原本空心图片-->
@@ -86,37 +70,107 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      exist: false
+      exist: false,
+      goodsTitle: '',
+      goodsPrice: '',
+      sellNum: '',
+      placeOfArea: '',
+      taste: '',
+      category: '',
+      favourableRate: '',
+      commentNum: ''
     }
   },
+  created() {
+    // 接受商品id
+    let Id = this.$route.query.goodsId
+    this.$http.get('/api/queryByGoodsId.htm/?', {
+      params: {
+        goodsId: Id
+      }
+    }).then((res) => {
+      this.goodsTitle = res.data.data.goodsTitle
+      this.goodsPrice = res.data.data.goodsPrice
+      this.sellNum = res.data.data.sellNum
+      this.placeOfArea = res.data.data.placeOfArea
+      this.taste = res.data.data.taste
+      this.category = res.data.data.category
+      this.favourableRate = res.data.data.favourableRate
+      this.commentNum = res.data.data.commentNum
+      this.goodsImage = res.data.data.goodsImage
+      console.log(res.data)
+    }).catch((error) => {
+      console.log(error)
+    })
+  },
   methods: {
-    add () {
-      const value1 = document.getElementById('number');
-      value1.innerHTML = Number(value1.innerHTML) + 1;
-      this.$http.get("/api/comment.htm",{
-        params: {}
-      }).then(function(res) {
-        console.log(res.data);
-      }).catch(function(error) {
-        console.log(error);
-      });
-    },
-    change () {
-      this.exist = !this.exist
-    },
-    retur () {
+    retur() {
       this.$router.go(-1)
     },
-    push () {
+    push() {
       this.$router.push({
         path: '/goodMain'
       })
     },
-    push1 () {
+    push1() {
+      let goodsId = this.$route.query.goodsId
       this.$router.push({
-        path: '/commentlist'
+        path: '/commentlist',
+        query: {goodsId: goodsId}
+      })
+    },
+    // 点击加入购物车传参
+    add () {
+      this.$http.get('/api/status.htm', {
+        params: {}
+      }).then((res) => {
+        if (res.data.status == '0') {
+          this.$router.push({
+            path: '/loginPage'
+          })
+        } else {
+          const value1 = document.getElementById('number');
+          value1.innerHTML = Number(value1.innerHTML) + 1;
+          let Id = this.$route.query.goodsId
+          this.$http.get('/api/addGoods.htm', {
+            params: {
+              goodsId: Id,
+              goodsNum: value1.innerHTML
+            }
+          }).then((res) => {
+            console.log(res.data)
+          }).catch((error) => {
+            console.log(error)
+          })
+        }
+      }).catch((error) => {
+        console.log(error)
+      })
+    },
+    // 点击关注传参
+    change () {
+      this.$http.get('/api/status.htm', {
+        params: {}
+      }).then((res) => {
+        if (res.data.status == '0') {
+          this.$router.push({
+            path: '/loginPage'
+          })
+        } else {
+          this.exist = !this.exist
+          let Id = this.$route.query.goodsId
+          this.$http.get('/api/addAttention.htm?', {
+            params: {goodsId: Id}
+          }).then((res) => {
+            console.log(res.data)
+          }).catch((error) => {
+            console.log(error)
+          })
+        }
+      }).catch((error) => {
+        console.log(error)
       })
     }
   }
@@ -176,7 +230,8 @@ a{color:#fff;
     border-top:#DADADA 1px solid;
     border-bottom: #DADADA 1px solid;
     margin:0px;
-    padding-top:22px;}
+    padding-top:22px;
+    padding-left:16px;}
   ul,li{list-style:none;
     text-align:left;}
   .wname{font-size:35px;
@@ -188,7 +243,7 @@ a{color:#fff;
     width:708px;
     height:82px;
     position:absolute;
-    left:90px;
+    left:45px;
     top:160px;
     color:#F9121A;
     font-size:50px;
@@ -198,7 +253,7 @@ a{color:#fff;
   .wshop{width:660px;
     height:102px;
     position:absolute;
-    left:90px;
+    left:42px;
     top:230px;
     font-size:30px;
     color:#B5B5B5;
@@ -217,7 +272,7 @@ a{color:#fff;
     width:750px;
     height:210px;
     position:absolute;
-    left:0px;
+    left:51px;
     top:875px;
     color:#8A8A8A;
     margin-left:-30px;
@@ -256,7 +311,7 @@ a{color:#fff;
     color:#8A8A8A;
     padding-left:43px;
   }
-  .hpdz{
+  .hpdz p{
     width:72px;
     height:20px;
     position:absolute;

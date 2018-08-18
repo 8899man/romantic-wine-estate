@@ -23,26 +23,20 @@
 <script>
 export default {
   data () {
-    return {}
+    return {
+    }
   },
   methods: {
     retur () {
       this.$router.go(-1)
     },
     push () {
+      let oIn = document.getElementById('intext')
+      let search1 = oIn.value
       this.$router.push({
-        path: '/goodList'
+        path: '/goodList',
+        query: {search: search1}
       })
-    },
-    tadd () {
-      const oInput = document.getElementById('intext');
-      const oUl = document.getElementById('zlih');
-      const oLi = document.createElement('li');
-      oLi.innerHTML = oInput.value;
-      if (oUl.children[14]) {
-        oUl.removeChild(oUl.children[14])
-      }
-      oUl.children[0] ? oUl.insertBefore(oLi, oUl.children[0]) : oUl.appendChild(oLi)
     }
   }
 }
@@ -107,7 +101,7 @@ a{color:#fff;
    height:56px;}
 input{background-color:#DE8F8B;
   width:416px;
-  height:56px;
+  height:59px;
   margin:0px;
   position:absolute;
   left:189px;

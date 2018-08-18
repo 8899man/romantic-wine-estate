@@ -11,22 +11,10 @@
         </div>
       </div>
       <!--顶部轮播图部分-->
-      <div class="gdetaillbt"><!--顶部轮播图-->
-        <mt-swipe :auto="2000">
-          <mt-swipe-item >
-            <img src="./img/wine.png" alt="图片不见了"/>
-          </mt-swipe-item>
-          <mt-swipe-item >
-            <img src="./img/wine1.png" alt="图片不见了"/>
-          </mt-swipe-item>
-          <mt-swipe-item >
-            <img src="./img/wine2.png" alt="图片不见了"/>
-          </mt-swipe-item>
-          <mt-swipe-item >
-            <img src="./img/wine1.png" alt="图片不见了"/>
-          </mt-swipe-item>
-          <mt-swipe-item >
-            <img src="./img/wine2.png" alt="图片不见了"/>
+      <div class="gdetaillbt" ><!--顶部轮播图-->
+        <mt-swipe :auto="2000" >
+          <mt-swipe-item  v-for="item in data2" :key="item.id">
+            <img :src="item.goodsImage" alt="图片不见了"  v-on:click="lbtode()"/>
           </mt-swipe-item>
         </mt-swipe>
       </div>
@@ -45,55 +33,33 @@
         <!--一楼按钮下-->
       </div>
       </div>
-      <!--1F静态图部分-->
-      <div v-show="exis" class="mainjt">
-        <div class="mainjta">
-          <div class="mainjtb">
-            <img src="./img/mainjtt.png" alt="静态图">
-          </div>
-          <div class="mainjtc">
-            <p>额问题官方网额问题官方网额问题题官方网额问题问题</p>
-            <p></p>
-            <p></p>
-            <p>销量: 3652</p>
-            <p>&yen: 666</p>
-          </div>
-        </div>
-        <div class="mainjta">
-          <div class="mainjtb">
-            <img src="./img/mainjtt.png" alt="静态图">
-          </div>
-          <div class="mainjtc">
-            <p>额问题官方网</p>
-            <p></p>
-            <p></p>
-            <p>销量: 3652</p>
-            <p>&yen: 666</p>
-          </div>
-        </div>
-      </div>
       <!--1F轮播图部分-->
       <div v-show="exis" class="gdetaillbt">
-        <mt-swipe :auto="2000">
-          <mt-swipe-item >
-            <img  src="./img/wine.png" alt="图片不见了"/>
-          </mt-swipe-item>
-          <mt-swipe-item >
-            <img  src="./img/wine1.png" alt="图片不见了"/>
-          </mt-swipe-item>
-          <mt-swipe-item >
-            <img  src="./img/wine2.png" alt="图片不见了"/>
-          </mt-swipe-item>
-          <mt-swipe-item >
-            <img  src="./img/wine1.png" alt="图片不见了"/>
-          </mt-swipe-item>
-          <mt-swipe-item >
-            <img  src="./img/wine2.png" alt="图片不见了"/>
+        <mt-swipe :auto="1500">
+          <mt-swipe-item  v-for="item in data1" :key="item.id" >
+            <img :src="item.goodsImage" alt="图片不见了" v-on:click="lbtode1()"/>
           </mt-swipe-item>
         </mt-swipe>
       </div>
+      <!--1F静态图部分-->
+      <div v-show="exis" class="mainjt">
+        <div class="mainjta" v-for="item in data3" :key="item.id">
+          <div class="mainjtb" >
+            <img :src="item.midPic" alt="静态图">
+          </div>
+          <div class="mainjtc" v-on:click="todea($event)">
+            <p>{{item.goodsTitle}}</p>
+            <p></p>
+            <p></p>
+            <p>销量 {{item.sellNum}}</p>
+            <p>&yen {{item.goodsPrice}}</p>
+            <p>{{item.goodsId}}</p>
+          </div>
+        </div>
+      </div>
       <!--2F可隐藏的静态图,轮播图及按钮部分-->
       <div class="mfirst">
+        <!--2F按钮部分-->
         <div class="mtwo">
           <img src="./img/mfirst.png" alt="两杯酒图标"/>
         </div>
@@ -101,65 +67,43 @@
           2F 洛神山庄
         </div >
         <div class="mthree" v-on:click="change1()">
-          <img src="./img/mtwo.png" v-show="exis4" alt="按钮图标"/><!--2F按钮-->
+          <img src="./img/mtwo.png" v-show="exis4" alt="按钮图标"/><!--一楼按钮-->
           <img  class="mx" v-show="exis1" src="./img/mtwox.png" alt="按钮图标下">
           <!--二楼按钮下-->
         </div>
       </div>
-      <!--2F静态图部分-->
-      <div v-show="exis1" class="mainjt">
-        <div class="mainjta">
-          <div class="mainjtb">
-            <img src="./img/mainjtt.png" alt="图片不见了">
-          </div>
-          <div class="mainjtc">
-            <p>额问题官方网</p>
-            <p></p>
-            <p></p>
-            <p>销量: 3652</p>
-            <p>&yen: 666</p>
-          </div>
-        </div>
-        <div class="mainjta">
-          <div class="mainjtb">
-            <img src="./img/mainjtt.png" alt="图片不见了">
-          </div>
-          <div class="mainjtc">
-            <p>额问题官方网</p>
-            <p></p>
-            <p></p>
-            <p>销量: 3652</p>
-            <p>&yen: 666</p>
-          </div>
-        </div>
-      </div>
       <!--2F轮播图部分-->
       <div v-show="exis1" class="gdetaillbt">
-        <mt-swipe :auto="2000">
-          <mt-swipe-item >
-            <img src="./img/wine.png" alt="图片不见了"/>
-          </mt-swipe-item>
-          <mt-swipe-item >
-            <img src="./img/wine1.png" alt="图片不见了"/>
-          </mt-swipe-item>
-          <mt-swipe-item >
-            <img src="./img/wine2.png" alt="图片不见了"/>
-          </mt-swipe-item>
-          <mt-swipe-item >
-            <img src="./img/wine1.png" alt="图片不见了"/>
-          </mt-swipe-item>
-          <mt-swipe-item >
-            <img src="./img/wine2.png" alt="图片不见了"/>
+        <mt-swipe :auto="1500">
+          <mt-swipe-item v-for="item in data5" :key="item.id" >
+            <img :src="item.goodsImage" alt="图片不见了" v-on:click="lbtode2()"/>
           </mt-swipe-item>
         </mt-swipe>
       </div>
+      <!--2F静态图部分-->
+      <div v-show="exis1" class="mainjt">
+        <div class="mainjta" v-for="item in data4" :key="item.id">
+          <div class="mainjtb" >
+            <img :src="item.midPic" alt="静态图">
+          </div>
+          <div class="mainjtc" v-on:click="todea($event)">
+            <p>{{item.goodsTitle}}</p>
+            <p></p>
+            <p></p>
+            <p>销量 {{item.sellNum}}</p>
+            <p>&yen {{item.goodsPrice}}</p>
+            <p>{{item.goodsId}}</p>
+          </div>
+        </div>
+      </div>
       <!--3F可隐藏的静态图,轮播图及按钮部分-->
       <div class="mfirst">
+        <!--3F按钮部分-->
         <div class="mtwo">
           <img src="./img/mfirst.png" alt="两杯酒图标"/>
         </div>
         <div class="butt">
-          3F 路易拉菲
+          3F 长城
         </div >
         <div class="mthree" v-on:click="change2()">
           <img src="./img/mtwo.png" v-show="exis5" alt="按钮图标"/><!--一楼按钮-->
@@ -167,136 +111,68 @@
           <!--三楼按钮下-->
         </div>
       </div>
-      <!--3F静态图部分-->
-      <div v-show="exis2" class="mainjt">
-        <div class="mainjta">
-          <div class="mainjtb">
-            <img src="./img/mainjtt.png" alt="图片不见了">
-          </div>
-          <div class="mainjtc">
-            <p>额问题官方网</p>
-            <p></p>
-            <p></p>
-            <p>销量: 3652</p>
-            <p>&yen: 666</p>
-          </div>
-        </div>
-        <div class="mainjta">
-          <div class="mainjtb">
-            <img src="./img/mainjtt.png" alt="图片不见了">
-          </div>
-          <div class="mainjtc">
-            <p>额问题官方网</p>
-            <p></p>
-            <p></p>
-            <p>销量: 3652</p>
-            <p>&yen: 666</p>
-          </div>
-        </div>
-      </div>
       <!--3F轮播图部分-->
       <div v-show="exis2" class="gdetaillbt">
-        <mt-swipe :auto="2000">
-          <mt-swipe-item >
-            <img src="./img/wine.png" alt="图片不见了"/>
-          </mt-swipe-item>
-          <mt-swipe-item >
-            <img src="./img/wine1.png" alt="图片不见了"/>
-          </mt-swipe-item>
-          <mt-swipe-item >
-            <img src="./img/wine2.png" alt="图片不见了"/>
-          </mt-swipe-item>
-          <mt-swipe-item >
-            <img src="./img/wine1.png" alt="图片不见了"/>
-          </mt-swipe-item>
-          <mt-swipe-item >
-            <img src="./img/wine2.png" alt="图片不见了"/>
+        <mt-swipe :auto="1500">
+          <mt-swipe-item v-for="item in data7" :key="item.id" >
+            <img :src="item.goodsImage" alt="图片不见了" v-on:click="lbtode3()"/>
           </mt-swipe-item>
         </mt-swipe>
       </div>
+      <!--3F静态图部分-->
+      <div v-show="exis2" class="mainjt">
+        <div class="mainjta" v-for="item in data6" :key="item.id">
+          <div class="mainjtb" >
+            <img :src="item.midPic" alt="静态图">
+          </div>
+          <div class="mainjtc" v-on:click="todea($event)">
+            <p>{{item.goodsTitle}}</p>
+            <p></p>
+            <p></p>
+            <p>销量 {{item.sellNum}}</p>
+            <p>&yen {{item.goodsPrice}}</p>
+            <p>{{item.goodsId}}</p>
+          </div>
+        </div>
+      </div>
       <!--下面无限滚动的商品列表-->
-      <div  class="mainjt">
-        <div class="mainjta">
+      <div  class="mainjtl" >
+        <div class="mainjta" v-for = "item in data8" :key="item.id" >
           <div class="mainjtb">
-            <img src="./img/mainjtt.png" alt="图片不见了">
+            <img :src="item.midPic" alt="图片不见了" >
           </div>
-          <div class="mainjtc">
-            <p>额问题官方网</p>
+          <div class="mainjtc" v-on:click="todea($event)">
+            <p>{{item.goodsTitle}}</p>
             <p></p>
             <p></p>
-            <p>销量: 3652</p>
-            <p>&yen: 666</p>
-          </div>
-        </div>
-        <div class="mainjta">
-          <div class="mainjtb">
-            <img src="./img/mainjtt.png" alt="图片不见了">
-          </div>
-          <div class="mainjtc">
-            <p>额问题官方网</p>
-            <p></p>
-            <p></p>
-            <p>销量: 3652</p>
-            <p>&yen: 666</p>
+            <p>销量 {{item.sellNum}}</p>
+            <p>&yen {{item.goodsPrice}}</p>
+            <p>{{item.goodsId}}</p>
           </div>
         </div>
       </div>
-      <div  class="mainjt">
-        <div class="mainjta">
-          <div class="mainjtb">
-              <img src="./img/mainjtt.png" alt="图片不见了">
+      <div v-on:click="load()" class="load" v-show="value">
+        加载更多
+      </div>
+      <div  class="mainjtl" v-show="vae">
+        <div class="mainjta" v-for = "item in data9" :key="item.id" >
+          <div class="mainjtb" >
+            <img :src="item.midPic" alt="图片不见了" >
           </div>
-          <div class="mainjtc">
-              <p>额问题官方网</p>
-              <p></p>
-              <p></p>
-              <p>销量: 3652</p>
-              <p>&yen: 666</p>
-          </div>
-        </div>
-        <div class="mainjta">
-          <div class="mainjtb">
-              <img src="./img/mainjtt.png" alt="图片不见了">
-          </div>
-          <div class="mainjtc">
-              <p>额问题官方网</p>
-              <p></p>
-              <p></p>
-              <p>销量: 3652</p>
-              <p>&yen: 666</p>
+          <div class="mainjtc" v-on:click="todea($event)">
+            <p>{{item.goodsTitle}}</p>
+            <p></p>
+            <p></p>
+            <p>销量 {{item.sellNum}}</p>
+            <p>&yen {{item.goodsPrice}}</p>
+            <p>{{item.goodsId}}</p>
           </div>
         </div>
       </div>
-      <div  class="mainjt">
-        <div class="mainjta">
-          <div class="mainjtb">
-              <img src="./img/mainjtt.png" alt="图片不见了">
-          </div>
-          <div class="mainjtc">
-              <p>额问题官方网</p>
-              <p></p>
-              <p></p>
-              <p>销量: 3652</p>
-              <p>&yen: 666</p>
-          </div>
-        </div>
-        <div class="mainjta">
-          <div class="mainjtb">
-              <img src="./img/mainjtt.png" alt="图片不见了">
-          </div>
-          <div class="mainjtc">
-              <p>额问题官方网</p>
-              <p></p>
-              <p></p>
-              <p>销量: 3652</p>
-              <p>&yen: 666</p>
-          </div>
-        </div>
-      </div>
+        <img src="./img/first.jpg" class="first" alt="首页图标">
       <div class="tiao"></div>
       <bottom>
       </bottom>
-      <img src="./img/first.jpg" class="first" alt="首页图标不见了">
     </div>
 </template>
 
@@ -306,26 +182,155 @@ export default {
   components: {bottom},
   data () {
     return {
-      exis:false,
-      exis1:false,
-      exis2:false,
-      exis3:true,
-      exis4:true,
-      exis5:true,
+      exis: false,
+      exis1: false,
+      exis2: false,
+      exis3: true,
+      exis4: true,
+      exis5: true,
+      data1: [],
+      data2: [],
+      data3: [],
+      data4: [],
+      data5: [],
+      data6: [],
+      data7: [],
+      data8: [],
+      data9: [],
+      value: true,
+      vae: false
     }
   },
+  created () {
+    this.mo()
+    this.mo1()
+    this.mo2()
+    this.mo3()
+    this.mo4()
+  },
   methods: {
+    // 获取静态图商品id
+    todea (event) {
+      let goodsId = event.currentTarget.lastChild.innerHTML
+      this.$router.push({
+        path: '/goodDetail',
+        query: {goodsId: goodsId}
+      })
+    },
+    // 获取轮播图的商品id
+    lbtode1 () {
+      let goodsId = '00000010'
+      this.$router.push({
+        path: '/goodDetail',
+        query: {goodsId: goodsId}
+      })
+    },
+    lbtode2 () {
+      let goodsId = '00000012'
+      this.$router.push({
+        path: '/goodDetail',
+        query: {goodsId: goodsId}
+      })
+    },
+    lbtode3 () {
+      let goodsId = '00000013'
+      this.$router.push({
+        path: '/goodDetail',
+        query: {goodsId: goodsId}
+      })
+    },
+    lbtode () {
+      let goodsId = '00000005'
+      this.$router.push({
+        path: '/goodDetail',
+        query: {goodsId: goodsId}
+      })
+    },
+    mo () {
+      this.$http.get('/api/beforeHomePageSort.htm', {
+        params: {}
+      }).then((res) => {
+        this.data2 = res.data.data
+        console.log(res.data.data)
+      }).catch(function (error) {
+        console.log(error)
+      })
+    },
+    mo1 () {
+      this.$http.get('/api/homePageSortNext.htm?brand=杰卡斯山庄', {
+        params: {}
+      }).then((res) => {
+        this.data3 = res.data.data
+        console.log(res.data.data)
+      }).catch(function (error) {
+        console.log(error)
+      })
+    },
+    mo2 () {
+      this.$http.get('/api/homePageSortNext.htm?brand=洛神山庄', {
+        params: {}
+      }).then((res) => {
+        this.data4 = res.data.data
+        console.log(res.data.data)
+      }).catch(function (error) {
+        console.log(error)
+      })
+    },
+    mo3 () {
+      this.$http.get('/api/homePageSortNext.htm?brand=长城', {
+        params: {}
+      }).then((res) => {
+        this.data6 = res.data.data
+        console.log(res.data.data)
+      }).catch(function (error) {
+        console.log(error)
+      })
+    },
+    mo4 () {
+      this.$http.get('/api/afterHomePageSort.htm?start=0', {
+        params: {}
+      }).then((res) => {
+        this.data8 = res.data.data
+        console.log(res.data.data)
+      }).catch(function (error) {
+        console.log(error)
+      })
+    },
     change () {
-      this.exis = !this.exis;
-      this.exis3 = !this.exis3;
+      this.exis = !this.exis
+      this.exis3 = !this.exis3
+      this.$http.get('/api/homePageSort.htm?brand=杰卡斯山庄', {
+        params: {}
+      }).then((res) => {
+        this.data1 = res.data.data
+        console.log(res.data.data)
+      }).catch(function (error) {
+        console.log(error)
+      })
     },
     change1 () {
-      this.exis1 = !this.exis1;
-      this.exis4 = !this.exis4;
+      this.exis1 = !this.exis1
+      this.exis4 = !this.exis4
+      this.$http.get('/api/homePageSort.htm?brand=洛神山庄', {
+        params: {}
+      }).then((res) => {
+        this.data5 = res.data.data
+        console.log(res.data.data)
+      }).catch(function (error) {
+        console.log(error)
+      })
     },
     change2 () {
-      this.exis2 = !this.exis2;
-      this.exis5 = !this.exis5;
+      this.exis2 = !this.exis2
+      this.exis5 = !this.exis5
+      this.$http.get('/api/homePageSort.htm?brand=长城', {
+        params: {}
+      }).then((res) => {
+        this.data7 = res.data.data
+        console.log(res.data.data)
+      }).catch(function (error) {
+        console.log(error)
+      })
     },
     push () {
       this.$router.push({
@@ -335,6 +340,19 @@ export default {
     push1 () {
       this.$router.push({
         path: '/goodSearch'
+      })
+    },
+    load () {
+      this.value = !this.value
+      this.vae = !this.vae
+      this.$http.get('/api/afterHomePageSort.htm', {
+        params: {
+          start: 6
+        }
+      }).then(res => {
+        this.data9 = res.data.data
+      }).catch(function (error) {
+        console.log(error)
       })
     }
   }
@@ -357,7 +375,7 @@ export default {
     overflow:hidden;
     position:relative;
    }
-  .right{height:68px;
+  .right{height:67px;
     width:80px;
     background-color:#E78C87;
     float:left;
@@ -370,9 +388,9 @@ export default {
   }
   .left{
     float:left;
-    width:100px;
-    height:70px;
-    margin:0px;
+    width:40px;
+    height:40px;
+    margin-right:50px;
     padding-top:25px;
    }
   .left img{
@@ -401,10 +419,19 @@ export default {
     height:440px;
     margin:0px;
     padding:0px;
+    overflow:hidden;
   }
   .gdetaillbt img{
     width:750px;
     height:440px;
+    margin:0px;
+  }
+  .gdetaillbt p{
+    width:750px;
+    height:20px;
+    margin:0px;
+    float:left;
+    font-size:10px;
   }
   .mainjt{
     width:750px;
@@ -414,16 +441,24 @@ export default {
     border:1px #ccc solid;
     overflow: hidden;
   }
+  .mainjtl{
+    width:750px;
+    padding:0px;
+    margin:0px;
+    overflow: hidden;
+  }
   .mainjta{
     float:left;
     width:375px;
     height:410px;
     padding:0px;
     margin:0px;
+    border-bottom:#999 solid 1px;
   }
   .mainjtb img{
     width:200px;
     height:410px;
+    font-size:15px;
   }
   .mainjtb{
     width:200px;
@@ -482,21 +517,36 @@ export default {
     height:75px;
   }
   .mtwo{
-    padding-top:5px;
-  }
-  .mtwo img{
+    padding-top:4px;
     width:67px;
     height:70px;
   }
+  .mtwo img{
+    width:67px;
+    height:70px;}
   .first{
     position:fixed;
-    left:35px;
+    left:290px;
     bottom:15px;
     width:48px;
     height:68px;
+    z-index:2;
   }
   .tiao{
     width:750px;
-    height:80px;
+    height:92px;
+  }
+  .load{
+    position:fixed;
+    bottom:100px;
+    right:550px;
+    width:150px;
+    height:30px;
+    font-size:20px;
+    border-radius:8px;
+    background-color:#999;
+  }
+  p:nth-child(6){
+    display:none;
   }
 </style>
