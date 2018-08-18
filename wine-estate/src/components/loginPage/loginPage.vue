@@ -2,24 +2,26 @@
   <div id="app">
     <header>
       <span>登录</span>
-      <img src="./img/back.png" height="52" width="30" alt="图片不见了哦~" @click="routeraccountPage">
+      <img src="./img/back.png" alt="" @click="routeraccountPage">
     </header>
     <main>
-      <img src="./img/logo.png" height="202" width="200" class="logo" alt="图片不见了哦~"/>
-      <img src="./img/icon5-4.png" height="37" width="35" class="icon1" alt="图片不见了哦~"/>
-      <img src="./img/icon6-4.png" height="37" width="35" class="icon2" alt="图片不见了哦~"/>
-      <form method="post" action="" @submit.prevent="checkForm">
-        <input type="text" name="loginText" v-model.trim="loginText" placeholder="请输入手机号码/邮箱地址"
+      <img src="./img/logo.png" class="logo" alt="图片不见了哦~"/>
+      <svg class="icon1" aria-hidden="true">
+        <use xlink:href="#icon-jiu"></use>
+      </svg>
+      <svg class="icon2" aria-hidden="true">
+        <use xlink:href="#icon-jiubei"></use>
+      </svg>
+      <form method="post" action="http://192.168.0.241/login.htm" @submit.prevent="checkForm">
+        <input type="text" id="loginText" name="loginText" v-model.trim="loginText" placeholder="请输入手机号码/邮箱地址"
                @change="checkText" @click="dispearText"/>
-        <input type="password" name="loginPassword" v-model.trim="loginPassword" placeholder="请输入密码"
+        <input type="password" id="password" name="password" v-model.trim="password" placeholder="请输入密码"
                @change="checkPassword" @click="dispearPassword"/>
         <input type="submit" name="loginSubmit" @mousedown="changeColor($event)" @mouseup="recoverColor($event)"
                value="立即登录"/>
       </form>
       <span id="showLogin" v-show="showLogin">请输入正确的手机号或邮箱地址哦~</span>
       <span id="showPassword" v-show="showPassword">请输入正确的密码哦~</span>
-      <span v-show="blankLogin" id="blankLogin">请填写完整哦~</span>
-      <span v-show="blankPassword" id="blankPassword">请填写完整哦~</span>
       <a href="#" @click="routerforgetpasswordPage">忘记密码</a>
       <a href="#" @click="routerregisterPage">快速注册</a>
     </main>
@@ -28,100 +30,118 @@
 
 <script>
   export default {
-    name: 'loginPage',
+    name: "loginPage",
     data() {
       return {
         showLogin: false,
-        showPassword: false,
-        blankLogin: false,
-        blankPassword: false
-      }
+        showPassword: false
+        //Id: [],
+        //Name: []
+      };
     },
     methods: {
       checkForm() {
-        var text1 = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-        var text2 = /^1[34578]\d{9}$/;
-        var password = /^[\da-zA-Z]{6,16}$/;
+        let loginTextval = document.getElementById("loginText").value;
+        let passwordval = document.getElementById("password").value;
+        let text1 = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        let text2 = /^1[34578]\d{9}$/;
+        let password = /^[\da-zA-Z]{6,16}$/;
+        let config = {
+          headers: { "Content-Type": "application/x-www-form-urlencoded" }
+        };
         //提交条件
-        if (this.loginText && this.loginPassword) {
-          this.blankLogin = false;
-          this.blankPassword = false;
-          if (text1.test(this.loginText) || text2.test(this.loginText) && password.test(this.loginPassword)) {
-          }
-          else {
+        if (this.loginText && this.password) {
+          if (text1.test(this.loginText) || text2.test(this.loginText) && password.test(this.password)) {
+            this.$http.post("/api/login.htm", config, {
+              params: {
+                loginText: loginTextval,
+                password: passwordval
+              }
+            }).then((res) => {
+              if (!res.data.status) {
+                this.$messagebox.alert("", {
+                  message: "登录失败，请重新登录",
+                  title: "提示",
+                  showConfirmButton: true,
+                  confirmButtonText: "确定"
+                });
+              } else {
+                this.$router.push({
+                  path: "/accountPage"
+                });
+              }
+              console.log(res.data);
+            }).catch((error) => {
+              console.log(error);
+            });
+          } else {
+            this.showLogin = false;
+            this.showPassword = false;
+            this.$messagebox.alert("", {
+              message: "填写的信息有错误哦~请重新填写",
+              title: "提示",
+              showConfirmButton: true,
+              confirmButtonText: "确定"
+            });
           }
         }
         //非空验证
-        else if (!this.loginText && !this.loginPassword) {
+        else {
           this.showLogin = false;
           this.showPassword = false;
-          this.blankLogin = true;
-          this.blankPassword = true;
-        }
-        if (!this.loginText) {
-          this.showLogin = false;
-          this.blankLogin = true;
-        }
-        if (!this.loginPassword) {
-          this.showPassword = false;
-          this.blankPassword = true;
+          this.$messagebox.alert("", {
+            message: "请填写完整哦~",
+            title: "提示",
+            showConfirmButton: true,
+            confirmButtonText: "确定"
+          });
         }
       },
       //手机和邮箱验证
       checkText() {
-        var text1 = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-        var text2 = /^1[34578]\d{9}$/;
+        let text1 = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        let text2 = /^1[34578]\d{9}$/;
         if (!text1.test(this.loginText) && !text2.test(this.loginText)) {
-          this.blankLogin = false;
           this.showLogin = true;
         }
         else {
-          this.blankLogin = false;
           this.showLogin = false;
         }
       },
       //6~16位密码验证
       checkPassword() {
-        var password = /^[\da-zA-Z]{6,16}$/;
-        if (!password.test(this.loginPassword)) {
-          this.blankPassword = false;
+        let Password = /^[\da-zA-Z]{6,16}$/;
+        if (!Password.test(this.password)) {
           this.showPassword = true;
         } else {
-          this.blankPassword = false;
           this.showPassword = false;
         }
       },
       //点击提示栏消失
       dispearText() {
         this.showLogin = false;
-        this.blankLogin = false;
       },
       dispearPassword() {
         this.showPassword = false;
-        this.blankPassword = false;
       },
-      //点击效果
       //跳转
       routerregisterPage() {
-        var timer = setTimeout(() => {
-          this.$router.push({
-            path: '/registerPage'
-          })
-          clearTimeout(timer);
-        }, 10)
+        this.$router.push({
+          path: "/registerPage"
+        });
       },
       routeraccountPage() {
         this.$router.push({
-          path: '/accountPage'
-        })
+          path: "/accountPage"
+        });
       },
       routerforgetpasswordPage() {
         this.$router.push({
-          path: '/forgetpasswordPage'
-        })
+          path: "/forgetpasswordPage"
+        });
       }
     }
-  }
+  };
 </script>
 
 <style scoped>
@@ -149,14 +169,14 @@
   }
 
   header img {
-    width: 24px;
-    height: 68px;
+    width: 30px;
+    height: 52px;
     position: absolute;
-    top: 49px;
+    top: 54px;
     left: 17px;
     cursor: pointer;
     display: block;
-    line-height: 0px;
+    line-height: 0;
   }
 
   /*页面主体部分*/
@@ -165,6 +185,8 @@
   }
 
   main .logo {
+    width: 200px;
+    height: 202px;
     position: absolute;
     top: 93px;
     left: 275px;
@@ -173,20 +195,8 @@
   }
 
   main .logo:hover {
-    box-shadow: 0 4px 10px 0px rgba(0, 0, 0, 0.225);
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.225);
     transform: rotate(45deg)
-  }
-
-  main .icon1 {
-    position: absolute;
-    top: 408px;
-    left: 62px;
-  }
-
-  main .icon2 {
-    position: absolute;
-    top: 487px;
-    left: 62px;
   }
 
   main input[type="text"] {
@@ -244,7 +254,7 @@
   main input[type="submit"]:hover {
     background-color: #c3363a;
     text-decoration: none;
-    box-shadow: 0 5px 11px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.3);
   }
 
   a:link, a:visited, a:hover, a:active {
@@ -278,6 +288,7 @@
     top: 458px;
     left: 120px;
     color: #aa2834;
+    font-size: 20px;
   }
 
   main #showPassword {
@@ -285,19 +296,23 @@
     top: 535px;
     left: 120px;
     color: #aa2834;
+    font-size: 20px;
   }
 
-  main #blankLogin {
+  .icon1 {
+    width: 40px;
+    height: 42px;
     position: absolute;
-    top: 458px;
-    left: 120px;
-    color: #aa2834;
+    top: 406px;
+    left: 62px;
   }
 
-  main #blankPassword {
+  .icon2 {
+    width: 35px;
+    height: 42px;
     position: absolute;
-    top: 535px;
-    left: 120px;
-    color: #aa2834;
+    top: 488px;
+    left: 65px;
   }
+
 </style>

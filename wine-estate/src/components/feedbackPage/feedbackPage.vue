@@ -2,20 +2,20 @@
   <div id="app">
     <header>
       <span>意见反馈</span>
-      <img src="./img/back.png" height="43" width="25" alt="图片不见了哦~" @click="routermorePage"/>
-      <a href="#" id="submit" @click="refer">提交</a>
+      <img src="./img/back.png" alt="" @click="routermorePage"/>
     </header>
     <main>
       <P>反馈内容</P>
-      <textarea placeholder="请填写您的意见，我们会将卖酒做得更好" form="suggestion" name="suggestion"
-                v-model.trim="suggestion" @keyup="submit">
+      <textarea id="message" placeholder="请填写您的意见，我们会将卖酒做得更好" form="connection" name="message"
+                v-model.trim="message" @keyup="test">
       </textarea>
       <p>联系方式</p>
-      <form id="suggestion" method="get" action="">
-        <input type="text" placeholder="请填写您的手机号或邮箱地址，以方便我们与您联系" name="connection"
-               v-model.trim="connection" @keyup="submit"/>
+      <form id="connection" method="get" action="">
+        <input type="text" id="phone" placeholder="请填写您的手机号，以方便我们与您联系" name="phone"
+               v-model.trim="phone" @keyup="test"/>
+        <input type="submit" id="submit" value="提交" @click="refer"/>
       </form>
-      <span v-show="warning">请填写正确的手机号或邮箱地址</span>
+      <span v-show="warning">请填写正确的手机号</span>
     </main>
   </div>
 </template>
@@ -26,48 +26,55 @@
     data() {
       return {
         warning: false
-      }
+      };
     },
     methods: {
       //验证
-      submit() {
-        var oa = document.getElementById("submit");
-        var text1 = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-        var text2 = /^1[34578]\d{9}$/;
-        if (this.connection && this.suggestion) {
-          if (!text1.test(this.connection) && !text2.test(this.connection)) {
-            oa.style.color = "#d63f4b"
+      test() {
+        let submitval = document.getElementById("submit");
+        let text = /^1[34578]\d{9}$/;
+        if (this.message && this.phone) {
+          if (!text.test(this.phone)) {
+            submitval.style.color = "#d63f4b";
             this.warning = true;
           }
           else {
-            oa.style.color = "#fff";
+            submitval.style.color = "#fff";
             this.warning = false;
           }
         }
-        if (!this.connection) {
-          oa.style.color = "#d63f4b";
-        }
-        if (!this.suggestion) {
-          oa.style.color = "#d63f4b";
+        else {
+          submitval.style.color = "#d63f4b";
         }
       },
+
       //提交跳转
       refer() {
-        var oRefer = document.getElementById("suggestion");
-        if (this.connection && this.suggestion) {
-          oRefer.submit();
-          this.$router.push({
-            path: '/morePage'
-          })
+        let messageval = document.getElementById("message").value;
+        let phoneval = document.getElementById("phone").value;
+        if (this.message && this.phone) {
+          this.$http.get("/api/message.htm?message=1&phone=1", {
+            params: {
+                message: messageval,
+                phone: phoneval
+            }
+          }).then((res) => {
+            console.log(res.data);
+            this.$router.push({
+              path: "/morePage"
+            });
+          }).catch((error) => {
+            console.log(error);
+          });
         }
       },
       routermorePage() {
         this.$router.push({
-          path: '/morePage'
-        })
+          path: "/morePage"
+        });
       }
     }
-  }
+  };
 </script>
 
 <style scoped>
@@ -76,6 +83,7 @@
     height: 1334px;
     margin: 0 auto;
     background-color: #ebebeb;
+    overflow: hidden;
   }
 
   /*页面banner部分*/
@@ -84,6 +92,7 @@
     height: 130px;
     background-color: #cd2131;
     position: relative;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
   }
 
   header span {
@@ -104,15 +113,6 @@
     cursor: pointer;
   }
 
-  header a {
-    position: absolute;
-    top: 68px;
-    right: 49px;
-    cursor: pointer;
-    font-size: 24px;
-    color: #d63f4b;
-  }
-
   a:link, a:visited, a:hover, a:active {
     text-decoration: none;
   }
@@ -129,7 +129,7 @@
     position: absolute;
     left: 20px;
     top: 39px;
-    margin: 0px;
+    margin: 0;
     cursor: default;
   }
 
@@ -155,11 +155,11 @@
     position: absolute;
     left: 20px;;
     top: 310px;
-    margin: 0px;
+    margin: 0;
     cursor: default;
   }
 
-  main form input {
+  main input[type="text"] {
     width: 709px;
     height: 71px;
     border: none;
@@ -169,6 +169,20 @@
     box-sizing: border-box;
     padding-left: 17px;
     font-size: 16px;
+  }
+
+  main #submit {
+    position: absolute;
+    top: -64px;
+    right: 49px;
+    cursor: pointer;
+    font-size: 28px;
+    color: #d63f4b;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    border: 1px solid transparent;
+    outline: none;
   }
 
   main span {

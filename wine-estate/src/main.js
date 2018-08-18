@@ -8,6 +8,7 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 import './rem/rem.js'
 import axios from 'axios'
+import './assets/iconfont/iconfont.js'
 
 Vue.prototype.$http = axios
 Vue.use(VueRouter)

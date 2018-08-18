@@ -10,6 +10,5 @@ module.exports = {
       "rootValue": 32,
       "propList": ["*"]
     }
-
   }
 }

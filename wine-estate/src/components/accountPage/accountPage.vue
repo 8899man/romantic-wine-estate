@@ -2,52 +2,54 @@
   <div id="app">
     <header>
       <span>我的账户</span>
-      <img src="./img/head.png" height="130" width="130" class="head" alt="图片不见了哦~" @click="routerloginPage"/>
-      <img src="./img/settings.png" height="66" width="66" alt="图片不见了哦~" @click="routermorePage"/>
-      <img src="./img/return4.png" height="44" width="26" alt="图片不见了哦~" @click="routerinformationPage"/>
-      <p>{{myName}}</p>
+      <img :src="headImg" class="head" alt="图片不见了哦~" @click="routerloginPage"/>
+      <img src="./img/settings.png" alt="" @click="routermorePage"/>
+      <img src="./img/return4.png" alt="" @click="routerinformationPage"/>
+      <p>{{Name}}</p>
     </header>
     <main>
       <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="routerallorders" id="myOrder"
            class="order">
         <span>我的订单</span>
         <span>查看全部标签</span>
-        <img src="./img/return3.png" height="26" width="16" alt="图片不见了哦~"/>
+        <img src="./img/return3.png" alt="图片不见了哦~"/>
       </div>
       <div class="menu">
             <span @click="routerallorders">
-              <img src="./img/button1-4.png" height="73" width="73" alt="图片不见了哦~"/>
+              <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-qianbao-"></use>
+              </svg>
               <p>待付款</p>
             </span>
         <span @click="routerallorders">
-              <img src="./img/button2-4.png" height="73" width="73" alt="图片不见了哦~"/>
+              <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-huoche"></use>
+              </svg>
               <p>待收货</p>
             </span>
         <span @click="routerallorders">
-              <img src="./img/button3-4.png" height="73" width="73" alt="图片不见了哦~"/>
+              <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-pinglun1"></use>
+              </svg>
               <p>待评价</p>
             </span>
       </div>
       <div class="list">
               <span @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
-                <img src="./img/icon1-4.png" height="72" width="72" alt="图片不见了哦~"/>
+                <img src="./img/icon1-4.png" alt="图片不见了哦~"/>
                 <p>存酒库</p>
-                <p>{{warehouse}}瓶</p>
               </span>
         <span @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
-                <img src="./img/icon2-4.png" height="72" width="72" alt="图片不见了哦~"/>
+                <img src="./img/icon2-4.png" alt="图片不见了哦~"/>
                 <p>我的酒评</p>
-                <p>{{evaluate}}条</p>
               </span>
         <span @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
-                <img src="./img/icon3-4.png" height="72" width="72" alt="图片不见了哦~"/>
+                <img src="./img/icon3-4.png" alt="图片不见了哦~"/>
                 <p>我的关注</p>
-                <p>{{attention}}个</p>
               </span>
         <span @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="routermytracksPage">
-                <img src="./img/icon4-4.png" height="72" width="72" alt="图片不见了哦~"/>
+                <img src="./img/icon4-4.png" alt="图片不见了哦~"/>
                 <p>我的足迹</p>
-                <p>{{discount}}条</p>
               </span>
       </div>
     </main>
@@ -56,61 +58,126 @@
 </template>
 
 <script>
-  import bottom from '../bottom/bottom.vue'
+  import bottom from "../bottom/bottom.vue";
 
   export default {
     name: "accountPage",
-    components: {bottom},
+    components: { bottom },
     data() {
       return {
-        myName: '',
-        warehouse: '0',
-        evaluate: '0',
-        attention: '0',
-        discount: '0'
-      }
+        Name: "点击登录",
+        headImg: require("./img/head.png")
+      };
     },
     methods: {
       //点击效果
       changeColor(event) {
-        var t = event.currentTarget;
+        let t = event.currentTarget;
         t.style.backgroundColor = "#ebebeb";
       },
       recoverColor(event) {
-        var t = event.currentTarget;
+        let t = event.currentTarget;
         t.style.backgroundColor = "#fff";
       },
       //跳转
       routerloginPage() {
         this.$router.push({
-          path: '/loginPage'
-        })
+          path: "/loginPage"
+        });
       },
       routermorePage() {
-        this.$router.push({
-          path: '/morePage'
+        this.$http.get("/api/info.htm", {
+          params: {}
+        }).then((res) => {
+          if (!res.data.status) {
+            this.$messagebox.alert("", {
+              message: "请先登录哦~",
+              title: "提示",
+              showConfirmButton: true,
+              confirmButtonText: "确定"
+            });
+          } else {
+            this.$router.push({
+              path: "/morePage"
+            });
+          }
         })
       },
       routerinformationPage() {
-        this.$router.push({
-          path: '/informationPage'
+        this.$http.get("/api/info.htm", {
+          params: {}
+        }).then((res) => {
+          if (!res.data.status) {
+            this.$messagebox.alert("", {
+              message: "请先登录哦~",
+              title: "提示",
+              showConfirmButton: true,
+              confirmButtonText: "确定"
+            });
+          } else {
+            this.$router.push({
+              path: "/informationPage"
+            });
+          }
         })
       },
       routerallorders() {
-        this.$router.push({
-          path: '/allorders'
+        this.$http.get("/api/info.htm", {
+          params: {}
+        }).then((res) => {
+          if (!res.data.status) {
+            this.$messagebox.alert("", {
+              message: "请先登录哦~",
+              title: "提示",
+              showConfirmButton: true,
+              confirmButtonText: "确定"
+            });
+          } else {
+            this.$router.push({
+              path: "/allorders"
+            });
+          }
         })
       },
       routermytracksPage() {
-        this.$router.push({
-          path: '/mytracksPage'
+        this.$http.get("/api/info.htm", {
+          params: {}
+        }).then((res) => {
+          if (!res.data.status) {
+            this.$messagebox.alert("", {
+              message: "请先登录哦~",
+              title: "提示",
+              showConfirmButton: true,
+              confirmButtonText: "确定"
+            });
+          } else {
+            this.$router.push({
+              path: "/mytracksPage"
+            });
+          }
         })
+      },
+      initData() {
+        this.$http.get("/api/info.htm", {
+          params: {}
+        }).then((res) => {
+          console.log(res.data);
+          this.Name = res.data.data.userName;
+          this.headImg = res.data.data.headPic;
+        }).catch((error) => {
+          console.log(error);
+        });
       }
+    },
+    created() {
+      this.initData();
     }
-  }
+  };
+
 </script>
 
 <style scoped>
+
   #app {
     width: 750px;
     height: 1334px;
@@ -137,10 +204,11 @@
   }
 
   header .head {
+    width: 158px;
+    height: 158px;
     position: absolute;
-    top: 100px;
-    left: 310px;
-    cursor: default;
+    top: 86px;
+    left: 295px;
     border: 3px #fff solid;
     border-radius: 50%;
     cursor: pointer;
@@ -154,7 +222,7 @@
     right: 13px;
     cursor: pointer;
     display: block;
-    line-height: 0px;
+    line-height: 0;
   }
 
   header img:nth-of-type(3) {
@@ -162,16 +230,16 @@
     height: 44px;
     position: absolute;
     top: 144px;
-    right: 24px;
+    right: 32px;
     cursor: pointer;
     display: block;
-    line-height: 0px;
+    line-height: 0;
   }
 
   header p {
     width: 100%;
     position: absolute;
-    top: 226px;
+    top: 232px;
     font-size: 26px;
     color: #fff;
     text-align: center;
@@ -200,13 +268,15 @@
   }
 
   main .order span:nth-of-type(2) {
-    font-size: 19px;
+    font-size: 22px;
     color: #c5c5c5;
     position: absolute;
     right: 64px;
   }
 
   main .order img {
+    width: 16px;
+    height: 26px;
     position: absolute;
     right: 31px;
     top: 27px;
@@ -223,8 +293,9 @@
     height: 110px;
     position: absolute;
     left: 103px;
-    top: 119px;
+    top: 103px;
     cursor: pointer;
+    text-align: center;
   }
 
   main .menu span:nth-of-type(2) {
@@ -232,8 +303,9 @@
     height: 110px;
     position: absolute;
     left: 338px;
-    top: 119px;
+    top: 103px;
     cursor: pointer;
+    text-align: center;
   }
 
   main .menu span:nth-of-type(3) {
@@ -241,14 +313,15 @@
     height: 110px;
     position: absolute;
     left: 573px;
-    top: 119px;
+    top: 103px;
     cursor: pointer;
+    text-align: center;
   }
 
   main .menu p {
-    font-size: 19px;
+    font-size: 22px;
     color: #000;
-    padding-top: 12px;
+    padding-top: 4px;
     text-align: center;
     margin: 0;
   }
@@ -268,7 +341,7 @@
     height: 158px;
     border-right: 1px #bababa solid;
     position: absolute;
-    left: 0px;
+    left: 0;
     display: block;
     cursor: pointer;
   }
@@ -299,21 +372,25 @@
     cursor: pointer;
   }
 
-  main .list span p:nth-of-type(1) {
-    font-size: 17px;
+  main .list span p {
+    font-size: 21px;
     color: #000;
     padding-top: 6px;
     margin: 0;
   }
 
-  main .list span p:nth-of-type(2) {
-    font-size: 15px;
-    color: #fec371;
-    padding-top: 4px;
-    margin: 0;
+  main .list span img {
+    width: 72px;
+    height: 72px;
+    padding-top: 26px;
   }
 
-  main .list span img {
-    padding-top: 21px;
+  .icon {
+    width: 90px;
+    height: 90px;
+    fill: currentColor;
+    overflow: hidden;
+    position: relative;
+    right: 6px;
   }
 </style>

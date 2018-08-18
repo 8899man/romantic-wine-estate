@@ -2,15 +2,15 @@
   <div id="app">
     <header>
       <span>找回密码</span>
-      <img src="./img/back.png" height="43" width="26" alt="图片不见了哦~" @click="routerloginPage">
+      <img src="./img/back.png" alt="" @click="routerloginPage">
     </header>
     <main>
-      <form action="" method="post" @submit.prevent="checkForm">
-        <input type="text" placeholder="请输入邮箱地址" name="forgetEmail" v-model.trim="forgetEmail"
-               @change="checkEmail"/>
-        <input type="text" placeholder="请输入验证码" name="forgetIdentify" v-model.trim="forgetIdentify"/>
-        <input type="password" placeholder="请输入新6~16位的密码" name="forgetPassword" v-model.trim="forgetPassword"
-               @change="checkPassword"/>
+      <form action="http://192.168.0.241/findBack.htm" method="post" @submit.prevent="checkForm">
+        <input type="text" id="email" placeholder="请输入邮箱地址" name="email" v-model.trim="email"
+               @change="checkEmail" @click="dispearEmail"/>
+        <input type="text" id="code" placeholder="请输入验证码" name="code" v-model.trim="code"/>
+        <input type="password" id="password" placeholder="请输入新的6~16位密码" name="password" v-model.trim="password"
+               @change="checkPassword" @click="dispearPassword"/>
         <input type="submit" value="确定"/>
       </form>
       <button @click.stop="Identifying" v-show="!showTime"
@@ -19,9 +19,6 @@
       <button v-show="showTime">{{time}}秒后重新获取</button>
       <span v-show="showEmail" id="showEmail">请输入正确的邮箱地址哦~</span>
       <span v-show="showPassword" id="showPassword">请输入正确的密码哦~</span>
-      <span v-show="blankEmail" id="blankEmail">请填写完整哦~</span>
-      <span v-show="blankIdentify" id="blankIdentify">请填写完整哦~</span>
-      <span v-show="blankPassword" id="blankPassword">请填写完整哦~</span>
     </main>
   </div>
 </template>
@@ -33,79 +30,94 @@
       return {
         showEmail: false,
         showPassword: false,
-        blankEmail: false,
-        blankIdentify: false,
-        blankPassword: false,
         showTime: false,
         time: 0
-      }
+      };
     },
     methods: {
       //非空验证
       checkForm() {
-        var password = /^[\da-zA-Z]{6,16}$/;
-        var Email = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        let emailval = document.getElementById("email").value;
+        let codeval = document.getElementById("code").value;
+        let passwordval = document.getElementById("password").value;
+        let Password = /^[\da-zA-Z]{6,16}$/;
+        let Email = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        let config = {
+          headers: { "Content-Type": "application/x-www-form-urlencoded" }
+        };
         //提交条件
-        if (this.forgetPassword && this.forgetEmail) {
-          this.blankPassword = false;
-          this.blankIdentify = false;
-          this.blankEmail = false;
-          if (password.test(this.forgetPassword) && Email.test(this.forgetEmail)) {
+        if (this.password && this.email && this.code) {
+          if (Password.test(this.password) && Email.test(this.email)) {
+            this.$http.post("/api/findBack.htm", config, {
+              params: {
+                email: emailval,
+                code: codeval,
+                password: passwordval
+              }
+            }).then((res) => {
+              console.log(res.data);
+            }).catch((error) => {
+              console.log(error);
+            });
           }
           else {
+            this.$messagebox.alert("", {
+              message: "填写的信息有错误哦~请重新填写",
+              title: "提示",
+              showConfirmButton: true,
+              confirmButtonText: "确定"
+            });
           }
         }
         //非空验证
-        if (!this.forgetPassword && !this.forgetIdentify && !this.forgetEmail) {
-          this.showPassword = false;
-          this.showEmail = false;
-          this.blankPassword = true;
-          this.blankIdentify = true;
-          this.blankEmail = true;
-        }
-        if (!this.forgetPassword) {
-          this.showPassword = false;
-          this.blankPassword = true;
-        }
-        if (!this.forgetIdentify) {
-          this.blankIdentify = true;
-        }
-        if (!this.forgetEmail) {
-          this.showEmail = false;
-          this.blankEmail = true;
+        else {
+          this.$messagebox.alert("", {
+            message: "请填写完整哦~",
+            title: "提示",
+            showConfirmButton: true,
+            confirmButtonText: "确定"
+          });
         }
       },
       //邮箱地址验证
       checkEmail() {
-        var Email = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-        if (!Email.test(this.forgetEmail)) {
+        let Email = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        if (!Email.test(this.email)) {
           this.showEmail = true;
-          this.blankEmail = false;
         }
         else {
-          this.blankEmail = false;
           this.showEmail = false;
         }
       },
+
       //密码验证
       checkPassword() {
-        var password = /^[\da-zA-Z]{6,16}$/;
-        if (!password.test(this.forgetPassword)) {
+        let Password = /^[\da-zA-Z]{6,16}$/;
+        if (!Password.test(this.password)) {
           this.showPassword = true;
-          this.blankPassword = false;
         }
         else {
-          this.blankPassword = false;
           this.showPassword = false;
         }
       },
+
       //发送验证码
       Identifying() {
-        var Email = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-        if (Email.test(this.forgetEmail)) {
+        let emailcodeval = document.getElementById("email").value;
+        let Email = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        if (Email.test(this.email)) {
+          this.$http.post("/api/getCode.htm", {
+            params: {
+              email: emailcodeval
+            }
+          }).then((res) => {
+            console.log(res.data);
+          }).catch((error) => {
+            console.log(error);
+          });
           this.showTime = true;
           this.time = 60;
-          var timer = setInterval(() => {
+          let timer = setInterval(() => {
             this.time--;
             if (this.time <= 0) {
               this.showTime = false;
@@ -114,23 +126,32 @@
           }, 1000);
         }
       },
+
+      //点击提示栏消失
+      dispearEmail() {
+        this.showEmail = false;
+      },
+      dispearPassword() {
+        this.showPassword = false;
+      },
+
       //点击效果
       changeColor(event) {
-        var t = event.currentTarget;
+        let t = event.currentTarget;
         t.style.backgroundColor = "#95282c";
       },
       recoverColor(event) {
-        var t = event.currentTarget;
+        let t = event.currentTarget;
         t.style.backgroundColor = "#aa2834";
       },
       //跳转
       routerloginPage() {
         this.$router.push({
-          path: '/loginPage'
-        })
-      },
+          path: "/loginPage"
+        });
+      }
     }
-  }
+  };
 </script>
 
 <style scoped>
@@ -138,6 +159,7 @@
     width: 750px;
     height: 1334px;
     margin: 0 auto;
+    overflow: hidden;
   }
 
   /*页面banner部分*/
@@ -146,6 +168,7 @@
     height: 130px;
     background-color: #bb3337;
     position: relative;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
   }
 
   header span {
@@ -215,7 +238,7 @@
   main input[type="submit"]:hover {
     background-color: #c3363a;
     text-decoration: none;
-    box-shadow: 0 5px 11px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.3);
   }
 
   main button:nth-of-type(1) {
@@ -257,6 +280,7 @@
     top: 528px;
     left: 86px;
     color: #aa2834;
+    font-size: 20px;
   }
 
   main #showEmail {
@@ -264,6 +288,7 @@
     top: 253px;
     left: 86px;
     color: #aa2834;
+    font-size: 20px;
   }
 
   main #blankPassword {
@@ -271,6 +296,7 @@
     top: 528px;
     left: 86px;
     color: #aa2834;
+    font-size: 20px;
   }
 
   main #blankIdentify {
@@ -278,6 +304,7 @@
     top: 390px;
     left: 86px;
     color: #aa2834;
+    font-size: 20px;
   }
 
   main #blankEmail {
@@ -285,5 +312,6 @@
     top: 253px;
     left: 86px;
     color: #aa2834;
+    font-size: 20px;
   }
 </style>

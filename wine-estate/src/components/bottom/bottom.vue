@@ -1,7 +1,7 @@
 <template>
   <div class="bottom">
     <div class="first" @click="re1">
-       <img src="./img/first_0.jpg" alt="#" class="first_0">
+      <img src="./img/first_0.jpg" alt="#" class="first_0">
     </div>
     <div class="nav" @click="re2">
       <img src="./img/nav_0.jpg" alt="#" class="nav_0">
@@ -86,40 +86,44 @@ export default {
     right: 0;
   }
   .first .first_0{
+    width: 73px;
+    height: 77px;
     position: absolute;
     top: 10px;
     left: 25px;
-    cursor:pointer;
   }
   .first img{
     width:73px;
     height:77px;
   }
   .nav .nav_0{
+    width: 67px;
+    height: 86px;
     position: absolute;
     top: 8px;
     left: 230px;
-    cursor:pointer;
   }
   .nav img{
     width:67px;
     height:86px;
   }
   .shop .shop_0{
+    width: 60px;
+    height: 70px;
     position: absolute;
     top: 12px;
     right: 230px;
-    cursor:pointer;
   }
   .shop img{
     width:60px;
     height:70px;
   }
   .my .my_0 {
+    width: 73px;
+    height: 80px;
     position: absolute;
     top: 10px;
     right: 25px;
-    cursor:pointer;
   }
   .my img{
     width:73px;
