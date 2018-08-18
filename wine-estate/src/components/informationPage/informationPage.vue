@@ -2,34 +2,28 @@
   <div id="app">
     <header>
       <span>个人信息</span>
-      <img src="./img/back.png" height="43" width="26" alt="图片不见了哦~" @click="routeraccountPage"/>
+      <img src="./img/back.png" alt="" @click="routeraccountPage"/>
     </header>
     <main>
-      <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="actionSheet">
-        <img src="./img/head.png" height="130" width="130" alt="图片不见了哦~"/>
+      <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
+        <img :src="headImg" alt="" id="fileImg" ref="img"/>
         <span>头像</span>
-        <img src="./img/return3.png" height="26" width="16" class="goto" alt="图片不见了哦~"/>
+        <input type="file" accept="image/*" id="btn" @change="upload" multiple>
+        <img src="./img/return3.png" class="goto" alt="图片不见了哦~"/>
       </div>
       <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
         <span>昵称</span>
-        <img src="./img/return3.png" height="26" width="16" alt="图片不见了哦~"/>
-        <p>{{name}}</p>
-      </div>
-      <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="sexPicker">
-        <span>性别</span>
-        <img src="./img/return3.png" height="26" width="16" alt="图片不见了哦~"/>
+        <img src="./img/return3.png" alt="图片不见了哦~"/>
+        <span class="name">{{Name}}</span>
       </div>
       <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="openPicker">
         <span>生日</span>
-        <img src="./img/return3.png" height="26" width="16" alt="图片不见了哦~"/>
+        <img src="./img/return3.png" alt="图片不见了哦~"/>
+        <p>{{myBirthday}}</p>
       </div>
       <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="routernewAddress">
         <span>地址管理</span>
       </div>
-      <mt-actionsheet
-        :actions="photo"
-        v-model="sheetVisible">
-      </mt-actionsheet>
       <mt-datetime-picker
         v-model="pickerVisible"
         type="date"
@@ -43,12 +37,6 @@
         :startDate="startDate"
         :endDate="endDate">
       </mt-datetime-picker>
-      <mt-popup v-model="popupVisible" position="bottom">
-        <mt-picker :slots="slots" itemHeight="30" :show-toolbar="true" @change="onValuesChange(picker,values)">
-          <span class="sure" @click="handleSexConfirm">确定</span>
-          <span class="cansel" @click="canselSexConfirm">取消</span>
-        </mt-picker>
-      </mt-popup>
     </main>
   </div>
 </template>
@@ -58,78 +46,111 @@
     name: "informationPage",
     data() {
       return {
-        name: '',
-        //头像部分
-        photo: [{
-          name: '拍照',
-          method: this.getCamera
-        }, {
-          name: '从相册中选择',
-          method: this.getLibrary
-        }],
-        sheetVisible: false,
         //生日部分
         pickerVisible: null,
         value: null,
-        startDate: new Date('1960'),
+        startDate: new Date("1960"),
         endDate: new Date(),
-        //性别部分
-        popupVisible: false,
-        slots: [{values: ['男', '女']}]
-      }
+        //传参
+        Name: "",
+        myBirthday: "",
+        headImg: require("./img/head.png"),
+        Id:''
+      };
     },
     methods: {
       //头像部分
-      actionSheet: function () {
-        this.sheetVisible = true;
-      },
-      getCamera: function () {
-        console.log("打开照相机")
-      },
-      getLibrary: function () {
+      upload() {
+          let btn = document.querySelector("#btn");
+          let img = document.querySelector("#fileImg");
+          let file = btn.files[0];
+          let reader = new FileReader();
+          let formdata = new FormData();
+          reader.readAsDataURL(file);
+          reader.onload = function(e) {
+            img.src = e.target.result;
+            img.style.display = "block";
+          };
+          formdata.append("file", file, file.name);
+          let config = {
+            headers: { "Content-Type": "multipart/form-data"}
+          };
+          this.$http.post("/api/headUpload.htm", formdata, config).then((res) => {
+            console.log(res.data);
+            this.headImg = res.data.data.url;
+          });
       },
       //生日部分
       openPicker() {
         this.$refs.picker.open();
       },
       handleConfirm(value) {
-        this.pickerVisible = value.toString();
-      },
-      //性别部分
-      sexPicker() {
-        this.popupVisible = true;
-      },
-      handleSexConfirm() {
-      },
-      canselSexConfirm() {
-        this.popupVisible = false;
-      },
-      onValuesChange(picker, values) {
-        this.value = values[0];
-        console.log(this.value)
+        let y = value.getFullYear();
+        let m = value.getMonth() + 1;
+        m = m < 10 ? "0" + m : m;
+        let d = value.getDate();
+        d = d < 10 ? ("0" + d) : d;
+        this.pickerVisible = y + "-" + m + "-" + d;
+        this.myBirthday = this.pickerVisible;
+        this.$http.get("/api/birthday.htm", {
+          params: {
+            birthday:this.myBirthday
+          }
+        }).then((res) => {
+          console.log(res.data);
+        }).catch((error) => {
+          console.log(error);
+        });
       },
       //点击效果
       changeColor(event) {
-        var t = event.currentTarget;
+        let t = event.currentTarget;
         t.style.backgroundColor = "#ebebeb";
       },
       recoverColor(event) {
-        var t = event.currentTarget;
+        let t = event.currentTarget;
         t.style.backgroundColor = "#fff";
       },
       //跳转
       routeraccountPage() {
         this.$router.push({
-          path: '/accountPage'
-        })
+          path: "/accountPage"
+        });
       },
       routernewAddress() {
-        this.$router.push({
-          path: '/newAddress'
+        this.$http.get("/api/info.htm", {
+          params: {}
+        }).then((res) => {
+          if (!res.data.status) {
+            this.$messagebox.alert("", {
+              message: "请先登录哦~",
+              title: "提示",
+              showConfirmButton: true,
+              confirmButtonText: "确定"
+            });
+          } else {
+            this.$router.push({
+              path: "/newAddress"
+            });
+          }
         })
+      },
+      initData() {
+        this.$http.get("/api/info.htm", {
+          params: {}
+        }).then((res) => {
+          console.log(res.data);
+          this.Name = res.data.data.userName;
+          this.headImg = res.data.data.headPic;
+        }).catch((error) => {
+          console.log(error);
+        });
       }
+    },
+    created() {
+      this.initData();
     }
-  }
+  };
 </script>
 
 <style scoped>
@@ -181,13 +202,27 @@
     line-height: 158px;
   }
 
+  main div:nth-of-type(1) #btn {
+    width: 750px;
+    height: 158px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+  }
+
   main div:nth-of-type(1) img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
     position: absolute;
     right: 70px;
     top: 15px;
   }
 
   main div:nth-of-type(1) .goto {
+    width: 16px;
+    height: 26px;
     position: absolute;
     top: 67px;
     right: 30px;
@@ -202,19 +237,24 @@
   }
 
   main div:nth-of-type(2) img {
+    width: 16px;
+    height: 26px;
     position: absolute;
     right: 30px;
     top: 195px;
   }
 
-  main div:nth-of-type(2) p {
+  main .name {
+    width: 130px;
     font-size: 20px;
     color: #8e8e8e;
     position: absolute;
-    top: 206px;
-    left: 569px;
+    top: 210px;
+    right: 70px;
     margin: 0;
-    line-height: 0px;
+    line-height: 0;
+    text-align: center;
+    cursor: default;
   }
 
   main div:nth-of-type(3) {
@@ -226,9 +266,22 @@
   }
 
   main div:nth-of-type(3) img {
+    width: 16px;
+    height: 26px;
     position: absolute;
     right: 30px;
     top: 295px;
+  }
+
+  main div:nth-of-type(3) p {
+    font-size: 20px;
+    color: #8e8e8e;
+    position: absolute;
+    top: 309px;
+    left: 563px;
+    margin: 0;
+    line-height: 0;
+    cursor: default;
   }
 
   main div:nth-of-type(4) {
@@ -239,7 +292,20 @@
     line-height: 98px;
   }
 
+  main div:nth-of-type(4) p {
+    font-size: 20px;
+    color: #8e8e8e;
+    position: absolute;
+    top: 405px;
+    left: 570px;
+    margin: 0;
+    line-height: 0;
+    cursor: default;
+  }
+
   main div:nth-of-type(4) img {
+    width: 16px;
+    height: 26px;
     position: absolute;
     right: 30px;
     top: 392px;
@@ -247,20 +313,8 @@
 
   main div:nth-of-type(5) {
     width: 750px;
-    height: 98px;
-    background-color: #fff;
-    border-bottom: 1px #dbdbdb solid;
-    line-height: 98px;
-  }
-
-  main div:nth-of-type(5) img {
-    position: absolute;
-    right: 30px;
-    top: 392px;
-  }
-
-  main div:nth-of-type(6), main div:nth-of-type(7), main div:nth-of-type(8) {
-    width: 750px;
+    position: relative;
+    right: 2px;
     cursor: default;
   }
 
@@ -268,27 +322,5 @@
     padding-left: 33px;
     font-size: 24px;
     cursor: default;
-  }
-
-  main .sure {
-    height: 50px;
-    width: 100px;
-    background-color: #fff;
-    font-size: 16px;
-    color: #26a2ff;
-    position: relative;
-    top: -61px;
-    left: 520px;
-  }
-
-  main .cansel {
-    height: 50px;
-    width: 100px;
-    background-color: #fff;
-    font-size: 16px;
-    color: #26a2ff;
-    position: relative;
-    top: -61px;
-    left: 60px;
   }
 </style>

@@ -6,7 +6,11 @@ import App from './App'
 import router from './router'
 import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
+import './rem/rem'
+import axios from 'axios'
+import './assets/iconfont/iconfont.js'
 
+Vue.prototype.$http= axios
 Vue.use(VueRouter)
 Vue.use(MintUI)
 Vue.config.productionTip = false
