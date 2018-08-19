@@ -82,8 +82,6 @@ export default {
     background-color: #fff;
     position: fixed;
     bottom: 0;
-    left: 0;
-    right: 0;
   }
   .first .first_0{
     width: 73px;

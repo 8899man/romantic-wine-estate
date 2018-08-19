@@ -1,10 +1,9 @@
 <template>
   <div class="order-header">
-  <div class="top"></div>
-  <section class="head clearfix" >
-    <img @click="routerBack" src="./img/icon2.png" >
-    <span>{{theme}}</span>
-  </section>
+      <header>
+          <span class="title">{{item}}</span>
+          <img src="../../assets/icon2.png" alt="#" @click="routerBack">
+      </header>
   </div>
 </template>
 
@@ -14,18 +13,17 @@
           return {
           }
         },
-          methods:{
+        methods:{
             routerBack(){
-              this.$router.go(-1);
+              this.$router.push({
+                path:'/accountPage',
+              })
+            },
+            props:{
+              theme:String,
+              default:"我的订单"
             }
-        },
-      props: {
-        theme: {
-          type: String,
-          default: '我的订单'
         }
-      }
-
     }
 </script>
 
@@ -33,30 +31,26 @@
   .order-header{
     width: 750px;
     margin: 0 auto;
-    overflow: hidden;
+  }
+  header{
+    width: 100%;
     height: 128px;
+    background-color: #d22131;
+    position: relative;
   }
-
-  .top{
-    height: 40px;
-    background:#bb3437;
-
+  header .title{
+    color: #fff;
+    font-size: 40px;
+    position: absolute;
+    left: 50%;
+    margin-left: -81px;
+    top: 80px;
   }
-  .head{
-    background: #bb3437;
-    padding: 18px 0 18px 17px;
-    position:relative;
-    height: 88px;
-
+  header img{
+    width: 30px;
+    height: 52px;
+    position: absolute;
+    top: 59px;
+    left: 26px;
   }
-  .head img{
-    float: left;
-    width: 25px;
-    height: 35px;
-  }
-  .head span{
-    font-size: 37px;
-    color: #fff;position:absolute;
-    top:0;left:0;right:0;bottom:0;
-    margin-top: 18px}
 </style>

@@ -1,12 +1,15 @@
 <template>
   <div class="main">
-    <orderheader theme="评论详情"></orderheader>
+    <header>
+      <span class="title">评论详情</span>
+      <img src="../../assets/icon2.png" alt="#" @click="routerBack">
+    </header>
     <section class="commentview">
       <div class="response">
         <span>全部回复</span>
       </div>
-      <ul  v-for="item in data">
-        <li  >
+      <ul>
+        <li  v-for="item in data">
         <div class="responser">
           <img :src="item.headPic" alt="" >
           <span>{{item.userName}}</span>
@@ -36,7 +39,9 @@
 </template>
 
 <script>
-  let goodsId= null;
+  var goodsId= null;
+  var prefixmatch= null;
+  var parentcommentid= null;
   import orderheader from '../orderheader/orderheader.vue'
   export default{
     components: {orderheader},
@@ -44,10 +49,14 @@
       return {
         data:[],
         data1:[],
-        b:""
+        b:"",
+        theme:"评论详情"
       }
     },
     methods: {
+      routerBack(){
+        this.$router.go(-1)
+      },
       getaddcomment() {
         var _this = this;
         this.$http.get("/api/queryCommentAllReply.htm", {
@@ -66,12 +75,15 @@
     addmy(){
       var _this=this;
       var acomment=document.querySelector("textarea").value;
-
+      console.log(parentcommentid);
+      console.log(acomment);
+      console.log(prefixmatch);
       this.$http.get("/api/addCommentReply.htm", {
         params: {
           parentCommentId:parentcommentid,
           comment:acomment,
-          prefixMatch:prefixmatch
+          prefixMatch:prefixmatch,
+          goodsId:goodsId
         }
       }).then(function (res) {
         console.log(res.data);
@@ -84,13 +96,13 @@
     },
     },
     created (){
-      this.getaddcomment();
       parentcommentid=this.$route.query.commentId;
-      prefixmatch=this.$route.query.userId
-      goodsId=this.$route.query.goodsId
-
+      prefixmatch=this.$route.query.userId;
+      goodsId=this.$route.query.goodsId;
+      this.getaddcomment();
+      console.log(this.$route.query.commentId)
     }
-    }
+}
 </script>
 
 <style scoped>
@@ -102,6 +114,26 @@
     overflow: hidden;
     width: 750px;
     position: relative;
+  }header{
+     width: 100%;
+     height: 128px;
+     background-color: #bb3437;
+     position: relative;
+   }
+  header .title{
+    color: #fff;
+    font-size: 40px;
+    position: absolute;
+    left: 50%;
+    margin-left: -81px;
+    top: 80px;
+  }
+  header img{
+    width: 30px;
+    height: 52px;
+    position: absolute;
+    top: 59px;
+    left: 26px;
   }
   .commentview{
     padding-top: 20px;
@@ -171,4 +203,5 @@
     background: #fff;
     font-size: 24px;
   }
+
 </style>

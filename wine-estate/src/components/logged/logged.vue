@@ -2,7 +2,7 @@
   <!--已登录购物车-->
     <div class="logged">
         <header>
-            <span><b>{{title}}</b></span>
+            <span>{{title}}</span>
             <a href="#" @click="change1">{{finish}}</a>
         </header>
         <section class="body">
@@ -59,26 +59,59 @@ export default {
     number(event) {
       var ev = event.currentTarget;
       ev.value = ev.value.replace(/[^0-9-]+/, '');
+      var oLi = event.currentTarget.parentNode;
       if (ev.value <= 1) {
         ev.value = 1;
       }
       if (ev.value >= 999) {
         ev.value = 999;
       }
+      this.$http.get("/api/addGoods.htm",{
+        params:{
+          goodsId:oLi.id,
+          goodsNum:ev.value
+        }
+      }).then((res) => {
+        console.log(res.data);
+      }).catch((error) => {
+        console.log(error);
+      })
     },
     sub(event) {
       var oTex = event.currentTarget.parentNode.querySelector(".number");
       oTex.value = Number(oTex.value) - 1;
+      var oLi = event.currentTarget.parentNode;
       if (oTex.value <= 1) {
         oTex.value = 1;
       }
+      this.$http.get("/api/addGoods.htm",{
+        params:{
+          goodsId:oLi.id,
+          goodsNum:oTex.value
+        }
+      }).then((res) => {
+        console.log(res.data);
+      }).catch((error) => {
+        console.log(error);
+      })
     },
     add(event) {
       var oTex = event.currentTarget.parentNode.querySelector(".number");
       oTex.value = Number(oTex.value) + 1;
+      var oLi = event.currentTarget.parentNode;
       if (oTex.value >= 999) {
         oTex.value = 999;
       }
+      this.$http.get("/api/addGoods.htm",{
+        params:{
+          goodsId:oLi.id,
+          goodsNum:oTex.value
+        }
+      }).then((res) => {
+        console.log(res.data);
+      }).catch((error) => {
+        console.log(error);
+      })
     },
     change1(){
       if(this.finish == "完成"){
@@ -162,13 +195,7 @@ export default {
         }).catch(function(error) {
           console.log(error);
         })
-        this.$http.get("/api/putordermessage.htm?userId=5689522",{
-            params:{}
-          }).then((res) => {
-            console.log(res.data);
-          }).catch((error) => {
-            console.log(error);
-          })
+
         this.$router.push({
           path: '/orderSure'
         })
@@ -205,7 +232,6 @@ export default {
   header span{
     color: #fff;
     font-size: 40px;
-    font-family: '宋体';
     position: absolute;
     top: 80px;
     left: 50%;
@@ -213,7 +239,6 @@ export default {
   }
   header a{
     color: #fff;
-    font-family: '宋体';
     font-weight: bold;
     font-size: 36px;
     position: absolute;
@@ -383,8 +408,7 @@ export default {
     width: 71px;
     height: 86px;
     position: fixed;
-    bottom: 4px;
-    left: 50%;
-    margin-left: 80px;
+    left: 460px;
+    bottom: 5px;
   }
 </style>

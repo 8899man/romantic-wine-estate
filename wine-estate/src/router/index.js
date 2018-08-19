@@ -28,7 +28,6 @@ import accountPage from '@/components/accountPage/accountPage'
 import morePage from '@/components/morePage/morePage'
 import feedbackPage from '@/components/feedbackPage/feedbackPage'
 import forgetpasswordPage from '@/components/forgetpasswordPage/forgetpasswordPage'
-
 import addcomment from '@/components/addcomment/addcomment'
 import mytracksPage from '@/components/mytracksPage/mytracksPage'
 import orderheader from '@/components/orderheader/orderheader'
@@ -226,13 +225,13 @@ export default new Router({
     },
     {
       path: '/addList',
-      name: addList,
+      name: 'addList',
       component: addList,
       meta:{keepAlive:false}
     },
     {
       path: '/comment',
-      name: comment,
+      name: 'comment',
       component: comment,
       meta:{keepAlive:false}
     },

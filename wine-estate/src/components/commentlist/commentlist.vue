@@ -1,6 +1,9 @@
 <template>
   <div class="main">
-    <orderheader theme="商品评论"></orderheader>
+    <header>
+      <span class="title">商品评论</span>
+      <img src="../../assets/icon2.png" alt="#" @click="routerBack">
+    </header>
     <section class="comment-show">
       <ul>
         <li v-for="item in data">
@@ -12,14 +15,18 @@
             <div class="buy-message">
               <span>{{item.createTime}}</span>
             </div>
-            <div class="goodcomments" :id="item.userId">
+            <div class="goodcomments"  >
               <span>{{item.comment}}</span>
               <img class="commentpic" :src="item.picAddress">
-              <div class="view clearfix" :name="item.commentId">
-                <button class="beigin" @click="addcomment($event)" ><img src="./img/addcomment.jpg" />评论</button>
-                <button @click="likethis($event)" :class='[styles]'>
+              <div class="view clearfix" :id="item.userId">
+                <button class="beigin" @click="addcomment($event)" :id="item.commentId">
+                  <div :class="item.commentId" id="none">
+                    <div :class="item.userId"></div>
+                  </div>
+                  <img src="./img/addcomment.jpg" />评论</button>
+                <button @click="likethis($event)" :class='[styles]' :name="item.commentId">
                   <img src="./img/like.jpg">
-                  <img  src="./img/redlike.jpg" class="redlike" :name="item.likeNumber" :id="item.commentId"/> <span>{{item.likeNumber}}</span>
+                  <img  src="./img/redlike.jpg" class="redlike" :name="item.likeNumber"/> <span>{{item.likeNumber}}</span>
                 </button>
               </div>
             </div>
@@ -33,55 +40,58 @@
 <script>
   var goodsId=null;
   import orderheader from '../orderheader/orderheader.vue'
-  var b = null;
   export default {
     components: {orderheader},
     data() {
       return {
         red: false,
         styles: 'beigin',
-        data:[]
+        data:[],
+        theme:"商品评论"
       }
     },
     methods:{
-
+      routerBack(){
+        this.$router.go(-1)
+      },
       likethis(event) {
         var oImg=event.currentTarget.querySelector(".redlike");
         var oS=event.currentTarget;
         var oSpan = oS.querySelector("span");
-        if(oImg.style.display=="none"){
-          oImg.style.display="block"
-          oS.className = 'changered';
-          oSpan.innerHTML=Number(oImg.name)+1;
-          c="0";
-          oSpan.style.color="#ff5000"
-        }
-        else{
-          oImg.style.display="none";
+        var c = null;
+        var w = event.currentTarget.name;
+        console.log(w);
+        if(oS.className == 'changered'){
           oS.className = 'beigin';
           oSpan.innerHTML=Number(oImg.name);
-          c="1";
-          oSpan.style.color="black"
+          c=1;
+          oImg.style.display="none";
+          oSpan.style.color="black";
         }
-        var _this=this;
-        var d=event.currentTarget.parentNode.parentNode;
+        else{
+          oImg.style.display="block";
+          oS.className = 'changered';
+          oSpan.innerHTML=Number(oImg.name)+1;
+          c=0;
+          oSpan.style.color="#ff5000";
+        }
+        var _this = this;
         this.$http.get("/api/addLikeNum.htm", {
           params: {
-            commentId: b.id,
+            commentId: w,
             goodsId:goodsId,
-            status: d.id
+            status: c
           },
         }).then(function (res) {
           console.log(res.data);
-
         }).catch(function (error) {
           console.log(error);
         })
       },
       addcomment(event){
-        var a=event.currentTarget.parentNode;
-        console.log(a);
-        var b=event.currentTarget.parentNode.parentNode.id;
+        var a=event.currentTarget.id;
+        var b=event.currentTarget.parentNode.id;
+        console.log(b)
         this.$router.push({
           path: '/addcomment',
           query:{
@@ -93,7 +103,7 @@
       }
     },
     created(){
-        goodsId=this.$route.query.goodsId
+        goodsId=this.$route.query.goodsId;
         let _this = this;
         this.$http.get("/api/queryGoodsAllComments.htm", {
           params: {
@@ -110,9 +120,6 @@
         }).catch(function (error) {
           console.log(error);
         })
-
-
-
     }
   }
 
@@ -121,6 +128,27 @@
   @import url(../../style/common1.css);
   .main{
     margin: 0 auto;
+  }
+  header{
+    width: 100%;
+    height: 128px;
+    background-color: #bb3437;
+    position: relative;
+  }
+  header .title{
+    color: #fff;
+    font-size: 40px;
+    position: absolute;
+    left: 50%;
+    margin-left: -81px;
+    top: 60px;
+  }
+  header img{
+    width: 30px;
+    height: 52px;
+    position: absolute;
+    top: 59px;
+    left: 26px;
   }
   .comment-show{
     padding-top: 20px;
@@ -207,6 +235,6 @@
   }
   .view span{
     font-size: 25px;
-
   }
+
 </style>

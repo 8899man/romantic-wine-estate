@@ -240,7 +240,7 @@ export default {
       })
     },
     lbtode () {
-      let goodsId = '00000005'
+      let goodsId = '00000015'
       this.$router.push({
         path: '/goodDetail',
         query: {goodsId: goodsId}
@@ -375,7 +375,7 @@ export default {
     overflow:hidden;
     position:relative;
    }
-  .right{height:67px;
+  .right{height:69px;
     width:80px;
     background-color:#E78C87;
     float:left;
@@ -394,8 +394,8 @@ export default {
     padding-top:25px;
    }
   .left img{
-    width:86px;
-    height:57px;
+    width:70px;
+    height:60px;
   }
   .center{background-color:#E78C87;
     width:450px;
@@ -450,35 +450,36 @@ export default {
   .mainjta{
     float:left;
     width:375px;
-    height:410px;
+    height:380px;
     padding:0px;
     margin:0px;
     border-bottom:#999 solid 1px;
   }
   .mainjtb img{
-    width:200px;
-    height:410px;
+    width:190px;
+    height:300px;
     font-size:15px;
+    padding-top:40px;
   }
   .mainjtb{
     width:200px;
-    height:410px;
+    height:380px;
     float:left;
     margin:0px;
   }
   .mainjtc{
     width:170px;
-    height:410px;
+    height:380px;
     float:right;
     padding-top:60px;
     margin:0px;
   }
   .mainjtc p{
-    height:60px;
+    height:40px;
     width:165px;
     color:#626262;
     font-size:20px;
-    line-height:60px;
+    line-height:40px;
     text-align:left;
     margin:0px;
   }
@@ -526,7 +527,7 @@ export default {
     height:70px;}
   .first{
     position:fixed;
-    left:45px;
+    left:55px;
     bottom:15px;
     width:48px;
     height:68px;
@@ -534,12 +535,12 @@ export default {
   }
   .tiao{
     width:750px;
-    height:92px;
+    height:80px;
   }
   .load{
     position:fixed;
     bottom:100px;
-    right:550px;
+    right:300px;
     width:150px;
     height:30px;
     font-size:20px;

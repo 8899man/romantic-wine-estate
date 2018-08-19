@@ -6,13 +6,13 @@
         </header>
         <div class="top"></div>
         <mt-field label="收件人" placeholder="请输入收件人姓名" :value="data.contact" v-model="data.contact"></mt-field>
+        <mt-field label="手机号码" placeholder="请填写手机号码" :value="data.mobile" v-model="data.mobile"></mt-field>
+        <mt-field label="详细地址" placeholder="请填写详细地址" :value="data.address" v-model="data.address"></mt-field>
         <div class="check-add">
             <span>取货地区</span>
             <input type="text" placeholder="请选择收货地区" @focus="address" ref="tex"
             :value="data.province+' '+data.city+' '+data.town">
         </div>
-        <mt-field label="详细地址" placeholder="请填写详细地址" :value="data.address" v-model="data.address"></mt-field>
-        <mt-field label="手机号码" placeholder="请填写手机号码" :value="data.mobile" v-model="data.mobile"></mt-field>
         <button class="used" @click="tip">保存并使用</button>
         <div class="shadow" ref="shadow"></div>
         <div class="check" ref="checked">
@@ -89,12 +89,11 @@ export default {
             axios.get("/api/updateOneAddress.htm",{
               params:{
                 addressId:addId,
-                userId:"000001",
                 contact:_this.data.contact,
                 mobile:_this.data.mobile,
-                province:_this.data.province,
-                city:_this.data.city,
-                town:_this.data.town,
+                province:v1,
+                city:v2,
+                town:v3,
                 address:_this.data.address
               }
             }).then((res) => {
@@ -105,7 +104,6 @@ export default {
           }else{
             axios.get("/api/addOneAddress.htm",{
               params:{
-                userId:"000001",
                 contact:_this.data.contact,
                 mobile:_this.data.mobile,
                 province:v1,

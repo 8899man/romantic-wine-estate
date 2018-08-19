@@ -148,7 +148,7 @@ export default {
     margin-left: 80px;
   }
   .list li .goods img{
-    width: 146px;
+    width: 130px;
     height: 169px;
     position: absolute;
     top: 10px;

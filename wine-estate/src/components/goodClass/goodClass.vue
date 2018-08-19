@@ -149,7 +149,7 @@ export default {
   }
   input{background-color:#DE8F8B;
     width:416px;
-    height:57px;
+    height:55px;
     padding-left:30px;
     margin:0px;
     position:absolute;
@@ -198,7 +198,7 @@ export default {
   }
   li{
     height:80px;
-    width:238px;
+    width:180px;
     float:left;
     color:#9F9F9F;
     line-height:80px;

@@ -4,10 +4,10 @@
     <div class="back">
       <img src="./img/payback.jpg" />
     </div>
-    <section class="head clearfix" >
-      <img src="./img/icon22.jpg"  @click="toBack">
-      <span>确认付款</span>
-    </section>
+    <header>
+      <span class="title">确认付款</span>
+      <img src="./img/icon22.jpg" alt="#" @click="routerBack">
+    </header>
     <section class="pay-way">
       <div class="price">&yen&nbsp<span>{{data.payment}}</span></div>
       <div id="message">账号 &nbsp <span>{{data.userId}}</span> </div>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+  var ordernum=null
   export default {
     data() {
       return {
@@ -38,7 +39,10 @@
       }
     },
     methods: {
-      changeicon1() {
+      routerBack(){
+        this.$router.go(-1)
+      },
+    changeicon1() {
         this.downIcon = !this.downIcon
       },
       changeicon2() {
@@ -46,7 +50,10 @@
       },
       qrcode: function() {
         this.$router.push({
-          path: '/qrcode'
+          path: '/qrcode',
+          query: {
+            num: ordernum
+          }
         });
       },
       toBack: function(){
@@ -69,8 +76,10 @@
     },
 
  created(){
-      this.getprice();
       ordernum=this.$route.query.ordernum;
+      console.log(ordernum);
+      this.getprice();
+
  }
 
   }
@@ -90,23 +99,27 @@
     height: 532px;
     width:750px;
   }
-  .head{
+  header{
+    width: 100%;
+    height: 128px;
     background: #f6f6f6;
-    padding: 18px 0 18px 17px;
-    position:relative;
-    height: 88px;
+    position: relative;
   }
-  .head img{
-    float: left;
-    width:37px;
-    height:47px;
+  header .title{
+
+    font-size: 40px;
+    position: absolute;
+    left: 50%;
+    margin-left: -81px;
+    top: 50px;
   }
-  .head span{
-    font-size: 37px;
-    position:absolute;
-    top:0;left:0;right:0;bottom:0;
-    margin-top: 18px;
-    color: black}
+  header img{
+    width: 30px;
+    height: 52px;
+    position: absolute;
+    top: 59px;
+    left: 26px;
+  }
   .pay-way{
     border-top: 1px solid #dcdcdc;
     background: #f6f6f6;

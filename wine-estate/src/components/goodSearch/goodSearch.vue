@@ -101,7 +101,7 @@ a{color:#fff;
    height:56px;}
 input{background-color:#DE8F8B;
   width:416px;
-  height:59px;
+  height:57px;
   margin:0px;
   position:absolute;
   left:189px;

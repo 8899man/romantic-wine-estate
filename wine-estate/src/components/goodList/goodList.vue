@@ -427,7 +427,7 @@ export default {
   }
   input{background-color:#DC908C;
     width:416px;
-    height:59px;
+    height:55px;
     margin:0px;
     padding-left:30px;
     position:absolute;
@@ -469,13 +469,14 @@ export default {
   }
   .shop{
     width:750px;
-    height:220px;
+    height:200px;
     margin:0px;
+    padding-top:10px;
     border-top:#999 1px solid;
     border-bottom:#999 1px solid;
   }
   .shop img{
-    height:220px;
+    height:180px;
     width:120px;
     margin-right:20px;
     float:left;
@@ -512,10 +513,11 @@ export default {
    }
   .load{
     position:fixed;
-    bottom:20px;
-    right:550px;
+    bottom:10px;
+    right:300px;
     width:150px;
     height:30px;
+    line-height:30px;
     font-size:20px;
     border-radius:8px;
     background-color:#999;

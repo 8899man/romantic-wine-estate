@@ -1,6 +1,9 @@
 <template>
   <div class="main">
-    <orderheader theme="订单完成"></orderheader>
+    <header>
+      <span class="title">订单完成</span>
+      <img src="../../assets/icon2.png" alt="#" @click="routerBack">
+    </header>
     <section class="order-success">
       <div class="order-message">
         <div>
@@ -25,6 +28,7 @@
 <script>
   import orderheader from '../orderheader/orderheader.vue'
   import bottom from '../bottom/bottom.vue'
+  var ordernum=null;
   export default {
     components: {
       orderheader,
@@ -32,13 +36,16 @@
     data() {
       return {
           data:{},
+          theme:"订单完成"
       }
     },
     methods:{
+      routerBack(){
+        this.$router.go(-1)
+      },
       selectorder() {
-        this.$http.get("/api/selectorder.htm", {
+        this.$http.get("/api/putordermessage.htm", {
           params: {
-            orderNum:ordernum
           }
         }).then((res)=>{
           console.log(res.data);
@@ -51,13 +58,34 @@
     },
     created : function () {
       this.selectorder();
-      ordernum=this.$route.query.ordernum
+
     }
   }
 </script>
 <style scoped>
   @import url(../../style/common1.css);
   .main{margin: 0 auto;}
+  header{
+    width: 100%;
+    height: 128px;
+    background-color: #bb3437;
+    position: relative;
+  }
+  header .title{
+    color: #fff;
+    font-size: 40px;
+    position: absolute;
+    left: 50%;
+    margin-left: -81px;
+    top: 80px;
+  }
+  header img{
+    width: 30px;
+    height: 52px;
+    position: absolute;
+    top: 59px;
+    left: 26px;
+  }
   .order-success{
     width: 750px;
     padding-bottom: 891px;
@@ -71,7 +99,7 @@
     padding-bottom: 28px;
   }
   .orders{
-    margin: 18px 31px 0 31px;
+    margin: 10px 31px 0 31px;
     font-size:26px;
     color:#434343;
     text-align: left;

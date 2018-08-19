@@ -9,6 +9,7 @@
         </header>
         <ul class="list">
             <li v-for="item in data" :id="item.addressId">
+                <button @click="sure($event)">确认</button>
                 <img src="./img/cut.jpg" alt="#" class="cut" @click="deleteAdd($event)">
                 <div class="line"></div>
                 <span class="name">{{item.contact}}</span>
@@ -32,6 +33,20 @@ export default {
       }
     },
     methods: {
+      sure(event){
+        var oLi = event.currentTarget.parentNode;
+        var name = oLi.querySelector(".name").innerHTML;
+        var phone = oLi.querySelector(".phone").innerHTML;
+        var address = oLi.querySelector(".add1").innerHTML + oLi.querySelector(".add2").innerHTML;
+        this.$router.push({
+          path:'/orderSure',
+          query:{
+            name:name,
+            phone:phone,
+            address:address
+          }
+        })
+      },
       deleteAdd(event){
           var oLi = event.currentTarget.parentNode;
           var cutId = oLi.id;
@@ -89,7 +104,6 @@ export default {
   header .title{
     color: #fff;
     font-size: 40px;
-    font-family: '宋体';
     font-weight: bold;
     position: absolute;
     left: 50%;
@@ -124,6 +138,15 @@ export default {
     margin-bottom: 10px;
     background-color: #fff;
     position: relative;
+  }
+  .list li button{
+    border: 0px;
+    border-radius: 10px;
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    background-color: #eee;
+    color: #848484;
   }
   .list li .cut{
     width: 60px;

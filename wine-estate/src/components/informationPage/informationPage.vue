@@ -6,8 +6,8 @@
     </header>
     <main>
       <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)">
-        <img :src="headImg" alt="" id="fileImg" ref="img"/>
         <span>头像</span>
+        <img :src="headImg" alt=""/>
         <input type="file" accept="image/*" id="btn" @change="upload" multiple>
         <img src="./img/return3.png" class="goto" alt="图片不见了哦~"/>
       </div>
@@ -20,6 +20,7 @@
         <span>生日</span>
         <img src="./img/return3.png" alt="图片不见了哦~"/>
         <p>{{myBirthday}}</p>
+        <div class="hidden"> </div>
       </div>
       <div @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="routernewAddress">
         <span>地址管理</span>
@@ -54,31 +55,31 @@
         //传参
         Name: "",
         myBirthday: "",
-        headImg: "",
-        Id:''
+        headImg: require("./img/Flash.jpg"),
+        Id: ""
       };
     },
     methods: {
       //头像部分
       upload() {
-          let btn = document.querySelector("#btn");
-          let img = document.querySelector("#fileImg");
-          let file = btn.files[0];
-          let reader = new FileReader();
-          let formdata = new FormData();
-          reader.readAsDataURL(file);
-          reader.onload = function(e) {
-            img.src = e.target.result;
-            img.style.display = "block";
-          };
-          formdata.append("file", file, file.name);
-          let config = {
-            headers: { "Content-Type": "multipart/form-data"}
-          };
-          this.$http.post("/api/headUpload.htm", formdata, config).then((res) => {
-            console.log(res.data);
-            this.headImg = res.data.data.url;
-          });
+        let btn = document.querySelector("#btn");
+        let img = document.querySelector("#fileImg");
+        let file = btn.files[0];
+        let reader = new FileReader();
+        let formdata = new FormData();
+        reader.readAsDataURL(file);
+        reader.onload = function(e) {
+          img.src = e.target.result;
+          img.style.display = "block";
+        };
+        formdata.append("file", file, file.name);
+        let config = {
+          headers: { "Content-Type": "multipart/form-data" }
+        };
+        this.$http.post("/api/headUpload.htm", formdata, config).then((res) => {
+          console.log(res.data);
+          this.headImg = res.data.data.headPic;
+        });
       },
       //生日部分
       openPicker() {
@@ -94,10 +95,11 @@
         this.myBirthday = this.pickerVisible;
         this.$http.get("/api/birthday.htm", {
           params: {
-            birthday:this.myBirthday
+            birthday: this.myBirthday
           }
         }).then((res) => {
           console.log(res.data);
+
         }).catch((error) => {
           console.log(error);
         });
@@ -133,7 +135,7 @@
               path: "/addList"
             });
           }
-        })
+        });
       },
       initData() {
         this.$http.get("/api/info.htm", {
@@ -142,6 +144,7 @@
           console.log(res.data);
           this.Name = res.data.data.userName;
           this.headImg = res.data.data.headPic;
+          this.myBirthday = res.data.data.birthday;
         }).catch((error) => {
           console.log(error);
         });
@@ -271,6 +274,7 @@
     position: absolute;
     right: 30px;
     top: 295px;
+    z-index: 2;
   }
 
   main div:nth-of-type(3) p {
@@ -282,6 +286,17 @@
     margin: 0;
     line-height: 0;
     cursor: default;
+  }
+
+  main div:nth-of-type(3) .hidden{
+    width: 78px;
+    height: 90px;
+    background-color:#fff;
+    border: none;
+    position: absolute;
+    top: 262px;
+    left: 670px;
+    z-index: 1;
   }
 
   main div:nth-of-type(4) {
@@ -313,8 +328,6 @@
 
   main div:nth-of-type(5) {
     width: 750px;
-    position: relative;
-    right: 2px;
     cursor: default;
   }
 

@@ -2,7 +2,7 @@
   <div class="gdetail">
     <!--顶部商品详情及其按钮部分-->
         <div v-on:click="retur()">
-          <img class="img1"  src="./img/icon.png" alt="返回按钮不见了"/>
+          <img class="img1" src="./img/icon.png" alt="返回按钮不见了"/>
         </div>
     <div class="gdetailxq">
       商品详情
@@ -38,7 +38,7 @@
         好评度
       </div>
       <div class="hpdz"><!--接受好评度的数据-->
-        <p>{{favourableRate * 100}}%</p>
+        <p>{{rate}}%</p>
       </div>
       <div class="hprs"><!--评论人数-->
         评论人数
@@ -69,7 +69,7 @@
 </template>
 
 <script>
-let Id = null;
+let Id = null
 export default {
   data () {
     return {
@@ -81,30 +81,9 @@ export default {
       taste: '',
       category: '',
       favourableRate: '',
-      commentNum: ''
+      commentNum: '',
+      rate: null
     }
-  },
-  created () {
-    // 接受商品id
-    Id = this.$route.query.goodsId
-    this.$http.get('/api/queryByGoodsId.htm/?', {
-      params: {
-        goodsId: Id
-      }
-    }).then((res) => {
-      this.goodsTitle = res.data.data.goodsTitle
-      this.goodsPrice = res.data.data.goodsPrice
-      this.sellNum = res.data.data.sellNum
-      this.placeOfArea = res.data.data.placeOfArea
-      this.taste = res.data.data.taste
-      this.category = res.data.data.category
-      this.favourableRate = res.data.data.favourableRate
-      this.commentNum = res.data.data.commentNum
-      this.goodsImage = res.data.data.goodsImage
-      console.log(res.data)
-    }).catch((error) => {
-      console.log(error)
-    })
   },
   methods: {
     retur () {
@@ -174,7 +153,29 @@ export default {
         console.log(error)
       })
     }
-  }
+  },
+  created () {
+    // 接受商品id
+    Id = this.$route.query.goodsId
+    this.$http.get('/api/queryByGoodsId.htm/?', {
+      params: {
+        goodsId: Id
+      }
+    }).then((res) => {
+      this.goodsTitle = res.data.data.goodsTitle
+      this.goodsPrice = res.data.data.goodsPrice
+      this.sellNum = res.data.data.sellNum
+      this.placeOfArea = res.data.data.placeOfArea
+      this.taste = res.data.data.taste
+      this.category = res.data.data.category
+      this.favourableRate = res.data.data.favourableRate
+      this.rate = parseInt(this.favourableRate*100);
+      this.commentNum = res.data.data.commentNum
+      this.goodsImage = res.data.data.goodsImage
+    }).catch((error) => {
+      console.log(error)
+    })
+  },
 }
 </script>
 
@@ -186,8 +187,8 @@ export default {
   padding:0px;
   position:relative;
   }
-.img1{width:30px;
-  height:52px;
+.img1{width:27px;
+  height:40px;
   position:absolute;
   left:60px;
   top:60px;}
@@ -238,7 +239,10 @@ a{color:#fff;
   .wname{font-size:35px;
     width:640px;
     height:50px;
-    margin-top:-10px;
+    position:absolute;
+    left:45px;
+    top:40px;
+    margin-bottom:-20px;
     }
   .wpiece{
     width:708px;
@@ -249,7 +253,7 @@ a{color:#fff;
     color:#F9121A;
     font-size:50px;
     margin:0px;
-    padding:0px;
+    padding-top:0px;
   }
   .wshop{width:660px;
     height:102px;
@@ -273,7 +277,7 @@ a{color:#fff;
     width:750px;
     height:210px;
     position:absolute;
-    left:51px;
+    left:0px;
     top:875px;
     color:#8A8A8A;
     margin-left:-30px;
@@ -293,6 +297,7 @@ a{color:#fff;
     line-height:60px;
     text-align:left;
     padding-left:42px;
+    margin-bottom:0px;
     }
   .und{
     position:absolute;
@@ -343,9 +348,10 @@ a{color:#fff;
     background-color:#fff;
     position:absolute;
     left:0px;
-    top:1216px;
+    top:1260px;
     overflow:hidden;
-    margin:0px;
+    margin-top:-50px;
+    z-index:2;
   }
   .gouwu{
   color:#fff;
@@ -363,7 +369,7 @@ a{color:#fff;
     height:100px;
     position:absolute;
     left:250px;
-    bottom:10px;
+    bottom:0px;
     margin:0px;
   }
   .gwctu img{
@@ -375,7 +381,7 @@ a{color:#fff;
     font-size:30px;
     margin:0px;
     position:absolute;
-    left:65px;
+    left:71px;
     top:5px;
     z-index:2;
   }
@@ -395,10 +401,10 @@ a{color:#fff;
   width:100px;
   height:100px;
   position:absolute;
-  left:0px;
+  left:5px;
   bottom:-18px;
   margin:0px;
-  z-index:2;
+  z-index:3;
 }
 .honxin img {
   width:75px;

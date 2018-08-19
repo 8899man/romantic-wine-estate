@@ -1,22 +1,28 @@
 <template>
   <div class="main">
-    <orderheader></orderheader>
+    <header>
+      <span class="title">我的订单</span>
+      <img src="../../assets/icon2.png" alt="#" @click="routerBack">
+    </header>
     <div class="nav clearfix">
       <ul>
-        <li id="choose"><a href="">全部订单</a></li>
+        <li id="choose"><span>全部订单</span></li>
         <li @click="obligation">待付款</li>
         <li @click="forgoods">待收货</li>
         <li @click="forevaluate">待评价</li>
       </ul>
     </div>
+    <div class="no-order">
+      <img src="../../assets/unfound.jpg" alt="">
+    </div>
     <section class="my-orders">
       <ul>
         <li v-for="item in data3"  >
-      <div class="completed-order" @click="orderdetail($event)" :id="item.orderNum">
+      <div class="completed-order" @click="orderdetail($event)" :id="data1.orderNum">
         <div  class="storemsg clearfix">
           <img src="../../assets/store.jpg" />
           <span class="storename">{{data1.sellerId}}</span>
-          <span class="state">买家已付款</span>
+          <span class="state">买家已评价</span>
         </div>
         <div class="good clearfix" v-for="item1 in data2">
           <div class="good-pic"><img :src="item1.smallPic" alt=""></div>
@@ -31,17 +37,18 @@
 </template>
 
 <script>
-  import orderheader from '../orderheader/orderheader.vue'
   export default{
-    components:{orderheader},
     data(){
       return {
         data1:{},
         data2:[],
-        data3:[]
+        data3:[],
       }
     },
     methods : {
+      routerBack(){
+        this.$router.go(-1)
+      },
       allorders:function () {
         this.$router.push({
           path:'/allOrders'
@@ -68,7 +75,7 @@
       orderdetail(event){
         var oLi=event.currentTarget;
         this.$router.push({
-          path: '/orderdetail',
+          path: '/orderDetails',
           query:{ordernum:oLi.id}
 
         })
@@ -77,25 +84,30 @@
         var this1 = this;
         this.$http.get("/api/orderStatus.htm", {
           params: {
-            userId: "5689522"
           }
         }).then(function (res) {
-          var data3=[];
-          for(var i=0;i<res.data.data.length;i++) {
-            if (res.data.data[i].status == 6) {
-              this1.data1 = res.data.data[i];
-              this1.data2 = res.data.data[i].goodsList;
-              this1.data3= data3.push(this1.data1);
+          var no=document.getElementsByClassName("no-oeder")
+          if(res.data.data==null){
+            no.style.display="block";
+          }
+          else {
+            var data3 = [];
+            for (var i = 0; i < res.data.data.length; i++) {
+              if (res.data.data[i].status == 6) {
+                this1.data1 = res.data.data[i];
+                this1.data2 = res.data.data[i].goodsList;
+                this1.data3 = data3.push(this1.data1);
+              }
             }
           }
-        }).catch(function (error) {
+
+          }).catch(function (error) {
           console.log(error);
         })
       },
     },
     created() {
       this.getordermsg();
-
     }
 }
 </script>
@@ -103,6 +115,27 @@
 <style>
   @import url(../../style/common1.css);
   .main{margin: 0 auto;}
+  header{
+    width: 100%;
+    height: 128px;
+    background-color: #bb3437;
+    position: relative;
+  }
+  header .title{
+    color: #fff;
+    font-size: 40px;
+    position: absolute;
+    left: 50%;
+    margin-left: -81px;
+    top: 80px;
+  }
+  header img{
+    width: 30px;
+    height: 52px;
+    position: absolute;
+    top: 59px;
+    left: 26px;
+  }
   .nav{
     width: 750px;
     margin: 0 auto;
@@ -116,7 +149,7 @@
     color: #878787;
     text-align: center;
   }
-  #choose a{color: #bb3437;}
+  #choose span{color: #bb3437;}
   .my-orders{
     background: #f4f4f4;
     padding-top: 27px ;
@@ -183,6 +216,11 @@
   .my-orders li{
     margin-bottom: 10px;
   }
-
-
+.no-order{
+  display: none;
+}
+.no-order img{
+  width: 750px;
+  height: 1120px;
+}
 </style>

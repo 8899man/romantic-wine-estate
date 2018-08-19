@@ -1,15 +1,18 @@
 <template>
   <div class="main">
-    <orderheader theme="订单确认"></orderheader>
+    <header>
+      <span class="title">订单确认</span>
+      <img src="../../assets/icon2.png" alt="#" @click="routerBack">
+    </header>
     <section class="order-confirm">
-      <ul class="order-message clearfix" >
-        <li id="name"><img src="./img/people.jpg" />&nbsp<span>{{data.userId}}</span></li>
-        <li id="phone"><img src="./img/phone.jpg"/>&nbsp<span>{{data.receiverMobile}}</span></li>
-        <li id="address"><span>{{data.receiverAreaName}}</span></li>
+      <ul class="order-message clearfix" @click="chooseAdd">
+        <li id="name"><img src="./img/people.jpg" />&nbsp<span v-model="data1.contact">{{data1.contact}}</span></li>
+        <li id="phone"><img src="./img/phone.jpg"/>&nbsp<span v-model="data1.mobile">{{data1.mobile}}</span></li>
+        <li id="address"><span v-model="data1.address">{{data1.address}}</span></li>
       </ul>
-      <ul class="good clearfix" v-for="item in data1">
-        <li id="wine" ><img :src="item.smallPic" alt="" id="winegood"></li>
-        <li id="numchange">共<span>{{item.goodsNum}}</span>件</li>
+      <ul class="good clearfix" v-for="item in data2">
+        <li id="wine"><img :src="item.smallPic" alt=""></li>
+        <li id="numchange">共<span>{{item.num}}</span>件</li>
       </ul>
       <ul class="clearfix express">
         <li class="grayword">配送方式</li>
@@ -17,7 +20,7 @@
       </ul>
       <ul class="good-price clearfix">
         <li class="grayword">商品总额</li>
-        <li class="redword">&yen&nbsp<span>{{data.payment}}</span></li>
+        <li class="redword">&yen&nbsp<span>{{data1.allPrice}}</span></li>
       </ul>
       <ul class="express-price clearfix">
         <li  class="grayword">运费 </li>
@@ -41,43 +44,42 @@
     data() {
       return {
         data: [],
-        data1: []
+        data1: [],
+        theme:"订单确认"
       }
     },
     methods: {
-      toBack() {
+      chooseAdd(){
+        this.$router.push({
+          path:'/addList'
+        })
+      },
+      routerBack(){
         this.$router.go(-1)
       },
       orderfinish: function () {
+        var a=this.data.orderNum;
         this.$router.push({
           path: '/orderFinish',
-          query:{
-            ordernum:item.orderNum
-          }
         })
-
       },
-      ordersure1(){
-      var _this = this;
-        this.$http.get("/api/putordermessage.htm",{
-          params:{
-          }
-  }).then(function (res) {
-    console.log(res.data);
-    _this.data = res.data.data;
-
-  }).catch(function (error) {
-    console.log(error);
-  })
-  },
-      ordersure2(){
+      ordersure(){
         var _this = this;
         this.$http.get("/api/selectaddressmessage.htm",{
           params:{
           }
         }).then(function (res) {
-          console.log(res.data);
+          var name = _this.$route.query.name;
+          var phone = _this.$route.query.phone;
+          var address = _this.$route.query.address;
+          console.log(res.data.data);
           _this.data1 = res.data.data;
+          _this.data2 = res.data.data.goodsList;
+          if(name){
+            _this.data1.contact = name;
+            _this.data1.mobile = phone;
+            _this.data1.address = address;
+          }
 
         }).catch(function (error) {
           console.log(error);
@@ -85,8 +87,7 @@
       }
     },
     created () {
-      this.ordersure1()
-      this.ordersure2()
+      this.ordersure()
     }
   }
 </script>
@@ -94,6 +95,27 @@
 <style>
   @import url(../../style/common1.css);
   .main{margin: 0 auto;}
+  header{
+    width: 100%;
+    height: 128px;
+    background-color: #d22131;
+    position: relative;
+  }
+  header .title{
+    color: #fff;
+    font-size: 40px;
+    position: absolute;
+    left: 50%;
+    margin-left: -81px;
+    top: 80px;
+  }
+  header img{
+    width: 30px;
+    height: 52px;
+    position: absolute;
+    top: 59px;
+    left: 26px;
+  }
   .order-confirm{
     background: #ebebeb;
     width: 750px;
@@ -130,6 +152,10 @@
     position: absolute;
     margin-left: 150px;
 
+  }
+  #name img,#phone img{
+    width: 22px;
+    height: 27px;
   }
   #address{
     margin: 74px 0 0 30px;
@@ -198,5 +224,6 @@
     font-size: 30px;
     text-decoration: underline;
   }
+
 </style>
 

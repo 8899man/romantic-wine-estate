@@ -26,7 +26,7 @@
             <span class="price">¥ {{item.goodsPrice}}</span>
         </li>
       </ul>
-        <div style="width: 750px; height: 280px;"></div>
+        <div style="width: 750px; height: 96px;"></div>
         <bottom></bottom>
         <img src="./img/shop_1.jpg" alt="#" class="shop_1">
     </div>
@@ -176,13 +176,13 @@ export default {
     margin-left: 80px;
   }
   .like1{
-    width: 750px;
-    height: 30px;
-    font-size: 20px;
-    font-family: 新宋体;
-    color: #848484;
-    line-height: 30px;
-    position: fixed;
-    bottom: 96px;
+    position:fixed;
+    bottom:100px;
+    right:300px;
+    width:150px;
+    height:30px;
+    font-size:20px;
+    border-radius:8px;
+    background-color:#999;
   }
 </style>

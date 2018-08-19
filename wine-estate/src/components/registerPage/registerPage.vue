@@ -67,7 +67,7 @@
                 });
               } else {
                 this.$router.push({
-                  path: "/accountPage"
+                  path: "/loginPage"
                 });
               }
               console.log(res.data);

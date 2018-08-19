@@ -1,32 +1,39 @@
 <template>
   <div class="main">
-    <orderheader></orderheader>
+    <header>
+      <span class="title">我的订单</span>
+      <img src="../../assets/icon2.png" alt="#" @click="routerBack">
+    </header>
     <div class="nav clearfix">
       <ul>
         <li @click="allorders"> 全部订单 </li>
-        <li id="choose" ><a href="">待付款</a></li>
+        <li id="choose"><span>待付款</span></li>
         <li @click="forgoods"> 待收货 </li>
         <li @click="forevaluate"> 待评价 </li>
       </ul>
     </div>
+    <div class="no-order">
+      <img src="../../assets/unfound.jpg" alt="">
+    </div>
     <section class="my-orders">
+
       <div class="pay-money">
         <ul>
           <li v-for="item in data3" >
-        <div  class="storemsg clearfix" @click="orderdetail($event)" :id="item.orderNum">
-          <img src="../../assets/store.jpg" height="30" width="30"/>
-          <span id="storename">{{data1.sellerId}}</span>
-          <span class="state">等待买家付款</span>
-        </div>
-        <div class="good clearfix" v-for="item1 in data2">
-          <div id="good-pic"><img :src="item1.smallPic" alt=""></div>
-          <div id="good-name">{{item1.goodsTitle}}</div>
-        </div>
-        <div class="all-price"><span > &nbsp合计:&yen{{data1.payment}}（含运费&yen0.00）</span></div>
-        <div class="forpay">
-          <input type="button" value="取消订单" id="no-order" @click="cancelorder">
-          <input @click="orderpay($event)" type="button" value="付款" id="pay-m" :class="item1.orderNum">
-        </div>
+            <div class="storemsg clearfix" @click="orderdetail($event)" :id="data1.orderNum">
+              <img src="../../assets/store.jpg" height="30" width="30"/>
+              <span id="storename">{{data1.sellerId}}</span>
+              <span class="state">等待买家付款</span>
+            </div>
+            <div class="good clearfix" v-for="item1 in data2">
+              <div id="good-pic"><img :src="item1.smallPic" alt=""></div>
+              <div id="good-name">{{item1.goodsTitle}}</div>
+            </div>
+            <div class="all-price"><span> &nbsp合计:&yen{{data1.payment}}（含运费&yen0.00）</span></div>
+            <div class="forpay">
+              <input type="button" value="取消订单" id="no-order" @click="cancelorder($event)">
+              <input @click="orderpay($event)" type="button" value="付款" id="pay-m" :class="data1.orderNum">
+            </div>
           </li>
         </ul>
       </div>
@@ -34,7 +41,6 @@
 
   </div>
 </template>
-
 <script>
   import orderheader from '../orderheader/orderheader.vue'
   export default{
@@ -48,7 +54,7 @@
       }
     },
     methods: {
-      toBack() {
+      routerBack(){
         this.$router.go(-1)
       },
       allorders: function () {
@@ -78,44 +84,53 @@
       orderdetail(event){
         var oLi=event.currentTarget;
         this.$router.push({
-          path: '/orderdetail',
+          path: '/orderDetails',
           query:{ordernum:oLi.id}
 
         })
       },
-      orderpay: function(){
-        var pay=event.currentTarget.className;
+      orderpay: function(event){
+        var oL=event.currentTarget.className;
         this.$router.push({
           path:'/orderPay',
-          query:{ordernum:pay}
+          query:{ordernum:oL}
         })
       },
 
-      cancelorder() {
+      cancelorder(event) {
+        var cancel=this.data1.orderNum
         var _this = this;
         this.$http.get("/api/cancalorder.htm", {
           params: {
-            orderNum: "2018081615020999591",
+            orderNum: cancel,
           }
         }).then(function (res) {
         }).catch(function (error) {
           console.log(error);
         })
+        var oLi = event.currentTarget.parentNode.parentNode;
+        var oUl = oLi.parentNode;
+        oUl.removeChild(oLi);
       },
       getordermsg() {
         var this1 = this;
         this.$http.get("/api/orderStatus.htm", {
           params: {
-            userId: "5689522"
           }
         }).then(function (res) {
-          var data3=[];
-          for(var i=0;i<res.data.data.length;i++) {
-            if (res.data.data[i].status == 1) {
-              this1.data1 = res.data.data[i];
-              this1.data2 = res.data.data[i].goodsList;
-              this1.data3= data3.push(this1.data1);
-              console.log(this1.data3)
+          var no=document.getElementsByClassName("no-oeder")
+          if(res.data.data==null){
+            no.style.display="block";
+          }
+          else {
+            var data3 = [];
+            for (var i = 0; i < res.data.data.length; i++) {
+              if (res.data.data[i].status == 1) {
+                this1.data1 = res.data.data[i];
+                this1.data2 = res.data.data[i].goodsList;
+                this1.data3 = data3.push(this1.data1);
+                console.log(this1.data3)
+              }
             }
           }
         }).catch(function (error) {
@@ -128,9 +143,32 @@
     }
   }
 </script>
-<style>
-  @import url(../../style/common1.css);
-  .main{margin: 0 auto;}
+<style scoped>
+  @import url(../../style/common.css);
+  .main{
+    margin: 0 auto;
+  }
+  header{
+    width: 100%;
+    height: 128px;
+    background-color: #bb3437;
+    position: relative;
+  }
+  header .title{
+    color: #fff;
+    font-size: 40px;
+    position: absolute;
+    left: 50%;
+    margin-left: -81px;
+    top: 80px;
+  }
+  header img{
+    width: 30px;
+    height: 52px;
+    position: absolute;
+    top: 59px;
+    left: 26px;
+  }
   .nav{
     width: 750px;
     margin: 0 auto;}
@@ -143,7 +181,7 @@
     color: #878787;
     text-align: center;
   }
-  #choose a{color: #bb3437;}
+  #choose span{color: #bb3437;}
   .my-orders{
     background: #f4f4f4;
     padding-top: 27px ;
@@ -166,14 +204,14 @@
     width:30px;
   }
   #storename{
-     float: left;
+    float: left;
 
   }
   .state{
     color: #bb3437;
-  display: block;
-  float: right;
-  margin-right: 50px;
+    display: block;
+    float: right;
+    margin-right: 50px;
   }
   .good{
     background: #f4f4f4;
@@ -227,6 +265,13 @@
   }
   .my-orders li{
     margin-bottom: 10px;
+  }
+  .no-order{
+    display: none;
+  }
+  .no-order img{
+    width: 750px;
+    height: 1120px;
   }
 </style>
 

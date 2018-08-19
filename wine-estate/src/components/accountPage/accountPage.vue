@@ -43,7 +43,7 @@
                 <img src="./img/icon2-4.png" alt="图片不见了哦~"/>
                 <p>我的酒评</p>
               </span>
-        <span @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="routerwatchList">
+        <span @mousedown="changeColor($event)" @mouseup="recoverColor($event)" @click="routerallorders">
                 <img src="./img/icon3-4.png" alt="图片不见了哦~"/>
                 <p>我的关注</p>
               </span>
@@ -54,7 +54,7 @@
       </div>
     </main>
     <bottom></bottom>
-    <img src="./img/my_1.jpg" alt="我的" class="mine">
+    <img class="mine" src="./img/my_1.jpg"/>
   </div>
 </template>
 
@@ -63,11 +63,11 @@
 
   export default {
     name: "accountPage",
-    components: {bottom},
+    components: { bottom },
     data() {
       return {
         Name: "点击登录",
-        headImg: ""
+        headImg: require("./img/Flash.jpg")
       };
     },
     methods: {
@@ -140,26 +140,6 @@
           }
         })
       },
-
-      routerwatchList() {
-        this.$http.get("/api/info.htm", {
-          params: {}
-        }).then((res) => {
-          if (!res.data.status) {
-            this.$messagebox.alert("", {
-              message: "请先登录哦~",
-              title: "提示",
-              showConfirmButton: true,
-              confirmButtonText: "确定"
-            });
-          } else {
-            this.$router.push({
-              path: "/watchList"
-            });
-          }
-        })
-      },
-
       routermytracksPage() {
         this.$http.get("/api/info.htm", {
           params: {}
@@ -204,7 +184,6 @@
     height: 1334px;
     margin: 0 auto;
     background-color: #ebebeb;
-    position: relative;
   }
 
   /*页面banner部分*/
@@ -407,6 +386,13 @@
     padding-top: 26px;
   }
 
+  .mine{
+    width:70px;
+    height: 76px;
+    position: fixed;
+    bottom:10px;
+    right:12px;
+  }
   .icon {
     width: 90px;
     height: 90px;
@@ -414,13 +400,5 @@
     overflow: hidden;
     position: relative;
     right: 6px;
-  }
-
-  .mine {
-    position: fixed;
-    right: 40px;
-    bottom: 12px;
-    height: 72px;
-    width: 68px;
   }
 </style>

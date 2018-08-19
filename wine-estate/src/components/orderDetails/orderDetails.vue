@@ -1,6 +1,9 @@
 <template>
   <div class="main">
-    <orderheader theme="订单详情"></orderheader>
+    <header>
+      <span class="title">订单详情</span>
+      <img src="../../assets/icon2.png" alt="#" @click="routerBack">
+    </header>
     <section class="order-details">
       <img  id="back" src="./img/wineback.jpg">
       <div class="message" @click="addlist">
@@ -34,17 +37,19 @@
   </div>
 </template>
 <script>
+  var ordernum=null
   import orderheader from '../orderheader/orderheader.vue'
   export default {
     components: {orderheader},
     data() {
       return {
         data:{},
-        data1:{}
+        data1:{},
+        theme:"订单详情"
       }
     },
     methods: {
-      toBack() {
+      routerBack(){
         this.$router.go(-1)
       },
       orderpay: function () {
@@ -76,6 +81,7 @@
         var this1=this;
         this.$http.get("/api/selectaddressmessage.htm", {
           params: {
+            userId:'5689522'
           }
         }).then(function (res) {
           console.log(res.data);
@@ -86,9 +92,10 @@
       }
     },
     created (){
+      ordernum=this.$route.query.ordernum
       this.getdetail1();
       this.getdetail3();
-      ordernum=this.$route.query.ordernum;
+
     }
   }
 </script>
@@ -96,6 +103,27 @@
   @import url(../../style/common.css);
   .main{
     position: relative;
+  }
+  header{
+    width: 100%;
+    height: 128px;
+    background-color:#bb3437;
+    position: relative;
+  }
+  header .title{
+    color: #fff;
+    font-size: 40px;
+    position: absolute;
+    left: 50%;
+    margin-left: -81px;
+    top: 80px;
+  }
+  header img{
+    width: 30px;
+    height: 52px;
+    position: absolute;
+    top: 59px;
+    left: 26px;
   }
   .order-details{
     width: 750px;
@@ -187,10 +215,9 @@
     padding-top: 8px;
     color: #7c7c7c;
     text-align: left;
-    margin :40px 20px 0 0;
+    margin-left: 20px;
   }
   li span {
     color:#7c7c7c ;
   }
-
 </style>
